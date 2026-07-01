@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>紫金矿业深度研究报告 | 寻找艾尔法</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --navy-900: #0f1e3d;
+    --navy-800: #1a2744;
+    --navy-700: #243656;
+    --navy-600: #2e4a73;
+    --navy-500: #3b5a8a;
+    --navy-100: #e8eef6;
+    --navy-50:  #f4f7fb;
+
+    --gold-600: #b8901f;
+    --gold-500: #c9a227;
+    --gold-400: #d4b43c;
+    --gold-100: #faf5e6;
+    --gold-50:  #fdfbf3;
+
+    --slate-700: #334155;
+    --slate-600: #475569;
+    --slate-500: #64748b;
+    --slate-400: #94a3b8;
+    --slate-300: #cbd5e1;
+    --slate-200: #e2e8f0;
+    --slate-100: #f1f5f9;
+    --slate-50:  #f8fafc;
+
+    --green-600: #15803d;
+    --green-100: #dcfce7;
+    --amber-600: #d97706;
+    --amber-100: #fef3c7;
+    --red-600:   #dc2626;
+    --red-100:   #fee2e2;
+
+    --white: #ffffff;
+    --bg: #f8f9fb;
+
+    --font-serif: 'Noto Serif SC', 'Songti SC', serif;
+    --font-sans: 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--slate-700);
+    line-height: 1.8;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 4px 30px rgba(15, 30, 61, 0.08);
+  }
+
+  /* ===== COVER ===== */
+  .cover {
+    background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 60%, var(--navy-600) 100%);
+    color: var(--white);
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(201,162,39,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -50px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(201,162,39,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-400);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .cover-title {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+  .cover-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cover-meta-label {
+    font-size: 11px;
+    color: var(--gold-400);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .cover-meta-value {
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ===== TOC ===== */
+  .toc {
+    background: var(--navy-50);
+    padding: 48px 60px;
+    border-bottom: 1px solid var(--slate-200);
+  }
+  .toc-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy-800);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .toc-title::before {
+    content: '';
+    width: 4px; height: 24px;
+    background: var(--gold-500);
+    border-radius: 2px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 32px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--slate-600);
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--slate-200);
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--gold-600);
+    font-weight: 600;
+    min-width: 28px;
+  }
+  .toc-item:hover { color: var(--navy-700); }
+
+  /* ===== SECTION ===== */
+  .section {
+    padding: 48px 60px;
+    border-bottom: 1px solid var(--slate-100);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--navy-800);
+    width: 36px; height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy-800);
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--slate-400);
+    margin-top: 2px;
+  }
+
+  .subsection {
+    margin-bottom: 28px;
+  }
+  .subsection-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy-700);
+    margin-bottom: 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--gold-500);
+  }
+  .subsection-title-s {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy-700);
+    margin-bottom: 10px;
+    margin-top: 18px;
+  }
+
+  p {
+    margin-bottom: 12px;
+    color: var(--slate-600);
+    text-align: justify;
+  }
+  strong { color: var(--navy-800); font-weight: 600; }
+  ul, ol { margin-bottom: 12px; padding-left: 20px; }
+  li { margin-bottom: 6px; color: var(--slate-600); }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    background: var(--navy-50);
+    border-left: 4px solid var(--navy-600);
+    padding: 20px 24px;
+    border-radius: 0 8px 8px 0;
+    margin: 20px 0;
+  }
+  .callout-gold {
+    background: var(--gold-50);
+    border-left-color: var(--gold-500);
+  }
+  .callout-green {
+    background: var(--green-100);
+    border-left-color: var(--green-600);
+  }
+  .callout-amber {
+    background: var(--amber-100);
+    border-left-color: var(--amber-600);
+  }
+  .callout-red {
+    background: var(--red-100);
+    border-left-color: var(--red-600);
+  }
+  .callout-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .callout p { margin-bottom: 0; }
+  .callout p + p { margin-top: 8px; }
+
+  /* ===== SCORE CARDS ===== */
+  .score-hero {
+    background: linear-gradient(135deg, var(--navy-800), var(--navy-600));
+    border-radius: 16px;
+    padding: 36px;
+    color: var(--white);
+    text-align: center;
+    margin: 24px 0;
+  }
+  .score-hero-label {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-400);
+    margin-bottom: 8px;
+  }
+  .score-hero-value {
+    font-family: var(--font-serif);
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .score-hero-value span {
+    font-size: 28px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+  }
+  .score-hero-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 12px;
+  }
+
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .score-card {
+    background: var(--slate-50);
+    border: 1px solid var(--slate-200);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s;
+  }
+  .score-card-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--slate-600);
+  }
+  .score-card-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .score-card-dots {
+    display: flex;
+    gap: 3px;
+  }
+  .score-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--slate-200);
+  }
+  .score-dot.filled { background: var(--gold-500); }
+  .score-card-num {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy-800);
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* ===== TABLES ===== */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .data-table thead {
+    background: var(--navy-800);
+  }
+  .data-table th {
+    color: var(--white);
+    font-weight: 500;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 13px;
+  }
+  .data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--slate-100);
+    color: var(--slate-600);
+  }
+  .data-table tbody tr:nth-child(even) {
+    background: var(--slate-50);
+  }
+  .data-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .data-table .highlight {
+    background: var(--gold-50) !important;
+    font-weight: 600;
+    color: var(--navy-800);
+  }
+
+  /* ===== TAGS / BADGES ===== */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .badge-navy { background: var(--navy-100); color: var(--navy-700); }
+  .badge-gold { background: var(--gold-100); color: var(--gold-600); }
+  .badge-green { background: var(--green-100); color: var(--green-600); }
+  .badge-amber { background: var(--amber-100); color: var(--amber-600); }
+  .badge-red { background: var(--red-100); color: var(--red-600); }
+
+  /* ===== PRICE TARGET CARDS ===== */
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .price-card {
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid;
+  }
+  .price-card-bearish {
+    background: var(--slate-50);
+    border-color: var(--slate-300);
+  }
+  .price-card-base {
+    background: var(--navy-50);
+    border-color: var(--navy-500);
+  }
+  .price-card-bullish {
+    background: var(--gold-50);
+    border-color: var(--gold-500);
+  }
+  .price-card-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .price-card-bearish .price-card-label { color: var(--slate-500); }
+  .price-card-base .price-card-label { color: var(--navy-600); }
+  .price-card-bullish .price-card-label { color: var(--gold-600); }
+  .price-card-value {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .price-card-bearish .price-card-value { color: var(--slate-600); }
+  .price-card-base .price-card-value { color: var(--navy-800); }
+  .price-card-bullish .price-card-value { color: var(--gold-600); }
+  .price-card-desc {
+    font-size: 12px;
+    color: var(--slate-500);
+  }
+
+  /* ===== KEY METRICS ===== */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .metric-box {
+    background: var(--slate-50);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--slate-100);
+  }
+  .metric-value {
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy-800);
+    margin-bottom: 4px;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 20px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 4px; bottom: 4px;
+    width: 2px;
+    background: var(--slate-200);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold-500);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--gold-500);
+  }
+  .timeline-date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold-600);
+    margin-bottom: 4px;
+  }
+  .timeline-content {
+    font-size: 14px;
+    color: var(--slate-600);
+  }
+
+  /* ===== RISK MATRIX ===== */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .risk-item {
+    padding: 16px 20px;
+    border-radius: 10px;
+    border-left: 4px solid;
+  }
+  .risk-item-high { background: var(--red-100); border-color: var(--red-600); }
+  .risk-item-med { background: var(--amber-100); border-color: var(--amber-600); }
+  .risk-item-low { background: var(--green-100); border-color: var(--green-600); }
+  .risk-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .risk-item-desc {
+    font-size: 13px;
+    color: var(--slate-600);
+  }
+
+  /* ===== FINAL VERDICT ===== */
+  .verdict {
+    background: linear-gradient(135deg, var(--navy-900), var(--navy-700));
+    border-radius: 16px;
+    padding: 40px 48px;
+    color: var(--white);
+    margin: 24px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .verdict::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 200px;
+    background: radial-gradient(ellipse at right, rgba(201,162,39,0.15), transparent);
+  }
+  .verdict-badge {
+    display: inline-block;
+    background: var(--gold-500);
+    color: var(--navy-900);
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .verdict-title {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .verdict p {
+    color: rgba(255,255,255,0.8);
+    position: relative;
+  }
+  .verdict strong { color: var(--gold-400); }
+
+  /* ===== FOOTER ===== */
+  .report-footer {
+    background: var(--navy-900);
+    color: rgba(255,255,255,0.5);
+    padding: 32px 60px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  .report-footer strong { color: var(--gold-400); }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--slate-300), transparent);
+    margin: 32px 0;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { background: white; }
+    .report { box-shadow: none; max-width: 100%; }
+    .section { page-break-inside: avoid; }
+    .cover { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+<div class="report">
+
+<!-- ==================== COVER ==================== -->
+<div class="cover">
+  <div class="cover-label">寻找艾尔法 · 证券投资系统</div>
+  <div class="cover-title">紫金矿业<br>深度研究报告</div>
+  <div class="cover-subtitle">Zijin Mining — 全球资源巨头的成长逻辑与风险全景</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">研究日期</span>
+      <span class="cover-meta-value">2026年6月28日</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">标的代码</span>
+      <span class="cover-meta-value">601899.SH / 2899.HK</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">研究类型</span>
+      <span class="cover-meta-value">阶段性深度留存</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="cover-meta-label">评级</span>
+      <span class="cover-meta-value">推荐</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TOC ==================== -->
+<div class="toc">
+  <div class="toc-title">报告目录</div>
+  <div class="toc-grid">
+    <div class="toc-item"><span class="toc-num">01</span> 执行摘要</div>
+    <div class="toc-item"><span class="toc-num">02</span> 公司概览与商业模式</div>
+    <div class="toc-item"><span class="toc-num">03</span> 行业分析与竞争格局</div>
+    <div class="toc-item"><span class="toc-num">04</span> 费雪成长股评分</div>
+    <div class="toc-item"><span class="toc-num">05</span> 财务分析</div>
+    <div class="toc-item"><span class="toc-num">06</span> 增长驱动力</div>
+    <div class="toc-item"><span class="toc-num">07</span> 风险审计与ESG合规</div>
+    <div class="toc-item"><span class="toc-num">08</span> 海外运营风险与应对</div>
+    <div class="toc-item"><span class="toc-num">09</span> 估值分析与价格推演</div>
+    <div class="toc-item"><span class="toc-num">10</span> 情景分析</div>
+    <div class="toc-item"><span class="toc-num">11</span> 投资结论</div>
+    <div class="toc-item"><span class="toc-num">12</span> 做空视角专题</div>
+  </div>
+</div>
+
+<!-- ==================== 01 EXECUTIVE SUMMARY ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div>
+      <div class="section-title">执行摘要</div>
+      <div class="section-subtitle">Executive Summary</div>
+    </div>
+  </div>
+
+  <p>紫金矿业是一家以<strong>铜、金、锂</strong>等金属矿产资源勘查、开发及工程设计、技术研发为主的大型跨国矿业集团。公司通过在全球范围内勘探、开采、选冶及销售基本金属、贵金属及新能源金属获取利润，业务涵盖从上游资源获取到中游开采选炼的完整产业链。</p>
+
+  <div class="callout callout-gold">
+    <div class="callout-title" style="color: var(--gold-600);">核心投资逻辑</div>
+    <p>紫金矿业的投资逻辑建立在<strong>"顶级资源储备 + 全球化执行力 + 技术驱动成本"</strong>的三位一体之上。它不仅是一家传统的矿业巨头，更是一家通过铜、金、锂组合成功跨越经济周期的"资源+成长"型公司。在金矿提供防守、铜和锂提供新能源转型增长动能的背景下，其估值逻辑已从单纯的周期股向具备高技术壁垒的能源金属巨头转变。</p>
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-box">
+      <div class="metric-value">87<span style="font-size:14px;color:var(--slate-400)">/100</span></div>
+      <div class="metric-label">费雪评分</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-value">45<span style="font-size:14px;color:var(--slate-400)">/50</span></div>
+      <div class="metric-label">财务评分</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-value">9.19<span style="font-size:14px;color:var(--slate-400)">x</span></div>
+      <div class="metric-label">当前PE</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-value">+97<span style="font-size:14px;color:var(--slate-400)">%</span></div>
+      <div class="metric-label">Q1利润增速</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">关键结论</div>
+    <ul>
+      <li><strong>资产稀缺性：</strong>卡莫阿铜矿、巨龙铜矿等均为全球顶级的低成本、长寿命资产，这种"资源硬通货"在未来十年依然是稀缺的。</li>
+      <li><strong>战略前瞻性：</strong>管理层成功实现了从基本金属向新能源金属的跨越，具备卓越的跨国运营经验，在国内矿企中具有无可比拟的领先优势。</li>
+      <li><strong>估值吸引力：</strong>尽管存在地缘政治折价，但其成长速度和资产质量足以对冲部分宏观风险。当前PE约9倍处于历史极低位，25-27元大概率是"勇敢者的黄金坑"。</li>
+      <li><strong>风险定位：</strong>应将其定位为<strong>"高成长、中高风险"</strong>的组合配置，密切关注地缘政治动态及现金流健康状况。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== 02 COMPANY OVERVIEW ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div>
+      <div class="section-title">公司概览与商业模式</div>
+      <div class="section-subtitle">Business Model & Company Overview</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">核心产品与服务</div>
+    <ul>
+      <li><strong>主要金属：</strong>铜、金、锌（铅）</li>
+      <li><strong>副产及战略金属：</strong>银、钼、铂族金属</li>
+      <li><strong>新能源材料：</strong>锂（包括盐湖锂和硬岩锂）</li>
+      <li><strong>技术服务：</strong>依托"科技创造紫金"理念，提供矿业相关的科研与工程技术支持</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">收入来源结构</div>
+    <p>铜和金是最核心的收入支柱，锂电材料正成为新的增长极。收入按地理构成分为<strong>中国项目</strong>（如巨龙铜矿、紫金山铜金矿等）和<strong>海外项目</strong>（分布在非洲、欧洲、南美洲、大洋洲及中亚等），体现了高度的全球化多元收入来源。营业收入的70%来自中国大陆客户。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">客户构成</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>客户类型</th><th>代表客户/渠道</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr class="highlight"><td>金融交易机构</td><td>上海黄金交易所(SGE)</td><td>核心单一客户，2025H1销售收入524.65亿元，占总营收约31.3%</td></tr>
+        <tr><td>国际金属交易所</td><td>LME / LBMA</td><td>"紫金"牌金锭、银锭、A级铜及锌锭均为注册交割品牌</td></tr>
+        <tr><td>工业制造与冶炼企业</td><td>铜陵有色、吉尔吉斯黄金公司、万国黄金等</td><td>采购铜精矿、阴极铜或金锭</td></tr>
+        <tr><td>贸易与供应链伙伴</td><td>金澎(上海)、广闽铜业、紫森(厦门)等</td><td>大宗商品购销</td></tr>
+        <tr><td>个人消费者</td><td>"紫金黄金"品牌门店、在线商城</td><td>首饰、投资金条等终端产品</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">客户集中度与单一大客户风险</div>
+    <p>上海黄金交易所贡献约三成营收，存在特定渠道集中度较高的情况。但核心产品（金、铜、锌）是<strong>标准化的大宗商品</strong>，具有极强的全球流动性。产品已在LME和LBMA注册，若国内某大客户或平台停止采购，公司完全有能力通过全球化供应链体系将产品转销国际市场。</p>
+    <div class="callout callout-green">
+      <div class="callout-title" style="color: var(--green-600);">结论</div>
+      <p>单一大客户的变动<strong>不会对公司的长期盈利能力产生毁灭性打击</strong>。只要全球市场对基础金属和贵金属的需求存在，紫金矿业并不依赖于某个特定"品牌客户"的偏好。</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">核心竞争优势</div>
+    <ul>
+      <li><strong>技术自主创新：</strong>明确提出"科技创造紫金"，在复杂矿石的处理和低成本开发方面具有技术优势</li>
+      <li><strong>全球化运营能力：</strong>具备在不同文化、法律和地理环境下管理大型项目的经验</li>
+      <li><strong>资源组合优势：</strong>铜金并重，金矿在经济波动中提供避险价值，铜矿则受益于工业增长和绿色转型</li>
+      <li><strong>全产业链整合：</strong>从勘探到冶炼的集成能力</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">规模效应与品牌优势</div>
+    <p><strong>规模效应极其显著。</strong>通过运营世界级超大型项目（如卡莫阿铜矿、巨龙铜矿），公司能够显著降低单位生产成本。同时，公司强调"迈向低碳的未来"和"可持续发展"，通过良好的ESG表现提升其在国际资源获取中的议价能力和品牌声誉。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">行业位置与竞争对手</div>
+    <p>紫金矿业处于<strong>全球顶级矿业公司</strong>的行列，拥有多座世界级超大型矿山（如刚果金的卡莫阿-卡库拉铜矿、西藏的巨龙铜矿、哥伦比亚的武里蒂卡金矿等），在铜、金、锌等矿种的资源储量和产量上均处于行业领先地位。其实力使其与必和必拓(BHP)、力拓(Rio Tinto)、自由港(Freeport-McMoRan)等国际矿业巨头在全球资源并购和开发市场中同台竞技。</p>
+  </div>
+</div>
+
+<!-- ==================== 03 INDUSTRY ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div>
+      <div class="section-title">行业分析与竞争格局</div>
+      <div class="section-subtitle">Industry Analysis & Competitive Landscape</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">行业规模与TAM</div>
+    <p>全球矿业是一个数万亿美元规模的支柱性产业。该行业的TAM由全球工业化、城镇化及绿色转型驱动：</p>
+    <ul>
+      <li><strong>传统需求：</strong>建筑、电子、首饰及金融储备（金、铜、锌）</li>
+      <li><strong>新兴需求：</strong>电动汽车(EV)、可再生能源电网及储能系统对铜和锂的爆发式需求</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">行业生命周期与增长率</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>矿种类别</th><th>生命周期阶段</th><th>需求增速特征</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>铜</td><td>成熟期（绿色技术驱动二次增长曲线）</td><td>复合增长率显著高于传统金属</td></tr>
+        <tr><td>金</td><td>成熟期</td><td>与全球GDP或通胀挂钩，低速稳健增长</td></tr>
+        <tr><td>锌</td><td>成熟期</td><td>低速稳健增长</td></tr>
+        <tr class="highlight"><td>锂及新能源材料</td><td>快速成长期</td><td>从勘探开发转向大规模产能释放</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">行业壁垒</div>
+    <ul>
+      <li><strong>资源稀缺性与准入：</strong>优质矿权是不可再生资源，紫金通过全球并购建立了极高的资源储备门槛</li>
+      <li><strong>技术与成本控制：</strong>低品位或复杂矿石的选冶技术是核心壁垒</li>
+      <li><strong>ESG与准入：</strong>气候变化、生态保护及社区参与已成为矿企获取运营许可的硬性门槛</li>
+      <li><strong>资本开支(CAPEX)：</strong>世界级矿山的开发需要数十亿至数百亿元的持续投入</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">未来十年趋势</div>
+    <ul>
+      <li><strong>脱碳化：</strong>矿山运营需要更清洁的能源（减排、废弃物管理）</li>
+      <li><strong>深度全球化：</strong>资源争夺遍布非洲、南美洲、欧洲及中亚地区</li>
+      <li><strong>智能化：</strong>提高开采效率，降低安全风险</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">铜：第四轮超级周期</div>
+    <p>铜正处于由<strong>人工智能(AI)革命与全球能源转型</strong>双重驱动的"第四轮超级周期"中。叠加两大宏观逻辑：AI时代的"原油"，全产业链需求爆发；以及百年变局下的重要战略金属。</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>维度</th><th>关键数据</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>长期需求量级</td><td>标普全球预测2040年全球铜需求达4,200万吨，较目前增长50%</td></tr>
+        <tr><td>机构目标价</td><td>摩根大通2026年均价约12,075美元/吨；高盛年末目标约13,735美元/吨；花旗最高看15,000美元/吨</td></tr>
+        <tr><td>供给瓶颈</td><td>全球矿石品位已降至0.6%以下（25年前的一半）；新矿山开发需7-10年，新矿发现率暴跌70%</td></tr>
+        <tr class="highlight"><td>供需缺口</td><td>摩根大通预计2026年精炼铜短缺33万吨，为多年来最大缺口</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-gold">
+      <div class="callout-title" style="color: var(--gold-600);">范式转移</div>
+      <p>铜的定价逻辑正在发生范式转移：由于供给端的极端刚性和需求端（AI/能源转型）的结构性扩张，铜已从普通的工业金属演变为<strong>战略储备资产</strong>，其价格溢价正从反映"增长"转向反映"安全"与"技术飞跃"。铜价与全球制造业PMI、美国通胀预期等传统宏观变量的关联显著弱化。</p>
+    </div>
+  </div>
+
+  <div class="callout callout-green">
+    <div class="callout-title" style="color: var(--green-600);">行业长期成长性判断</div>
+    <p><strong>具备强烈的长期成长性。</strong>无论人工智能还是绿色能源，其物理底层都离不开铜（导电）、锂（储能）等金属。随着易开采矿床的枯竭，拥有先进选冶技术和全球资源掌控能力的公司将获得更强的稀缺性溢价。矿业已从单纯的"周期性行业"转型为"资源+技术"驱动的长周期成长行业。</p>
+  </div>
+</div>
+
+<!-- ==================== 04 FISHER SCORE ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div>
+      <div class="section-title">费雪成长股评分</div>
+      <div class="section-subtitle">Philip Fisher Growth Stock Analysis</div>
+    </div>
+  </div>
+
+  <p>按照菲利普·费雪（Philip Fisher）在《怎样选择成长股》中提出的核心原则，结合紫金矿业的业务布局、战略方向和项目资产，进行逐项评分分析。</p>
+
+  <div class="score-hero">
+    <div class="score-hero-label">费雪综合评分</div>
+    <div class="score-hero-value">87<span>/100</span></div>
+    <div class="score-hero-desc">典型的"具备卓越管理能力的资源类成长股"</div>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <span class="score-card-name">市场潜力</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">管理层能力</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">研发能力</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">8/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">销售能力</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">7/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">利润率改善</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">8/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">护城河</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">长期成长能力</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">企业文化</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">8/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">资本配置能力</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">长期竞争优势</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-gold">
+    <div class="callout-title" style="color: var(--gold-600);">费雪式总结</div>
+    <p>紫金矿业不仅是一家拥有丰厚"自然资源"的企业，更是一家具备<strong>"卓越管理意识"</strong>和<strong>"科技创新基因"</strong>的成长型公司。它成功地将高度周期性的矿业业务，通过全球资产配置和技术优化，转化为了具备高度确定性的长期价值增长。按照费雪的原则，这是一家值得长期持有的、具备"特质"的优秀公司。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">费雪如何看待当前回调</div>
+    <p>费雪会跳出短期的价格波动，重点关注以下特质：</p>
+    <ul>
+      <li><strong>管理层的危机处理与远见：</strong>赞赏管理层在黄金高位时通过分拆"紫金黄金国际"上市来变现价值并优化资本结构的举措</li>
+      <li><strong>研发与技术领先：</strong>对复杂低品位矿石的盘活能力符合费雪对"拥有卓越技术研发能力"的偏好</li>
+      <li><strong>长期成长路径的清晰度：</strong>2026-2028年产量规划和2035年远景目标显示公司仍处于"成长"轨道</li>
+      <li><strong>抗风险的利润率：</strong>掌握低成本、规模化的世界级资产，在行业低谷时仍能保持盈利</li>
+    </ul>
+    <div class="callout callout-green">
+      <div class="callout-title" style="color: var(--green-600);">费雪的最终建议</div>
+      <p>短期的价格下跌（如金价回调导致的股价下挫）反而是买入或增持这类"卓越管理+优质资产"公司的时机。他不会试图预测25元是否是绝对底部，而是会确认紫金矿业在未来10年是否能稳居全球矿业第一梯队，并利用市场的恐慌布局长期价值。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 05 FINANCIAL ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div>
+      <div class="section-title">财务分析</div>
+      <div class="section-subtitle">Financial Analysis</div>
+    </div>
+  </div>
+
+  <div class="score-hero">
+    <div class="score-hero-label">财务综合评分</div>
+    <div class="score-hero-value">45<span>/50</span></div>
+    <div class="score-hero-desc">高速成长的现金流奶牛</div>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <span class="score-card-name">负债水平</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">8/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">现金流健康度</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">资产增速</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+    <div class="score-card">
+      <span class="score-card-name">利润增速</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div>
+        </div>
+        <span class="score-card-num">10/10</span>
+      </div>
+    </div>
+    <div class="score-card" style="grid-column: span 2;">
+      <span class="score-card-name">毛利率管理</span>
+      <div class="score-card-bar">
+        <div class="score-card-dots">
+          <div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot filled"></div><div class="score-dot"></div>
+        </div>
+        <span class="score-card-num">9/10</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">核心财务数据</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>指标</th><th>数值</th><th>评价</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>资产负债率（2025H1）</td><td>56.36%</td><td>较2024年末略升，整体维持合理区间</td></tr>
+        <tr><td>利息保障倍数（2025H1）</td><td>14.90倍</td><td>上年同期7.84倍，极强付息能力</td></tr>
+        <tr><td>EBITDA利息保障倍数</td><td>17.26倍</td><td>显示极强的付息能力</td></tr>
+        <tr class="highlight"><td>经营性现金流净额（2025H1）</td><td>288.3亿元</td><td>同比增长41%</td></tr>
+        <tr><td>2025年全年预计经营现金流</td><td>约730亿元</td><td>较2022年增长约154%</td></tr>
+        <tr><td>自由现金流（2024年）</td><td>212.3亿元</td><td>2023年仅8.2亿元，爆发式增长</td></tr>
+        <tr><td>总资产（2025H1）</td><td>4,397.4亿元</td><td>2025年底预计约5,120亿元，同比+29%</td></tr>
+        <tr class="highlight"><td>归母净利润（2025H1）</td><td>232.9亿元</td><td>同比增长54.4%</td></tr>
+        <tr class="highlight"><td>归母净利润（2026Q1）</td><td>200.79亿元</td><td>同比增长97%</td></tr>
+        <tr><td>2025年全年预计归母净利润</td><td>510-520亿元</td><td>同比增加约59%-62%</td></tr>
+        <tr><td>综合毛利率（2025H1）</td><td>23.75%</td><td>同比增加4.6个百分点</td></tr>
+        <tr><td>矿产品毛利率（2025H1）</td><td>60.23%</td><td>同比增加近3个百分点</td></tr>
+        <tr><td>金精矿毛利率</td><td>72.59%</td><td>极高毛利水平</td></tr>
+        <tr><td>铜精矿毛利率</td><td>65.03%</td><td>极高毛利水平</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-green">
+    <div class="callout-title" style="color: var(--green-600);">财务总结</div>
+    <p>紫金矿业目前的财务画像是一个<strong>"高速成长的现金流奶牛"</strong>。其核心竞争力在于：利用稳健的财务杠杆获取全球顶级矿权，通过卓越的成本管理挖掘高毛利，最终转化为爆发式的利润和现金流增长。负债端的适度增加完全被盈利端的快速释放所覆盖，展现出极强的投资价值。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">管理层诚信与财务合规</div>
+    <p><strong>无造假记录：</strong>在所有官方报告、业绩公告及第三方分析中，没有任何记录显示紫金矿业曾有过被监管机构确认的、系统性的"财务造假"前科。2025年半年度报告明确声明董事会及高级管理人员保证报告内容的"真实、准确、完整"。</p>
+    <p><strong>执行力强：</strong>2023-2025年间，管理层坚持"提质、控本、增效"方针，超预期完成目标任务。2025年矿产金产量达90吨，矿产铜109万吨。按照2026年105吨矿产金目标，若如期完成将比原定计划提前两年突破百吨大关。</p>
+    <p><strong>治理严格：</strong>报告期内审计监察部通报18名员工因腐败被开除或受处分，15家合作伙伴因腐败违规被终止合约，涉及1起职务犯罪刑事诉讼。公司对内部贪腐持"零容忍"态度并主动公开处分人数，被视为财务透明度的体现。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">回购历史与市值管理</div>
+    <p>紫金矿业有过多次回购行为，近年来态度愈发积极，将其作为"市值管理"和"投资者回报"的核心工具。</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2013-2016年</div>
+        <div class="timeline-content">多次实施H股回购，合计回购超2.7亿股</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2025年4月7日</div>
+        <div class="timeline-content">董事会通过A股回购方案，拟使用自有资金6亿至10亿元</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2025年4月10日</div>
+        <div class="timeline-content"><strong>仅用3天完成回购</strong>，累计回购A股6,431.6万股，回购均价15.55元/股，使用资金总额约10亿元</div>
+      </div>
+    </div>
+
+    <p>公司董事会审议通过了《市值管理制度》，明确提出综合运用"资本运作、并购重组、股份回购、现金分红、信息披露"等多种工具，持续增强市值管理质效。高管在认购持股计划时承诺放弃年度部分奖励薪酬，以"真金白银"为公司价值背书。</p>
+  </div>
+</div>
+
+<!-- ==================== 06 GROWTH DRIVERS ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div>
+      <div class="section-title">增长驱动力</div>
+      <div class="section-subtitle">Growth Drivers</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">核心增长驱动</div>
+    <ul>
+      <li><strong>世界级矿山产能释放：</strong>刚果（金）卡莫阿-卡库拉铜矿、西藏巨龙铜矿、塞尔维亚丘卡卢-佩吉铜金矿等项目的持续扩产，是未来5年确定性最强的产量增长源</li>
+      <li><strong>新能源金属第二曲线：</strong>通过收购3Q锂盐湖、拉果措盐湖及湘源锂矿，正快速转型为全球领先的锂生产商</li>
+      <li><strong>技术溢价：</strong>凭借"科技创造紫金"理念，在低品位、难选冶矿石开发上具备显著成本优势</li>
+      <li><strong>战略金属扩张：</strong>进军钼矿（沙坪沟钼矿）和铂族金属领域，进一步丰富产品组合</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">产量规划（2025-2028年）</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>矿种</th><th>2025年</th><th>2026年目标</th><th>2028年规划</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>矿产金</td><td>90吨</td><td class="highlight">105吨（+17%）</td><td>130-140吨</td></tr>
+        <tr><td>矿产铜</td><td>109万吨</td><td class="highlight">120万吨</td><td>150-160万吨</td></tr>
+        <tr class="highlight"><td>锂（LCE）</td><td>2.5万吨</td><td>12万吨（爆发式增长）</td><td>27-32万吨</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">以量补价：抵御价格下跌的核心逻辑</div>
+    <p>即使单位利润缩减，总产量的显著提升可以在很大程度上抵消价格下跌对总利润的影响。2026年是紫金的产量爆发期，锂产量将从2.5万吨跨越式增长至12万吨，这种确定性的规模扩张是抵御周期下行最强的护城河。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">低成本优势</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>矿山项目</th><th>成本指标</th><th>趋势</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>卡莫阿-卡库拉铜矿</td><td>C1现金成本：2026年2.60-3.00美元/磅</td><td>2027年降至2.10-2.50，2028年有望降至2.00以下</td></tr>
+        <tr><td>塞尔维亚博尔/丘卡卢-佩吉</td><td>通过技改扩产实现规模效应</td><td>进一步降低单位成本</td></tr>
+        <tr class="highlight"><td>卡莫阿冶炼厂</td><td>由销售精矿转为销售阳极板</td><td>每年可节约运费超3亿美元</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">未来5-10年增长驱动力总结</div>
+    <ul>
+      <li><strong>新能源转型：</strong>重点布局锂矿项目，旨在成为全球重要的锂生产商</li>
+      <li><strong>世界级矿山扩产：</strong>现有巨型矿山持续扩产将带来显著产量增长</li>
+      <li><strong>战略金属扩张：</strong>进军钼矿和铂族金属领域</li>
+      <li><strong>"提质控本"经营策略：</strong>依托"矿石流五环归一"工程模式，盘活低品位矿产，提高资源回收率</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ==================== 07 RISK & ESG ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <div>
+      <div class="section-title">风险审计与ESG合规</div>
+      <div class="section-subtitle">Risk Audit & ESG Compliance</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">做空机构视角：结构性风险审计</div>
+    <p>从做空机构视角对紫金矿业进行"结构性风险审计"，从资产质量、地缘政治曝险及财务扩张逻辑三个维度进行风险识别。</p>
+
+    <div class="risk-grid">
+      <div class="risk-item risk-item-high">
+        <div class="risk-item-title" style="color: var(--red-600);">存货审计难点</div>
+        <div class="risk-item-desc">分布在刚果（金）、塞尔维亚等地的矿山存货（堆浸矿石和在途精矿）极难实地核实，容易成为调节利润的"蓄水池"</div>
+      </div>
+      <div class="risk-item risk-item-high">
+        <div class="risk-item-title" style="color: var(--red-600);">资本支出刚性</div>
+        <div class="risk-item-desc">3Q锂盐湖、巨龙铜矿、海域金矿等巨型项目需要海量CAPEX，若经营现金流无法覆盖资本支出将陷入融资黑洞</div>
+      </div>
+      <div class="risk-item risk-item-high">
+        <div class="risk-item-title" style="color: var(--red-600);">地缘政治曝险</div>
+        <div class="risk-item-desc">核心产能高度集中于刚果（金）卡莫阿、哥伦比亚武里蒂卡、厄立特里亚碧沙等高风险地区，面临国有化或出口禁令风险</div>
+      </div>
+      <div class="risk-item risk-item-med">
+        <div class="risk-item-title" style="color: var(--amber-600);">融资依赖度</div>
+        <div class="risk-item-desc">持续并购暗示增长高度依赖外部融资，海外加息周期下美元债利息覆盖率是隐患</div>
+      </div>
+      <div class="risk-item risk-item-med">
+        <div class="risk-item-title" style="color: var(--amber-600);">ESG合规成本</div>
+        <div class="risk-item-desc">人权、原住民文化遗产、尾矿设施等政策是"负债炸弹"，违规可能面临巨额罚款或停产</div>
+      </div>
+      <div class="risk-item risk-item-med">
+        <div class="risk-item-title" style="color: var(--amber-600);">会计政策灵活性</div>
+        <div class="risk-item-desc">跨国会计准则差异、少数股东权益复杂勾稽，海外资产减值测试参数设置存在调节空间</div>
+      </div>
+    </div>
+
+    <div class="callout callout-amber">
+      <div class="callout-title" style="color: var(--amber-600);">做空评级：黄色（高度关注）</div>
+      <p>紫金矿业拥有世界级的资产质量，但从做空机构视角看，其财务报表呈现典型的<strong>"扩张型债务陷阱"</strong>特征：极高的资本支出刚性、资产负债表复杂性、地缘政治波动。除非能通过实地调研核实其海外矿山的现金利润真实汇回情况，否则当前估值包含对金铜价格上涨的过度乐观。</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">ESG评级与世界一线公司对比</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>维度</th><th>紫金矿业</th><th>国际一线公司（BHP/Rio Tinto等）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Wind ESG评级</td><td class="highlight">AAA（A股领军）</td><td>—</td></tr>
+        <tr><td>MSCI ESG评级</td><td><span class="badge badge-amber">B级</span></td><td><span class="badge badge-green">A/AA级</span></td></tr>
+        <tr><td>ISO 14001覆盖率</td><td>95.83%</td><td>普遍100%</td></tr>
+        <tr><td>安全工亡事故（2025年）</td><td>8起</td><td>追求"零工亡"</td></tr>
+        <tr><td>环保投入（2025年）</td><td>17.67亿元</td><td>—</td></tr>
+        <tr><td>本土化雇佣率</td><td>95.88%</td><td>同样注重，更强调原住民宪法级否决权</td></tr>
+        <tr><td>社区申诉处理</td><td>全年1,021场会议，处理率超90%</td><td>全球统一多语种及外部仲裁机制</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout-title" style="color: var(--navy-600);">合规性评估</div>
+      <p>紫金矿业目前的被处罚概率正处于<strong>"从高向低"的转型拐点</strong>。在产量和盈利能力上已跨入世界一线（ROE全球金属矿企第一），但在ESG合规性的精细化和国际民意认可度上，仍处于"追赶者"角色。目前的低估值PE（约9倍）在很大程度上就是市场对其曾经的合规瑕疵及海外地缘不确定性所给予的"风险折价"。</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">历史重大合规事件</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2010年</div>
+        <div class="timeline-content"><strong>福建汀江重大渗漏污染事故</strong> — 造成养殖鱼类大面积死亡，直接经济损失超2,000万元，多名责任人获刑。此后建立PDCA环境管理机制</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2021年4月</div>
+        <div class="timeline-content"><strong>塞尔维亚博尔铜矿停产处罚</strong> — 因未遵守环境标准和未建设废水处理厂，被当地政府勒令停止作业并罚款</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2025年10月</div>
+        <div class="timeline-content"><strong>联合国问责</strong> — 联合国人权与环境特别报告员就塞尔维亚博尔铜矿环境污染问题向中国政府发函，构成外交与声誉压力</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 08 OVERSEAS RISK ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">08</div>
+    <div>
+      <div class="section-title">海外运营风险与应对</div>
+      <div class="section-subtitle">Overseas Operations Risk & Mitigation</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">资源民族主义应对策略</div>
+    <p>面对非洲地区日益高涨的"资源民族主义"和日益复杂的监管环境，紫金矿业已形成一套从股权结构、执行速度、社区共生、风险隔离到法律维权的多维度应对体系。</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>策略维度</th><th>具体举措</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>深度绑定东道国利益</strong></td><td>与刚果（金）国有矿业公司(Cominière)组建合资公司，将国家利益与项目成功直接挂钩；与巴里克黄金等西方巨头合作分散中资背景压力</td></tr>
+        <tr class="highlight"><td><strong>"既成事实"策略</strong></td><td>在法律纠纷未定论时强行推进近10亿美元投资，目标2026年6月投产，以庞大工业实体使法律仲裁逆转失去空间</td></tr>
+        <tr><td><strong>"授渔式"社区共生</strong></td><td>全球本土化雇佣率95.88%、本地化采购率82.41%；在刚果（金）修复道路、签署社会责任书、保底收购当地农产品</td></tr>
+        <tr><td><strong>资本运作风险隔离</strong></td><td>利用"1+3"上市平台架构，280亿元非洲金矿并购由港股分拆子公司"紫金黄金国际"主导，风险锁定在境外平台</td></tr>
+        <tr><td><strong>积极法理维权</strong></td><td>针对哥伦比亚政府失职向世界银行ICSID提起国际仲裁；嵌套双边投资协定(BITs)调用《加拿大—哥伦比亚自由贸易协定》</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-gold">
+      <div class="callout-title" style="color: var(--gold-600);">核心逻辑</div>
+      <p><strong>"利益与国家共享、工程与时间赛跑、责任与社区共担、风险与母公司隔离"</strong>。紫金正试图将自己从一个"随时可被替换的许可持有者"转变为"东道国不可或缺的工业伙伴"。</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">非法采矿应对体系</div>
+    <p>针对非法采矿和盗采现象，紫金矿业采取了"硬性安全对抗、法理维权、社区生计替代以及负责任供应链溯源"的多维度组合手段。</p>
+    <ul>
+      <li><strong>法理维权：</strong>针对哥伦比亚武里蒂卡金矿被"海湾帮"犯罪集团大规模盗采，已向ICSID提起国际仲裁</li>
+      <li><strong>安保体系：</strong>建立军事化安保力量，实施RACER标准化应急流程，依据《安保与人权自愿原则》(VPSHR)对97%以上安保人员开展人权培训</li>
+      <li><strong>ASM治理：</strong>出台《手工和小规模采矿(ASM)管理工作指引》，不采取简单强力驱逐，支持社区手工采矿者向规范化转型</li>
+      <li><strong>供应链溯源：</strong>严格执行LBMA和LME负责任原材料采购政策，委托第三方对高风险原产地实地评估</li>
+      <li><strong>生计替代：</strong>在哥伦比亚推行养蜂和咖啡种植项目，在刚果（金）支持"合作蔬菜项目"和本地化采购</li>
+    </ul>
+    <div class="callout callout-red">
+      <div class="callout-title" style="color: var(--red-600);">惨痛教训</div>
+      <p>哥伦比亚武里蒂卡金矿2023年因盗采损失约<strong>3.2吨黄金（约2亿美元）</strong>，2023年5月非法采矿组织发起爆炸恐怖袭击造成安保人员2死14伤。</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">主要海外社区抗议事件</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>国家/项目</th><th>事件</th><th>解决方式</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>秘鲁</strong><br>白河铜钼矿</td>
+          <td>2007年至今，村民公投否决露天采矿，抗争演变为暴力冲突</td>
+          <td>项目长期搁置，尝试通过"种植未来"咖啡产业改善社区关系</td>
+        </tr>
+        <tr>
+          <td><strong>塞尔维亚</strong><br>博尔铜矿</td>
+          <td>2021年被勒令停产；2024年村民封锁道路抗议爆破污染；2025年联合国发函问责</td>
+          <td>投入9,073万美元治理博尔河（重金属浓度降低99%）；设立2,949万美元社会责任预算；获SA8000认证</td>
+        </tr>
+        <tr>
+          <td><strong>哥伦比亚</strong><br>武里蒂卡金矿</td>
+          <td>2022年起"海湾帮"控制矿道盗采；2023年爆炸袭击致2死14伤</td>
+          <td>向ICSID提起国际仲裁；资助养蜂和咖啡种植项目转化95个家庭</td>
+        </tr>
+        <tr>
+          <td><strong>刚果（金）</strong><br>马诺诺锂矿</td>
+          <td>2023-2026年，原持有人AVZ公司许可纠纷引发多起国际仲裁</td>
+          <td>强行推进近10亿美元工程建设；签署省内首份五年期社会责任书</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-amber">
+      <div class="callout-title" style="color: var(--amber-600);">趋势判断</div>
+      <p>风险暴露点随资产版图扩张而同步扩大（全球18个国家超30座大型矿山）。冲突呈现明显"上升趋势"且复杂化，从"局部摩擦"转向"外交博弈"——针对主权国家的国际仲裁（哥伦比亚案）或联合国机构直接问责（塞尔维亚案）。但公司正通过极高的本地化率和ESG治理体系试图对冲这些上升的风险。</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">马诺诺锂矿仲裁进展</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>事项</th><th>进展</th><th>影响评估</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>ICC仲裁裁决（2025年3月）</td><td>合伙方Cominière需支付3,910万欧元赔偿</td><td><span class="badge badge-green">影响较小</span> 赔偿主要由合伙方承担</td></tr>
+        <tr><td>AVZ许可注销（2026年3月）</td><td>刚果（金）注销AVZ子公司PR 4029探矿权</td><td><span class="badge badge-green">利好</span> 巩固紫金地位</td></tr>
+        <tr><td>ICSID仲裁中止（2025年5月）</td><td>AVZ在美方斡旋下暂时中止针对刚果（金）政府仲裁</td><td><span class="badge badge-navy">阶段性缓和</span></td></tr>
+        <tr class="highlight"><td>"既成事实"推进</td><td>第一阶段投资近10亿美元，目标2026年6月投产</td><td><span class="badge badge-gold">关键里程碑</span> 2026年计划产当量碳酸锂3万吨</td></tr>
+      </tbody>
+    </table>
+    <p><strong>总结：</strong>目前仲裁结果对紫金矿业的实质影响可控。财务影响较小，战略优势随AVZ其他许可被注销及紫金实地工程高速推进而愈发稳固。主要风险点仍需关注未来ICSID最终仲裁结论及东道国政府政策反复。</p>
+  </div>
+</div>
+
+<!-- ==================== 09 VALUATION ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">09</div>
+    <div>
+      <div class="section-title">估值分析与价格推演</div>
+      <div class="section-subtitle">Valuation Analysis & Price Projection</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">当前估值水平</div>
+    <div class="metrics-row">
+      <div class="metric-box">
+        <div class="metric-value">9.19<span style="font-size:14px;color:var(--slate-400)">x</span></div>
+        <div class="metric-label">当前动态PE</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">17.4<span style="font-size:14px;color:var(--slate-400)">x</span></div>
+        <div class="metric-label">5年均值PE</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">25<span style="font-size:14px;color:var(--slate-400)">x</span></div>
+        <div class="metric-label">行业中位PE</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">46.85<span style="font-size:14px;color:var(--slate-400)">元</span></div>
+        <div class="metric-label">机构目标均价</div>
+      </div>
+    </div>
+    <p>2026年6月A股在27元附近时动态PE仅9.19倍，处于2022年10月以来的历史最低区间，远低于5年平均17.4倍。有色金属行业中位PE约25倍。当前估值已计入极度悲观的地缘政治和金价下跌预期。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">中短期估值推演（1-2年）</div>
+    <div class="price-grid">
+      <div class="price-card price-card-bearish">
+        <div class="price-card-label">保守</div>
+        <div class="price-card-value">35-40<span style="font-size:16px;">元</span></div>
+        <div class="price-card-desc">市场视为周期股<br>PE 12-13倍<br>估值回归5年均值边缘</div>
+      </div>
+      <div class="price-card price-card-base">
+        <div class="price-card-label">合理</div>
+        <div class="price-card-value">46-50<span style="font-size:16px;">元</span></div>
+        <div class="price-card-desc">产量如期兑现<br>PE修复至18-20倍<br>机构目标均价46.85元</div>
+      </div>
+      <div class="price-card price-card-bullish">
+        <div class="price-card-label">乐观</div>
+        <div class="price-card-value">50+<span style="font-size:16px;">元</span></div>
+        <div class="price-card-desc">锂业务爆发增长<br>市场认可绿色高技术转型<br>PE 20倍以上</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">长期价值推演（5年/2030年）</div>
+    <p>假设公司维持现有产量规划增速，未来5年归母净利润平均复合增长率回落至25%（在矿业中仍属极高水平），基于内在价值驱动模型：</p>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>情景</th><th>假设条件</th><th>2030年EPS</th><th>目标PE</th><th>预计股价</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-amber">悲观</span></td>
+          <td>利润CAGR 15%，市场视为周期股</td>
+          <td>—</td>
+          <td>10倍</td>
+          <td>约39元</td>
+        </tr>
+        <tr class="highlight">
+          <td><span class="badge badge-navy">基准</span></td>
+          <td>利润CAGR 25%，市场认可跨周期成长</td>
+          <td>5.91元</td>
+          <td>15倍</td>
+          <td>约88.65元</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-gold">乐观</span></td>
+          <td>利润CAGR 30%，锂板块完全放量</td>
+          <td>约7元</td>
+          <td>20倍</td>
+          <td>140元以上</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-gold">
+      <div class="callout-title" style="color: var(--gold-600);">5年结论</div>
+      <p>如果公司能按规划达成产量目标并维持25%左右的成长性，<strong>5年后（2030年）的合理股价应该在80-90元人民币左右</strong>。相较于当前的25-27元，未来5年有约2.5倍至3倍的潜在上涨空间。现在的回调不仅不是逻辑失效，反而是通过内在价值驱动实现长期超额收益的绝佳介入点。</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">金价下跌30%的压力测试</div>
+    <p>黄金是紫金矿业的核心利润支柱，2025年上半年黄金业务毛利占集团总毛利的38.6%，矿产金业务拥有极高毛利率（金锭54.39%，金精矿72.59%）。若金价下跌30%：</p>
+    <ul>
+      <li><strong>利润直接冲击：</strong>将直接削减高额毛利，可能影响2026年机构预测的789.84亿元利润目标</li>
+      <li><strong>估值逻辑转向：</strong>市场倾向于将紫金视为"周期股"而非"成长股"，杀低估值</li>
+      <li><strong>安全边际判断：</strong>25元附近时PE仅9.19倍（历史最低），相比机构预测2026年平均目标价46.85元有近乎翻倍空间</li>
+    </ul>
+    <div class="callout callout-green">
+      <div class="callout-title" style="color: var(--green-600);">底部判断</div>
+      <p>除非地缘政治引发极端资产减值或铜价同时崩盘，否则<strong>25元附近大概率是具备强支撑的"黄金坑"底部</strong>。公司2026年矿产金目标105吨（+17%）、矿产铜120万吨的"量增"可以一定程度上抵消"价跌"影响。</p>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">铜金双跌的盈利韧性</div>
+    <p>如果金、铜价格同时下跌，紫金矿业的盈利韧性将显著高于同行，通过四个维度维持盈利：</p>
+    <ol>
+      <li><strong>产量爆发式增长（以量补价）：</strong>铜从109万吨增至120万吨（2028年150-160万吨），金从90吨增至105吨</li>
+      <li><strong>世界级低成本资产：</strong>卡莫阿铜矿C1现金成本有望降至2.00美元/磅以下，行业低谷时高成本竞争对手亏损减产而紫金仍能保持可观利润</li>
+      <li><strong>锂板块成为"第三利润支柱"：</strong>锂产量从2.5万吨爆发式增长至12万吨LCE，分散对单一金属价格依赖</li>
+      <li><strong>"提质控本"经营策略：</strong>技术赋能盘活低品位矿产，卡莫阿冶炼厂投产每年节约运费超3亿美元</li>
+    </ol>
+    <div class="callout callout-green">
+      <div class="callout-title" style="color: var(--green-600);">韧性总结</div>
+      <p>"金防守、铜进攻、锂成长"的组合使其在不同金属周期中具有互补性。当前9.19倍PE已计入较悲观预期。2025年上半年经营性净现金流288亿元（同比+41%），充裕现金流为度过周期底部提供保障。铜金双跌会压制短期表现，但凭借巨大的产量增量和极端抗风险的成本结构，紫金能确保最悲观情景下依然保持正向盈利。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 10 SCENARIO ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <div>
+      <div class="section-title">情景分析</div>
+      <div class="section-subtitle">Scenario Analysis</div>
+    </div>
+  </div>
+
+  <div class="price-grid" style="grid-template-columns: 1fr;">
+    <div class="price-card price-card-bullish" style="text-align: left;">
+      <div class="price-card-label" style="text-align:center;">最乐观情景</div>
+      <div style="margin-top: 16px;">
+        <p style="margin-bottom: 8px;"><strong>驱动因素：</strong>全球能源转型加速，铜和锂出现严重的结构性短缺，价格长期处于高位；金价因地缘政治风险和货币通胀持续走强</p>
+        <p style="margin-bottom: 0;"><strong>结果：</strong>拥有世界级低成本资产（如卡莫阿、3Q锂盐湖）的公司利润将爆发式增长，估值体系向科技材料公司靠拢</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="price-grid" style="grid-template-columns: 1fr;">
+    <div class="price-card price-card-base" style="text-align: left;">
+      <div class="price-card-label" style="text-align:center;">基准情景</div>
+      <div style="margin-top: 16px;">
+        <p style="margin-bottom: 8px;"><strong>驱动因素：</strong>全球经济温和复苏，新能源渗透率按既定目标提升，金属供需处于动态平衡</p>
+        <p style="margin-bottom: 0;"><strong>结果：</strong>矿业公司通过存量资产的持续扩产（如巨龙铜矿二期等项目）获得稳健的现金流增长</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="price-grid" style="grid-template-columns: 1fr;">
+    <div class="price-card price-card-bearish" style="text-align: left;">
+      <div class="price-card-label" style="text-align:center;">最悲观情景</div>
+      <div style="margin-top: 16px;">
+        <p style="margin-bottom: 8px;"><strong>驱动因素：</strong>全球地缘冲突导致海外项目运营受阻（如项目被没收或长期停产）；新能源技术发生替代，导致锂需求萎缩</p>
+        <p style="margin-bottom: 0;"><strong>结果：</strong>企业需收缩战线，依赖国内优质资产（如紫金山、多宝山等）保命，增长陷入停滞</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 11 CONCLUSION ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <div>
+      <div class="section-title">投资结论</div>
+      <div class="section-subtitle">Investment Conclusion</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">核心风险</div>
+    <ul>
+      <li><strong>地缘政治风险：</strong>核心资产分布于刚果（金）、哥伦比亚、塞尔维亚等国，面临潜在的资源国有化、加税或政策变动风险</li>
+      <li><strong>ESG与安全合规：</strong>尾矿设施安全、人权合规及原住民文化保护是长期面临的"黑天鹅"诱因</li>
+      <li><strong>财务压力与杠杆：</strong>持续全球大额并购导致CAPEX高企，对外部融资及金属价格波动高度敏感</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">关键观察指标</div>
+    <ul>
+      <li><strong>主要金属产销量：</strong>尤其是铜、金、锂的季度产量与年度达产率</li>
+      <li><strong>全维持成本(AISC)：</strong>考察公司在通胀压力下通过技术创新控制开采及选冶成本的能力</li>
+      <li><strong>自由现金流(FCF)转正时点：</strong>观察其经营现金流能否有效覆盖高额资本开支</li>
+      <li><strong>经营性现金流净额/净利润比例波动</strong>及长期股权投资科目下的关联交易</li>
+      <li><strong>ESG动态报告：</strong>监测安全事故、环保罚款及国际评级变化</li>
+      <li><strong>金属价格走势：</strong>LME铜价、LBMA金价以及碳酸锂市场价格</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">投资逻辑失效条件</div>
+    <ul>
+      <li><strong>重大海外资产损失：</strong>如核心矿山遭遇政变、没收或长期停产</li>
+      <li><strong>大宗商品价格崩盘：</strong>铜、金价格长期低于成本线，导致债务危机</li>
+      <li><strong>技术替代：</strong>固态电池等新技术大规模应用，导致对锂或铜的需求逻辑发生根本性逆转</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">应持续跟踪的数据</div>
+    <ul>
+      <li><strong>季度/半年度业绩报告：</strong>重点关注利润质量及少数股东权益变动</li>
+      <li><strong>ESG动态报告：</strong>监测安全事故、环保罚款及国际评级变化</li>
+      <li><strong>金属价格走势：</strong>LME铜价、LBMA金价以及碳酸锂市场价格</li>
+    </ul>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-badge">最终评级：推荐</div>
+    <div class="verdict-title">勇敢者的黄金坑</div>
+    <p><strong>1. 资产稀缺性：</strong>紫金矿业拥有的卡莫阿铜矿、巨龙铜矿等均为全球顶级的低成本、长寿命资产，这种"资源硬通货"在未来十年依然是稀缺的。</p>
+    <p><strong>2. 战略前瞻性：</strong>管理层成功实现了从基本金属向新能源金属的跨越，且具备卓越的跨国运营经验，这在国内矿企中具有无可比拟的领先优势。</p>
+    <p><strong>3. 估值吸引力：</strong>尽管存在地缘政治折价，但其成长速度（费雪评分87分）和资产质量足以对冲部分宏观风险。</p>
+    <div style="height: 16px;"></div>
+    <p><strong>风险提示：</strong>考虑到其海外资产的复杂性，投资者应将其定位为<strong>"高成长、中高风险"</strong>的组合配置，而非无风险套利品种。应密切关注地缘政治动态及公司的现金流健康状况。</p>
+    <div style="height: 12px;"></div>
+    <p style="font-size: 13px; color: rgba(255,255,255,0.5);">保守目标：35-40元（估值修复）｜ 乐观目标：140元+（五年成长逻辑完全兑现）｜ 当前判断：25-27元是"勇敢者的黄金坑"</p>
+  </div>
+</div>
+
+<!-- ==================== 12 SHORT SELLER ==================== -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-num">12</div>
+    <div>
+      <div class="section-title">做空视角专题</div>
+      <div class="section-subtitle">Short Seller Perspective</div>
+    </div>
+  </div>
+
+  <p>从职业做空机构的逻辑来看，<strong>在25-27元这个价位做空紫金矿业是一个极度危险且"盈亏比"极差的选择</strong>。做空的核心目标是寻找"估值虚高、基本面恶化、财务有毒或面临毁灭性法律风险"的标的，而当前紫金矿业几乎所有核心财务指标都站在了做空者的对立面。</p>
+
+  <div class="subsection">
+    <div class="subsection-title-s">1. 估值已退无可退：没有"泡沫"可挤</div>
+    <p>27元附近动态PE仅9.19倍，远低于近5年17.4倍均值，处于2022年10月以来历史最低区间。有色金属行业中位PE约25倍。不到10倍PE已经计入了极度悲观预期。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title-s">2. 赚钱能力"极其残暴"：做空机构最怕Cash Cow</div>
+    <p>2026年一季度归母净利润200.79亿元，同比暴增97%。2025年前三季度经营现金流净额（521亿元）甚至超过同期归母净利润（379亿元），"现金流 > 利润"的结构说明收益质量极高，不存在纸面富贵的会计操纵空间。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title-s">3. 确定性的"以量补价"逻辑</div>
+    <p>2026年是产量爆发期，金105吨、铜120万吨、锂从2.5万吨跨越至12万吨。这种确定性的规模扩张让空头的逻辑（盈利不可持续）不攻自破。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title-s">4. 管理层"护盘"意志极其坚决</div>
+    <p>2025年4月仅用3天完成10亿元股份回购，高管承诺放弃年度部分奖励薪酬认购持股计划。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title-s">5. 何时才会考虑做空？</div>
+    <ul>
+      <li><strong>流动性断裂：</strong>流动比率<1，若全球利率突然飙升且金属价格崩盘，高杠杆可能成为死穴</li>
+      <li><strong>地缘政治黑天鹅：</strong>刚果（金）或哥伦比亚项目遭遇极端性"资源收归国有"或永久停产</li>
+      <li><strong>核心矿山运营意外：</strong>如卡莫阿铜矿因矿震淹井导致产量下调等不可抗力大面积发生</li>
+    </ul>
+  </div>
+
+  <div class="callout callout-red">
+    <div class="callout-title" style="color: var(--red-600);">职业判断结论</div>
+    <p>在45元高点或许会利用"降息预期转向"进行投机性做空。但在<strong>25-27元</strong>这个区间，面对一个PE不到10倍、净利润翻倍、现金流充沛且拥有世界级资源储备的行业总龙头，此时做空无异于自杀。A股分析师83.87%给出强烈推荐，港股100%强烈推荐，一旦金价企稳或产量数据兑现，极易引发<strong>"空头回补"导致的爆发式反弹(Short Squeeze)</strong>。</p>
+    <p style="margin-top: 12px; font-size: 16px; font-weight: 700; color: var(--red-600);">25元的紫金矿业是空头的坟墓，而非猎场。</p>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div class="report-footer">
+  <p><strong>寻找艾尔法 · 证券投资系统</strong></p>
+  <p>紫金矿业深度研究报告 | 研究日期：2026年6月28日</p>
+  <p style="margin-top: 8px;">本报告基于问答研究原稿整理编辑，仅供阶段性研究留存与个人投资参考</p>
+  <p>不构成任何投资建议，投资有风险，决策需谨慎</p>
+</div>
+
+</div>
+</body>
+</html>
