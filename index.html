@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>大灰皮证券研究 — 深度分析报告</title>
+<title>大灰皮证券研究 — 公司研究报告库</title>
 <style>
+
   :root {
     --bg: #f8f9fa;
     --card-bg: #ffffff;
@@ -23,7 +24,7 @@
     line-height: 1.6;
     padding: 40px 20px;
   }
-  .container { max-width: 900px; margin: 0 auto; }
+  .container { max-width: 1100px; margin: 0 auto; }
   header {
     text-align: center;
     margin-bottom: 48px;
@@ -46,47 +47,6 @@
     color: var(--text-secondary);
   }
   .stats b { color: var(--accent); font-size: 1.2rem; }
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 16px;
-    transition: transform 0.15s, box-shadow 0.15s;
-    cursor: pointer;
-  }
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  }
-  .card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .card h3 a {
-    color: var(--text);
-    text-decoration: none;
-  }
-  .card h3 a:hover { color: var(--accent); }
-  .card .meta {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .card .desc {
-    margin-top: 8px;
-    font-size: 0.92rem;
-    color: #444;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
   .tag {
     display: inline-block;
     padding: 2px 10px;
@@ -99,6 +59,7 @@
   .tag-hk { background: #fce7f3; color: #9d174d; }
   .tag-jp { background: #f3e8ff; color: #6b21a8; }
   .tag-nz { background: #d1fae5; color: #065f46; }
+  .tag-sub { background: #f1f5f9; color: #475569; font-weight: 500; }
   footer {
     text-align: center;
     margin-top: 48px;
@@ -108,6 +69,63 @@
     font-size: 0.85rem;
   }
   footer a { color: var(--accent); }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .company-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+  }
+  .company-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .company-body { flex: 1; }
+  .company-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .company-meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .company-count {
+    font-size: 0.9rem;
+    color: #444;
+  }
+  .company-count b { color: var(--accent); }
+  .company-arrow {
+    font-size: 1.4rem;
+    color: #bbb;
+    margin-top: 2px;
+  }
+  .company-card:hover .company-arrow { color: var(--accent); }
+  @media (max-width: 680px) {
+    .gallery { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -122,176 +140,127 @@
     </div>
   </header>
 
-  <div class="report-list">
+  <div class="gallery">
 
-    <div class="card" onclick="location.href='reports/%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A.html">紫金矿业 ⭐</a>
-        <span class="tag tag-cn">A股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 黄金·铜·矿业</span>
+    <div class="company-card" onclick="location.href='reports/%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A/index.html'">
+      <div class="company-body">
+        <h3>紫金矿业 <span class="tag tag-cn">A股</span></h3>
+        <div class="company-meta">黄金·铜·矿业</div>
+        <div class="company-count">
+          <b>4</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
-      <div class="desc">完整版深度分析报告，含商业模式、行业TAM、Fisher评分、财务审计、估值分析等10章内容，带CSS专业排版。</div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%201.html'">
-      <h3>
-        <a href="reports/%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%201.html">紫金矿业（简洁版）</a>
-        <span class="tag tag-cn">A股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 黄金·铜·矿业</span>
+    <div class="company-card" onclick="location.href='reports/%E8%B0%B7%E6%AD%8C/index.html'">
+      <div class="company-body">
+        <h3>谷歌 <span class="tag tag-us">美股</span></h3>
+        <div class="company-meta">搜索·AI·云计算</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A/6-28%20%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A/6-28%20%E7%B4%AB%E9%87%91%E7%9F%BF%E4%B8%9A%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E6%8A%A5%E5%91%8A.html">紫金矿业（框架版）</a>
-        <span class="tag tag-cn">A股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-28</span>
-        <span>🏷️ 黄金·铜·矿业</span>
+    <div class="company-card" onclick="location.href='reports/%E7%89%B9%E6%96%AF%E6%8B%89/index.html'">
+      <div class="company-body">
+        <h3>特斯拉 <span class="tag tag-us">美股</span></h3>
+        <div class="company-meta">电动车·自动驾驶·能源</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
-      <div class="desc">基于大灰皮统一框架的完整10章深度分析报告。</div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E8%B0%B7%E6%AD%8C/2026-06-30_%E8%B0%B7%E6%AD%8C_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E8%B0%B7%E6%AD%8C/2026-06-30_%E8%B0%B7%E6%AD%8C_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">Alphabet（谷歌）</a>
-        <span class="tag tag-us">美股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 搜索·AI·云计算</span>
+    <div class="company-card" onclick="location.href='reports/%E8%85%BE%E8%AE%AF%E8%82%A1%E4%BB%BD/index.html'">
+      <div class="company-body">
+        <h3>腾讯股份 <span class="tag tag-hk">港股</span></h3>
+        <div class="company-meta">社交·游戏·金融科技</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E7%89%B9%E6%96%AF%E6%8B%89/2026-06-30_%E7%89%B9%E6%96%AF%E6%8B%89_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E7%89%B9%E6%96%AF%E6%8B%89/2026-06-30_%E7%89%B9%E6%96%AF%E6%8B%89_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">特斯拉</a>
-        <span class="tag tag-us">美股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 电动车·自动驾驶·能源</span>
+    <div class="company-card" onclick="location.href='reports/%E4%BA%94%E7%B2%AE%E6%B6%B2/index.html'">
+      <div class="company-body">
+        <h3>五粮液 <span class="tag tag-cn">A股</span></h3>
+        <div class="company-meta">白酒·消费</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E8%85%BE%E8%AE%AF%E8%82%A1%E4%BB%BD/2026-06-30_%E8%85%BE%E8%AE%AF%E8%82%A1%E4%BB%BD_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E8%85%BE%E8%AE%AF%E8%82%A1%E4%BB%BD/2026-06-30_%E8%85%BE%E8%AE%AF%E8%82%A1%E4%BB%BD_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">腾讯股份</a>
-        <span class="tag tag-hk">港股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 社交·游戏·金融科技</span>
+    <div class="company-card" onclick="location.href='reports/%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90/index.html'">
+      <div class="company-body">
+        <h3>阳光电源 <span class="tag tag-cn">A股</span></h3>
+        <div class="company-meta">光伏逆变器·储能</div>
+        <div class="company-count">
+          <b>2</b> 份报告 · 最新 2026-07-01
+        </div>
       </div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E4%BA%94%E7%B2%AE%E6%B6%B2/2026-06-30_%E4%BA%94%E7%B2%AE%E6%B6%B2_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E4%BA%94%E7%B2%AE%E6%B6%B2/2026-06-30_%E4%BA%94%E7%B2%AE%E6%B6%B2_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">五粮液</a>
-        <span class="tag tag-cn">A股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 白酒·消费</span>
+    <div class="company-card" onclick="location.href='reports/%E5%A4%9A%E9%82%BB%E5%9B%BD/index.html'">
+      <div class="company-body">
+        <h3>多邻国 <span class="tag tag-us">美股</span></h3>
+        <div class="company-meta">教育科技·语言学习</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90/2026-06-30_%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90/2026-06-30_%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">阳光电源 ⭐</a>
-        <span class="tag tag-cn">A股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告 + 专题分析</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 光伏逆变器·储能</span>
+    <div class="company-card" onclick="location.href='reports/%E8%A5%BF%E6%96%B9%E7%9F%B3%E6%B2%B9_OXY/index.html'">
+      <div class="company-body">
+        <h3>西方石油_OXY <span class="tag tag-us">美股</span></h3>
+        <div class="company-meta">能源·碳捕获</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90/2026-07-01_%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90_%E7%BE%8E%E5%9B%BD%E9%80%86%E5%8F%98%E5%99%A8%E7%A6%81%E4%BB%A4%E5%BD%B1%E5%93%8D%E5%88%86%E6%9E%90.html'">
-      <h3>
-        <a href="reports/%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90/2026-07-01_%E9%98%B3%E5%85%89%E7%94%B5%E6%BA%90_%E7%BE%8E%E5%9B%BD%E9%80%86%E5%8F%98%E5%99%A8%E7%A6%81%E4%BB%A4%E5%BD%B1%E5%93%8D%E5%88%86%E6%9E%90.html">阳光电源 — 美国逆变器禁令影响分析</a>
-        <span class="tag tag-cn">专题</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 专题分析</span>
-        <span>📅 2026-07-01</span>
-        <span>🏷️ 政策影响·逆变器</span>
+    <div class="company-card" onclick="location.href='reports/Rocket%20Lab/index.html'">
+      <div class="company-body">
+        <h3>Rocket Lab <span class="tag tag-nz">美股</span></h3>
+        <div class="company-meta">航天·火箭发射</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E5%A4%9A%E9%82%BB%E5%9B%BD/2026-06-30_%E5%A4%9A%E9%82%BB%E5%9B%BD_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E5%A4%9A%E9%82%BB%E5%9B%BD/2026-06-30_%E5%A4%9A%E9%82%BB%E5%9B%BD_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">多邻国（Duolingo）</a>
-        <span class="tag tag-us">美股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 教育科技·语言学习</span>
+    <div class="company-card" onclick="location.href='reports/%E5%93%88%E9%BB%98%E7%BA%B3%E7%A7%91/index.html'">
+      <div class="company-body">
+        <h3>哈默纳科 <span class="tag tag-jp">日股</span></h3>
+        <div class="company-meta">精密减速器·机器人</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
+      <div class="company-arrow">→</div>
     </div>
 
-    <div class="card" onclick="location.href='reports/%E8%A5%BF%E6%96%B9%E7%9F%B3%E6%B2%B9_OXY/2026-06-30_%E8%A5%BF%E6%96%B9%E7%9F%B3%E6%B2%B9_OXY_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E8%A5%BF%E6%96%B9%E7%9F%B3%E6%B2%B9_OXY/2026-06-30_%E8%A5%BF%E6%96%B9%E7%9F%B3%E6%B2%B9_OXY_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">西方石油（OXY）</a>
-        <span class="tag tag-us">美股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 能源·碳捕获</span>
+    <div class="company-card" onclick="location.href='reports/%E7%BB%BF%E7%9A%84%E8%B0%90%E6%B3%A2/index.html'">
+      <div class="company-body">
+        <h3>绿的谐波 <span class="tag tag-cn">A股</span></h3>
+        <div class="company-meta">谐波减速器·机器人</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
-    </div>
-
-    <div class="card" onclick="location.href='reports/Rocket%20Lab/2026-06-30_Rocket%20Lab_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/Rocket%20Lab/2026-06-30_Rocket%20Lab_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">Rocket Lab</a>
-        <span class="tag tag-nz">美股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 航天·火箭发射</span>
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='reports/%E5%93%88%E9%BB%98%E7%BA%B3%E7%A7%91/2026-06-30_%E5%93%88%E9%BB%98%E7%BA%B3%E7%A7%91_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E5%93%88%E9%BB%98%E7%BA%B3%E7%A7%91/2026-06-30_%E5%93%88%E9%BB%98%E7%BA%B3%E7%A7%91_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">哈默纳科（Harmonic）</a>
-        <span class="tag tag-jp">日股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 精密减速器·机器人</span>
-      </div>
-    </div>
-
-    <div class="card" onclick="location.href='reports/%E7%BB%BF%E7%9A%84%E8%B0%90%E6%B3%A2/2026-06-30_%E7%BB%BF%E7%9A%84%E8%B0%90%E6%B3%A2_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
-      <h3>
-        <a href="reports/%E7%BB%BF%E7%9A%84%E8%B0%90%E6%B3%A2/2026-06-30_%E7%BB%BF%E7%9A%84%E8%B0%90%E6%B3%A2_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html">绿的谐波</a>
-        <span class="tag tag-cn">A股</span>
-      </h3>
-      <div class="meta">
-        <span>📄 HTML 报告</span>
-        <span>📅 2026-06-30</span>
-        <span>🏷️ 谐波减速器·机器人</span>
-      </div>
+      <div class="company-arrow">→</div>
     </div>
 
   </div>

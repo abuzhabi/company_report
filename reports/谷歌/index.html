@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谷歌 — 研究报告</title>
+<style>
+
+  :root {
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-secondary: #555;
+    --accent: #e74c3c;
+    --accent-green: #27ae60;
+    --border: #e0e0e0;
+    --tag-bg: #f0f0f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--accent);
+  }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  header h1 span { color: var(--accent); }
+  header p { color: var(--text-secondary); font-size: 0.95rem; }
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin: 20px 0 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+  .stats b { color: var(--accent); font-size: 1.2rem; }
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .tag-us { background: #dbeafe; color: #1e40af; }
+  .tag-cn { background: #fef3c7; color: #92400e; }
+  .tag-hk { background: #fce7f3; color: #9d174d; }
+  .tag-jp { background: #f3e8ff; color: #6b21a8; }
+  .tag-nz { background: #d1fae5; color: #065f46; }
+  .tag-sub { background: #f1f5f9; color: #475569; font-weight: 500; }
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  .company-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  .company-header h2 {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .company-header .industry {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 6px;
+  }
+  .report-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .report-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: transform 0.12s, box-shadow 0.12s;
+  }
+  .report-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .report-icon { font-size: 1.5rem; }
+  .report-body { flex: 1; }
+  .report-body h4 { font-size: 1.05rem; margin-bottom: 4px; }
+  .report-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .report-arrow { color: #bbb; font-size: 1.2rem; }
+  .report-card:hover .report-arrow { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="../../index.html">← 返回公司列表</a>
+
+  <div class="company-header">
+    <div>
+      <h2>谷歌 <span class="tag tag-us">美股</span></h2>
+      <div class="industry">搜索·AI·云计算 · 1 份报告</div>
+    </div>
+  </div>
+
+  <div class="report-list">
+
+    <div class="report-card" onclick="location.href='谷歌/2026-06-30_%E8%B0%B7%E6%AD%8C_%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A.html'">
+      <div class="report-icon">📄</div>
+      <div class="report-body">
+        <h4>_深度分析报告</h4>
+        <div class="report-meta">
+          <span class="tag tag-sub">HTML 报告</span>
+          <span>📅 2026-06-30</span>
+        </div>
+      </div>
+      <div class="report-arrow">→</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>基于 <a href="https://github.com/abuzhabi/company_report">大灰皮证券研究统一框架</a> · Evidence First · 仅供研究参考，不构成投资建议</p>
+  </footer>
+</div>
+</body>
+</html>
