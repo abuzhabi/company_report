@@ -3,165 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intel (INTC) 深度分析报告</title>
+<title>Intel (INTC) — 大灰皮证券研究深度分析报告 — 大灰皮证券研究</title>
 <style>
 :root {
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --text-secondary: #555555;
-  --border: #e5e5e5;
-  --accent: #2563eb;
-  --green: #16a34a;
-  --yellow: #ca8a04;
-  --red: #dc2626;
-  --surface: #f8f9fa;
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #e74c3c;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: var(--font);
-  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
   background: var(--bg);
-  line-height: 1.7;
-  padding: 2rem;
-  max-width: 820px;
-  margin: 0 auto;
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
 }
-h1 { font-size: 1.8rem; font-weight: 600; margin: 2rem 0 0.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.4rem; }
-h2 { font-size: 1.35rem; font-weight: 600; margin: 2rem 0 0.6rem; color: #111; }
-h3 { font-size: 1.1rem; font-weight: 600; margin: 1.2rem 0 0.4rem; }
-h4 { font-size: 1rem; font-weight: 600; margin: 1rem 0 0.3rem; }
-p { margin: 0.6rem 0; }
-ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
-li { margin: 0.2rem 0; }
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  line-height: 1.3;
+}
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+
 blockquote {
-  border-left: 3px solid var(--accent);
-  padding: 0.5rem 1rem;
-  margin: 0.8rem 0;
-  background: var(--surface);
-  border-radius: 0 4px 4px 0;
-  font-style: italic;
-  color: var(--text-secondary);
+  background: #f0f7ff;
+  border-left: 4px solid #3b82f6;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
 }
-hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
-strong { font-weight: 600; }
-code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  background: var(--surface);
-  padding: 0.15em 0.4em;
-  border-radius: 3px;
-  border: 0.5px solid var(--border);
-}
-pre { display: none; }
+
+p { margin: 8px 0; }
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.9rem;
+  margin: 16px 0;
+  font-size: 0.88rem;
 }
-th, td {
-  border: 0.5px solid var(--border);
-  padding: 0.5rem 0.75rem;
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 12px;
   text-align: left;
+  font-weight: 600;
 }
-th { background: var(--surface); font-weight: 600; }
-tr:nth-child(even) td { background: #fafbfc; }
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
 
-.green-badge { color: var(--green); font-weight: 600; }
-.yellow-badge { color: var(--yellow); font-weight: 600; }
-.red-badge { color: var(--red); font-weight: 600; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
 
-.header-meta {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 16px 20px;
   border-radius: 8px;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+  overflow-x: auto;
+  margin: 12px 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+strong { color: #1a1a2e; }
+
+ol, ul { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
   color: var(--text-secondary);
+  font-size: 0.85rem;
 }
-.header-meta strong { color: var(--text); }
+footer a { color: var(--accent); }
 
-.toc {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
-  padding: 1.25rem;
-  margin: 1.5rem 0;
-}
-.toc h3 { margin-top: 0; }
-.toc ol { margin-left: 1.2rem; }
-.toc a { color: var(--accent); text-decoration: none; }
-.toc a:hover { text-decoration: underline; }
-
-.rating-green { color: var(--green); }
-.rating-yellow { color: var(--yellow); }
-.rating-red { color: var(--red); }
-
-@media (max-width: 600px) {
-  body { padding: 1rem; }
-  h1 { font-size: 1.4rem; }
-  table { font-size: 0.8rem; }
-  th, td { padding: 0.35rem 0.5rem; }
-}
-
-@media print {
-  body { padding: 0; max-width: 100%; }
-  .header-meta { break-inside: avoid; }
+@media (max-width: 640px) {
+  body { padding: 20px 12px; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 6px 8px; }
+  h1 { font-size: 1.5rem; }
 }
 </style>
 </head>
 <body>
-<div class="toc"><h3>目录</h3><ol>
-<li style="margin-left:0.0rem"><a href="#第1章公司基本面分析">第1章：公司基本面分析</a></li>
-<li style="margin-left:1.5rem"><a href="#11-商业模式">1.1 商业模式</a></li>
-<li style="margin-left:1.5rem"><a href="#12-行业位置与竞争格局">1.2 行业位置与竞争格局</a></li>
-<li style="margin-left:1.5rem"><a href="#13-核心竞争优势与护城河">1.3 核心竞争优势与护城河</a></li>
-<li style="margin-left:1.5rem"><a href="#14-未来增长驱动">1.4 未来增长驱动</a></li>
-<li style="margin-left:0.0rem"><a href="#第2章行业研究--tam-与产业定位">第2章：行业研究 — TAM 与产业定位</a></li>
-<li style="margin-left:1.5rem"><a href="#21-半导体代工市场">2.1 半导体代工市场</a></li>
-<li style="margin-left:1.5rem"><a href="#22-ai-pc-市场">2.2 AI PC 市场</a></li>
-<li style="margin-left:1.5rem"><a href="#23-数据中心-cpu-市场">2.3 数据中心 CPU 市场</a></li>
-<li style="margin-left:0.0rem"><a href="#第3章fisher-成长股-10-维度评分">第3章：Fisher 成长股 10 维度评分</a></li>
-<li style="margin-left:0.0rem"><a href="#第4章财务审计--bear-audit">第4章：财务审计 — Bear Audit</a></li>
-<li style="margin-left:1.5rem"><a href="#41-利润表红旗">4.1 利润表红旗</a></li>
-<li style="margin-left:1.5rem"><a href="#42-现金流红旗">4.2 现金流红旗</a></li>
-<li style="margin-left:1.5rem"><a href="#43-资产负债表红旗">4.3 资产负债表红旗</a></li>
-<li style="margin-left:1.5rem"><a href="#44-财务审计总结">4.4 财务审计总结</a></li>
-<li style="margin-left:0.0rem"><a href="#第5章bear-case做空逻辑">第5章：Bear Case（做空逻辑）</a></li>
-<li style="margin-left:1.5rem"><a href="#51-bear-case-1foundry-是一个无底洞">5.1 Bear Case 1：Foundry 是一个无底洞</a></li>
-<li style="margin-left:1.5rem"><a href="#52-bear-case-2amd-持续蚕食不可逆转">5.2 Bear Case 2：AMD 持续蚕食，不可逆转</a></li>
-<li style="margin-left:1.5rem"><a href="#53-bear-case-3估值严重脱离基本面">5.3 Bear Case 3：估值严重脱离基本面</a></li>
-<li style="margin-left:0.0rem"><a href="#第6章估值分析">第6章：估值分析</a></li>
-<li style="margin-left:1.5rem"><a href="#61-相对估值">6.1 相对估值</a></li>
-<li style="margin-left:1.5rem"><a href="#62-分析师目标价">6.2 分析师目标价</a></li>
-<li style="margin-left:1.5rem"><a href="#63-情景分析">6.3 情景分析</a></li>
-<li style="margin-left:0.0rem"><a href="#第7章风险评估">第7章：风险评估</a></li>
-<li style="margin-left:0.0rem"><a href="#第8章投资逻辑">第8章：投资逻辑</a></li>
-<li style="margin-left:1.5rem"><a href="#81-bull-逻辑为什么不买会是错误">8.1 Bull 逻辑（为什么不买会是错误）</a></li>
-<li style="margin-left:1.5rem"><a href="#82-bear-逻辑为什么不买">8.2 Bear 逻辑（为什么不买）</a></li>
-<li style="margin-left:1.5rem"><a href="#83-小八的观点">8.3 小八的观点</a></li>
-<li style="margin-left:0.0rem"><a href="#第9章跟踪指标">第9章：跟踪指标</a></li>
-<li style="margin-left:0.0rem"><a href="#第10章最终结论与投资建议">第10章：最终结论与投资建议</a></li>
-<li style="margin-left:1.5rem"><a href="#综合评分卡">综合评分卡</a></li>
-<li style="margin-left:1.5rem"><a href="#投资建议">投资建议</a></li>
-<li style="margin-left:1.5rem"><a href="#核心逻辑总结">核心逻辑总结</a></li>
-</ol></div>
-<h1>Intel (INTC) 深度分析报告</h1>
+<div class="container">
+  <a class="back-link" href="./index.html">&larr; 返回报告列表</a>
+<h1>Intel (INTC) — 大灰皮证券研究深度分析报告</h1>
 
 <blockquote>
 <p><strong>日期：</strong> 2026-07-01</p>
-<p><strong>分析师：</strong> 小八（AI 助理）</p>
 <p><strong>框架：</strong> 大灰皮证券研究统一框架 v1.0</p>
 <p><strong>标的：</strong> NASDAQ: INTC | 股价 $139.63 | 市值 $701.78B</p>
-<p><strong>结论先行：</strong> 综合评分 <strong>51/100</strong> — <strong>不建议买入</strong>。Intel 正处于历史上最严重的转型期。Foundry 业务每年烧掉 $100亿+，18A 良率仍未盈利，AMD 每季度稳定蚕食市场份额，分析师共识目标价 $98.50（较现价低 29%）。虽然过去 52 周股价暴涨 515% 反映市场对 AI + Foundry 叙事的乐观，但基本面远未支撑当前估值。CEO Lip-Bu Tan 已将增长拐点指向 2027 年，在此之前执行风险极高。</p>
+<p><strong>前置结论：</strong> 综合评分 <strong>51/100</strong> — <strong>不建议买入</strong>。Intel 正处于历史上最严重的转型期。Foundry 业务每年烧掉 $100亿+，18A 良率仍未盈利，AMD 每季度稳定蚕食市场份额，分析师共识目标价 $98.50（较现价低 29%）。虽然过去 52 周股价暴涨 515% 反映市场对 AI + Foundry 叙事的乐观，但基本面远未支撑当前估值。CEO Lip-Bu Tan 已将增长拐点指向 2027 年，在此之前执行风险极高。</p>
 </blockquote>
 
-<hr>
+<hr />
 
-<h2>第1章：公司基本面分析</h2>
+<h2>第1章 | | 公司基本面分析</h2>
 
 <h3>1.1 商业模式</h3>
 
@@ -191,7 +193,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★★ 极高信心</p>
 
-<hr>
+<hr />
 
 <h4>1.1.2 收入结构</h4>
 
@@ -253,7 +255,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★★ 极高信心</p>
 
-<hr>
+<hr />
 
 <h3>1.2 行业位置与竞争格局</h3>
 
@@ -286,7 +288,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★★ 极高信心</p>
 
-<hr>
+<hr />
 
 <h4>1.2.2 AI 芯片竞争</h4>
 
@@ -314,7 +316,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆ 高信心</p>
 
-<hr>
+<hr />
 
 <h3>1.3 核心竞争优势与护城河</h3>
 
@@ -375,7 +377,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆ 高信心</p>
 
-<hr>
+<hr />
 
 <h3>1.4 未来增长驱动</h3>
 
@@ -402,9 +404,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★☆☆ 中等信心</p>
 
-<hr>
+<hr />
 
-<h2>第2章：行业研究 — TAM 与产业定位</h2>
+<h2>第2章 | | 行业研究 — TAM 与产业定位</h2>
 
 <h3>2.1 半导体代工市场</h3>
 
@@ -432,7 +434,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆ 高信心</p>
 
-<hr>
+<hr />
 
 <h3>2.2 AI PC 市场</h3>
 
@@ -453,7 +455,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★☆☆ 中等信心</p>
 
-<hr>
+<hr />
 
 <h3>2.3 数据中心 CPU 市场</h3>
 
@@ -475,9 +477,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★☆☆</p>
 
-<hr>
+<hr />
 
-<h2>第3章：Fisher 成长股 10 维度评分</h2>
+<h2>第3章 | | Fisher 成长股 10 维度评分</h2>
 
 <table>
 <thead><tr>
@@ -554,9 +556,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 <p><strong>评价：</strong> Intel 在 Fisher 框架下得分不及格。核心问题是利润率和增长可持续性。唯一亮点是管理层（Lip-Bu Tan）和技术投入决心，但执行效果待验证。</p>
 </blockquote>
 
-<hr>
+<hr />
 
-<h2>第4章：财务审计 — Bear Audit</h2>
+<h2>第4章 | | 财务审计 — Bear Audit</h2>
 
 <h3>4.1 利润表红旗</h3>
 
@@ -584,7 +586,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★★</p>
 
-<hr>
+<hr />
 
 <h3>4.2 现金流红旗</h3>
 
@@ -615,7 +617,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★★</p>
 
-<hr>
+<hr />
 
 <h3>4.3 资产负债表红旗</h3>
 
@@ -638,7 +640,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
 <h3>4.4 财务审计总结</h3>
 
@@ -692,9 +694,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>财务审计评分：20/100（极差）</strong></p>
 
-<hr>
+<hr />
 
-<h2>第5章：Bear Case（做空逻辑）</h2>
+<h2>第5章 | | Bear Case（做空逻辑）</h2>
 
 <h3>5.1 Bear Case 1：Foundry 是一个无底洞</h3>
 
@@ -725,7 +727,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
 <h3>5.2 Bear Case 2：AMD 持续蚕食，不可逆转</h3>
 
@@ -746,7 +748,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★★</p>
 
-<hr>
+<hr />
 
 <h3>5.3 Bear Case 3：估值严重脱离基本面</h3>
 
@@ -770,9 +772,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第6章：估值分析</h2>
+<h2>第6章 | | 估值分析</h2>
 
 <h3>6.1 相对估值</h3>
 
@@ -841,7 +843,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>证据等级：</strong> ★★★★★</p>
 
-<hr>
+<hr />
 
 <h3>6.2 分析师目标价</h3>
 
@@ -858,7 +860,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>证据等级：</strong> ★★★★★</p>
 
-<hr>
+<hr />
 
 <h3>6.3 情景分析</h3>
 
@@ -892,9 +894,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 <p><strong>概率加权估值：</strong> 20% × $900B + 40% × $500B + 40% × $175B = <strong>$450B</strong></p>
 <p><strong>相对当前市值：</strong> 折价 36%</p>
 
-<hr>
+<hr />
 
-<h2>第7章：风险评估</h2>
+<h2>第7章 | | 风险评估</h2>
 
 <table>
 <thead><tr>
@@ -964,9 +966,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>总体风险等级：高</strong></p>
 
-<hr>
+<hr />
 
-<h2>第8章：投资逻辑</h2>
+<h2>第8章 | | 投资逻辑</h2>
 
 <h3>8.1 Bull 逻辑（为什么不买会是错误）</h3>
 
@@ -986,19 +988,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 <li><strong>TSMC 依赖暴露了 Intel 制程的深层问题</strong>——连自己的旗舰产品都不用自己的制程。</li>
 </ul>
 
-<h3>8.3 小八的观点</h3>
-
-<blockquote>
-<p><strong>不建议在当前价位买入 INTC。</strong> Intel 的故事很有趣，但 $700B+ 的市值已经反映了相当多的乐观预期。如果你想赌 Intel 的 turnaround，建议等待以下信号之一：</p>
-<p>- Foundry 亏损率从 -45% 收窄到 -20% 以下</p>
-<p>- 外部 Foundry 客户收入突破 $500M/季</p>
-<p>- 股价回调至 $80-$100 区间（接近分析师目标价）</p>
-<p>- AMD 服务器份额增长趋势放缓</p>
-</blockquote>
-
-<hr>
-
-<h2>第9章：跟踪指标</h2>
+<h2>第9章 | | 跟踪指标</h2>
 
 <table>
 <thead><tr>
@@ -1069,9 +1059,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 </tr>
 </table>
 
-<hr>
+<hr />
 
-<h2>第10章：最终结论与投资建议</h2>
+<h2>第10章 | | 最终结论与投资建议</h2>
 
 <h3>综合评分卡</h3>
 
@@ -1159,14 +1149,19 @@ tr:nth-child(even) td { background: #fafbfc; }
 <li>✅ 相信地缘政治将迫使全球客户选择 Intel 作为第二供应商</li>
 </ul>
 
-<p>如果你对这些判断存疑（小八存疑），建议观望。</p>
+<p>如果你对这些判断存疑（存疑），建议观望。</p>
 
-<hr>
+<hr />
 
 <blockquote>
 <p><strong>报告完成日期：</strong> 2026-07-01</p>
 <p><strong>免责声明：</strong> 本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
 </blockquote>
 
+
+  <footer>
+    <p>基于 <a href="https://github.com/abuzhabi/company_report">大灰皮证券研究统一框架</a> &middot; Evidence First &middot; 仅供研究参考，不构成投资建议</p>
+  </footer>
+</div>
 </body>
 </html>

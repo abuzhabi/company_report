@@ -3,172 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🔒 洛克希德马丁 (LMT) 深度证券分析报告</title>
+<title>Lockheed Martin (LMT) — 大灰皮证券研究深度分析报告 — 大灰皮证券研究</title>
 <style>
 :root {
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --text-secondary: #555555;
-  --border: #e5e5e5;
-  --accent: #2563eb;
-  --green: #16a34a;
-  --yellow: #ca8a04;
-  --red: #dc2626;
-  --surface: #f8f9fa;
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #e74c3c;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: var(--font);
-  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
   background: var(--bg);
-  line-height: 1.7;
-  padding: 2rem;
-  max-width: 820px;
-  margin: 0 auto;
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
 }
-h1 { font-size: 1.8rem; font-weight: 600; margin: 2rem 0 0.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.4rem; }
-h2 { font-size: 1.35rem; font-weight: 600; margin: 2rem 0 0.6rem; color: #111; }
-h3 { font-size: 1.1rem; font-weight: 600; margin: 1.2rem 0 0.4rem; }
-h4 { font-size: 1rem; font-weight: 600; margin: 1rem 0 0.3rem; }
-p { margin: 0.6rem 0; }
-ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
-li { margin: 0.2rem 0; }
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  line-height: 1.3;
+}
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+
 blockquote {
-  border-left: 3px solid var(--accent);
-  padding: 0.5rem 1rem;
-  margin: 0.8rem 0;
-  background: var(--surface);
-  border-radius: 0 4px 4px 0;
-  font-style: italic;
-  color: var(--text-secondary);
+  background: #f0f7ff;
+  border-left: 4px solid #3b82f6;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
 }
-hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
-strong { font-weight: 600; }
-code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  background: var(--surface);
-  padding: 0.15em 0.4em;
-  border-radius: 3px;
-  border: 0.5px solid var(--border);
-}
-pre { display: none; }
+
+p { margin: 8px 0; }
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.9rem;
+  margin: 16px 0;
+  font-size: 0.88rem;
 }
-th, td {
-  border: 0.5px solid var(--border);
-  padding: 0.5rem 0.75rem;
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 12px;
   text-align: left;
+  font-weight: 600;
 }
-th { background: var(--surface); font-weight: 600; }
-tr:nth-child(even) td { background: #fafbfc; }
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
 
-.green-badge { color: var(--green); font-weight: 600; }
-.yellow-badge { color: var(--yellow); font-weight: 600; }
-.red-badge { color: var(--red); font-weight: 600; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
 
-.header-meta {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 16px 20px;
   border-radius: 8px;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+  overflow-x: auto;
+  margin: 12px 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+strong { color: #1a1a2e; }
+
+ol, ul { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
   color: var(--text-secondary);
+  font-size: 0.85rem;
 }
-.header-meta strong { color: var(--text); }
+footer a { color: var(--accent); }
 
-.toc {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
-  padding: 1.25rem;
-  margin: 1.5rem 0;
-}
-.toc h3 { margin-top: 0; }
-.toc ol { margin-left: 1.2rem; }
-.toc a { color: var(--accent); text-decoration: none; }
-.toc a:hover { text-decoration: underline; }
-
-.rating-green { color: var(--green); }
-.rating-yellow { color: var(--yellow); }
-.rating-red { color: var(--red); }
-
-@media (max-width: 600px) {
-  body { padding: 1rem; }
-  h1 { font-size: 1.4rem; }
-  table { font-size: 0.8rem; }
-  th, td { padding: 0.35rem 0.5rem; }
-}
-
-@media print {
-  body { padding: 0; max-width: 100%; }
-  .header-meta { break-inside: avoid; }
+@media (max-width: 640px) {
+  body { padding: 20px 12px; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 6px 8px; }
+  h1 { font-size: 1.5rem; }
 }
 </style>
 </head>
 <body>
-<div class="toc"><h3>目录</h3><ol>
-<li style="margin-left:0.0rem"><a href="#目录">目录</a></li>
-<li style="margin-left:0.0rem"><a href="#第1章公司基本面分析">第1章：公司基本面分析</a></li>
-<li style="margin-left:1.5rem"><a href="#11-商业模式">1.1 商业模式</a></li>
-<li style="margin-left:1.5rem"><a href="#12-核心产品与收入结构">1.2 核心产品与收入结构</a></li>
-<li style="margin-left:1.5rem"><a href="#13-客户结构与集中度">1.3 客户结构与集中度</a></li>
-<li style="margin-left:1.5rem"><a href="#14-行业位置与竞争格局">1.4 行业位置与竞争格局</a></li>
-<li style="margin-left:1.5rem"><a href="#15-核心竞争优势护城河">1.5 核心竞争优势（护城河）</a></li>
-<li style="margin-left:1.5rem"><a href="#16-未来-5-10-年增长驱动力">1.6 未来 5-10 年增长驱动力</a></li>
-<li style="margin-left:0.0rem"><a href="#第2章行业研究-tam">第2章：行业研究 TAM</a></li>
-<li style="margin-left:1.5rem"><a href="#21-行业规模与增长率">2.1 行业规模与增长率</a></li>
-<li style="margin-left:1.5rem"><a href="#22-tam-三情景分析">2.2 TAM 三情景分析</a></li>
-<li style="margin-left:1.5rem"><a href="#23-行业壁垒">2.3 行业壁垒</a></li>
-<li style="margin-left:0.0rem"><a href="#第3章fisher-成长股评分">第3章：Fisher 成长股评分</a></li>
-<li style="margin-left:1.5rem"><a href="#31-评分矩阵">3.1 评分矩阵</a></li>
-<li style="margin-left:1.5rem"><a href="#32-fisher-总分">3.2 Fisher 总分</a></li>
-<li style="margin-left:0.0rem"><a href="#第4章财务审计-bear-audit">第4章：财务审计 Bear Audit</a></li>
-<li style="margin-left:1.5rem"><a href="#41-收入质量审计">4.1 收入质量审计</a></li>
-<li style="margin-left:1.5rem"><a href="#42-利润质量审计">4.2 利润质量审计</a></li>
-<li style="margin-left:1.5rem"><a href="#43-现金流审计">4.3 现金流审计</a></li>
-<li style="margin-left:1.5rem"><a href="#44-资产负债表审计">4.4 资产负债表审计</a></li>
-<li style="margin-left:1.5rem"><a href="#45-审计总结">4.5 审计总结</a></li>
-<li style="margin-left:0.0rem"><a href="#第5章bear-case-做空视角">第5章：Bear Case 做空视角</a></li>
-<li style="margin-left:1.5rem"><a href="#51-核心做空逻辑">5.1 核心做空逻辑</a></li>
-<li style="margin-left:1.5rem"><a href="#52-做空风险即做多理由">5.2 做空风险（即做多理由）</a></li>
-<li style="margin-left:0.0rem"><a href="#第6章估值分析">第6章：估值分析</a></li>
-<li style="margin-left:1.5rem"><a href="#61-相对估值">6.1 相对估值</a></li>
-<li style="margin-left:1.5rem"><a href="#62-dcf-估值">6.2 DCF 估值</a></li>
-<li style="margin-left:1.5rem"><a href="#63-估值结论">6.3 估值结论</a></li>
-<li style="margin-left:0.0rem"><a href="#第7章风险评估">第7章：风险评估</a></li>
-<li style="margin-left:1.5rem"><a href="#71-风险矩阵">7.1 风险矩阵</a></li>
-<li style="margin-left:1.5rem"><a href="#72-最大风险详述">7.2 最大风险详述</a></li>
-<li style="margin-left:1.5rem"><a href="#73-风险综合评级">7.3 风险综合评级</a></li>
-<li style="margin-left:0.0rem"><a href="#第8章投资逻辑">第8章：投资逻辑</a></li>
-<li style="margin-left:1.5rem"><a href="#81-多头逻辑">8.1 多头逻辑</a></li>
-<li style="margin-left:1.5rem"><a href="#82-空头逻辑">8.2 空头逻辑</a></li>
-<li style="margin-left:1.5rem"><a href="#83-我的判断">8.3 我的判断</a></li>
-<li style="margin-left:0.0rem"><a href="#第9章跟踪指标">第9章：跟踪指标</a></li>
-<li style="margin-left:1.5rem"><a href="#91-核心跟踪指标">9.1 核心跟踪指标</a></li>
-<li style="margin-left:1.5rem"><a href="#92-关键催化剂日历">9.2 关键催化剂日历</a></li>
-<li style="margin-left:0.0rem"><a href="#第10章最终结论与评级">第10章：最终结论与评级</a></li>
-<li style="margin-left:1.5rem"><a href="#101-综合评分">10.1 综合评分</a></li>
-<li style="margin-left:1.5rem"><a href="#102-评级矩阵">10.2 评级矩阵</a></li>
-<li style="margin-left:1.5rem"><a href="#103-六家公司最终排名">10.3 六家公司最终排名</a></li>
-<li style="margin-left:1.5rem"><a href="#104-最终判断">10.4 最终判断</a></li>
-</ol></div>
-<h1>🔒 洛克希德马丁 (LMT) 深度证券分析报告</h1>
+<div class="container">
+  <a class="back-link" href="./index.html">&larr; 返回报告列表</a>
+<h1>🔒 洛克希德马丁 (LMT) 深度证券分析报告 — 大灰皮证券研究深度分析报告</h1>
 
 <blockquote>
 <p><strong>大灰皮证券研究统一框架（Research Constitution）执行版</strong></p>
 <p>分析日期：2026年7月1日 | 数据截止：Q1 2026（截至2026年3月29日）</p>
-<p>分析师：小八（AI 辅助）| 框架版本：V2.0</p>
 </blockquote>
 
-<hr>
+<hr />
 
 <h2>目录</h2>
 
@@ -185,9 +176,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 <li>[最终结论与评级](#第10章最终结论与评级)</li>
 </ul>
 
-<hr>
+<hr />
 
-<h2>第1章：公司基本面分析</h2>
+<h2>第1章 | | 公司基本面分析</h2>
 
 <h3>1.1 商业模式</h3>
 
@@ -215,7 +206,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
 <h3>1.2 核心产品与收入结构</h3>
 
@@ -300,7 +291,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
 <h3>1.3 客户结构与集中度</h3>
 
@@ -328,7 +319,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
 <h3>1.4 行业位置与竞争格局</h3>
 
@@ -411,7 +402,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
 <h3>1.5 核心竞争优势（护城河）</h3>
 
@@ -457,7 +448,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 <li><strong>信心等级：</strong> ★★★☆☆</li>
 </ul>
 
-<hr>
+<hr />
 
 <h3>1.6 未来 5-10 年增长驱动力</h3>
 
@@ -500,9 +491,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第2章：行业研究 TAM</h2>
+<h2>第2章 | | 行业研究 TAM</h2>
 
 <h3>2.1 行业规模与增长率</h3>
 
@@ -530,7 +521,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
 <h3>2.2 TAM 三情景分析</h3>
 
@@ -571,7 +562,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
 <h3>2.3 行业壁垒</h3>
 
@@ -598,9 +589,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第3章：Fisher 成长股评分</h2>
+<h2>第3章 | | Fisher 成长股评分</h2>
 
 <blockquote>
 <p>按 Fisher 15 要点逐项评估，每项 0-10 分</p>
@@ -729,9 +720,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第4章：财务审计 Bear Audit</h2>
+<h2>第4章 | | 财务审计 Bear Audit</h2>
 
 <h3>4.1 收入质量审计</h3>
 
@@ -750,7 +741,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>红旗标记：</strong> ⚠️ 收入增长几乎停滞，全年 5% 增长目标需要 H2 大幅加速</p>
 
-<hr>
+<hr />
 
 <h3>4.2 利润质量审计</h3>
 
@@ -808,7 +799,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>红旗标记：</strong> <span class="red-badge">🔴</span> Space 利润率从 11.8% 暴跌至 8.2%，Aeronautics 多个项目出现不利利润调整</p>
 
-<hr>
+<hr />
 
 <h3>4.3 现金流审计</h3>
 
@@ -827,7 +818,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>红旗标记：</strong> ⚠️ Q1 FCF 转负需要关注。虽然公司归因于账单时间安排，但如果 H2 未改善，全年指引可能下修。</p>
 
-<hr>
+<hr />
 
 <h3>4.4 资产负债表审计</h3>
 
@@ -848,7 +839,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>红旗标记：</strong> ⚠️ PB 15.65x 极高，股东权益仅 $7.49B，大量回购导致账面权益缩水。虽然不影响偿债能力，但反映资本配置激进。</p>
 
-<hr>
+<hr />
 
 <h3>4.5 审计总结</h3>
 
@@ -887,9 +878,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第5章：Bear Case 做空视角</h2>
+<h2>第5章 | | Bear Case 做空视角</h2>
 
 <h3>5.1 核心做空逻辑</h3>
 
@@ -933,7 +924,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>证据等级：</strong> A</p>
 
-<hr>
+<hr />
 
 <h3>5.2 做空风险（即做多理由）</h3>
 
@@ -952,9 +943,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第6章：估值分析</h2>
+<h2>第6章 | | 估值分析</h2>
 
 <h3>6.1 相对估值</h3>
 
@@ -1033,7 +1024,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 <li>股息率 2.65% + 回购 2.18% = 股东总回报率 4.84%</li>
 </ul>
 
-<hr>
+<hr />
 
 <h3>6.2 DCF 估值</h3>
 
@@ -1118,7 +1109,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>证据等级：</strong> B</p>
 
-<hr>
+<hr />
 
 <h3>6.3 估值结论</h3>
 
@@ -1161,9 +1152,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第7章：风险评估</h2>
+<h2>第7章 | | 风险评估</h2>
 
 <h3>7.1 风险矩阵</h3>
 
@@ -1278,9 +1269,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第8章：投资逻辑</h2>
+<h2>第8章 | | 投资逻辑</h2>
 
 <h3>8.1 多头逻辑</h3>
 
@@ -1320,9 +1311,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★☆</p>
 
-<hr>
+<hr />
 
-<h2>第9章：跟踪指标</h2>
+<h2>第9章 | | 跟踪指标</h2>
 
 <h3>9.1 核心跟踪指标</h3>
 
@@ -1443,9 +1434,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>信心等级：</strong> ★★★★★</p>
 
-<hr>
+<hr />
 
-<h2>第10章：最终结论与评级</h2>
+<h2>第10章 | | 最终结论与评级</h2>
 
 <h3>10.1 综合评分</h3>
 
@@ -1606,5 +1597,10 @@ tr:nth-child(even) td { background: #fafbfc; }
 <p><strong>适合谁：</strong> 追求稳定收益、低波动、地缘政治对冲的保守投资者。如果你需要一只「在市场暴跌时少亏钱」的股票，LMT 是不错的选择。</p>
 
 <p><strong>不适合谁：</strong> 追求超额回报、高增长、快速翻倍的投资</p>
+
+  <footer>
+    <p>基于 <a href="https://github.com/abuzhabi/company_report">大灰皮证券研究统一框架</a> &middot; Evidence First &middot; 仅供研究参考，不构成投资建议</p>
+  </footer>
+</div>
 </body>
 </html>

@@ -3,266 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NVIDIA Corporation (NVDA) 深度分析报告</title>
+<title>NVIDIA (NVDA) — 大灰皮证券研究深度分析报告 — 大灰皮证券研究</title>
 <style>
 :root {
-  --bg: #ffffff;
-  --text: #1a1a1a;
-  --text-secondary: #555555;
-  --border: #e5e5e5;
-  --accent: #2563eb;
-  --green: #16a34a;
-  --yellow: #ca8a04;
-  --red: #dc2626;
-  --surface: #f8f9fa;
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #e74c3c;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: var(--font);
-  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
   background: var(--bg);
-  line-height: 1.7;
-  padding: 2rem;
-  max-width: 820px;
-  margin: 0 auto;
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
 }
-h1 { font-size: 1.8rem; font-weight: 600; margin: 2rem 0 0.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.4rem; }
-h2 { font-size: 1.35rem; font-weight: 600; margin: 2rem 0 0.6rem; color: #111; }
-h3 { font-size: 1.1rem; font-weight: 600; margin: 1.2rem 0 0.4rem; }
-h4 { font-size: 1rem; font-weight: 600; margin: 1rem 0 0.3rem; }
-p { margin: 0.6rem 0; }
-ul, ol { margin: 0.4rem 0 0.4rem 1.5rem; }
-li { margin: 0.2rem 0; }
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  line-height: 1.3;
+}
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+
 blockquote {
-  border-left: 3px solid var(--accent);
-  padding: 0.5rem 1rem;
-  margin: 0.8rem 0;
-  background: var(--surface);
-  border-radius: 0 4px 4px 0;
-  font-style: italic;
-  color: var(--text-secondary);
+  background: #f0f7ff;
+  border-left: 4px solid #3b82f6;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
 }
-hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
-strong { font-weight: 600; }
-code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  background: var(--surface);
-  padding: 0.15em 0.4em;
-  border-radius: 3px;
-  border: 0.5px solid var(--border);
-}
-pre { display: none; }
+
+p { margin: 8px 0; }
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.9rem;
+  margin: 16px 0;
+  font-size: 0.88rem;
 }
-th, td {
-  border: 0.5px solid var(--border);
-  padding: 0.5rem 0.75rem;
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 12px;
   text-align: left;
+  font-weight: 600;
 }
-th { background: var(--surface); font-weight: 600; }
-tr:nth-child(even) td { background: #fafbfc; }
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
 
-.green-badge { color: var(--green); font-weight: 600; }
-.yellow-badge { color: var(--yellow); font-weight: 600; }
-.red-badge { color: var(--red); font-weight: 600; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
 
-.header-meta {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 16px 20px;
   border-radius: 8px;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+  overflow-x: auto;
+  margin: 12px 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+strong { color: #1a1a2e; }
+
+ol, ul { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
   color: var(--text-secondary);
+  font-size: 0.85rem;
 }
-.header-meta strong { color: var(--text); }
+footer a { color: var(--accent); }
 
-.toc {
-  background: var(--surface);
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
-  padding: 1.25rem;
-  margin: 1.5rem 0;
-}
-.toc h3 { margin-top: 0; }
-.toc ol { margin-left: 1.2rem; }
-.toc a { color: var(--accent); text-decoration: none; }
-.toc a:hover { text-decoration: underline; }
-
-.rating-green { color: var(--green); }
-.rating-yellow { color: var(--yellow); }
-.rating-red { color: var(--red); }
-
-@media (max-width: 600px) {
-  body { padding: 1rem; }
-  h1 { font-size: 1.4rem; }
-  table { font-size: 0.8rem; }
-  th, td { padding: 0.35rem 0.5rem; }
-}
-
-@media print {
-  body { padding: 0; max-width: 100%; }
-  .header-meta { break-inside: avoid; }
+@media (max-width: 640px) {
+  body { padding: 20px 12px; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 6px 8px; }
+  h1 { font-size: 1.5rem; }
 }
 </style>
 </head>
 <body>
-<div class="toc"><h3>目录</h3><ol>
-<li style="margin-left:0.0rem"><a href="#11-公司如何赚钱商业模式">1.1 公司如何赚钱：商业模式</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#12-核心产品与收入结构">1.2 核心产品与收入结构</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#13-客户结构">1.3 客户结构</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#14-行业位置与竞争格局">1.4 行业位置与竞争格局</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#15-核心竞争优势">1.5 核心竞争优势</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#16-网络效应与规模效应">1.6 网络效应与规模效应</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#17-未来5-10年增长驱动力">1.7 未来5-10年增长驱动力</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#18-本章总结为什么这家公司可能成为未来十年的赢家">1.8 本章总结：为什么这家公司可能成为未来十年的赢家？</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#21-ai-芯片市场">2.1 AI 芯片市场</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#三情景分析">三情景分析</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#22-gpu-vs-asic-竞争格局">2.2 GPU vs ASIC 竞争格局</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#23-行业生命周期与壁垒">2.3 行业生命周期与壁垒</a></li>
-<li style="margin-left:1.5rem"><a href="#结论">结论</a></li>
-<li style="margin-left:1.5rem"><a href="#证据">证据</a></li>
-<li style="margin-left:1.5rem"><a href="#证据等级">证据等级</a></li>
-<li style="margin-left:1.5rem"><a href="#反方证据">反方证据</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#31-十维度逐项评分">3.1 十维度逐项评分</a></li>
-<li style="margin-left:1.5rem"><a href="#1-市场潜力1010">1. 市场潜力（10/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#2-管理层能力1010">2. 管理层能力（10/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#3-研发能力1010">3. 研发能力（10/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#4-销售能力810">4. 销售能力（8/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#5-利润率改善空间910">5. 利润率改善空间（9/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#6-护城河1010">6. 护城河（10/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#7-长期成长能力710">7. 长期成长能力（7/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#8-企业文化810">8. 企业文化（8/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#9-资本配置能力1010">9. 资本配置能力（10/10）</a></li>
-<li style="margin-left:1.5rem"><a href="#10-长期竞争优势810">10. 长期竞争优势（8/10）</a></li>
-<li style="margin-left:0.0rem"><a href="#32-综合评分">3.2 综合评分</a></li>
-<li style="margin-left:1.5rem"><a href="#最符合-fisher-思想的地方">最符合 Fisher 思想的地方</a></li>
-<li style="margin-left:1.5rem"><a href="#最不符合-fisher-思想的地方">最不符合 Fisher 思想的地方</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#41-以做空机构视角审查">4.1 以做空机构视角审查</a></li>
-<li style="margin-left:1.5rem"><a href="#应收账款需关注">应收账款：需关注</a></li>
-<li style="margin-left:1.5rem"><a href="#存货正常偏高">存货：正常偏高</a></li>
-<li style="margin-left:1.5rem"><a href="#经营现金流与自由现金流卓越">经营现金流与自由现金流：卓越</a></li>
-<li style="margin-left:1.5rem"><a href="#毛利率卓越但有下行风险">毛利率：卓越但有下行风险</a></li>
-<li style="margin-left:1.5rem"><a href="#roic卓越">ROIC：卓越</a></li>
-<li style="margin-left:1.5rem"><a href="#股权激励中等">股权激励：中等</a></li>
-<li style="margin-left:1.5rem"><a href="#债务结构健康">债务结构：健康</a></li>
-<li style="margin-left:1.5rem"><a href="#客户集中度-高风险">客户集中度：⚠️ 高风险</a></li>
-<li style="margin-left:1.5rem"><a href="#资本开支低">资本开支：低</a></li>
-<li style="margin-left:1.5rem"><a href="#会计政策变化需关注">会计政策变化：需关注</a></li>
-<li style="margin-left:0.0rem"><a href="#42-最终财务审计评级">4.2 最终财务审计评级</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#51-最脆弱环节">5.1 最脆弱环节</a></li>
-<li style="margin-left:0.0rem"><a href="#52-做空四大核心论点">5.2 做空四大核心论点</a></li>
-<li style="margin-left:1.5rem"><a href="#论点一ai-capex-周期不可持续">论点一：AI CapEx 周期不可持续</a></li>
-<li style="margin-left:1.5rem"><a href="#论点二asic-替代是结构性的不可逆转的">论点二：ASIC 替代是结构性的、不可逆转的</a></li>
-<li style="margin-left:1.5rem"><a href="#论点三毛利率不可持续">论点三：毛利率不可持续</a></li>
-<li style="margin-left:1.5rem"><a href="#论点四中国市场永久关闭">论点四：中国市场永久关闭</a></li>
-<li style="margin-left:0.0rem"><a href="#53-市场容易忽略的问题">5.3 市场容易忽略的问题</a></li>
-<li style="margin-left:0.0rem"><a href="#54-做空成功概率判断">5.4 做空成功概率判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#61-当前估值">6.1 当前估值</a></li>
-<li style="margin-left:0.0rem"><a href="#62-历史估值对比">6.2 历史估值对比</a></li>
-<li style="margin-left:0.0rem"><a href="#63-同行对比">6.3 同行对比</a></li>
-<li style="margin-left:0.0rem"><a href="#64-估值判断">6.4 估值判断</a></li>
-<li style="margin-left:1.5rem"><a href="#核心问题公司优秀--股票值得买当前是否透支未来">核心问题：公司优秀 ≠ 股票值得买？当前是否透支未来？</a></li>
-<li style="margin-left:1.5rem"><a href="#最终判断">最终判断</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#71-风险矩阵">7.1 风险矩阵</a></li>
-<li style="margin-left:0.0rem"><a href="#72-被市场低估的风险">7.2 被市场低估的风险</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#81-核心投资逻辑">8.1 核心投资逻辑</a></li>
-<li style="margin-left:0.0rem"><a href="#82-为什么可能持续十年以上">8.2 为什么可能持续十年以上？</a></li>
-<li style="margin-left:0.0rem"><a href="#83-投资逻辑失效条件">8.3 投资逻辑失效条件</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-<li style="margin-left:0.0rem"><a href="#101-综合评分">10.1 综合评分</a></li>
-<li style="margin-left:0.0rem"><a href="#102-fisher-评分90100">10.2 Fisher 评分：90/100</a></li>
-<li style="margin-left:0.0rem"><a href="#103-投资结论">10.3 投资结论</a></li>
-<li style="margin-left:1.5rem"><a href="#理由">理由</a></li>
-<li style="margin-left:1.5rem"><a href="#信心等级">信心等级</a></li>
-</ol></div>
-<h1>NVIDIA Corporation (NVDA) 深度分析报告</h1>
+<div class="container">
+  <a class="back-link" href="./index.html">&larr; 返回报告列表</a>
+<h1>NVIDIA Corporation (NVDA) — 大灰皮证券研究深度分析报告</h1>
 
 <blockquote>
 <p><strong>分析日期：</strong> 2026年7月1日</p>
 <p><strong>框架：</strong> 大灰皮证券研究统一框架 v1.0</p>
 <p><strong>最新财报：</strong> Q1 FY2027（截至2026年4月26日）</p>
 <p><strong>股价/市值：</strong> 约 $175 / $4.3万亿（截至2026年6月）</p>
-<p><strong>分析师：</strong> 小八</p>
 </blockquote>
 
-<hr>
+<hr />
 
-<h1>第1章 公司基本面分析</h1>
+<h2>第1章 | 公司基本面分析</h2>
 
 <h2>1.1 公司如何赚钱：商业模式</h2>
 
@@ -302,7 +203,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★★</p>
 
-<hr>
+<hr />
 
 <h2>1.2 核心产品与收入结构</h2>
 
@@ -426,7 +327,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★★</p>
 
-<hr>
+<hr />
 
 <h2>1.3 客户结构</h2>
 
@@ -463,7 +364,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★☆☆</p>
 
-<hr>
+<hr />
 
 <h2>1.4 行业位置与竞争格局</h2>
 
@@ -504,7 +405,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
 <h2>1.5 核心竞争优势</h2>
 
@@ -560,7 +461,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★★</p>
 
-<hr>
+<hr />
 
 <h2>1.6 网络效应与规模效应</h2>
 
@@ -597,7 +498,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
 <h2>1.7 未来5-10年增长驱动力</h2>
 
@@ -656,7 +557,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★☆☆</p>
 
-<hr>
+<hr />
 
 <h2>1.8 本章总结：为什么这家公司可能成为未来十年的赢家？</h2>
 
@@ -696,11 +597,11 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
-<hr>
+<hr />
 
-<h1>第2章 行业研究（TAM）</h1>
+<h2>第2章 | 行业研究（TAM）</h2>
 
 <h2>2.1 AI 芯片市场</h2>
 
@@ -762,7 +663,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★☆☆</p>
 
-<hr>
+<hr />
 
 <h2>2.2 GPU vs ASIC 竞争格局</h2>
 
@@ -801,7 +702,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
 <h2>2.3 行业生命周期与壁垒</h2>
 
@@ -837,9 +738,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
-<h1>第3章 Fisher 成长股评价</h1>
+<h2>第3章 | Fisher 成长股评价</h2>
 
 <h2>3.1 十维度逐项评分</h2>
 
@@ -903,7 +804,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>评分依据：所有顶级客户都在投资 ASIC，这是 NVIDIA 护城河的最大长期威胁。</p>
 
-<hr>
+<hr />
 
 <h2>3.2 综合评分</h2>
 
@@ -970,9 +871,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
-<h1>第4章 财务审计（Bear Audit）</h1>
+<h2>第4章 | 财务审计（Bear Audit）</h2>
 
 <h2>4.1 以做空机构视角审查</h2>
 
@@ -1036,7 +937,7 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p><strong>证据等级：</strong> ★★★ | <strong>红旗：</strong> ⚠️ 小旗（透明度下降）</p>
 
-<hr>
+<hr />
 
 <h2>4.2 最终财务审计评级</h2>
 
@@ -1048,9 +949,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
-<h1>第5章 Bear Case（完整做空逻辑）</h1>
+<h2>第5章 | Bear Case（完整做空逻辑）</h2>
 
 <h2>5.1 最脆弱环节</h2>
 
@@ -1115,9 +1016,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★☆☆（做空逻辑有说服力但时间窗口不确定）</p>
 
-<hr>
+<hr />
 
-<h1>第6章 估值分析</h1>
+<h2>第6章 | 估值分析</h2>
 
 <h2>6.1 当前估值</h2>
 
@@ -1243,9 +1144,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★☆☆（估值合理偏低，但高度依赖 AI CapEx 持续性这个不可验证的假设）</p>
 
-<hr>
+<hr />
 
-<h1>第7章 风险分析</h1>
+<h2>第7章 | 风险分析</h2>
 
 <h2>7.1 风险矩阵</h2>
 
@@ -1327,9 +1228,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
-<h1>第8章 投资逻辑</h1>
+<h2>第8章 | 投资逻辑</h2>
 
 <h2>8.1 核心投资逻辑</h2>
 
@@ -1358,9 +1259,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
-<h1>第9章 长期跟踪指标</h1>
+<h2>第9章 | 长期跟踪指标</h2>
 
 <table>
 <thead><tr>
@@ -1442,9 +1343,9 @@ tr:nth-child(even) td { background: #fafbfc; }
 </tr>
 </table>
 
-<hr>
+<hr />
 
-<h1>第10章 最终结论</h1>
+<h2>第10章 | 最终结论</h2>
 
 <h2>10.1 综合评分</h2>
 
@@ -1541,11 +1442,16 @@ tr:nth-child(even) td { background: #fafbfc; }
 
 <p>★★★★☆</p>
 
-<hr>
+<hr />
 
 <blockquote>
 <p>📋 <strong>报告完成</strong> | 分析日期：2026年7月1日 | 框架版本：大灰皮 v1.0 | 所有结论均附带证据来源和信心等级 | 数据来源：NVIDIA Press Release、Earnings Call、SEC Filing、Research and Markets、CNBC、威易网行业分析</p>
 </blockquote>
 
+
+  <footer>
+    <p>基于 <a href="https://github.com/abuzhabi/company_report">大灰皮证券研究统一框架</a> &middot; Evidence First &middot; 仅供研究参考，不构成投资建议</p>
+  </footer>
+</div>
 </body>
 </html>
