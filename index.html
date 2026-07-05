@@ -11,7 +11,6 @@
     --text: #1a1a2e;
     --text-secondary: #555;
     --accent: #e74c3c;
-    --accent-green: #27ae60;
     --border: #e0e0e0;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,191 +28,71 @@
     padding-bottom: 24px;
     border-bottom: 2px solid var(--accent);
   }
-  header h1 {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 8px;
-  }
+  header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
   header h1 span { color: var(--accent); }
   header p { color: var(--text-secondary); font-size: 0.95rem; }
   .stats {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin: 20px 0 0;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    display: flex; justify-content: center; gap: 32px;
+    margin: 20px 0 0; font-size: 0.9rem; color: var(--text-secondary);
   }
   .stats b { color: var(--accent); font-size: 1.2rem; }
-
-  /* Filter bar */
-  .filter-section {
-    margin-bottom: 28px;
-  }
+  .filter-section { margin-bottom: 28px; }
   .filter-label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 8px;
+    font-size: 0.8rem; font-weight: 700; color: var(--text-secondary);
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;
   }
-  .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-  }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
   .filter-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: var(--card-bg);
-    color: var(--text);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: all 0.15s;
-    user-select: none;
-    white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+    background: var(--card-bg); color: var(--text); border: 1px solid var(--border);
+    cursor: pointer; transition: all 0.15s; user-select: none; white-space: nowrap;
   }
-  .filter-chip:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .filter-chip.active {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-  }
+  .filter-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-chip.active { background: var(--accent); color: white; border-color: var(--accent); }
   .filter-chip .chip-count {
-    font-size: 0.75rem;
-    opacity: 0.7;
-    background: rgba(0,0,0,0.08);
-    padding: 1px 7px;
-    border-radius: 10px;
+    font-size: 0.75rem; opacity: 0.7;
+    background: rgba(0,0,0,0.08); padding: 1px 7px; border-radius: 10px;
   }
-  .filter-chip.active .chip-count {
-    background: rgba(255,255,255,0.25);
-    opacity: 1;
-  }
-  .filter-divider {
-    width: 1px;
-    height: 24px;
-    background: var(--border);
-    margin: 0 4px;
-  }
-  .clear-btn {
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    background: transparent;
-    color: var(--text-secondary);
-    border: 1px solid transparent;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .clear-btn:hover {
-    color: var(--accent);
-  }
-
-  /* Tags */
+  .filter-chip.active .chip-count { background: rgba(255,255,255,0.25); opacity: 1; }
   .tag {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 600;
+    display: inline-block; padding: 2px 10px; border-radius: 20px;
+    font-size: 0.78rem; font-weight: 600;
   }
   .tag-us { background: #dbeafe; color: #1e40af; }
   .tag-cn { background: #fef3c7; color: #92400e; }
   .tag-hk { background: #fce7f3; color: #9d174d; }
   .tag-jp { background: #f3e8ff; color: #6b21a8; }
-  .tag-sector {
-    background: #f1f5f9;
-    color: #475569;
-    font-weight: 500;
-    font-size: 0.74rem;
-  }
-
-  /* Gallery */
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-  }
-  .company-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px 22px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
-    cursor: pointer;
-  }
-  .company-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  }
-  .company-card.hidden {
-    display: none;
-  }
-  .company-body { flex: 1; }
-  .company-card h3 {
-    font-size: 1.15rem;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .company-meta {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
-  }
-  .company-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 10px;
-  }
-  .company-count {
-    font-size: 0.9rem;
-    color: #444;
-  }
-  .company-count b { color: var(--accent); }
-  .company-arrow {
-    font-size: 1.4rem;
-    color: #bbb;
-    margin-top: 2px;
-  }
-  .company-card:hover .company-arrow { color: var(--accent); }
-
-  .no-results {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    display: none;
-  }
-
+  .tag-nz { background: #d1fae5; color: #065f46; }
+  .tag-sector { background: #f1f5f9; color: #475569; font-weight: 500; font-size: 0.74rem; }
   footer {
-    text-align: center;
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 0.85rem;
+    text-align: center; margin-top: 48px; padding-top: 24px;
+    border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.85rem;
   }
   footer a { color: var(--accent); }
-
+  .gallery {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;
+  }
+  .company-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px 22px; display: flex; justify-content: space-between;
+    align-items: flex-start; transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+    cursor: pointer;
+  }
+  .company-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .company-card.hidden { display: none; }
+  .company-body { flex: 1; }
+  .company-card h3 {
+    font-size: 1.15rem; margin-bottom: 8px; display: flex;
+    align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .company-meta { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+  .company-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+  .company-count { font-size: 0.9rem; color: #444; }
+  .company-count b { color: var(--accent); }
+  .company-arrow { font-size: 1.4rem; color: #bbb; margin-top: 2px; }
+  .company-card:hover .company-arrow { color: var(--accent); }
+  .no-results { text-align: center; padding: 60px 20px; color: var(--text-secondary); font-size: 1rem; display: none; }
   @media (max-width: 680px) {
     body { padding: 20px 12px; }
     .gallery { grid-template-columns: 1fr; }
@@ -228,13 +107,12 @@
     <h1>🐂 <span>大灰皮</span>证券研究</h1>
     <p>基于 Evidence First 原则的上市公司深度分析 · 10 章完整框架</p>
     <div class="stats">
-      <div><b>18</b> 家公司</div>
-      <div><b>20</b> 份报告</div>
+      <div><b>19</b> 家公司</div>
+      <div><b>21</b> 份报告</div>
       <div>更新于 2026-07-05</div>
     </div>
   </header>
 
-  <!-- Market filter -->
   <div class="filter-section">
     <div class="filter-label">市场</div>
     <div class="filter-bar" id="marketFilter">
@@ -246,7 +124,6 @@
     </div>
   </div>
 
-  <!-- Sector filter -->
   <div class="filter-section">
     <div class="filter-label">板块</div>
     <div class="filter-bar" id="sectorFilter">
@@ -266,23 +143,26 @@
   </div>
 
   <div class="gallery" id="gallery">
-
     <div class="company-card" data-market="美股" data-sectors="半导体" onclick="location.href='reports/AMD/index.html'">
       <div class="company-body">
         <h3>AMD <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">半导体·CPU·GPU</div>
         <div class="company-tags"><span class="tag tag-sector">半导体</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
 
     <div class="company-card" data-market="美股" data-sectors="航天" onclick="location.href='reports/Rocket%20Lab/index.html'">
       <div class="company-body">
-        <h3>Rocket Lab <span class="tag tag-us">美股</span></h3>
+        <h3>Rocket Lab <span class="tag tag-nz">美股</span></h3>
         <div class="company-meta">航天·火箭发射</div>
         <div class="company-tags"><span class="tag tag-sector">航天</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -292,7 +172,9 @@
         <h3>SpaceX <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">航天·卫星·星链</div>
         <div class="company-tags"><span class="tag tag-sector">航天</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -302,7 +184,9 @@
         <h3>五粮液 <span class="tag tag-cn">A股</span></h3>
         <div class="company-meta">白酒·消费</div>
         <div class="company-tags"><span class="tag tag-sector">消费</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -312,7 +196,9 @@
         <h3>哈默纳科 <span class="tag tag-jp">日股</span></h3>
         <div class="company-meta">精密减速器·机器人</div>
         <div class="company-tags"><span class="tag tag-sector">机器人</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -322,7 +208,9 @@
         <h3>多邻国 <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">教育科技·语言学习</div>
         <div class="company-tags"><span class="tag tag-sector">教育</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -332,7 +220,9 @@
         <h3>寒武纪 <span class="tag tag-cn">A股</span></h3>
         <div class="company-meta">AI芯片·半导体·云端推理</div>
         <div class="company-tags"><span class="tag tag-sector">AI</span> <span class="tag tag-sector">半导体</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-07-04</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-07-04
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -341,8 +231,10 @@
       <div class="company-body">
         <h3>洛克希德马丁 <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">国防·航空航天·军工</div>
-        <div class="company-tags"><span class="tag tag-sector">军工/国防</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-tags"><span class="tag tag-sector">军工</span></div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -352,7 +244,9 @@
         <h3>特斯拉 <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">电动车·自动驾驶·能源</div>
         <div class="company-tags"><span class="tag tag-sector">新能源</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -361,8 +255,10 @@
       <div class="company-body">
         <h3>紫金矿业 <span class="tag tag-cn">A股</span></h3>
         <div class="company-meta">黄金·铜·矿业</div>
-        <div class="company-tags"><span class="tag tag-sector">能源/资源</span></div>
-        <div class="company-count"><b>2</b> 份报告 · 2026-06-30</div>
+        <div class="company-tags"><span class="tag tag-sector">能源资源</span></div>
+        <div class="company-count">
+          <b>2</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -372,7 +268,9 @@
         <h3>绿的谐波 <span class="tag tag-cn">A股</span></h3>
         <div class="company-meta">谐波减速器·机器人</div>
         <div class="company-tags"><span class="tag tag-sector">机器人</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -381,8 +279,10 @@
       <div class="company-body">
         <h3>腾讯股份 <span class="tag tag-hk">港股</span></h3>
         <div class="company-meta">社交·游戏·金融科技</div>
-        <div class="company-tags"><span class="tag tag-sector">互联网/科技</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-tags"><span class="tag tag-sector">互联网</span></div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -392,7 +292,9 @@
         <h3>英伟达 <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">AI芯片·半导体·数据中心</div>
         <div class="company-tags"><span class="tag tag-sector">AI</span> <span class="tag tag-sector">半导体</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -402,7 +304,9 @@
         <h3>英特尔 <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">半导体·CPU·芯片制造</div>
         <div class="company-tags"><span class="tag tag-sector">半导体</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -411,18 +315,22 @@
       <div class="company-body">
         <h3>苹果 <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">消费电子·软件·服务</div>
-        <div class="company-tags"><span class="tag tag-sector">消费电子</span> <span class="tag tag-sector">互联网/科技</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-tags"><span class="tag tag-sector">消费电子</span> <span class="tag tag-sector">互联网</span></div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
 
     <div class="company-card" data-market="美股" data-sectors="能源资源" onclick="location.href='reports/西方石油_OXY/index.html'">
       <div class="company-body">
-        <h3>西方石油 <span class="tag tag-us">美股</span></h3>
+        <h3>西方石油_OXY <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">能源·碳捕获</div>
-        <div class="company-tags"><span class="tag tag-sector">能源/资源</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-tags"><span class="tag tag-sector">能源资源</span></div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -431,8 +339,10 @@
       <div class="company-body">
         <h3>谷歌 <span class="tag tag-us">美股</span></h3>
         <div class="company-meta">搜索·AI·云计算</div>
-        <div class="company-tags"><span class="tag tag-sector">AI</span> <span class="tag tag-sector">互联网/科技</span></div>
-        <div class="company-count"><b>1</b> 份报告 · 2026-06-30</div>
+        <div class="company-tags"><span class="tag tag-sector">AI</span> <span class="tag tag-sector">互联网</span></div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-06-30
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -442,7 +352,21 @@
         <h3>阳光电源 <span class="tag tag-cn">A股</span></h3>
         <div class="company-meta">光伏逆变器·储能</div>
         <div class="company-tags"><span class="tag tag-sector">新能源</span></div>
-        <div class="company-count"><b>2</b> 份报告 · 2026-07-01</div>
+        <div class="company-count">
+          <b>2</b> 份报告 · 最新 2026-07-01
+        </div>
+      </div>
+      <div class="company-arrow">→</div>
+    </div>
+
+    <div class="company-card" data-market="美股" data-sectors="半导体" onclick="location.href='reports/阿斯麦/index.html'">
+      <div class="company-body">
+        <h3>阿斯麦 <span class="tag tag-us">美股</span></h3>
+        <div class="company-meta">EUV光刻机·半导体设备·垄断</div>
+        <div class="company-tags"><span class="tag tag-sector">半导体</span></div>
+        <div class="company-count">
+          <b>1</b> 份报告 · 最新 2026-07-05
+        </div>
       </div>
       <div class="company-arrow">→</div>
     </div>
@@ -462,11 +386,9 @@
   var activeSector = 'all';
 
   function updateFilterCounts() {
-    // Count companies per market
     var marketCounts = { '美股': 0, 'A股': 0, '港股': 0, '日股': 0 };
     var sectorCounts = {};
     var cards = document.querySelectorAll('.company-card');
-
     cards.forEach(function(card) {
       var market = card.getAttribute('data-market');
       var sectors = card.getAttribute('data-sectors').split(' ');
@@ -475,8 +397,6 @@
         sectorCounts[s] = (sectorCounts[s] || 0) + 1;
       });
     });
-
-    // Update market chips
     document.querySelectorAll('[data-type="market"]').forEach(function(chip) {
       var val = chip.getAttribute('data-value');
       if (val === 'all') {
@@ -485,8 +405,6 @@
         chip.innerHTML = val + ' <span class="chip-count">' + (marketCounts[val] || 0) + '</span>';
       }
     });
-
-    // Update sector chips
     document.querySelectorAll('[data-type="sector"]').forEach(function(chip) {
       var val = chip.getAttribute('data-value');
       if (val === 'all') {
@@ -500,13 +418,11 @@
   function applyFilters() {
     var cards = document.querySelectorAll('.company-card');
     var visibleCount = 0;
-
     cards.forEach(function(card) {
       var market = card.getAttribute('data-market');
       var sectors = card.getAttribute('data-sectors').split(' ');
       var marketMatch = (activeMarket === 'all' || market === activeMarket);
       var sectorMatch = (activeSector === 'all' || sectors.indexOf(activeSector) >= 0);
-
       if (marketMatch && sectorMatch) {
         card.classList.remove('hidden');
         visibleCount++;
@@ -514,11 +430,9 @@
         card.classList.add('hidden');
       }
     });
-
     document.getElementById('noResults').style.display = visibleCount === 0 ? 'block' : 'none';
   }
 
-  // Market filter
   document.querySelectorAll('[data-type="market"]').forEach(function(chip) {
     chip.addEventListener('click', function() {
       document.querySelectorAll('[data-type="market"]').forEach(function(c) { c.classList.remove('active'); });
@@ -528,7 +442,6 @@
     });
   });
 
-  // Sector filter
   document.querySelectorAll('[data-type="sector"]').forEach(function(chip) {
     chip.addEventListener('click', function() {
       document.querySelectorAll('[data-type="sector"]').forEach(function(c) { c.classList.remove('active'); });
@@ -538,7 +451,6 @@
     });
   });
 
-  // Init
   updateFilterCounts();
 })();
 </script>
