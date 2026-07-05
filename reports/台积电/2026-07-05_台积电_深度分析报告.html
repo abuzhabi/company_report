@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>台积电 TSMC (TSM) — 大灰皮证券研究深度分析报告 — 大灰皮证券研究</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #e74c3c;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  line-height: 1.3;
+}
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+
+blockquote {
+  background: #f0f7ff;
+  border-left: 4px solid #3b82f6;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
+}
+
+p { margin: 8px 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+
+pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 16px 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 12px 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+strong { color: #1a1a2e; }
+
+ol, ul { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+footer a { color: var(--accent); }
+
+@media (max-width: 640px) {
+  body { padding: 20px 12px; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 6px 8px; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="./index.html">← 返回报告列表</a>
+  <h1>台积电 TSMC (TSM) — 大灰皮证券研究深度分析报告</h1>
+<p><strong>分析日期</strong>：2026-07-05<br>
+<strong>股票代码</strong>：TSM (NYSE) / 2330 (TWSE)<br>
+<strong>当前股价</strong>：~$220 (2026年7月初)<br>
+<strong>市值</strong>：~$1.95万亿<br>
+<strong>行业</strong>：半导体代工</p>
+
+<hr>
+
+<h2 id="第1章--公司基本面分析">第1章 | 公司基本面分析</h2>
+
+<h3>1.1 商业模式</h3>
+<p>台积电是全球最大的纯晶圆代工企业（Pure-Play Foundry），成立于1987年，由张忠谋以56岁高龄创立。核心商业模式：<strong>不设计、不销售自有品牌芯片，专注为全球芯片设计公司提供制造服务</strong>。这一模式消除了与客户的利益冲突，建立了极高的信任壁垒。</p>
+<p>当前商业模式已从"纯代工"进化为"Foundry 2.0"——从前道晶圆制造延伸到后道先进封装（CoWoS），形成"制造+封装"一体化服务，在AI算力链上多个环节收费。</p>
+
+<table>
+<thead><tr><th>平台</th><th>占比</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>HPC（高性能计算）</td><td>~58%</td><td>AI加速器、数据中心CPU/GPU、网络芯片</td></tr>
+<tr><td>智能手机</td><td>~30%</td><td>AP、基带、RF</td></tr>
+<tr><td>IoT</td><td>~4%</td><td>边缘设备</td></tr>
+<tr><td>汽车</td><td>~5%</td><td>ADAS、车规级芯片</td></tr>
+<tr><td>消费电子</td><td>~1%</td><td>持续收缩</td></tr>
+<tr><td>其他</td><td>~2%</td><td>—</td></tr>
+</tbody>
+</table>
+
+<p><strong>制程营收占比（2025 Q4）</strong>：3nm占28%、5nm占35%、7nm占14%，先进制程（≤7nm）合计77%。</p>
+
+<blockquote>证据等级：一级（公司财报、投资者日披露）| 信心等级：★★★★★</blockquote>
+
+<h3>1.2 客户结构</h3>
+<p>2025年台积电前七大客户：英伟达(~19%)、苹果(~21%)、联发科(~9%)、高通(~8%)、AMD(~7%)、博通(~7%)、英特尔(~6%)。北美客户占比77%，英伟达+苹果合计约40%。服务465个客户，生产超过12,000种芯片。</p>
+<p><strong>反方证据</strong>：客户集中度5年来持续攀升（北美从65%→77%），抗风险能力反而下降。</p>
+
+<h3>1.3 竞争格局</h3>
+<table>
+<thead><tr><th>排名</th><th>公司</th><th>代工份额</th><th>先进制程地位</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>台积电</td><td>70%</td><td>>90%份额</td></tr>
+<tr><td>2</td><td>三星</td><td>7%</td><td>良率落后，3nm后持续掉队</td></tr>
+<tr><td>3</td><td>中芯国际</td><td>5.3%</td><td>仅成熟制程</td></tr>
+<tr><td>4</td><td>英特尔代工</td><td>~2%</td><td>18A节点尝试进入</td></tr>
+</tbody>
+</table>
+
+<p><strong>核心竞争优势</strong>：信任壁垒（互为竞争对手的客户都把核心芯片交给台积电）、技术领先（领先1-2代）、良率优势（领先30-50个百分点）、CoWoS垄断（AI芯片出货物理瓶颈）、"卖水人"定位（AI产业链无论谁胜谁败都受益）。</p>
+<p><strong>反方证据</strong>：三星在3nm后采用GAA架构更早，但良率问题导致客户流失；英特尔18A获得AWS订单；三星代工2025年单季亏损高达7.25亿美元。</p>
+<p><strong>最终判断</strong>：台积电在先进制程领域接近垄断地位，竞争格局3-5年内难以根本改变。信心等级：★★★★★</p>
+
+<h3>1.4 未来5-10年增长驱动力</h3>
+<ol>
+<li>AI算力需求爆发（AI芯片市场2025年500亿美元→2030年2000亿美元）</li>
+<li>2nm放量（2026-2028产能年增70%，首年产量比3nm高45%）</li>
+<li>CoWoS先进封装产能3年扩8倍仍供不应求</li>
+<li>定价权提升（先进制程涨价6-10%，CoWoS涨价20%）</li>
+<li>A16（1.6nm）2026下半年量产，背部供电技术</li>
+<li>光互联（COUPE平台）2026年量产，领先三星3年</li>
+</ol>
+<p><strong>为什么台积电可能成为未来十年的赢家？</strong> AI算力的物理上限正在由台积电的制造和封装能力定义。全球最强的技术壁垒+最强的定价权+AI卖水人角色，使其成为AI时代最确定的基础设施受益者。</p>
+
+<hr>
+
+<h2 id="第2章--行业研究tam">第2章 | 行业研究（TAM）</h2>
+
+<h3>2.1 行业规模与增长</h3>
+<table>
+<thead><tr><th>市场</th><th>2025年</th><th>2030年预计</th><th>CAGR</th></tr></thead>
+<tbody>
+<tr><td>全球晶圆代工</td><td>~$1,750亿</td><td>~$3,000亿</td><td>~11%</td></tr>
+<tr><td>AI芯片</td><td>~$500亿</td><td>~$2,000亿</td><td>>30%</td></tr>
+<tr><td>先进封装（CoWoS等效）</td><td>67万片</td><td>—</td><td>40-50%/年</td></tr>
+</tbody>
+</table>
+
+<h3>2.2 行业壁垒</h3>
+<ol>
+<li><strong>资本壁垒</strong>：一座先进制程晶圆厂投资$100-200亿，3年累计capex超$1,500亿</li>
+<li><strong>技术壁垒</strong>：2nm GAA架构、EUV光刻、背部供电等，需数十年积累</li>
+<li><strong>人才壁垒</strong>：半导体制造需要大量经验丰富的工程师</li>
+<li><strong>信任壁垒</strong>：客户将核心IP交给代工厂需要极深信任</li>
+<li><strong>生态壁垒</strong>：EDA工具、IP授权、材料供应链等配套生态</li>
+</ol>
+
+<h3>2.3 三情景分析</h3>
+<table>
+<thead><tr><th>情景</th><th>假设</th><th>2030年营收</th><th>CAGR</th></tr></thead>
+<tbody>
+<tr><td>最乐观</td><td>AI需求超预期+2nm/A16顺利+CoWoS垄断</td><td>$2,500亿+</td><td>15%+</td></tr>
+<tr><td>基准</td><td>AI需求稳健+技术路线按计划</td><td>$2,000亿</td><td>10-12%</td></tr>
+<tr><td>悲观</td><td>AI放缓+地缘冲击+竞争追赶</td><td>$1,400亿</td><td>5-7%</td></tr>
+</tbody>
+</table>
+<p><strong>行业判断</strong>：半导体代工具备长期成长空间，AI算力需求是未来10年最强结构性驱动力。信心等级：★★★★☆</p>
+
+<hr>
+
+<h2 id="第3章--fisher成长股评价">第3章 | Fisher成长股评价</h2>
+
+<table>
+<thead><tr><th>维度</th><th>评分</th><th>依据</th></tr></thead>
+<tbody>
+<tr><td>1. 市场潜力</td><td>9/10</td><td>AI芯片市场4倍增长，台积电是唯一可规模量产最先进制程的代工厂</td></tr>
+<tr><td>2. 管理层能力</td><td>8/10</td><td>C.C.魏哲家战略执行力强，但创始人退休后长期连续性待观察</td></tr>
+<tr><td>3. 研发能力</td><td>10/10</td><td>2nm GAA良率65-80%，领先三星2倍；A16背部供电全球首创</td></tr>
+<tr><td>4. 销售能力</td><td>8/10</td><td>465家客户、12,000种芯片，但客户集中度高</td></tr>
+<tr><td>5. 利润率改善空间</td><td>9/10</td><td>毛利率51.6%(2021)→66.2%(2026Q1)，净利率50.5%超越茅台</td></tr>
+<tr><td>6. 护城河</td><td>10/10</td><td>先进制程>90%份额+CoWoS~100%垄断+信任+技术+规模三重锁定</td></tr>
+<tr><td>7. 长期成长能力</td><td>9/10</td><td>2nm→A16→A13路线图清晰，产能排到2028年</td></tr>
+<tr><td>8. 企业文化</td><td>8/10</td><td>工程师文化深厚，纪律性强</td></tr>
+<tr><td>9. 资本配置能力</td><td>7/10</td><td>$1,500亿+capex史无前例，海外建厂成本5倍于台湾，ROI存疑</td></tr>
+<tr><td>10. 长期竞争优势</td><td>9/10</td><td>38年积累的技术+客户+生态壁垒，3-5年内无法复制</td></tr>
+</tbody>
+</table>
+
+<p><strong>总分：87/100</strong></p>
+<p><strong>最符合费雪思想</strong>：护城河满分——先进制程和先进封装的双重垄断，是全球科技产业中最深的护城河之一。</p>
+<p><strong>最不符合费雪思想</strong>：资本配置能力——$1,500亿+的3年资本开支规模史无前例，海外建厂（美国成本是台湾5倍）可能严重拖累ROI。地缘政治迫使的非效率投资，与费雪"将资本投向最高回报领域"的理念相悖。</p>
+<p>信心等级：★★★★☆</p>
+
+<hr>
+
+<h2 id="第4章--财务审计bear-audit">第4章 | 财务审计（Bear Audit）</h2>
+
+<h3>4.1 核心财务指标</h3>
+<table>
+<thead><tr><th>指标</th><th>2024年</th><th>2025年</th><th>2026Q1</th><th>趋势</th></tr></thead>
+<tbody>
+<tr><td>营收（亿美元）</td><td>900</td><td>1,224</td><td>359</td><td>🟢 强劲增长</td></tr>
+<tr><td>净利润（亿美元）</td><td>360</td><td>552</td><td>~180</td><td>🟢 增速超营收</td></tr>
+<tr><td>毛利率</td><td>59.9%</td><td>59.9%</td><td>66.2%</td><td>🟢 历史新高</td></tr>
+<tr><td>营业利润率</td><td>49.0%</td><td>49.6%</td><td>58.1%</td><td>🟢 历史新高</td></tr>
+<tr><td>净利率</td><td>40.0%</td><td>45.1%</td><td>50.5%</td><td>🟢 超越茅台</td></tr>
+<tr><td>资本开支（亿美元）</td><td>298</td><td>409</td><td>111</td><td>🟡 持续攀升</td></tr>
+</tbody>
+</table>
+
+<h3>4.2 现金流质量</h3>
+<table>
+<thead><tr><th>指标</th><th>2026Q1</th><th>评价</th></tr></thead>
+<tbody>
+<tr><td>经营现金流</td><td>NT$698.9B</td><td>🟢 强劲</td></tr>
+<tr><td>自由现金流</td><td>NT$348.2B</td><td>🟡 受N2库存爬坡影响环比下降</td></tr>
+<tr><td>营运资本变动</td><td>-NT$151.09B</td><td>🟡 N2量产准备导致库存增加</td></tr>
+</tbody>
+</table>
+
+<h3>4.3 红旗检查</h3>
+<table>
+<thead><tr><th>检查项</th><th>状态</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>应收账款异常增长</td><td>🟢</td><td>营收增长匹配，无异常</td></tr>
+<tr><td>存货异常积累</td><td>🟡</td><td>80天偏高但有N2爬坡合理原因</td></tr>
+<tr><td>毛利率异常波动</td><td>🟢</td><td>持续提升，有AI溢价支撑</td></tr>
+<tr><td>现金流与利润背离</td><td>🟢</td><td>自由现金流为正，利润质量高</td></tr>
+<tr><td>股权激励稀释</td><td>🟢</td><td>员工9万+，期权稀释可控</td></tr>
+<tr><td>会计政策变更</td><td>🟢</td><td>无异常</td></tr>
+<tr><td>融资依赖</td><td>🟢</td><td>自由现金流覆盖资本开支</td></tr>
+</tbody>
+</table>
+
+<h3>4.4 Bear Audit最终评级</h3>
+<p><strong>🟢 绿色</strong></p>
+<p>台积电财务质量极高：净利率50.5%（超越茅台）、自由现金流为正、低杠杆、利润质量高。唯一关注点是库存周转天数上升和$520-560亿资本开支的执行风险，但均有合理的业务解释。信心等级：★★★★★</p>
+
+<hr>
+
+<h2 id="第5章--bear-case完整做空逻辑">第5章 | Bear Case（完整做空逻辑）</h2>
+
+<h3>5.1 最脆弱环节</h3>
+
+<p><strong>1. 台海地缘政治风险（做空概率最高的催化剂）</strong></p>
+<ul>
+<li>90%+先进制程产能集中在台湾</li>
+<li>台湾能源进口依赖率>97%，电力供应脆弱</li>
+<li>关键材料库存仅数周</li>
+<li>若台海冲突升级，全球半导体供应链瘫痪，股价可能腰斩甚至更多</li>
+</ul>
+
+<p><strong>2. AI资本开支周期见顶</strong></p>
+<ul>
+<li>HPC占营收61%，AI资本开支放缓将直接冲击最大收入来源</li>
+<li>科技巨头AI Capex不可能永远30%+增长</li>
+<li>若AI ROI不及预期，资本开支收缩导致订单骤降</li>
+<li>历史参照：2000年互联网泡沫后半导体周期下跌60%+</li>
+</ul>
+
+<p><strong>3. 客户集中度持续攀升</strong></p>
+<ul>
+<li>北美客户占77%，英伟达+苹果占40%</li>
+<li>英伟达一家就占19%，若转单影响巨大</li>
+<li>反方证据：目前英伟达无替代选择，三星良率太低</li>
+</ul>
+
+<h3>5.2 如果股价腰斩，最大原因可能是什么？</h3>
+<p><strong>台海军事冲突</strong>。这是唯一能在短期内让台积电股价腰斩的催化剂。所有其他风险（AI周期、竞争、资本开支）都是渐进式的，市场有时间调整预期。但台海冲突是黑天鹅事件，一旦发生，台积电90%先进制程产能可能瞬间瘫痪，估值逻辑完全重写。</p>
+
+<p><strong>做空成功概率：20-25%</strong></p>
+<ul>
+<li>地缘政治黑天鹅：10-15%</li>
+<li>AI周期见顶+客户分散：8-10%</li>
+<li>技术路线失误：2-3%</li>
+</ul>
+<p>信心等级：★★★★☆</p>
+
+<hr>
+
+<h2 id="第6章--估值分析">第6章 | 估值分析</h2>
+
+<h3>6.1 当前估值</h3>
+<table>
+<thead><tr><th>指标</th><th>数值</th><th>评价</th></tr></thead>
+<tbody>
+<tr><td>股价</td><td>~$220</td><td>—</td></tr>
+<tr><td>市值</td><td>~$1.95万亿</td><td>全球前5</td></tr>
+<tr><td>PE (TTM)</td><td>~38x</td><td>3年分位点95.6%</td></tr>
+<tr><td>Forward PE (2026E)</td><td>~27x</td><td>基于2026E净利$700-750亿</td></tr>
+<tr><td>PEG</td><td>~0.87</td><td>30%增速/38倍PE，PEG&lt;1</td></tr>
+<tr><td>EV/EBITDA</td><td>~20-22x</td><td>高于行业~15x</td></tr>
+<tr><td>FCF Yield</td><td>~2.5-3%</td><td>受高资本开支压制</td></tr>
+<tr><td>净利率</td><td>50.5%</td><td>制造业天花板</td></tr>
+</tbody>
+</table>
+
+<h3>6.2 同行估值对比</h3>
+<table>
+<thead><tr><th>公司</th><th>PE (TTM)</th><th>Forward PE</th><th>增速</th><th>毛利率</th><th>评价</th></tr></thead>
+<tbody>
+<tr><td>台积电</td><td>38x</td><td>27x</td><td>30%+</td><td>66%</td><td>性价比最优</td></tr>
+<tr><td>英伟达</td><td>~60x</td><td>~40x</td><td>40%+</td><td>75%</td><td>更贵但增速更高</td></tr>
+<tr><td>阿斯麦</td><td>~60x</td><td>~45x</td><td>~20%</td><td>51%</td><td>更贵且增速更低</td></tr>
+<tr><td>三星</td><td>~12x</td><td>~10x</td><td>~10%</td><td>~30%</td><td>便宜但有原因</td></tr>
+<tr><td>英特尔</td><td>N/A</td><td>N/A</td><td>亏损</td><td>~40%</td><td>不具可比性</td></tr>
+</tbody>
+</table>
+
+<h3>6.3 核心问题：公司优秀 ≠ 股票值得买？</h3>
+<p>台积电毫无疑问是全球最优秀的半导体公司。但当前估值处于3年95.6%分位——过去3年绝大部分时间都比现在便宜。</p>
+<p><strong>支撑当前估值</strong>：Forward PE 27x对应30%+增速，PEG仅0.87；毛利率66.2%+净利率50.5%的历史新高盈利质量；AI芯片市场4倍增长TAM；CoWoS产能排到2027年，2nm排到2028年。</p>
+<p><strong>反对当前估值</strong>：3年95.6%分位意味着市场非常乐观；$520-560亿/年capex折旧压力尚未完全体现；海外建厂对毛利率拖累（-2~4pp）尚未显现；AI资本开支周期终将见顶。</p>
+<p><strong>估值判断：合理偏高</strong></p>
+<p>台积电的估值不便宜（95.6%分位），但也不离谱（Forward PE 27x + PEG 0.87）。市场为AI时代最强基础设施付出了合理溢价。当前不适合追高，若回调至Forward PE 22-24x（对应股价~$170-190），将是极具吸引力的建仓点。信心等级：★★★★☆</p>
+
+<hr>
+
+<h2 id="第7章--风险分析">第7章 | 风险分析</h2>
+
+<table>
+<thead><tr><th>风险类型</th><th>等级</th><th>已反映？</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>台海地缘政治</td><td>极高</td><td>部分</td><td>市场已计入一定地缘风险溢价，但黑天鹅无法充分定价</td></tr>
+<tr><td>AI资本开支周期</td><td>高</td><td>未充分</td><td>市场假设AI需求持续高增长，若见顶冲击巨大</td></tr>
+<tr><td>客户集中度</td><td>高</td><td>部分</td><td>英伟达19%+苹果21%，客户分散趋势刚开始</td></tr>
+<tr><td>海外建厂执行</td><td>中高</td><td>未充分</td><td>成本超支+良率问题+工期延误，毛利率拖累2-4pp</td></tr>
+<tr><td>三星/英特尔追赶</td><td>中</td><td>已反映</td><td>3-5年内威胁有限，长期需关注</td></tr>
+<tr><td>贸易战/关税</td><td>中高</td><td>部分</td><td>管理层已提示风险，客户行为暂未变化</td></tr>
+<tr><td>折旧压力</td><td>中</td><td>未充分</td><td>$500亿+/年capex将在5年后转化为巨额折旧</td></tr>
+<tr><td>汇率风险</td><td>中</td><td>已反映</td><td>新台币升值/贬值对美元报表有直接影响</td></tr>
+<tr><td>技术路线失误</td><td>低</td><td>—</td><td>台积电38年历史从未在技术路线图上犯大错</td></tr>
+</tbody>
+</table>
+
+<h3>最被低估的风险</h3>
+<p><strong>折旧大山</strong>。2025-2026年资本开支合计近$1,000亿，按5年折旧计算，2027-2030年每年新增折旧$200亿。即使营收保持30%增长，折旧占营收比也将从当前~20%提升到25%+，对毛利率构成持续压力。市场在为AI增长欢呼时，往往忽略了资本开支的滞后效应。</p>
+<p>信心等级：★★★★☆</p>
+
+<hr>
+
+<h2 id="第8章--投资逻辑">第8章 | 投资逻辑</h2>
+
+<h3>核心投资逻辑</h3>
+<p>台积电是AI时代最确定的基础设施受益者。投资逻辑可归纳为"三重锁定"：</p>
+<ol>
+<li><strong>技术锁定</strong>：先进制程>90%份额，2nm良率是对手2倍以上，3-5年内无法被复制</li>
+<li><strong>产能锁定</strong>：2nm排到2028年，CoWoS排到2027年——收入可见性远超任何半导体公司</li>
+<li><strong>生态锁定</strong>：465家客户、12,000种芯片的设计生态+EDA+IP+材料供应链，新进入者无法复制</li>
+</ol>
+
+<p><strong>为什么可能持续十年以上？</strong> AI芯片市场4倍增长（2025-2030），台积电是唯一可规模量产最先进制程的代工厂。2nm→A16→A13→A10路线图清晰，CoWoS封装能力定义AI算力物理上限。定价权持续增强（涨价6-10%客户无抵抗）。</p>
+
+<h3>投资逻辑失效条件</h3>
+<ol>
+<li>台海军事冲突——所有逻辑归零</li>
+<li>AI资本开支连续两季度增速低于20%——需求拐点信号</li>
+<li>三星或英特尔在2nm/18A节点良率突破60%+——技术差距缩小</li>
+<li>CoWoS产能利用率低于80%——供需反转信号</li>
+<li>毛利率连续两季度低于60%——盈利能力拐点</li>
+</ol>
+<p>信心等级：★★★★★</p>
+
+<hr>
+
+<h2 id="第9章--长期跟踪指标">第9章 | 长期跟踪指标</h2>
+
+<table>
+<thead><tr><th>#</th><th>KPI</th><th>重要性</th><th>频率</th><th>获取渠道</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>月度营收（新台币）</td><td>极高</td><td>月度</td><td>公司IR官网</td></tr>
+<tr><td>2</td><td>毛利率</td><td>极高</td><td>季度</td><td>季报</td></tr>
+<tr><td>3</td><td>先进制程占比（≤7nm）</td><td>高</td><td>季度</td><td>季报</td></tr>
+<tr><td>4</td><td>HPC平台占比</td><td>高</td><td>季度</td><td>季报</td></tr>
+<tr><td>5</td><td>CoWoS产能利用率/月产能</td><td>高</td><td>季度</td><td>行业研报/供应链</td></tr>
+<tr><td>6</td><td>2nm良率与产能爬坡</td><td>高</td><td>季度</td><td>行业研报/技术论坛</td></tr>
+<tr><td>7</td><td>资本开支执行率</td><td>中高</td><td>季度</td><td>季报</td></tr>
+<tr><td>8</td><td>库存周转天数</td><td>中高</td><td>季度</td><td>季报</td></tr>
+<tr><td>9</td><td>客户集中度（前5大占比）</td><td>中</td><td>半年度</td><td>年报/投资者日</td></tr>
+<tr><td>10</td><td>台海地缘政治动态</td><td>极高</td><td>持续</td><td>新闻/政策动态</td></tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2 id="第10章--最终结论">第10章 | 最终结论</h2>
+
+<h3>10.1 综合评分</h3>
+<table>
+<thead><tr><th>维度</th><th>评分（满分10）</th><th>权重</th><th>加权分</th></tr></thead>
+<tbody>
+<tr><td>商业模式</td><td>9.5</td><td>15%</td><td>1.425</td></tr>
+<tr><td>行业空间</td><td>9.0</td><td>10%</td><td>0.900</td></tr>
+<tr><td>管理层</td><td>8.0</td><td>10%</td><td>0.800</td></tr>
+<tr><td>财务质量</td><td>9.0</td><td>15%</td><td>1.350</td></tr>
+<tr><td>护城河</td><td>10.0</td><td>15%</td><td>1.500</td></tr>
+<tr><td>成长性</td><td>9.0</td><td>10%</td><td>0.900</td></tr>
+<tr><td>估值</td><td>6.5</td><td>10%</td><td>0.650</td></tr>
+<tr><td>风险</td><td>6.0</td><td>10%</td><td>0.600</td></tr>
+<tr><td>Fisher评分</td><td>8.7</td><td>5%</td><td>0.435</td></tr>
+<tr><td><strong>合计</strong></td><td>—</td><td>100%</td><td><strong>85.6/100</strong></td></tr>
+</tbody>
+</table>
+
+<h3>10.2 估值判断</h3>
+<p><strong>合理偏高</strong></p>
+<p>PE(TTM) 38x处于3年95.6%分位，Forward PE 27x+PEG 0.87从成长股角度不贵。市场为AI最强基础设施付出了合理溢价，但不具备安全边际。</p>
+
+<h3>10.3 投资建议</h3>
+<p><strong>持有 / 逢回调买入</strong></p>
+<p>台积电是全球半导体产业中护城河最深、增长确定性最高的公司。当前估值不便宜但也不离谱——好公司需要好价格。建议：</p>
+<ul>
+<li><strong>已持有者</strong>：继续持有，关注地缘政治风险和AI资本开支周期信号</li>
+<li><strong>未持有者</strong>：等待回调至Forward PE 22-24x（股价~$170-190）时建仓</li>
+<li><strong>核心仓位</strong>：适合作为半导体/AI板块的核心配置，但需控制单一持仓比例</li>
+</ul>
+
+<h3>10.4 一句话理由</h3>
+<p>全球最强护城河+AI时代最确定受益者，但95.6%估值分位意味着市场已经非常乐观，当前价位不适合追高，等回调再买。</p>
+
+<hr>
+
+<footer>
+<p>基于 <a href="https://github.com/abuzhabi/company_report">大灰皮证券研究统一框架</a> · Evidence First · 仅供研究参考，不构成投资建议</p>
+</footer>
+</div>
+</body>
+</html>
