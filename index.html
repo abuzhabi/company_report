@@ -142,6 +142,14 @@
     </div>
   </div>
 
+  <div class="filter-section">
+    <div class="filter-label">排序</div>
+    <div class="filter-bar" id="sortFilter">
+      <span class="filter-chip active" data-type="sort" data-value="date">最新优先</span>
+      <span class="filter-chip" data-type="sort" data-value="name">按名称</span>
+    </div>
+  </div>
+
   <div class="gallery" id="gallery">
     <div class="company-card" data-market="美股" data-sectors="半导体" onclick="location.href='reports/AMD/index.html'">
       <div class="company-body">
@@ -396,6 +404,31 @@
 (function() {
   var activeMarket = 'all';
   var activeSector = 'all';
+  var activeSort = 'date';
+
+  function getCardDate(card) {
+    var m = card.querySelector('.company-count').textContent.match(/最新\s(\d{4}-\d{2}-\d{2})/);
+    return m ? m[1] : '0000-00-00';
+  }
+
+  function getCardName(card) {
+    return card.querySelector('h3').textContent.trim();
+  }
+
+  function sortCards() {
+    var gallery = document.getElementById('gallery');
+    var cards = Array.from(gallery.querySelectorAll('.company-card'));
+    cards.sort(function(a, b) {
+      if (activeSort === 'date') {
+        var d = getCardDate(b).localeCompare(getCardDate(a));
+        if (d !== 0) return d;
+        return getCardName(a).localeCompare(getCardName(b), 'zh-CN');
+      } else {
+        return getCardName(a).localeCompare(getCardName(b), 'zh-CN');
+      }
+    });
+    cards.forEach(function(card) { gallery.appendChild(card); });
+  }
 
   function updateFilterCounts() {
     var marketCounts = { '美股': 0, 'A股': 0, '港股': 0, '日股': 0 };
@@ -463,6 +496,17 @@
     });
   });
 
+  document.querySelectorAll('[data-type="sort"]').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      document.querySelectorAll('[data-type="sort"]').forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      activeSort = chip.getAttribute('data-value');
+      sortCards();
+      applyFilters();
+    });
+  });
+
+  sortCards();
   updateFilterCounts();
 })();
 </script>
