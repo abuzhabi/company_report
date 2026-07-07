@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新易盛 (300502.SZ) — 大灰皮证券研究深度分析报告</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #e74c3c;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  line-height: 1.3;
+}
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+blockquote {
+  background: #f0f7ff;
+  border-left: 4px solid #3b82f6;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
+}
+p { margin: 8px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
+hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+code { background: var(--code-bg); padding: 2px 6px; border-radius: 4px; font-size: 0.88em; font-family: "SF Mono", "Fira Code", monospace; }
+strong { color: #1a1a2e; }
+ol, ul { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.85rem; }
+footer a { color: var(--accent); }
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.badge-red { background: var(--danger); color: #dc2626; }
+.badge-green { background: var(--success); color: #16a34a; }
+.badge-yellow { background: var(--warning); color: #d97706; }
+.badge-blue { background: #dbeafe; color: #1d4ed8; }
+.score-box {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+.score-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 120px;
+}
+.score-card .label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+.score-card .value { font-size: 1.6rem; font-weight: 800; margin-top: 4px; }
+.toc {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 28px;
+  margin: 16px 0 28px;
+}
+.toc-title { font-weight: 700; margin-bottom: 8px; font-size: 0.95rem; }
+.toc ol { padding-left: 20px; }
+.toc li { margin: 3px 0; font-size: 0.88rem; }
+.toc a { color: var(--text); }
+.toc a:hover { color: var(--accent); }
+@media (max-width: 640px) {
+  body { padding: 20px 12px; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.1rem; }
+  table { font-size: 0.78rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="../index.html" class="back-link">← 返回新易盛报告列表</a>
+<a href="../../index.html" class="back-link" style="margin-left:12px;">← 返回首页</a>
+
+<h1>新易盛 (300502.SZ) — 深度分析报告</h1>
+
+<blockquote>
+报告日期：2026-07-08 ｜ 分析框架：大灰皮证券研究统一框架（10章完整版）<br>
+数据截止：2025年报 + 2026Q1 ｜ 信心等级：★★★★☆
+</blockquote>
+
+<div class="score-box">
+  <div class="score-card"><div class="label">Fisher评分</div><div class="value" style="color:var(--accent);">73</div></div>
+  <div class="score-card"><div class="label">综合评分</div><div class="value" style="color:#2c3e50;">75</div></div>
+  <div class="score-card"><div class="label">估值判断</div><div class="value" style="color:#d97706;font-size:1.1rem;">合理偏高</div></div>
+  <div class="score-card"><div class="label">投资建议</div><div class="value" style="color:#d97706;font-size:1.1rem;">观察</div></div>
+</div>
+
+<div class="toc">
+  <div class="toc-title">目录</div>
+  <ol>
+    <li><a href="#ch1">公司基本面分析</a></li>
+    <li><a href="#ch2">行业研究（TAM）</a></li>
+    <li><a href="#ch3">Fisher成长股评价</a></li>
+    <li><a href="#ch4">财务审计（Bear Audit）</a></li>
+    <li><a href="#ch5">Bear Case（做空逻辑）</a></li>
+    <li><a href="#ch6">估值分析</a></li>
+    <li><a href="#ch7">风险分析</a></li>
+    <li><a href="#ch8">投资逻辑</a></li>
+    <li><a href="#ch9">长期跟踪指标</a></li>
+    <li><a href="#ch10">最终结论</a></li>
+  </ol>
+</div>
+
+<h2 id="ch1">第1章 | 公司基本面分析</h2>
+
+<h3>1.1 商业模式</h3>
+<p>新易盛（Eoptolink）是全球领先的高速光模块制造商，专注于数据中心和电信网络用光收发模块的研发、制造和销售。</p>
+
+<p><strong>核心产品矩阵：</strong></p>
+<ul>
+  <li><strong>800G光模块</strong>：2025年主力出货产品，已实现规模化量产</li>
+  <li><strong>1.6T光模块</strong>：全球首批量产交付，英伟达GB200平台认证通过（良率99%）</li>
+  <li><strong>400G及以下</strong>：存量市场，逐步被高速产品替代</li>
+  <li><strong>LPO（线性直驱）光模块</strong>：Meta独家供应商之一</li>
+</ul>
+
+<table>
+  <tr><th>关键指标</th><th>2025年</th><th>同比</th></tr>
+  <tr><td>营业收入</td><td>248.42亿元</td><td><span style="color:#dc2626;font-weight:700;">+187.29%</span></td></tr>
+  <tr><td>归母净利润</td><td>95.32亿元</td><td><span style="color:#dc2626;font-weight:700;">+235.89%</span></td></tr>
+  <tr><td>毛利率</td><td>47.25%</td><td>行业顶尖</td></tr>
+  <tr><td>海外营收占比</td><td>94.4%</td><td>—</td></tr>
+  <tr><td>2026Q1净利润</td><td>—</td><td><span style="color:#dc2626;font-weight:700;">+76.8%</span></td></tr>
+</table>
+
+<h3>1.2 竞争格局</h3>
+<p>全球光模块第一梯队三家中国企业：<strong>中际旭创 &gt; 新易盛 &gt; 华工科技</strong>。</p>
+<table>
+  <tr><th>公司</th><th>2025营收</th><th>2025净利</th><th>定位</th></tr>
+  <tr><td>中际旭创</td><td>382.4亿</td><td>107.97亿</td><td>全球第一，英伟达最大供应商</td></tr>
+  <tr><td>新易盛</td><td>248.42亿</td><td>95.32亿</td><td>全球前三，谷歌/Meta核心供应商</td></tr>
+  <tr><td>华工科技</td><td>~120亿</td><td>~15亿</td><td>第三梯队，激光器+光模块</td></tr>
+</table>
+
+<h3>1.3 核心竞争优势</h3>
+<ol>
+  <li><strong>客户绑定深度</strong>：谷歌第二大800G供应商、Meta LPO独家供应商、英伟达1.6T认证通过</li>
+  <li><strong>量产能力</strong>：1.6T光模块99%良率，全球首批量产交付</li>
+  <li><strong>精准研发策略</strong>：资源集中在当前最赚钱的可插拔光模块上</li>
+  <li><strong>垂直整合</strong>：从光器件到模块的垂直整合能力</li>
+</ol>
+
+<h3>1.4 增长驱动力</h3>
+<ul>
+  <li>AI算力爆发：全球云厂商CapEx持续高增长</li>
+  <li>带宽升级周期：800G → 1.6T → 3.2T</li>
+  <li>数据中心互联（DCI）需求增长</li>
+  <li>海外产能扩张（泰国工厂）</li>
+</ul>
+
+<blockquote><strong>为什么可能成为未来十年赢家？</strong>AI算力基建是确定性最高的科技趋势之一，光模块是数据中心网络层最核心的光电转换器件。新易盛凭借1.6T先发优势和深度客户绑定，处于最佳卡位。</blockquote>
+
+<hr>
+
+<h2 id="ch2">第2章 | 行业研究（TAM）</h2>
+
+<h3>2.1 市场规模</h3>
+<p>根据LightCounting/高盛数据：</p>
+<table>
+  <tr><th>年份</th><th>全球光模块市场（亿美元）</th><th>增速</th><th>核心驱动</th></tr>
+  <tr><td>2025</td><td>230-240</td><td>+50-52%</td><td>AI服务器爆发、800G规模上量</td></tr>
+  <tr><td>2026</td><td>288-300</td><td>+25-30%</td><td>1.6T商用元年、GB200放量</td></tr>
+  <tr><td>2027</td><td>370</td><td>+23%</td><td>1.6T出货破4000万只</td></tr>
+  <tr><td>2028</td><td>920</td><td>CAGR 65%</td><td>3.2T时代开启</td></tr>
+</table>
+
+<h3>2.2 三情景分析</h3>
+<table>
+  <tr><th>情景</th><th>2028年TAM</th><th>概率</th><th>假设</th></tr>
+  <tr><td>乐观</td><td>1200亿美元</td><td>25%</td><td>AI CapEx持续超预期，3.2T提前商用</td></tr>
+  <tr><td>基准</td><td>920亿美元</td><td>50%</td><td>云厂商按计划投资，1.6T/3.2T正常迭代</td></tr>
+  <tr><td>悲观</td><td>500亿美元</td><td>25%</td><td>AI投资放缓，CPO替代加速</td></tr>
+</table>
+
+<h3>2.3 行业判断</h3>
+<p>光模块行业正处于AI算力驱动的结构性超级周期。带宽升级每2-3年一代（400G→800G→1.6T→3.2T），每次升级带来ASP大幅提升。但行业高度依赖北美云厂商CapEx周期，技术路线存在CPO/硅光替代风险。</p>
+
+<hr>
+
+<h2 id="ch3">第3章 | Fisher成长股评价</h2>
+
+<table>
+  <tr><th>维度</th><th>评分</th><th>依据</th></tr>
+  <tr><td>1. 市场潜力</td><td><strong>9/10</strong></td><td>AI光模块TAM三年CAGR 65%，确定性极高</td></tr>
+  <tr><td>2. 管理层能力</td><td>7/10</td><td>高光荣技术出身，精准踩点800G/1.6T，客户集中度管理待观察</td></tr>
+  <tr><td>3. 研发能力</td><td>7/10</td><td>研发投入~7亿（中际旭创16亿的43%），精准投入但规模偏小</td></tr>
+  <tr><td>4. 销售能力</td><td><strong>9/10</strong></td><td>谷歌第二大、Meta独家、英伟达认证通过，客户绑定极深</td></tr>
+  <tr><td>5. 利润率改善空间</td><td>8/10</td><td>毛利率47%已顶尖，1.6T放量+规模效应有望进一步提升</td></tr>
+  <tr><td>6. 护城河</td><td>7/10</td><td>技术+客户双壁垒，但CPO/硅光是长期替代风险</td></tr>
+  <tr><td>7. 长期成长能力</td><td>7/10</td><td>3-5年高增长确定，10年维度受技术路线变化影响</td></tr>
+  <tr><td>8. 企业文化</td><td>7/10</td><td>务实技术派，"提前挖坑种树"策略证明前瞻性</td></tr>
+  <tr><td>9. 资本配置能力</td><td>6/10</td><td>H股上市计划+海外扩产，ROIC配置效率待验证</td></tr>
+  <tr><td>10. 长期竞争优势</td><td>6/10</td><td>当前领先但光模块行业技术迭代快，护城河耐久性存疑</td></tr>
+</table>
+
+<p><strong>Fisher总分：73/100</strong></p>
+<ul>
+  <li><strong>最符合费雪思想</strong>：市场潜力（9分）— AI算力是时代级趋势</li>
+  <li><strong>最不符合费雪思想</strong>：长期竞争优势（6分）— 技术路线变化快，护城河耐久性不足</li>
+</ul>
+
+<hr>
+
+<h2 id="ch4">第4章 | 财务审计（Bear Audit）</h2>
+
+<h3>4.1 财务质量审查</h3>
+<table>
+  <tr><th>指标</th><th>2025年值</th><th>评价</th></tr>
+  <tr><td>资产负债率</td><td>31.99%</td><td><span class="badge badge-green">✅ 极低</span></td></tr>
+  <tr><td>毛利率</td><td>47.25%</td><td><span class="badge badge-green">✅ 行业顶尖</span></td></tr>
+  <tr><td>经营现金流</td><td>46.37亿（+1529%）</td><td><span class="badge badge-green">✅ 回款极强</span></td></tr>
+  <tr><td>有息负债</td><td>几乎为零</td><td><span class="badge badge-green">✅ 无融资依赖</span></td></tr>
+  <tr><td>汇兑收益</td><td>2.55亿</td><td><span class="badge badge-yellow">⚠️ 海外占比94%，汇率敏感</span></td></tr>
+  <tr><td>合同负债</td><td>0.10亿→2.92亿</td><td><span class="badge badge-green">✅ 订单饱满</span></td></tr>
+  <tr><td>净利润含金量</td><td>扣非≈净利（仅3300万非经常）</td><td><span class="badge badge-green">✅ 盈利质量极高</span></td></tr>
+</table>
+
+<h3>4.2 红旗检查</h3>
+<ul>
+  <li>❌ <strong>客户集中度</strong>：前三大客户占营收58%，单一客户依赖度高</li>
+  <li>⚠️ <strong>汇率风险</strong>：94%海外收入，美元汇率波动影响利润</li>
+  <li>⚠️ <strong>存货风险</strong>：高速产品迭代快，存货减值风险</li>
+  <li>✅ 无应收账款异常</li>
+  <li>✅ 无股权激励异常稀释</li>
+  <li>✅ 现金流与利润匹配</li>
+</ul>
+
+<h3>4.3 审计结论</h3>
+<p><span class="badge badge-green">评级：绿色（财务质量优秀）</span></p>
+<p>盈利质量极高（扣非净利≈净利），现金流强劲，负债率极低。主要关注点是客户集中度和汇率敏感性，但均为经营性风险而非财务造假风险。</p>
+
+<hr>
+
+<h2 id="ch5">第5章 | Bear Case（完整做空逻辑）</h2>
+
+<h3>5.1 最脆弱环节</h3>
+<ol>
+  <li><strong>客户集中度</strong>：前三大客户（谷歌、Meta、英伟达）占营收58%。任一大客户削减订单或切换供应商，营收将受到显著冲击。</li>
+  <li><strong>AI CapEx周期性</strong>：光模块需求高度依赖北美云厂商AI投资节奏。若AI ROI不及预期导致CapEx放缓，行业将面临断崖式下行。</li>
+  <li><strong>技术路线替代</strong>：CPO（共封装光学）和硅光技术若加速商用，可能替代传统可插拔光模块，颠覆现有竞争格局。</li>
+</ol>
+
+<h3>5.2 增长故事中的脆弱假设</h3>
+<ul>
+  <li>假设1：AI CapEx持续高增长 → 若云厂商AI变现不及预期，CapEx可能大幅削减</li>
+  <li>假设2：可插拔光模块路线延续 → CPO若提前商用，现有产能可能变成沉没成本</li>
+  <li>假设3：高毛利率可持续 → 行业周期下行时，毛利率可能从47%降至30%以下</li>
+  <li>假设4：客户不切换供应商 → 光模块行业客户有双供应商策略习惯</li>
+</ul>
+
+<h3>5.3 如果股价腰斩</h3>
+<p><strong>AI CapEx周期见顶 + CPO技术路线切换</strong>。光模块是典型的周期成长股，当AI投资增速放缓叠加技术路线不确定性时，估值可能从PE 66x压缩至PE 20-30x。</p>
+<p><strong>做空成功概率：30%</strong>（短期 unlikely，但中期2027-2028年需警惕周期拐点）</p>
+
+<hr>
+
+<h2 id="ch6">第6章 | 估值分析</h2>
+
+<h3>6.1 估值指标</h3>
+<table>
+  <tr><th>指标</th><th>当前值</th><th>评价</th></tr>
+  <tr><td>PE(TTM)</td><td>65.81x</td><td>偏高，但需结合增速看</td></tr>
+  <tr><td>PEG</td><td>0.22</td><td><span class="badge badge-green">✅ 极低</span></td></tr>
+  <tr><td>PB</td><td>34.68x</td><td>偏高</td></tr>
+  <tr><td>市销率</td><td>24.26x</td><td>偏高</td></tr>
+  <tr><td>总市值</td><td>~7067亿</td><td>A股光模块双雄之一</td></tr>
+</table>
+
+<h3>6.2 同行对比</h3>
+<table>
+  <tr><th>公司</th><th>PE(TTM)</th><th>PEG</th><th>2025净利增速</th></tr>
+  <tr><td>新易盛</td><td>65.81x</td><td>0.22</td><td>+236%</td></tr>
+  <tr><td>中际旭创</td><td>~50x</td><td>~0.30</td><td>+170%</td></tr>
+</table>
+
+<h3>6.3 估值判断</h3>
+<p>PE 66x看似偏高，但2025年净利润增速236%、PEG仅0.22，意味着增长能快速消化估值。若2026年净利润增长50%至~143亿，PE将降至~49x。</p>
+<p><strong>估值判断：合理偏高</strong></p>
+
+<hr>
+
+<h2 id="ch7">第7章 | 风险分析</h2>
+
+<h3>7.1 行业风险</h3>
+<ul>
+  <li><strong>AI CapEx周期性</strong>：云厂商AI投资节奏不确定，可能出现投资放缓</li>
+  <li><strong>技术路线切换</strong>：CPO/硅光可能替代可插拔光模块</li>
+</ul>
+
+<h3>7.2 客户风险</h3>
+<ul>
+  <li><strong>客户集中度</strong>：前三大客户占58%，任一客户流失影响重大</li>
+  <li><strong>双供应商策略</strong>：客户可能引入更多供应商降低依赖</li>
+</ul>
+
+<h3>7.3 地缘政治风险</h3>
+<ul>
+  <li><strong>中美科技脱钩</strong>：94%海外收入，出口管制风险</li>
+  <li><strong>关税风险</strong>：美国可能对中国光模块加征关税</li>
+</ul>
+
+<h3>7.4 经营风险</h3>
+<ul>
+  <li><strong>汇率风险</strong>：美元收入占比高，汇率波动影响利润</li>
+  <li><strong>存货减值</strong>：高速产品迭代快，旧型号存货减值风险</li>
+  <li><strong>产能扩张风险</strong>：泰国工厂等海外产能扩张的管理和合规风险</li>
+</ul>
+
+<h3>7.5 已反映 vs 被低估</h3>
+<ul>
+  <li>✅ 已反映：AI高景气、1.6T放量、客户绑定</li>
+  <li>⚠️ 被低估：CPO技术替代的时间窗口、地缘政治风险升级</li>
+</ul>
+
+<hr>
+
+<h2 id="ch8">投资逻辑</h2>
+
+<h3>8.1 核心投资逻辑</h3>
+<ol>
+  <li><strong>AI算力是确定性最高的科技趋势</strong>：全球云厂商AI CapEx持续高增长，光模块是数据中心网络层最核心器件</li>
+  <li><strong>带宽升级超级周期</strong>：800G→1.6T→3.2T，每次升级ASP大幅提升，新易盛1.6T先发优势明显</li>
+  <li><strong>深度客户绑定</strong>：谷歌、Meta、英伟达三大客户卡位最佳，1.6T良率99%构筑短期切换壁垒</li>
+  <li><strong>盈利质量极高</strong>：毛利率47%、负债率32%、现金流强劲，财务基础扎实</li>
+</ol>
+
+<h3>8.2 投资逻辑失效条件</h3>
+<ul>
+  <li>AI CapEx增速降至个位数（云厂商AI变现不及预期）</li>
+  <li>CPO技术提前商用（2027年前大规模替代可插拔模块）</li>
+  <li>核心客户切换供应商（英伟达/谷歌引入其他供应商）</li>
+  <li>地缘政治升级导致出口限制</li>
+</ul>
+
+<h3>8.3 持续性判断</h3>
+<p>3-5年内投资逻辑高度确定（AI基建仍在加速期）。10年维度存在不确定性（技术路线变化、周期性）。不是费雪型长期持有标的，而是周期成长型交易标的。</p>
+
+<hr>
+
+<h2 id="ch9">长期跟踪指标</h2>
+
+<table>
+  <tr><th>#</th><th>KPI</th><th>重要性</th><th>频率</th><th>数据来源</th></tr>
+  <tr><td>1</td><td>北美云厂商CapEx增速</td><td>★★★★★</td><td>季度</td><td>财报/电话会议</td></tr>
+  <tr><td>2</td><td>800G/1.6T出货量及ASP</td><td>★★★★★</td><td>季度</td><td>公司财报/LightCounting</td></tr>
+  <tr><td>3</td><td>前五大客户收入占比</td><td>★★★★☆</td><td>半年</td><td>公司财报</td></tr>
+  <tr><td>4</td><td>毛利率趋势</td><td>★★★★☆</td><td>季度</td><td>公司财报</td></tr>
+  <tr><td>5</td><td>合同负债变化</td><td>★★★★☆</td><td>季度</td><td>公司财报</td></tr>
+  <tr><td>6</td><td>存货周转天数</td><td>★★★☆☆</td><td>季度</td><td>公司财报</td></tr>
+  <tr><td>7</td><td>CPO/硅光技术进展</td><td>★★★★☆</td><td>半年</td><td>行业会议/论文</td></tr>
+  <tr><td>8</td><td>英伟达GB200/GB300出货量</td><td>★★★★☆</td><td>季度</td><td>英伟达财报</td></tr>
+  <tr><td>9</td><td>竞争对手（中际旭创）动态</td><td>★★★☆☆</td><td>季度</td><td>公开信息</td></tr>
+  <tr><td>10</td><td>美元汇率走势</td><td>★★☆☆☆</td><td>月度</td><td>外汇市场</td></tr>
+</table>
+
+<hr>
+
+<h2 id="ch10">最终结论</h2>
+
+<h3>综合评分</h3>
+<table>
+  <tr><th>维度</th><th>评分（/10）</th><th>权重</th></tr>
+  <tr><td>商业模式</td><td>8</td><td>15%</td></tr>
+  <tr><td>行业前景</td><td>9</td><td>15%</td></tr>
+  <tr><td>管理层</td><td>7</td><td>10%</td></tr>
+  <tr><td>财务质量</td><td>8</td><td>15%</td></tr>
+  <tr><td>护城河</td><td>7</td><td>10%</td></tr>
+  <tr><td>成长性</td><td>9</td><td>15%</td></tr>
+  <tr><td>估值</td><td>5</td><td>10%</td></tr>
+  <tr><td>风险</td><td>5</td><td>5%</td></tr>
+  <tr><td>Fisher评分</td><td>7（73/100）</td><td>5%</td></tr>
+</table>
+
+<div class="score-box">
+  <div class="score-card"><div class="label">综合评分</div><div class="value" style="color:#2c3e50;">75/100</div></div>
+  <div class="score-card"><div class="label">估值判断</div><div class="value" style="color:#d97706;font-size:1.1rem;">合理偏高</div></div>
+  <div class="score-card"><div class="label">投资建议</div><div class="value" style="color:#d97706;font-size:1.1rem;">观察</div></div>
+</div>
+
+<blockquote><strong>一句话理由</strong>：AI算力时代的"光纤神经"缔造者，1.6T先发+深度客户绑定=短期最强卡位，但PE 66x+周期性+技术替代风险=不是闭眼买入的安全边际。</blockquote>
+
+<footer>
+  <p>报告声明：本报告基于公开信息分析，不构成投资建议。所有数据来自公司财报、行业研究机构及权威财经媒体。</p>
+  <p>信心等级：★★★★☆（一级资料充分，部分推测已标注）</p>
+  <p><a href="../index.html">← 返回新易盛报告列表</a> ｜ <a href="../../index.html">← 返回首页</a></p>
+</footer>
+
+</div>
+</body>
+</html>
