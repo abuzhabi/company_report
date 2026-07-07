@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>可口可乐 (KO) — 大灰皮证券研究深度分析报告</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #d40000;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  line-height: 1.3;
+}
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+
+blockquote {
+  background: #f0f7ff;
+  border-left: 4px solid #3b82f6;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
+}
+
+p { margin: 8px 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+
+strong { color: #1a1a2e; }
+
+ol, ul { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+footer a { color: var(--accent); }
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.badge-red { background: var(--danger); color: #dc2626; }
+.badge-green { background: var(--success); color: #16a34a; }
+.badge-yellow { background: var(--warning); color: #d97706; }
+.badge-blue { background: #dbeafe; color: #1d4ed8; }
+
+.score-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+.score-card .score-big {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  text-align: center;
+}
+.score-card .score-label {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  body { padding: 20px 12px; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 6px 8px; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="./index.html">&larr; 返回报告列表</a>
+
+<h1>可口可乐 (KO) — 大灰皮证券研究深度分析报告</h1>
+
+<blockquote>
+<p><strong>日期：</strong> 2026-07-07</p>
+<p><strong>框架：</strong> 大灰皮证券研究统一框架 · Evidence First</p>
+<p><strong>标的：</strong> NYSE: KO | 股价 ~$83 | 市值 ~$357B</p>
+<p><strong>Fisher评分：</strong> <span class="badge badge-yellow">68/100</span> | <strong>综合评分：</strong> <span class="badge badge-yellow">75/100</span></p>
+<p><strong>估值判断：</strong> <span class="badge badge-red">高估</span> | <strong>投资建议：</strong> <span class="badge badge-yellow">观察</span></p>
+<p><strong>前置结论：</strong> 可口可乐是全球最强大的品牌护城河之一——$46.3B品牌价值+200国分销网络+30+十亿美元品牌组合。但27x PE定价已透支了3-5%的有机增长。DCF公允价值$62.72意味着当前股价溢价25%。不是坏公司，是太贵的公司。等回调到$65-70区间再考虑入场。</p>
+</blockquote>
+
+<hr />
+
+<h2>第1章 | 公司基本面分析</h2>
+
+<h3>商业模式</h3>
+
+<blockquote>
+<p><strong>结论：</strong> 可口可乐不是一家饮料制造商——它是一家<strong>品牌授权+浓缩液供应商</strong>。公司销售浓缩液和糖浆给全球约200家独立装瓶合作伙伴，由后者负责生产、包装、配送和零售。这种"轻资产+品牌许可"模式是消费行业利润率最高的商业模式之一。</p>
+</blockquote>
+
+<p><strong>收入结构（FY2025）：</strong></p>
+
+<table>
+<thead><tr><th>收入来源</th><th>金额</th><th>占比</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>浓缩液销售</td><td>~$25B</td><td>52%</td><td>向装瓶商出售浓缩液和糖浆，高毛利核心</td></tr>
+<tr><td>成品饮料</td><td>~$20B</td><td>42%</td><td>部分市场仍直接销售成品（fairlife、Costa等）</td></tr>
+<tr><td>其他收入</td><td>~$3B</td><td>6%</td><td>广告基金、技术服务等</td></tr>
+</tbody>
+</table>
+
+<p><strong>关键财务指标（FY2025）：</strong></p>
+
+<table>
+<thead><tr><th>指标</th><th>值</th><th>同比</th></tr></thead>
+<tbody>
+<tr><td>净营收</td><td>$47.9B</td><td>+2%</td></tr>
+<tr><td>有机营收增长</td><td>+5%</td><td>—</td></tr>
+<tr><td>EPS (GAAP)</td><td>$3.04</td><td>+23%</td></tr>
+<tr><td>可比EPS</td><td>$3.00</td><td>+4%</td></tr>
+<tr><td>可比运营利润率</td><td>31.2%</td><td>+1.2pp</td></tr>
+<tr><td>毛利率</td><td>61.6%</td><td>—</td></tr>
+<tr><td>净利润率</td><td>27.3%</td><td>—</td></tr>
+<tr><td>运营现金流</td><td>$7.4B</td><td>—</td></tr>
+<tr><td>自由现金流（除fairlife或有付款）</td><td>$11.4B</td><td>—</td></tr>
+</tbody>
+</table>
+
+<p><strong>核心品牌组合（30+十亿美元级品牌）：</strong></p>
+<ul>
+<li>气泡软饮：Coca-Cola、Coca-Cola Zero Sugar、Diet Coke、Sprite、Fanta</li>
+<li>水/运动/咖啡/茶：Dasani、smartwater、vitaminwater、Topo Chico、BODYARMOR、Powerade、Costa、Georgia</li>
+<li>果汁/乳制品/植物饮料：Minute Maid、Simply、innocent、Del Valle、fairlife、AdeS</li>
+</ul>
+
+<h3>核心竞争优势</h3>
+
+<table>
+<thead><tr><th>优势</th><th>强度</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>品牌价值</td><td><span class="badge badge-green">5/5</span></td><td>Brand Finance 2025估值$46.3B（+32%），是百事的2倍+</td></tr>
+<tr><td>分销网络</td><td><span class="badge badge-green">5/5</span></td><td>200+国家、~200家装瓶商、~900工厂、3300万+零售点、每日22亿份供应</td></tr>
+<tr><td>规模经济</td><td><span class="badge badge-green">4/5</span></td><td>全球最大非酒精饮料公司，采购和分销成本优势</td></tr>
+<tr><td>产品组合</td><td><span class="badge badge-green">4/5</span></td><td>30+十亿美元品牌跨5大品类，风险分散</td></tr>
+<tr><td>客户锁定</td><td><span class="badge badge-green">4/5</span></td><td>装瓶商体系+零售货架空间形成进入壁垒</td></tr>
+</tbody>
+</table>
+
+<h3>未来5-10年增长驱动力</h3>
+<ul>
+<li><strong>零糖战略</strong>：Coca-Cola Zero Sugar 2025年增长14%，是组合中最强引擎</li>
+<li><strong>功能性饮料</strong>：Simply Pop益生元苏打、fairlife高蛋白牛奶（2026年新工厂释放30%产能）</li>
+<li><strong>新兴市场渗透</strong>：印度、非洲、东南亚人均CSD消费远低于美国</li>
+<li><strong>数字化转型</strong>：2025年设立首席数字官，AI驱动营销和供应链优化</li>
+<li><strong>Costa咖啡即饮</strong>：全球RTD咖啡市场CAGR 7-8%至2030年</li>
+</ul>
+
+<blockquote>
+<p><strong>为什么可口可乐可能成为未来十年赢家？</strong> $46.3B品牌价值+200国分销网络+30+十亿美元品牌组合构成了消费行业最坚固的护城河。零糖转型（+14%）证明品牌可以适应健康趋势。关键是能否足够快地将组合从CSD（69%销量）转向零糖和功能性饮料，以对冲GLP-1和糖税的长期逆风。</p>
+</blockquote>
+
+<p><strong>证据等级：</strong> 一级（10-K年报、Q4 2025财报） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第2章 | 行业研究（TAM）</h2>
+
+<h3>全球非酒精饮料市场</h3>
+
+<table>
+<thead><tr><th>细分市场</th><th>2025年规模</th><th>2030年预测</th><th>CAGR</th></tr></thead>
+<tbody>
+<tr><td>非酒精饮料（整体）</td><td>$1,220B</td><td>$1,905B</td><td>~7.7%</td></tr>
+<tr><td>碳酸软饮料</td><td>$482B</td><td>~$600B</td><td>~4.6%</td></tr>
+<tr><td>即饮咖啡</td><td>~$120B</td><td>~$180B</td><td>~7-8%</td></tr>
+<tr><td>功能性饮料</td><td>~$180B</td><td>~$280B</td><td>~8-9%</td></tr>
+</tbody>
+</table>
+
+<h3>三情景分析</h3>
+
+<table>
+<thead><tr><th>情景</th><th>10年CAGR</th><th>2035年行业规模</th><th>可口可乐定位</th></tr></thead>
+<tbody>
+<tr><td><span class="badge badge-green">最乐观</span></td><td>~6%</td><td>~$2.0T</td><td>零糖+功能性完美转型，份额升至25%+</td></tr>
+<tr><td><span class="badge badge-blue">基准</span></td><td>~4%</td><td>~$1.6T</td><td>维持领先份额，有机增长4-5%</td></tr>
+<tr><td><span class="badge badge-red">悲观</span></td><td>~2%</td><td>~$1.3T</td><td>GLP-1+糖税压制CSD需求，份额下降</td></tr>
+</tbody>
+</table>
+
+<p><strong>行业判断：</strong> 非酒精饮料是$1.2万亿的庞大市场，但可口可乐核心的CSD品类增速仅2-5%。增长引擎正从含糖汽水转向零糖、功能性饮料和新兴市场。可口可乐的机会在于用品牌和分销杠杆抢占新兴品类份额，而非依赖行业整体扩张。</p>
+
+<p><strong>证据等级：</strong> 三级（行业研究报告） | <strong>信心等级：</strong> ★★★☆☆</p>
+
+<hr />
+
+<h2>第3章 | Fisher成长股评价</h2>
+
+<div class="score-card">
+  <div class="score-big">68 / 100</div>
+  <div class="score-label">Fisher 成长股综合评分</div>
+</div>
+
+<table>
+<thead><tr><th>维度</th><th>评分</th><th>依据</th></tr></thead>
+<tbody>
+<tr><td>① 市场潜力</td><td><strong>4</strong></td><td>非酒精饮料$1.2T市场但CSD品类成熟，发达市场渗透饱和</td></tr>
+<tr><td>② 管理层能力</td><td><strong>7</strong></td><td>Quincey 9年CEO期间成功转型"全品类饮料公司"，新增10+十亿品牌；但CEO交接增加不确定性</td></tr>
+<tr><td>③ 研发能力</td><td><strong>6</strong></td><td>零糖和品类扩展创新强，但非技术驱动型创新；设首席数字官追赶数字化</td></tr>
+<tr><td>④ 销售能力</td><td><strong>9</strong></td><td>全球最强饮料分销体系——200国、200装瓶商、3300万零售点，无人可比</td></tr>
+<tr><td>⑤ 利润率改善</td><td><strong>6</strong></td><td>31.2%可比运营利润率已是行业顶尖，提升空间有限；轻资产转型接近完成</td></tr>
+<tr><td>⑥ 护城河</td><td><strong>9</strong></td><td>品牌价值$46.3B+全球分销网络=消费行业最宽护城河之一</td></tr>
+<tr><td>⑦ 长期成长能力</td><td><strong>5</strong></td><td>3-5%有机增长，不是高成长股；依赖提价而非销量增长</td></tr>
+<tr><td>⑧ 企业文化</td><td><strong>7</strong></td><td>139年品牌遗产，强大系统文化；但大型企业官僚化不可避免</td></tr>
+<tr><td>⑨ 资本配置</td><td><strong>6</strong></td><td>63年连续分红增长（股息之王）；但回购力度弱，BODYARMOR减值$960M暴露并购纪律问题</td></tr>
+<tr><td>⑩ 长期竞争优势</td><td><strong>9</strong></td><td>品牌信任近乎永久，分销网络不可复制，竞争位置极其稳固</td></tr>
+</tbody>
+</table>
+
+<p><strong>最符合费雪思想：</strong> 护城河（品牌+分销）和销售能力——全球最强的饮料分销体系</p>
+<p><strong>最不符合费雪思想：</strong> 市场潜力和长期成长能力——费雪追求10倍增长潜力，可口可乐是3-5%的成熟现金牛</p>
+
+<p><strong>证据等级：</strong> 一级（年报）+ 三级（行业分析） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第4章 | 财务审计（Bear Audit）</h2>
+
+<h3>以做空机构视角审查</h3>
+
+<table>
+<thead><tr><th>审计维度</th><th>状态</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>应收账款</td><td><span class="badge badge-green">绿色</span></td><td>DSO 23天，在装瓶体系下合理</td></tr>
+<tr><td>存货</td><td><span class="badge badge-green">绿色</span></td><td>存货周转4.2x，浓缩液业务存货轻</td></tr>
+<tr><td>经营现金流</td><td><span class="badge badge-yellow">黄色</span></td><td>运营现金流$7.4B vs 净利润$13.1B，覆盖率57%偏低；但剔除fairlife或有付款后FCF $11.4B更健康</td></tr>
+<tr><td>自由现金流</td><td><span class="badge badge-yellow">黄色</span></td><td>报告FCF $5.3B因$6.1B fairlife或有付款被压缩；正常化FCF $11.4B</td></tr>
+<tr><td>毛利率</td><td><span class="badge badge-green">绿色</span></td><td>61.6%毛利率显示极强定价权，行业顶尖</td></tr>
+<tr><td>ROIC</td><td><span class="badge badge-yellow">黄色</span></td><td>ROIC 15.8%看似不错，但因装瓶再特许化会计处理被扭曲；实际浓缩液业务ROIC更高</td></tr>
+<tr><td>股权激励</td><td><span class="badge badge-green">绿色</span></td><td>股份数量稳定在~4.3B，稀释可控</td></tr>
+<tr><td>债务结构</td><td><span class="badge badge-yellow">黄色</span></td><td>总债务/EBITDA 3.07x，净债务$35.2B；利息覆盖10.67x尚可，但杠杆偏高</td></tr>
+<tr><td>会计政策</td><td><span class="badge badge-green">绿色</span></td><td>无重大会计政策变更红旗</td></tr>
+<tr><td>商誉/无形资产</td><td><span class="badge badge-yellow">黄色</span></td><td>BODYARMOR $960M减值（Q4 2025），$5.6B收购价大幅缩水；fairlife或有付款$6.1B</td></tr>
+</tbody>
+</table>
+
+<h3>红旗识别</h3>
+<ol>
+<li><strong>增长质量存疑</strong>：有机增长5%中4%来自提价/产品组合，仅1%来自浓缩液销量增长——增长主要靠涨价而非卖更多</li>
+<li><strong>BODYARMOR并购失败</strong>：$5.6B收购→$960M减值，运动饮料未能撼动Gatorade地位</li>
+<li><strong>fairlife或有付款</strong>：$6.1B一次性付款严重扭曲了FY2025的自由现金流</li>
+<li><strong>负现金转换周期波动大</strong>：从-340天到-208天的大幅波动需要关注</li>
+</ol>
+
+<h3>审计评级：<span class="badge badge-yellow">黄色</span></h3>
+
+<blockquote>
+<p><strong>结论：</strong> 财务报表基本干净，没有造假迹象。但增长质量（依赖提价）和并购纪律（BODYARMOR减值）值得关注。高杠杆在利率上升环境中是潜在风险。fairlife或有付款扭曲了FY2025现金流，需用正常化FCF $11.4B评估。</p>
+</blockquote>
+
+<p><strong>证据等级：</strong> 一级（10-K、财报） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第5章 | Bear Case（完整做空逻辑）</h2>
+
+<h3>最脆弱环节</h3>
+
+<p><strong>1. 增长依赖提价，销量停滞</strong></p>
+<ul>
+<li>FY2025有机增长5% = 4%提价 + 1%销量增长</li>
+<li>全球单位箱销量全年持平（0%）</li>
+<li>发达市场CSD消费量持续下滑</li>
+<li><strong>如果消费者拒绝继续接受涨价，增长引擎熄火</strong></li>
+</ul>
+
+<p><strong>2. GLP-1药物的慢性结构性威胁</strong></p>
+<ul>
+<li>Morgan Stanley研究：GLP-1使用者减少含糖饮料消费25-30%</li>
+<li>2025年约9%美国成年人已尝试GLP-1药物，渗透率持续提升</li>
+<li>虽然零糖和蛋白饮料受益，但CSD占销量69%——核心品类受冲击</li>
+<li><strong>这是尚未在财报数据中完全显现但可量化的长期逆风</strong></li>
+</ul>
+
+<p><strong>3. 糖税扩散</strong></p>
+<ul>
+<li>全球100+司法管辖区已实施含糖饮料税</li>
+<li>WHO建议零售价提高20%作为公共卫生措施</li>
+<li>直接压缩利润空间或转嫁消费者导致销量下降</li>
+</ul>
+
+<p><strong>4. BODYARMOR暴露并购纪律问题</strong></p>
+<ul>
+<li>$5.6B收购→$960M减值（仅Q4 2025就减值17%）</li>
+<li>表明即使有可口可乐的分销网络，也无法保证品类成功</li>
+<li>影响市场对未来并购（如Simply Pop扩展）的信心</li>
+</ul>
+
+<p><strong>5. 塑料污染声誉税</strong></p>
+<ul>
+<li>连续6年全球第一大塑料污染者</li>
+<li>悄然撤回包装回收承诺（50%→35-40%，推迟到2035年）</li>
+<li>ESG投资者压力和潜在监管成本</li>
+</ul>
+
+<h3>如果股价腰斩，最大原因可能是什么？</h3>
+
+<blockquote>
+<p><strong>最可能场景：</strong> GLP-1药物渗透率加速+多国糖税 simultaneously 扩散，导致CSD销量出现3-5%年度下滑。可口可乐无法足够快地将组合转向零糖/功能性饮料，有机增长转负。27x PE的估值在零增长或负增长环境下无法维持，压缩至20x以下，股价腰斩至$40。</p>
+</blockquote>
+
+<p><strong>做空成功概率：25-30%</strong></p>
+<p>理由：品牌护城河和分销网络极其坚固，短期崩溃概率低。但长期结构性逆风（GLP-1、糖税、塑料监管）是真实且加速的。最可能的路径是缓慢估值压缩而非暴跌。</p>
+
+<p><strong>证据等级：</strong> 二级+三级 | <strong>信心等级：</strong> ★★★☆☆</p>
+
+<hr />
+
+<h2>第6章 | 估值分析</h2>
+
+<h3>当前估值倍数</h3>
+
+<table>
+<thead><tr><th>指标</th><th>当前值</th><th>历史10年均值</th><th>百分位</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td>P/E (TTM)</td><td>27.3x</td><td>33.3x</td><td>57th</td><td>中性偏高</td></tr>
+<tr><td>Forward P/E</td><td>~25.3x</td><td>—</td><td>—</td><td>偏高</td></tr>
+<tr><td>PEG</td><td>2.43</td><td>—</td><td>—</td><td>偏高（>1即偏贵）</td></tr>
+<tr><td>EV/EBITDA</td><td>26.5x</td><td>21.8x</td><td>偏高</td><td>高于历史均值</td></tr>
+<tr><td>P/S</td><td>7.45x</td><td>—</td><td>—</td><td>偏高</td></tr>
+<tr><td>P/FCF</td><td>67.4x</td><td>—</td><td>—</td><td>极高（FCF被fairlife付款压缩）</td></tr>
+<tr><td>FCF Yield</td><td>1.5%</td><td>—</td><td>—</td><td>极低</td></tr>
+<tr><td>股息率</td><td>2.5%</td><td>—</td><td>—</td><td>中等</td></tr>
+<tr><td>股东总回报率</td><td>2.7%</td><td>—</td><td>—</td><td>低</td></tr>
+</tbody>
+</table>
+
+<h3>DCF估值</h3>
+
+<table>
+<thead><tr><th>情景</th><th>公允价值</th><th>vs 当前价$83</th></tr></thead>
+<tbody>
+<tr><td>熊市</td><td>$29.50</td><td><span class="badge badge-red">-64%</span></td></tr>
+<tr><td>基准</td><td>$62.72</td><td><span class="badge badge-red">-25%</span></td></tr>
+<tr><td>牛市</td><td>$96.13</td><td><span class="badge badge-green">+16%</span></td></tr>
+</tbody>
+</table>
+
+<p><strong>DCF假设（基准）：</strong> WACC 6.9%，终端增长率3.0%，5年营收增长3.5%，运营利润率27.0%</p>
+
+<h3>同行对比</h3>
+
+<table>
+<thead><tr><th>公司</th><th>P/E</th><th>EV/EBITDA</th><th>股息率</th><th>增速</th></tr></thead>
+<tbody>
+<tr><td>Coca-Cola (KO)</td><td>27.3x</td><td>26.5x</td><td>2.5%</td><td>3-5%</td></tr>
+<tr><td>PepsiCo (PEP)</td><td>~22x</td><td>~18x</td><td>~3.5%</td><td>5-7%</td></tr>
+<tr><td>Monster (MNST)</td><td>~35x</td><td>~28x</td><td>0%</td><td>10%+</td></tr>
+<tr><td>Keurig Dr Pepper (KDP)</td><td>~18x</td><td>~15x</td><td>~2.5%</td><td>4-6%</td></tr>
+</tbody>
+</table>
+
+<h3>估值结论</h3>
+
+<blockquote>
+<p><strong>高估。</strong> 27x PE定价了一个3-5%增长的成熟现金牛。PEG 2.43远超1.0的合理阈值。DCF基准公允价值$62.72意味着25%溢价。即便用正常化FCF $11.4B计算，P/FCF仍在30x以上。</p>
+<p><strong>核心问题：好公司 ≠ 好股票。</strong> 可口可乐的品牌和护城河毋庸置疑，但当前价格已完全甚至过度反映了这些优质属性。在27x PE下，你需要假设未来10年每年5%+增长+利润率持续扩张才能获得合理回报。</p>
+</blockquote>
+
+<p><strong>证据等级：</strong> 一级+二级（DCF模型、SEC数据） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第7章 | 风险分析</h2>
+
+<h3>已反映的风险（市场已定价）</h3>
+<ol>
+<li><strong>CSD品类成熟</strong> — PE 27x隐含低增长预期</li>
+<li><strong>汇率波动</strong> — 60%+收入来自海外，美元走强已常态化影响</li>
+<li><strong>CEO交接</strong> — Braun接任Quincey，市场已有预期</li>
+</ol>
+
+<h3>被市场低估的风险</h3>
+
+<p><strong>1. GLP-1药物渗透加速（低估）</strong></p>
+<ul>
+<li>当前9%美国成年人使用GLP-1，预计5年内升至20%+</li>
+<li>对CSD销量的影响是慢性、累积、不可逆的</li>
+<li>零糖转型能否完全对冲全糖销量下滑存疑</li>
+</ul>
+
+<p><strong>2. 糖税全球扩散加速（低估）</strong></p>
+<ul>
+<li>100+司法管辖区已实施，但更多市场正在酝酿</li>
+<li>糖税直接压缩利润率或迫使涨价进一步抑制销量</li>
+</ul>
+
+<p><strong>3. 塑料监管升级（低估）</strong></p>
+<ul>
+<li>EPR（生产者责任延伸）法规在全球扩散</li>
+<li>可口可乐撤回包装回收承诺显示转型困难</li>
+<li>潜在的塑料税/禁令可能显著增加包装成本</li>
+</ul>
+
+<p><strong>4. 新兴竞争对手赢得叙事（低估）</strong></p>
+<ul>
+<li>Olipop、poppi（被百事收购$1.95B）、Liquid Death、Celsius等正在重新定义"健康饮料"</li>
+<li>年轻消费者品牌偏好转移——从传统CSD转向功能性/益生元/天然饮品</li>
+</ul>
+
+<p><strong>5. CEO交接执行风险（低估）</strong></p>
+<ul>
+<li>Braun缺乏CEO经验，市场对其战略方向了解有限</li>
+<li>如果初期执行不力，可能引发管理层信任危机</li>
+</ul>
+
+<p><strong>6. 气候变化对农业供应链的冲击</strong></p>
+<ul>
+<li>约25%全球人口生活在缺水地区，与可口可乐最大增长市场重叠</li>
+<li>极端天气影响甘蔗、柑橘等关键原料供应</li>
+</ul>
+
+<p><strong>证据等级：</strong> 二级+三级 | <strong>信心等级：</strong> ★★★☆☆</p>
+
+<hr />
+
+<h2>第8章 | 投资逻辑</h2>
+
+<h3>多头逻辑</h3>
+<ol>
+<li><strong>全球最强品牌护城河</strong> — $46.3B品牌价值、139年历史、200国覆盖，护城河几乎不可逾越</li>
+<li><strong>轻资产模式=高利润率</strong> — 浓缩液业务+装瓶外包，可比运营利润率31.2%，毛利率61.6%</li>
+<li><strong>零糖转型已见成效</strong> — Coca-Cola Zero Sugar +14%，Diet Coke止跌回升，证明品牌可适应健康趋势</li>
+<li><strong>蛋白饮料新增长极</strong> — fairlife和Core Power供不应求，2026年新工厂释放30%产能</li>
+<li><strong>股息之王</strong> — 63年连续分红增长，是防御型投资的核心标的</li>
+<li><strong>全球分销杠杆</strong> — 任何新品一经推出即可触达3300万零售点，这是Olipop等新品牌无法企及的优势</li>
+</ol>
+
+<h3>空头逻辑</h3>
+<ol>
+<li><strong>估值过高</strong> — 27x PE、PEG 2.43、DCF溢价25%，安全边际为零</li>
+<li><strong>增长靠提价</strong> — 销量持平，5%增长中4%来自涨价，消费者终将抵触</li>
+<li><strong>GLP-1结构性逆风</strong> — CSD占69%销量，长期需求侵蚀不可逆</li>
+<li><strong>并购纪律存疑</strong> — BODYARMOR $960M减值暴露品类扩展不是万灵药</li>
+<li><strong>塑料监管+糖税</strong> — 监管成本将持续上升</li>
+</ol>
+
+<h3>投资逻辑失效条件</h3>
+<ul>
+<li>有机营收增长连续2个季度低于3%（当前5%，但趋势性下滑需警惕）</li>
+<li>Coca-Cola Zero Sugar增长降至5%以下（当前14%，是核心转型证据）</li>
+<li>GLP-1美国成年人渗透率超过20%（结构性需求破坏加速）</li>
+<li>管理层降低长期有机增长指引（当前4-5%）</li>
+</ul>
+
+<p><strong>证据等级：</strong> 综合判断 | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第9章 | 长期跟踪指标</h2>
+
+<table>
+<thead><tr><th>#</th><th>KPI</th><th>为什么重要</th><th>观察频率</th><th>数据来源</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>有机营收增长率</td><td>核心增长指标，目标4-5%+</td><td>季度</td><td>财报</td></tr>
+<tr><td>2</td><td>全球单位箱销量增长</td><td>量 vs 价的分解，目标是>1%</td><td>季度</td><td>财报</td></tr>
+<tr><td>3</td><td>Coca-Cola Zero Sugar增长率</td><td>零糖转型成效的核心信号</td><td>季度</td><td>财报/IR</td></tr>
+<tr><td>4</td><td>可比运营利润率</td><td>利润率扩张/收缩趋势</td><td>季度</td><td>财报</td></tr>
+<tr><td>5</td><td>自由现金流（正常化）</td><td>排除一次性项目后的真实FCF</td><td>年度</td><td>财报</td></tr>
+<tr><td>6</td><td>GLP-1药物美国渗透率</td><td>CSD需求结构性逆风指标</td><td>半年</td><td>公开数据</td></tr>
+<tr><td>7</td><td>全球糖税管辖区数量</td><td>监管风险评估</td><td>年度</td><td>WHO追踪</td></tr>
+<tr><td>8</td><td>装瓶商财务健康度</td><td>装瓶商体系稳定性</td><td>季度</td><td>装瓶商财报</td></tr>
+<tr><td>9</td><td>fairlife/Core Power增长率</td><td>蛋白饮料新增长极验证</td><td>季度</td><td>财报/IR</td></tr>
+<tr><td>10</td><td>股息增长率和派息率</td><td>资本返还可持续性</td><td>年度</td><td>IR</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2>第10章 | 最终结论</h2>
+
+<h3>综合评分</h3>
+
+<div class="score-card">
+  <div class="score-big">75 / 100</div>
+  <div class="score-label">综合评分</div>
+</div>
+
+<table>
+<thead><tr><th>维度</th><th>评分</th><th>满分</th></tr></thead>
+<tbody>
+<tr><td>商业模式</td><td>17</td><td>20</td></tr>
+<tr><td>行业</td><td>10</td><td>15</td></tr>
+<tr><td>管理层</td><td>11</td><td>15</td></tr>
+<tr><td>财务</td><td>12</td><td>15</td></tr>
+<tr><td>护城河</td><td>18</td><td>20</td></tr>
+<tr><td>成长性</td><td>5</td><td>10</td></tr>
+<tr><td>估值</td><td>2</td><td>5</td></tr>
+<tr><td><strong>综合</strong></td><td><strong>75</strong></td><td><strong>100</strong></td></tr>
+</tbody>
+</table>
+
+<h3>Fisher评分：68/100</h3>
+
+<h3>估值判断：<span class="badge badge-red">高估</span></h3>
+<ul>
+<li>P/E 27.3x（57th百分位）、PEG 2.43、DCF基准公允价值$62.72（当前价溢价25%）</li>
+<li>好公司但太贵——市场已为品牌溢价和防御性充分定价</li>
+</ul>
+
+<h3>投资建议：<span class="badge badge-yellow">观察</span></h3>
+
+<blockquote>
+<p><strong>理由：</strong> 可口可乐拥有全球消费行业最宽的护城河——$46.3B品牌价值+200国分销网络+30+十亿美元品牌组合。但27x PE定价了一个3-5%增长的成熟现金牛，PEG 2.43远超合理水平，DCF显示25%溢价。GLP-1药物和糖税构成慢性结构性逆风，而增长主要依赖提价（4%提价 vs 1%销量）。BODYARMOR $960M减值暴露并购纪律问题。</p>
+
+<p><strong>持有者：</strong> 不必卖出——品牌护城河和63年股息增长提供下行保护，但预期回报率有限。</p>
+<p><strong>新入场者：</strong> 等待回调至$65-70区间（DCF基准$62.72上方约10%），届时PEG降至1.5-1.8x，安全边际更充分。</p>
+
+<p><strong>一句话：</strong> 全球最强饮料品牌，但当前价格是一瓶$10的可乐——品质毋庸置疑，价格让人望而却步。</p>
+</blockquote>
+
+<hr />
+
+<footer>
+<p>本报告遵循大灰皮证券研究统一框架，所有结论基于公开可验证证据。不构成投资建议。</p>
+<p><strong>报告日期：</strong> 2026-07-07 | <strong>数据截止：</strong> FY2025 10-K（2025年12月31日）+ Q4 2025财报（2026年2月10日发布）</p>
+<p><a href="./index.html">&larr; 返回报告列表</a> | <a href="../../index.html">&larr; 返回首页</a></p>
+</footer>
+
+</div>
+</body>
+</html>
