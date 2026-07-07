@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applied Optoelectronics（AAOI）— 大灰皮证券研究深度分析报告</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #3b82f6;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--accent);
+  line-height: 1.3;
+}
+.meta {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.meta span { white-space: nowrap; }
+.meta .label { font-weight: 600; color: #666; }
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.badge-green { background: var(--success); color: #065f46; }
+.badge-yellow { background: var(--warning); color: #92400e; }
+.badge-red { background: var(--danger); color: #991b1b; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.toc {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+.toc h3 { font-size: 1rem; margin-bottom: 10px; color: var(--text); }
+.toc ol { columns: 2; padding-left: 20px; font-size: 0.9rem; }
+.toc li { margin: 4px 0; }
+.toc a { color: var(--accent); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 40px 0 16px;
+  padding: 8px 0;
+  border-bottom: 2px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+blockquote {
+  background: #f0f7ff;
+  border-left: 4px solid var(--accent);
+  margin: 16px 0;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
+}
+p { margin: 10px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+strong { color: #1a1a2e; }
+ol, ul { padding-left: 24px; margin: 10px 0; }
+li { margin: 5px 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.score-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: white;
+  margin-right: 8px;
+}
+.score-high { background: var(--accent-green); }
+.score-mid { background: #f59e0b; }
+.score-low { background: #ef4444; }
+.verdict {
+  padding: 20px 24px;
+  border-radius: 10px;
+  margin: 20px 0;
+  font-size: 1rem;
+}
+.verdict-watch { background: #fef3c7; border-left: 4px solid #f59e0b; }
+.conclusion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  margin: 12px 0;
+}
+.conclusion-grid dt { font-weight: 600; color: var(--text-secondary); font-size: 0.85rem; }
+.conclusion-grid dd { font-size: 1rem; }
+@media (max-width: 600px) {
+  body { padding: 20px 12px; }
+  .toc ol { columns: 1; }
+  .conclusion-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../../index.html" class="back-link">← 返回公司列表</a>
+
+<h1>Applied Optoelectronics（AAOI）— 大灰皮证券研究深度分析报告</h1>
+
+<div class="meta">
+  <span><span class="label">报告日期：</span>2026-07-07</span>
+  <span><span class="label">股票代码：</span>NASDAQ: AAOI</span>
+  <span><span class="label">股价：</span>$123.36</span>
+  <span><span class="label">市值：</span>~$99亿</span>
+  <span><span class="label">52周区间：</span>$18.50 – $233.67</span>
+</div>
+
+<div class="meta">
+  <span>Fisher 评分：<span class="badge badge-yellow">68/100</span></span>
+  <span>估值判断：<span class="badge badge-red">高估</span></span>
+  <span>财务评级：<span class="badge badge-yellow">黄色</span></span>
+  <span>投资建议：<span class="badge badge-yellow">观察</span></span>
+</div>
+
+<div class="toc">
+  <h3>📑 目录</h3>
+  <ol>
+    <li><a href="#ch1">公司基本面分析</a></li>
+    <li><a href="#ch2">行业研究（TAM）</a></li>
+    <li><a href="#ch3">Fisher 成长股评价</a></li>
+    <li><a href="#ch4">财务审计（Bear Audit）</a></li>
+    <li><a href="#ch5">Bear Case（完整做空逻辑）</a></li>
+    <li><a href="#ch6">估值分析</a></li>
+    <li><a href="#ch7">风险分析</a></li>
+    <li><a href="#ch8">投资逻辑</a></li>
+    <li><a href="#ch9">长期跟踪指标</a></li>
+    <li><a href="#ch10">最终结论</a></li>
+  </ol>
+</div>
+
+<hr>
+
+<!-- 第1章 -->
+<h2 id="ch1">第1章 | 公司基本面分析</h2>
+
+<h3>1.1 公司概览</h3>
+<p>Applied Optoelectronics, Inc.（AAOI）成立于 1997 年，总部位于德州 Sugar Land（休斯顿郊区），由台湾出身的林志祥博士（Dr. Thompson Lin）创立并担任 CEO 至今。公司最初为有线电视（CATV）行业提供光纤网络设备，近年来成功转型为 <strong>AI 数据中心光模块（Optical Transceiver）</strong> 核心供应商。</p>
+
+<blockquote><strong>结论：</strong>AAOI 是一家由 CATV 传统业务向 AI 数据中心光模块成功转型的公司，创始人长期掌舵，具备自主研发能力。★★★★☆（一级资料充分）</blockquote>
+
+<h3>1.2 商业模式与收入结构</h3>
+<p>AAOI 设计、制造和销售先进光网络产品，收入来源分为三个板块：</p>
+
+<table>
+  <tr><th>业务板块</th><th>Q1 2026 收入</th><th>占比</th><th>同比增速</th></tr>
+  <tr><td>Data Center（数据中心）</td><td>$81.4M</td><td>53.9%</td><td style="color:#27ae60;font-weight:700;">+154%</td></tr>
+  <tr><td>CATV（有线电视）</td><td>$66.8M</td><td>44.2%</td><td>+3.6%</td></tr>
+  <tr><td>Telecom（电信）</td><td>$2.6M</td><td>1.7%</td><td style="color:#ef4444;">-12.9%</td></tr>
+  <tr><td>Other</td><td>$0.3M</td><td>0.2%</td><td>—</td></tr>
+  <tr style="font-weight:700;"><td>合计</td><td>$151.1M</td><td>100%</td><td>+51%</td></tr>
+</table>
+
+<p><strong>商业模式核心：</strong></p>
+<ul>
+  <li><strong>垂直整合制造</strong>：拥有自研 InP（磷化铟）激光器芯片能力，从芯片到光模块全链路控制</li>
+  <li><strong>美国本土制造</strong>：德州工厂占地 90 万平方英尺，约 40% 产能位于美国，满足 hyperscaler 对供应链安全的需求</li>
+  <li><strong>产品覆盖</strong>：400G、800G、1.6T 光模块，以及 CPO/NPO、ELSFP 等前沿技术</li>
+  <li><strong>客户结构</strong>：主要面向 hyperscale 云厂商（Amazon、Microsoft、Google 等）</li>
+</ul>
+
+<blockquote><strong>反方证据：</strong>CATV 业务增长停滞（+3.6%），Telecom 萎缩，公司实质上成为单一赛道（AI 光模块）赌注。集中度风险增大。（证据等级：一级）</blockquote>
+
+<h3>1.3 核心产品与技术优势</h3>
+
+<table>
+  <tr><th>产品线</th><th>当前状态</th><th>竞争优势</th></tr>
+  <tr><td>400G 光模块</td><td>量产，Q1 同比增 10 倍</td><td>成熟产品，规模化交付</td></tr>
+  <tr><td>800G 光模块</td><td>Q1 首次对 hyperscaler 批量出货</td><td>拥有自家 InP 激光器，非普通组装厂</td></tr>
+  <tr><td>1.6T 光模块</td><td>预计 2026 H2 客户需求开始显现</td><td>已具备生产能力，先发优势</td></tr>
+  <tr><td>ELSFP</td><td>OFC 2026 展示 25dBm 超高功率版</td><td>前沿技术，与 CPO 互补</td></tr>
+  <tr><td>InP 激光器</td><td>自研自产，行业瓶颈资源</td><td><strong>真正的护城河</strong></td></tr>
+</table>
+
+<blockquote><strong>结论：</strong>AAOI 不是普通的光模块组装厂。自研 InP 激光器 + 美国本土产能构成了与中际旭创等中国厂商的关键差异化。★★★★☆</blockquote>
+
+<h3>1.4 管理层</h3>
+<ul>
+  <li><strong>CEO & 创始人</strong>：Dr. Thompson Lin，1997 年创立，拥有光电子学博士，一直担任 CEO</li>
+  <li><strong>CFO & Strategy Officer</strong>：Stefan J. Murry，1997 年加入公司，2014 年起任 CFO</li>
+  <li><strong>管理团队稳定性</strong>：核心高管任期超过 25 年，极其罕见</li>
+</ul>
+
+<blockquote><strong>红旗：</strong>内部人交易显示 94% 为卖出，净流出 -$5860 万。创始人及高管持续减持，在当前高估值水平下值得警惕。★★★☆☆</blockquote>
+
+<h3>1.5 未来 5-10 年增长驱动力</h3>
+<ol>
+  <li><strong>AI 数据中心建设</strong>：800G/1.6T 光模块需求随 AI 集群规模扩大而指数级增长</li>
+  <li><strong>美国制造溢价</strong>：地缘政治推动 hyperscaler 寻求非中国供应链</li>
+  <li><strong>技术升级周期</strong>：400G → 800G → 1.6T，每代 ASP 更高，毛利率改善</li>
+  <li><strong>CPO/ELSFP 新赛道</strong>：共封装光学和外置激光器打开新收入池</li>
+</ol>
+
+<hr>
+
+<!-- 第2章 -->
+<h2 id="ch2">第2章 | 行业研究（TAM）</h2>
+
+<h3>2.1 光模块市场规模</h3>
+
+<table>
+  <tr><th>数据源</th><th>2025 年规模</th><th>预测 CAGR</th><th>关键驱动力</th></tr>
+  <tr><td>GM Insights</td><td>$134亿</td><td>13.5%（26-35）</td><td>800G/1.6T 超大规模数据中心</td></tr>
+  <tr><td>Emergen Research</td><td>$152亿</td><td>12.8%</td><td>AI/ML 集群互联、5G 回传</td></tr>
+  <tr><td>Mordor Intelligence</td><td>—</td><td>高速增长</td><td>单模光纤占 62.37%</td></tr>
+</table>
+
+<p><strong>高盛 2026 年 1 月大幅上调预测</strong>：将 2026-2027 年全球光模块 TAM 分别上调 <strong>43%/46%</strong>，基于 AI 服务器需求超预期 + 芯片平台多元化 + 高速率网络架构迁移。</p>
+
+<blockquote>行业 TAM 持续增长，AI 驱动的结构性需求明确。★★★★☆</blockquote>
+
+<h3>2.2 竞争格局</h3>
+
+<table>
+  <tr><th>公司</th><th>市值</th><th>定位</th><th>核心优势</th></tr>
+  <tr><td><strong>AAOI</strong></td><td>~$99亿</td><td>美国光模块新锐</td><td>InP 激光器 + 美国制造</td></tr>
+  <tr><td>Coherent（COHR）</td><td>$300亿+</td><td>光通信全产业链</td><td>NVIDIA 深度合作，$40亿投资</td></tr>
+  <tr><td>Lumentum（LITE）</td><td>$200亿+</td><td>光芯片/激光器龙头</td><td>最上游，$4亿+ OCS 积压订单</td></tr>
+  <tr><td>中际旭创</td><td>~¥1500亿</td><td>全球最大光模块厂商</td><td>规模优势，成本碾压</td></tr>
+</table>
+
+<h3>2.3 三情景分析</h3>
+
+<table>
+  <tr><th>情景</th><th>假设</th><th>对 AAOI 影响</th></tr>
+  <tr><td style="color:#27ae60;"><strong>最乐观</strong></td><td>AI 资本开支持续超预期，800G/1.6T 渗透加速</td><td>2027 年营收 $20-30亿，毛利率 40%+</td></tr>
+  <tr><td><strong>基准</strong></td><td>AI 建设稳步推进，AAOI 拿下 2-3 家主力供应商地位</td><td>2027 年营收 $15-20亿，毛利率 35%</td></tr>
+  <tr><td style="color:#ef4444;"><strong>悲观</strong></td><td>AI 资本开支周期性回落，中国厂商降价抢份额</td><td>2027 年营收 $8-10亿，毛利率 <30%</td></tr>
+</table>
+
+<hr>
+
+<!-- 第3章 -->
+<h2 id="ch3">第3章 | Fisher 成长股评价</h2>
+
+<h3>Fisher 10 维度逐项评分</h3>
+
+<table>
+  <tr><th style="width:30px;">#</th><th>维度</th><th style="width:50px;">评分</th><th>依据</th></tr>
+  <tr><td>1</td><td>市场潜力</td><td><span class="score-box score-high">9</span></td><td>光模块 TAM $134亿+，13.5% CAGR，AI 驱动结构性增长</td></tr>
+  <tr><td>2</td><td>管理层能力</td><td><span class="score-box score-mid">7</span></td><td>创始人领导 29 年，经验深厚，但内部人大幅减持引发疑虑</td></tr>
+  <tr><td>3</td><td>研发能力</td><td><span class="score-box score-high">8</span></td><td>自研 InP 激光器芯片，800G 量产、1.6T 在即，研发费率 17%</td></tr>
+  <tr><td>4</td><td>销售能力</td><td><span class="score-box score-mid">6</span></td><td>收入高度集中于少数 hyperscaler，销售团队规模有限</td></tr>
+  <tr><td>5</td><td>利润率改善空间</td><td><span class="score-box score-mid">7</span></td><td>毛利率从 29% 有望升至 35%+，规模效应显著</td></tr>
+  <tr><td>6</td><td>护城河</td><td><span class="score-box score-mid">6</span></td><td>InP 激光器 + 美国制造差异化，但 COHR/LITE 同样强大</td></tr>
+  <tr><td>7</td><td>长期成长能力</td><td><span class="score-box score-high">8</span></td><td>AI 基础设施投资可续 5-10 年，技术路线 800G→1.6T→3.2T 清晰</td></tr>
+  <tr><td>8</td><td>企业文化</td><td><span class="score-box score-mid">6</span></td><td>创始人领导工程文化，但信息披露有限</td></tr>
+  <tr><td>9</td><td>资本配置能力</td><td><span class="score-box score-low">5</span></td><td>历史稀释、可转债 $1.3亿、累计亏损 $5.04亿</td></tr>
+  <tr><td>10</td><td>长期竞争优势</td><td><span class="score-box score-mid">6</span></td><td>InP 激光器是真实差异化但非独占，COHR 也在扩产 InP</td></tr>
+  <tr style="font-weight:700;background:#eef1ff;"><td colspan="2">综合评分</td><td><span class="score-box score-mid">68</span></td><td>/100</td></tr>
+</table>
+
+<p><strong>最符合 Fisher 思想：</strong>市场潜力巨大，管理层领域知识深厚，研发投入持续。</p>
+<p><strong>最不符合 Fisher 思想：</strong>内部人大幅减持，客户集中度过高，资本纪律一般，尚未盈利。</p>
+
+<hr>
+
+<!-- 第4章 -->
+<h2 id="ch4">第4章 | 财务审计（Bear Audit）</h2>
+
+<h3>4.1 关键财务指标</h3>
+
+<table>
+  <tr><th>指标</th><th>Q1 2026</th><th>Q1 2025</th><th>判断</th></tr>
+  <tr><td>营收</td><td>$151.1M</td><td>$99.9M</td><td style="color:#27ae60;">✅ +51%</td></tr>
+  <tr><td>GAAP 毛利率</td><td>29.1%</td><td>30.6%</td><td style="color:#f59e0b;">⚠️ 小幅下滑</td></tr>
+  <tr><td>GAAP 经营利润率</td><td>-8.6%</td><td>-8.9%</td><td style="color:#ef4444;">❌ 仍在亏损</td></tr>
+  <tr><td>GAAP 净亏损</td><td>$14.3M</td><td>$9.2M</td><td style="color:#ef4444;">❌ 亏损扩大</td></tr>
+  <tr><td>Non-GAAP 净亏损</td><td>$4.9M</td><td>$0.9M</td><td style="color:#f59e0b;">⚠️ 接近盈亏平衡</td></tr>
+  <tr><td>Adjusted EBITDA</td><td>$0.97M</td><td>$0.44M</td><td style="color:#27ae60;">✅ 微幅为正</td></tr>
+  <tr><td>应收账款</td><td>$299M</td><td>—</td><td style="color:#f59e0b;">⚠️ 占收入 197%</td></tr>
+  <tr><td>存货</td><td>$206M</td><td>—</td><td style="color:#f59e0b;">⚠️ 随产能扩张增长</td></tr>
+  <tr><td>现金</td><td>$449M</td><td>—</td><td style="color:#27ae60;">✅ 充裕</td></tr>
+  <tr><td>总资产</td><td>$1.57B</td><td>—</td><td>—</td></tr>
+  <tr><td>股东权益</td><td>$1.11B</td><td>—</td><td>—</td></tr>
+</table>
+
+<h3>4.2 红旗清单</h3>
+
+<table>
+  <tr><th>潜在问题</th><th style="width:80px;">评级</th><th>说明</th></tr>
+  <tr><td>应收款快速增长</td><td>🟡 黄色</td><td>$299M vs 季度营收 $151M，DSO 偏高</td></tr>
+  <tr><td>毛利率未改善</td><td>🟡 黄色</td><td>扩产初期毛利率承压，需 H2 兑现</td></tr>
+  <tr><td>经营现金流为负</td><td>🟡 黄色</td><td>CAPEX 高峰期现金流压力</td></tr>
+  <tr><td>股权稀释历史</td><td>🟡 黄色</td><td>股本从 ~3000 万增至 ~8000 万股，可转债 $1.3亿</td></tr>
+  <tr><td>内部人大幅减持</td><td>🔴 红色</td><td>94% 卖出，净流出 -$5860 万</td></tr>
+  <tr><td>累计亏损</td><td>🟡 黄色</td><td>$5.04 亿累计亏损，从未持续盈利</td></tr>
+</table>
+
+<blockquote><strong>财务审计总评：🟡 黄色（谨慎）</strong><br>营收增长强劲，现金充裕。但应收款偏高、内部人减持、累计亏损历史需持续关注。公司处于从亏损向盈利过渡的关键期，任何执行偏差都可能导致财务恶化。★★★☆☆</blockquote>
+
+<hr>
+
+<!-- 第5章 -->
+<h2 id="ch5">第5章 | Bear Case（完整做空逻辑）</h2>
+
+<h3>5.1 最脆弱环节</h3>
+
+<p><strong>当前估值已把 2026 全年 $11 亿营收、$1.4 亿经营利润的完美执行完全定价。</strong></p>
+
+<p>如果以下任何一个假设落空，股价可能大幅回调：</p>
+<ol>
+  <li>800G ramp 因客户 qualification 延迟而慢于预期</li>
+  <li>毛利率改善幅度低于 35% 目标</li>
+  <li>大客户削减订单或引入第二供应商</li>
+  <li>InP 激光器产能出现瓶颈</li>
+</ol>
+
+<h3>5.2 增长假设失败概率</h3>
+
+<table>
+  <tr><th>假设</th><th style="width:80px;">失败概率</th><th>说明</th></tr>
+  <tr><td>AI 资本开支持续高速增长</td><td>20%</td><td>历史上每一轮 capex 周期都有回调</td></tr>
+  <tr><td>AAOI 成为 hyperscaler 长期核心供应商</td><td>30%</td><td>大客户永远在平衡供应商</td></tr>
+  <tr><td>美国制造溢价长期存在</td><td>25%</td><td>中际旭创已在泰国/墨西哥建厂</td></tr>
+  <tr><td>毛利率可持续改善至 35%+</td><td>35%</td><td>光模块行业价格年降是常态</td></tr>
+</table>
+
+<h3>5.3 市场容易忽略的问题</h3>
+<ol>
+  <li><strong>CATV 是死钱：</strong>每季度 $66.8M 几乎零增长</li>
+  <li><strong>中际旭创不是等闲之辈：</strong>全球最大，成本碾压，正在海外建厂</li>
+  <li><strong>$471M/月产能目标激进：</strong>年化 $56 亿，是目前年化 $6 亿的 9 倍</li>
+  <li><strong>内部人减持不是好信号：</strong>创始人都在这个价位卖，投资者应犹豫</li>
+</ol>
+
+<blockquote><strong>如果股价腰斩，最大原因：</strong>产能 ramp 不及预期 + 大客户订单削减 + 估值泡沫破裂的三重打击。<br><strong>做空成功概率：35%</strong></blockquote>
+
+<hr>
+
+<!-- 第6章 -->
+<h2 id="ch6">第6章 | 估值分析</h2>
+
+<h3>6.1 当前估值倍数</h3>
+
+<table>
+  <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+  <tr><td>股价</td><td>$123.36</td><td>2026-07-06 收盘</td></tr>
+  <tr><td>市值</td><td>~$99亿</td><td>80.24M 股</td></tr>
+  <tr><td>企业价值（EV）</td><td>~$96亿</td><td>市值 - $449M 现金 + $171M 债务</td></tr>
+  <tr><td>PS（TTM）</td><td>15.9x</td><td>近四季营收 ~$6.2亿</td></tr>
+  <tr><td>PS（2026E）</td><td>~9x</td><td>全年指引 $11亿+</td></tr>
+  <tr><td>EV/Sales（2026E）</td><td>~8.7x</td><td></td></tr>
+  <tr><td>EV/OpInc（2026E）</td><td>~69x</td><td>$1.4亿 Non-GAAP 经营利润</td></tr>
+  <tr><td>PB</td><td>8.64x</td><td></td></tr>
+  <tr><td>PE</td><td>N/A</td><td>尚未盈利</td></tr>
+</table>
+
+<h3>6.2 同行估值对比</h3>
+
+<table>
+  <tr><th>公司</th><th>市值</th><th>PS（TTM）</th><th>Forward PS</th><th>盈利</th></tr>
+  <tr style="font-weight:700;background:#eef1ff;"><td>AAOI</td><td>$99亿</td><td>15.9x</td><td>~9x</td><td>亏损</td></tr>
+  <tr><td>Coherent（COHR）</td><td>$300亿+</td><td>~5x</td><td>~4x</td><td>盈利</td></tr>
+  <tr><td>Lumentum（LITE）</td><td>$200亿+</td><td>~6x</td><td>~5x</td><td>盈利</td></tr>
+  <tr><td>中际旭创</td><td>~¥1500亿</td><td>~4x</td><td>~3x</td><td>盈利</td></tr>
+</table>
+
+<blockquote>
+  <strong>AAOI 是三家美股光通信中 PS 估值最高的一家。</strong>市场给予溢价因为增速最快（+51%）+ 美国制造稀缺性 + 盈利拐点故事。<br><br>
+  <strong>但 9x 2026E PS + 69x 经营利润意味着：市场已提前定价了 2027-2028 年的增长。</strong><br><br>
+  <strong>估值判断：高估</strong> — 当前安全边际不足，即使按最乐观 2027 年 $20 亿营收估算 PS 仍达 5x。★★★★☆
+</blockquote>
+
+<hr>
+
+<!-- 第7章 -->
+<h2 id="ch7">第7章 | 风险分析</h2>
+
+<table>
+  <tr><th>风险类别</th><th>风险</th><th style="width:70px;">影响</th><th>是否已定价</th></tr>
+  <tr><td>客户集中</td><td>Top 2-3 hyperscaler >60% 收入</td><td>🔴 高</td><td>部分</td></tr>
+  <tr><td>产能执行</td><td>德州新工厂 ramp 延迟</td><td>🔴 高</td><td>未充分</td></tr>
+  <tr><td>竞争</td><td>中际旭创/COHR/LITE 激烈竞争</td><td>🟡 中</td><td>部分</td></tr>
+  <tr><td>技术替代</td><td>CPO 可能替代传统可插拔光模块</td><td>🟡 中</td><td>未充分</td></tr>
+  <tr><td>CAPEX 周期</td><td>AI 投资增速放缓</td><td>🔴 高</td><td>未充分</td></tr>
+  <tr><td>稀释</td><td>可转债转股、未来融资</td><td>🟡 中</td><td>部分</td></tr>
+  <tr><td>管理层减持</td><td>创始人及高管持续卖出</td><td>🟡 中</td><td>部分</td></tr>
+  <tr><td>毛利率</td><td>价格年降超预期</td><td>🟡 中</td><td>未充分</td></tr>
+</table>
+
+<blockquote><strong>最被低估的风险：AI CAPEX 周期的不可预测性。</strong>市场线性外推当前投资热潮将持续，但历史上没有哪个技术投资周期是线性的。</blockquote>
+
+<hr>
+
+<!-- 第8章 -->
+<h2 id="ch8">第8章 | 投资逻辑</h2>
+
+<p>AAOI 的投资命题建立在 <strong>AI 光模块需求的超级周期 + 美国本土制造稀缺性 + 自研 InP 激光器的技术护城河</strong> 三根支柱上。</p>
+
+<p>如果公司能成功执行产能 ramp，营收从 $6 亿推至 $15-20 亿，毛利率从 29% 改善至 35%+，当前估值可被业绩增长消化。</p>
+
+<h3>投资逻辑失效条件</h3>
+<ol>
+  <li><strong>连续 2 个季度营收 miss 指引</strong> → 市场信任崩塌</li>
+  <li><strong>大客户转向竞争对手或自研</strong> → 核心增长逻辑断裂</li>
+  <li><strong>毛利率未能改善甚至恶化</strong> → 盈利拐点遥遥无期</li>
+  <li><strong>AI CAPEX 周期出现系统性拐点</strong> → 整个赛道估值承压</li>
+</ol>
+
+<hr>
+
+<!-- 第9章 -->
+<h2 id="ch9">第9章 | 长期跟踪指标</h2>
+
+<table>
+  <tr><th style="width:28px;">#</th><th>KPI</th><th>重要性</th><th>频率</th></tr>
+  <tr><td>1</td><td>Data Center 收入增速</td><td>核心增长引擎</td><td>每季</td></tr>
+  <tr><td>2</td><td>800G/1.6T 出货量达成率</td><td>估值最关键变量</td><td>每季</td></tr>
+  <tr><td>3</td><td>GAAP 毛利率趋势</td><td>盈利拐点信号</td><td>每季</td></tr>
+  <tr><td>4</td><td>经营现金流是否转正</td><td>商业模式可持续性</td><td>每季</td></tr>
+  <tr><td>5</td><td>大客户集中度</td><td>集中风险监控</td><td>每半年</td></tr>
+  <tr><td>6</td><td>InP 激光器产能利用率</td><td>护城河验证</td><td>每季</td></tr>
+  <tr><td>7</td><td>Non-GAAP 经营利润率</td><td>规模效应验证</td><td>每季</td></tr>
+  <tr><td>8</td><td>内部人交易动向</td><td>管理层信心</td><td>每月</td></tr>
+  <tr><td>9</td><td>应收账款/营收比率</td><td>收入质量</td><td>每季</td></tr>
+  <tr><td>10</td><td>AI hyperscaler CAPEX 指引</td><td>需求端先行指标</td><td>每季</td></tr>
+</table>
+
+<hr>
+
+<!-- 第10章 -->
+<h2 id="ch10">第10章 | 最终结论</h2>
+
+<h3>10.1 综合评分（100分制）</h3>
+
+<table>
+  <tr><th>维度</th><th style="width:50px;">满分</th><th style="width:50px;">得分</th><th>说明</th></tr>
+  <tr><td>商业模式</td><td>20</td><td>14</td><td>转型成功，但客户集中度高</td></tr>
+  <tr><td>行业</td><td>15</td><td>13</td><td>AI 基础设施超级周期，确定性高</td></tr>
+  <tr><td>管理层</td><td>15</td><td>9</td><td>经验丰富但内部人大幅减持</td></tr>
+  <tr><td>财务质量</td><td>10</td><td>5</td><td>营收强但未盈利，应收款偏高</td></tr>
+  <tr><td>护城河</td><td>15</td><td>9</td><td>InP 激光器 + 美国制造有差异化</td></tr>
+  <tr><td>成长性</td><td>10</td><td>9</td><td>增速惊人 +51%，全年指引 $11亿+</td></tr>
+  <tr><td>估值</td><td>10</td><td>3</td><td>9x 2026E PS，安全边际不足</td></tr>
+  <tr><td>风险</td><td>5</td><td>2</td><td>客户集中、产能执行、CAPEX 周期</td></tr>
+  <tr style="font-weight:700;background:#eef1ff;"><td>总分</td><td>100</td><td>64</td><td></td></tr>
+</table>
+
+<h3>10.2 核心判断</h3>
+
+<dl class="conclusion-grid">
+  <dt>Fisher 评分</dt>
+  <dd><span class="badge badge-yellow" style="font-size:1rem;">68 / 100</span></dd>
+  <dt>估值判断</dt>
+  <dd><span class="badge badge-red" style="font-size:1rem;">高估</span></dd>
+  <dt>财务评级</dt>
+  <dd><span class="badge badge-yellow" style="font-size:1rem;">黄色（谨慎）</span></dd>
+</dl>
+
+<div class="verdict verdict-watch">
+  <h3 style="margin:0 0 8px;">📋 投资建议：观察</h3>
+  <p>AAOI 是一家值得持续跟踪的公司——赛道正确、技术有差异化、增速惊人。但当前估值水平下，<strong>好公司 ≠ 好投资</strong>。</p>
+  <p><strong>建议等待以下催化之一再考虑介入：</strong></p>
+  <ol style="margin-bottom:0;">
+    <li>连续 2 个季度营收超预期 + 毛利率改善，证明执行能力</li>
+    <li>估值回调至 PS（2026E）5-6x 以下，提供合理安全边际</li>
+    <li>内部人减持停止，出现增持信号</li>
+  </ol>
+  <p style="margin-top:8px;">⚠️ 不建议在当前价位新建仓位。已持有者关注 Q2 财报（预计 8 月初）的 800G 出货量和毛利率趋势。</p>
+</div>
+
+<hr>
+<p style="text-align:center;color:var(--text-secondary);font-size:0.85rem;margin-top:40px;">
+  <strong>免责声明：</strong>本报告仅供学习和研究参考，不构成任何投资建议。投资有风险，入市需谨慎。<br>
+  报告日期：2026-07-07 | 大灰皮证券研究统一框架 | 十章节深度分析
+</p>
+</div>
+</body>
+</html>
