@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麦当劳 (MCD) — 大灰皮证券研究深度分析报告</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #e74c3c;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  line-height: 1.3;
+}
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+
+blockquote {
+  background: #f0f7ff;
+  border-left: 4px solid #3b82f6;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
+}
+
+p { margin: 8px 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  font-family: "SF Mono", "Fira Code", monospace;
+}
+
+strong { color: #1a1a2e; }
+
+ol, ul { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+footer a { color: var(--accent); }
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.badge-red { background: var(--danger); color: #dc2626; }
+.badge-green { background: var(--success); color: #16a34a; }
+.badge-yellow { background: var(--warning); color: #d97706; }
+.badge-blue { background: #dbeafe; color: #1d4ed8; }
+
+.score-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+}
+.score-card .score-big {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  text-align: center;
+}
+.score-card .score-label {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  body { padding: 20px 12px; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 6px 8px; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="./index.html">&larr; 返回报告列表</a>
+
+<h1>麦当劳 (MCD) — 大灰皮证券研究深度分析报告</h1>
+
+<blockquote>
+<p><strong>日期：</strong> 2026-07-07</p>
+<p><strong>框架：</strong> 大灰皮证券研究统一框架 · Evidence First</p>
+<p><strong>标的：</strong> NYSE: MCD | 股价 ~$285 | 市值 ~$202B</p>
+<p><strong>Fisher评分：</strong> <span class="badge badge-yellow">73/100</span> | <strong>综合评分：</strong> <span class="badge badge-yellow">65/100</span></p>
+<p><strong>估值判断：</strong> <span class="badge badge-blue">合理偏低</span> | <strong>投资建议：</strong> <span class="badge badge-yellow">观察</span></p>
+<p><strong>前置结论：</strong> 麦当劳是顶级品牌+宽护城河的现金机器，但不是费雪型成长股。PE 23x合理偏低，但PEG 2.72说明6-7%增速撑不起更高估值。高杠杆（$54.9B债+负账面价值）是尾部风险。持有者不必卖出，但新入场者没有足够安全边际。</p>
+</blockquote>
+
+<hr />
+
+<h2>第1章 | 公司基本面分析</h2>
+
+<h3>商业模式</h3>
+
+<blockquote>
+<p><strong>结论：</strong> 麦当劳的核心并非卖汉堡——它是一家<strong>房地产+特许经营的收费机器</strong>。95%的餐厅由加盟商运营，公司收取租金+特许权使用费，本质是收取"品牌租金"。特许经营收入毛利率80%+，是利润率最高的收入来源。</p>
+</blockquote>
+
+<p><strong>收入结构（FY2025）：</strong></p>
+
+<table>
+<thead><tr><th>收入来源</th><th>金额</th><th>占比</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>特许经营收入</td><td>$16.5B</td><td>61.5%</td><td>租金+特许权使用费，毛利率极高</td></tr>
+<tr><td>公司自营餐厅</td><td>$9.7B</td><td>36%</td><td>逐渐缩减，保留创新测试功能</td></tr>
+<tr><td>其他收入</td><td>$647M</td><td>2.4%</td><td>广告基金、技术服务等</td></tr>
+</tbody>
+</table>
+
+<p><strong>特许经营模式详解：</strong></p>
+<ul>
+<li>95%的餐厅由加盟商运营，全球45,356家门店</li>
+<li>麦当劳向加盟商收取两笔费用：①基于销售额的特许权使用费（约4-5%），②餐厅所在地皮和建筑的租金</li>
+<li>麦当劳拥有大量餐厅地块和建筑。租约到期后，公司保留对房地产的完全控制权</li>
+<li>覆盖100+国家，三大分部：美国（39.6%）、国际运营市场（51%）、国际开发授权市场（9.4%）</li>
+</ul>
+
+<h3>核心竞争优势</h3>
+
+<table>
+<thead><tr><th>优势</th><th>强度</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>品牌信任</td><td><span class="badge badge-green">5/5</span></td><td>金色拱门是全球认知度最高商业符号之一，10-K列为重大资产</td></tr>
+<tr><td>网络密度</td><td><span class="badge badge-green">5/5</span></td><td>45,000+门店创造极强的本地便利性和习惯锁定</td></tr>
+<tr><td>分销控制</td><td><span class="badge badge-green">4/5</span></td><td>房地产控制+特许经营=系统纪律和稳定现金流</td></tr>
+<tr><td>运营标准化</td><td><span class="badge badge-green">4/5</span></td><td>全球品牌标准确保跨市场一致性体验</td></tr>
+</tbody>
+</table>
+
+<h3>数字化增长引擎</h3>
+<ul>
+<li>210M 90天活跃忠诚用户（+19% YoY）</li>
+<li>忠诚用户销售额 $37B（+20% YoY）</li>
+<li>与Google Cloud合作部署AI+IoT厨房</li>
+<li>Drive-thru数字化和外卖整合持续推进</li>
+</ul>
+
+<blockquote>
+<p><strong>为什么麦当劳可能成为未来十年赢家？</strong> 品牌+房地产+特许经营的三重护城河在全球无人能复制。数字化转型不是颠覆性创新而是存量优化——用AI和忠诚系统榨取更多同店销售增长。但增长天花板清晰：QSR行业增速仅3-5%。</p>
+</blockquote>
+
+<p><strong>证据等级：</strong> 一级（10-K年报、公司新闻稿） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第2章 | 行业研究（TAM）</h2>
+
+<h3>全球QSR市场规模</h3>
+
+<table>
+<thead><tr><th>来源</th><th>2025年规模</th><th>预测</th><th>CAGR</th></tr></thead>
+<tbody>
+<tr><td>Research and Markets</td><td>$658.9B</td><td>$868B (2030)</td><td>~5.7%</td></tr>
+<tr><td>Custom Market Insights</td><td>$322.7B</td><td>$510B (2034)</td><td>~5.2%</td></tr>
+<tr><td>BusinessWire</td><td>$316B (2024)</td><td>$384B (2030)</td><td>~3.3%</td></tr>
+</tbody>
+</table>
+
+<p>注：不同研究对QSR定义范围不同，导致数字差异大。麦当劳Systemwide sales $139B+，约占全球QSR的20-25%。</p>
+
+<h3>三情景分析</h3>
+
+<table>
+<thead><tr><th>情景</th><th>10年CAGR</th><th>2035年规模</th><th>麦当劳定位</th></tr></thead>
+<tbody>
+<tr><td><span class="badge badge-green">最乐观</span></td><td>~6%</td><td>~$1.2T</td><td>品牌护城河+数字化完美执行，份额升至25%+</td></tr>
+<tr><td><span class="badge badge-blue">基准</span></td><td>~4%</td><td>~$900B</td><td>维持20%份额，同店+2-3%，新开2%门店</td></tr>
+<tr><td><span class="badge badge-red">悲观</span></td><td>~2%</td><td>~$800B</td><td>GLP-1+健康趋势压制需求，份额下降至18%</td></tr>
+</tbody>
+</table>
+
+<p><strong>行业判断：</strong> QSR是成熟行业，增速3-5%为主。麦当劳的机遇不在行业扩张，而在<strong>存量市场中用品牌+数字化榨取更高份额和利润率</strong>。</p>
+
+<p><strong>证据等级：</strong> 三级（行业研究报告） | <strong>信心等级：</strong> ★★★☆☆</p>
+
+<hr />
+
+<h2>第3章 | Fisher成长股评价</h2>
+
+<div class="score-card">
+  <div class="score-big">73 / 100</div>
+  <div class="score-label">Fisher 成长股综合评分</div>
+</div>
+
+<table>
+<thead><tr><th>维度</th><th>评分</th><th>依据</th></tr></thead>
+<tbody>
+<tr><td>① 市场潜力</td><td><strong>7</strong></td><td>QSR全球$650B+，但增速仅3-5%，成熟行业；新市场仍有渗透空间</td></tr>
+<tr><td>② 管理层能力</td><td><strong>7</strong></td><td>Kempczinski推动数字化和"Accelerating the Arches"见效；但风格偏保守</td></tr>
+<tr><td>③ 研发能力</td><td><strong>6</strong></td><td>技术投入大（Google Cloud AI），但餐饮业R&D本质是菜单创新而非颠覆性技术</td></tr>
+<tr><td>④ 销售能力</td><td><strong>9</strong></td><td>全球最强品牌+45,000门店分销网络+210M忠诚用户，几乎无人可比</td></tr>
+<tr><td>⑤ 利润率改善</td><td><strong>8</strong></td><td>特许经营天然高毛利（~80%），自营→特许持续转换提升整体利润率</td></tr>
+<tr><td>⑥ 护城河</td><td><strong>9</strong></td><td>Wide Moat 81/100：品牌5/5+网络密度5/5+地产控制4/5+运营4/5</td></tr>
+<tr><td>⑦ 长期成长能力</td><td><strong>6</strong></td><td>45,000店已高度渗透，增长依赖同店+数字化优化而非大规模新店扩张</td></tr>
+<tr><td>⑧ 企业文化</td><td><strong>7</strong></td><td>系统协同传统强，但加盟商关系时有紧张</td></tr>
+<tr><td>⑨ 资本配置</td><td><strong>7</strong></td><td>51年分红增长+持续回购，但负账面价值暗示杠杆过度</td></tr>
+<tr><td>⑩ 长期竞争优势</td><td><strong>8</strong></td><td>品牌+地产+特许经营组合全球无可复制，持久性3/3（最高）</td></tr>
+</tbody>
+</table>
+
+<p><strong>最符合费雪思想：</strong> 利润率改善空间（特许经营天然高利润+持续自营转特许）和护城河（品牌信任+实体网络）</p>
+<p><strong>最不符合费雪思想：</strong> 长期成长能力——费雪追求10倍增长潜力，麦当劳增速天花板明显</p>
+
+<p><strong>证据等级：</strong> 一级（年报）+ 三级（行业分析） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第4章 | 财务审计（Bear Audit）</h2>
+
+<h3>以做空视角审查</h3>
+
+<table>
+<thead><tr><th>审查维度</th><th>发现</th><th>评级</th></tr></thead>
+<tbody>
+<tr><td>应收账款</td><td>特许经营应收正常，公司客户即收即付</td><td><span class="badge badge-green">绿色</span></td></tr>
+<tr><td>存货</td><td>餐饮存货周转极快（209x），低风险</td><td><span class="badge badge-green">绿色</span></td></tr>
+<tr><td>经营现金流</td><td>OCF/NI = 1.23x，现金流质量优秀</td><td><span class="badge badge-green">绿色</span></td></tr>
+<tr><td>自由现金流</td><td>FCF $7.04B，FCF margin 25.6%</td><td><span class="badge badge-green">绿色</span></td></tr>
+<tr><td>毛利率</td><td>57.4%，5年平均56.5%，稳定</td><td><span class="badge badge-green">绿色</span></td></tr>
+<tr><td>ROIC</td><td>~18-19%，持续高于WACC（5.6%）</td><td><span class="badge badge-green">绿色</span></td></tr>
+<tr><td>股权稀释</td><td>股份YoY -0.66%（回购大于稀释）</td><td><span class="badge badge-green">绿色</span></td></tr>
+<tr><td>债务结构</td><td>$54.9B总债务，负账面价值-$1.29B</td><td><span class="badge badge-red">红色</span></td></tr>
+<tr><td>杠杆</td><td>Debt/EBITDA 3.32x，Interest Coverage 7.89x</td><td><span class="badge badge-yellow">黄色</span></td></tr>
+<tr><td>融资依赖</td><td>FCF足以覆盖利息+分红+回购，但杠杆限制弹性</td><td><span class="badge badge-yellow">黄色</span></td></tr>
+<tr><td>资本开支</td><td>$3.5B CapEx，合理（技术+装修）</td><td><span class="badge badge-green">绿色</span></td></tr>
+<tr><td>会计政策</td><td>特许经营收入确认标准，无异常</td><td><span class="badge badge-green">绿色</span></td></tr>
+</tbody>
+</table>
+
+<h3>红旗清单</h3>
+<ul>
+<li><strong>负账面价值</strong>（-$1.29B）——长期大量回购+高杠杆的结果。FCF足以偿债，但衰退时杠杆风险急剧上升</li>
+<li><strong>高杠杆</strong>（Debt/EBITDA 3.32x）——对利率敏感，加息周期中利息费用可能显著增加</li>
+<li><strong>加盟商财务健康</strong>——95%加盟模式下，加盟商盈利能力是系统稳定性的隐含风险</li>
+</ul>
+
+<blockquote>
+<p><strong>最终评级：</strong> <span class="badge badge-yellow">黄色</span> — 利润质量优秀（OCF>NI），但杠杆水平过高，负账面价值意味着严重衰退可能触发债务危机。不算造假风险，但财务弹性确实受限。</p>
+</blockquote>
+
+<p><strong>证据等级：</strong> 一级（10-K、财务报表） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第5章 | Bear Case（完整做空逻辑）</h2>
+
+<h3>做空逻辑1：GLP-1药物压制需求</h3>
+<ul>
+<li>Ozempic/Wegovy等GLP-1药物使用者食欲下降20-30%，对高热量快餐需求直接冲击</li>
+<li>麦当劳CEO已公开承认正在测试针对GLP-1用户的菜单调整</li>
+<li>美国GLP-1渗透率目前~5%，2030年可能达15-20%，潜在影响3-8%的同店销售</li>
+</ul>
+
+<h3>做空逻辑2：高杠杆在衰退中放大亏损</h3>
+<ul>
+<li>$54.9B总债 + 负账面价值 = 零缓冲</li>
+<li>若同店销售下降5%，经营收入可能下降15-20%，利息覆盖率从7.89x降至~6x</li>
+<li>被迫削减分红增长或停止回购，引发股价重估</li>
+</ul>
+
+<h3>做空逻辑3：加盟商系统崩溃</h3>
+<ul>
+<li>加盟商利润率已受最低工资上涨、食材通胀挤压</li>
+<li>若大量加盟商退出，特许经营收入（$16.5B，61.5%）直接受损</li>
+</ul>
+
+<h3>做空逻辑4：健康趋势+ESG监管长期压制</h3>
+<ul>
+<li>全球肥胖/健康监管趋严（广告限制、糖税、反超加工食品立法）</li>
+<li>ESG评分压力影响机构投资决策</li>
+</ul>
+
+<h3>做空逻辑5：外卖平台中介蚕食利润</h3>
+<ul>
+<li>UberEats/DoorDash抽佣15-30%，吞噬快餐利润池</li>
+<li>平台模糊品牌差异化——消费者选择品类而非品牌</li>
+</ul>
+
+<blockquote>
+<p><strong>如果股价腰斩，最大原因：</strong> GLP-1药物普及+经济衰退双重打击——前者压制需求，后者放大杠杆风险。</p>
+<p><strong>做空成功概率：</strong> <span class="badge badge-yellow">25%</span> — 概率不高（品牌护城河极强），但高杠杆使得打击一旦命中后果严重</p>
+</blockquote>
+
+<p><strong>证据等级：</strong> 二级（CEO声明）+ 三级（行业趋势） | <strong>信心等级：</strong> ★★★☆☆</p>
+
+<hr />
+
+<h2>第6章 | 估值分析</h2>
+
+<h3>当前估值指标</h3>
+
+<table>
+<thead><tr><th>指标</th><th>当前值</th><th>5年均值</th><th>判断</th></tr></thead>
+<tbody>
+<tr><td>PE (TTM)</td><td>23.04x</td><td>~25-28x</td><td>低于均值（股价从$330回落）</td></tr>
+<tr><td>Forward PE</td><td>21.13x</td><td>~22-24x</td><td>基本合理</td></tr>
+<tr><td>EV/EBITDA</td><td>16.97x</td><td>~18-20x</td><td>低于均值</td></tr>
+<tr><td>PEG</td><td>2.72</td><td>~2.5-3.0</td><td>增速慢，PEG偏高</td></tr>
+<tr><td>P/FCF</td><td>28.21x</td><td>~25-30x</td><td>合理区间</td></tr>
+<tr><td>FCF Yield</td><td>3.54%</td><td>~3-4%</td><td>合理</td></tr>
+<tr><td>PS</td><td>7.24x</td><td>~7-8x</td><td>合理</td></tr>
+</tbody>
+</table>
+
+<h3>DCF估值</h3>
+
+<table>
+<thead><tr><th>方法</th><th>公允价值</th><th>vs 当前($285)</th></tr></thead>
+<tbody>
+<tr><td>DCF（WACC 5.6%，永续3%）</td><td>~$314</td><td>+12%</td></tr>
+<tr><td>相对估值（历史PE中位数）</td><td>~$287</td><td>+1%</td></tr>
+<tr><td>分析师共识目标价</td><td>~$345</td><td>+21%</td></tr>
+</tbody>
+</table>
+
+<h3>同行对比</h3>
+
+<table>
+<thead><tr><th>公司</th><th>PE</th><th>EV/EBITDA</th><th>运营边际</th></tr></thead>
+<tbody>
+<tr><td>麦当劳</td><td>23x</td><td>17x</td><td>46%</td></tr>
+<tr><td>星巴克</td><td>~25x</td><td>~20x</td><td>~15%</td></tr>
+<tr><td>Restaurant Brands</td><td>~20x</td><td>~15x</td><td>~35%</td></tr>
+<tr><td>Yum! Brands</td><td>~22x</td><td>~17x</td><td>~35%</td></tr>
+</tbody>
+</table>
+
+<p>麦当劳PE与同行相当，但运营边际46%远超同行，利润质量溢价已反映在估值中。</p>
+
+<blockquote>
+<p><strong>核心回答：公司优秀 ≠ 股票值得买？</strong></p>
+<p><strong>估值判断：</strong> <span class="badge badge-blue">合理偏低</span><br>
+PE 23x低于5年均值。当前估值不算贵，但PEG 2.72说明增长溢价不足——23x PE只换来~6-7%的EPS增速。品牌极强，但增速天花板限制估值上行空间。不是"便宜到闭眼买"，而是"合理价格买顶级品牌"。</p>
+</blockquote>
+
+<p><strong>证据等级：</strong> 一级（财务数据）+ 二级（同行对比） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第7章 | 风险分析</h2>
+
+<h3>已反映的风险</h3>
+
+<table>
+<thead><tr><th>风险</th><th>反映程度</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>增速放缓</td><td><span class="badge badge-green">高度反映</span></td><td>PE从28-30x回落至23x</td></tr>
+<tr><td>利率上升</td><td><span class="badge badge-blue">部分反映</span></td><td>2024-25加息周期中股价承压</td></tr>
+<tr><td>GLP-1担忧</td><td><span class="badge badge-yellow">部分反映</span></td><td>CEO已公开回应，但长期影响未知</td></tr>
+</tbody>
+</table>
+
+<h3>被低估的风险</h3>
+
+<table>
+<thead><tr><th>风险</th><th>低估程度</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>加盟商系统脆弱性</td><td><span class="badge badge-red">严重低估</span></td><td>95%加盟模式，加盟商是隐性风险载体</td></tr>
+<tr><td>高杠杆极端情景</td><td><span class="badge badge-red">低估</span></td><td>负账面价值+54.9B债，衰退时弹性为零</td></tr>
+<tr><td>地缘政治（反美情绪）</td><td><span class="badge badge-yellow">低估</span></td><td>100+国家中多个政治敏感市场</td></tr>
+<tr><td>外卖平台长期蚕食</td><td><span class="badge badge-yellow">低估</span></td><td>15-30%佣金对利润池的结构性侵蚀</td></tr>
+<tr><td>健康监管升级</td><td><span class="badge badge-yellow">低估</span></td><td>欧洲糖税、反超加工立法趋势加速</td></tr>
+</tbody>
+</table>
+
+<p><strong>证据等级：</strong> 二级（管理层声明）+ 三级（行业趋势） | <strong>信心等级：</strong> ★★★☆☆</p>
+
+<hr />
+
+<h2>第8章 | 投资逻辑</h2>
+
+<h3>核心投资逻辑</h3>
+
+<p>麦当劳的投资逻辑不是"高速增长"而是<strong>"顶级护城河+稳定现金流+持续资本回报"</strong>：</p>
+
+<ol>
+<li><strong>品牌+地产+特许经营三重护城河</strong>——全球无人可复制，品牌5/5+网络密度5/5是消费行业最高评级</li>
+<li><strong>特许经营收费模式</strong>——61.5%收入来自特许经营，毛利率80%+，本质是收取"品牌租金"</li>
+<li><strong>数字化存量优化</strong>——210M忠诚用户+AI/IoT厨房=从45,000存量门店中榨取更多同店销售</li>
+<li><strong>资本回报机器</strong>——51年分红增长+持续回购+FCF margin 25.6%</li>
+</ol>
+
+<h3>逻辑失效条件</h3>
+<ul>
+<li>加盟商系统大面积崩溃（现金流恶化→退出→特许收入骤降）</li>
+<li>GLP-1药物普及率>15%且确证大幅压制快餐需求</li>
+<li>高杠杆在衰退中触发债务危机</li>
+<li>品牌信任严重受损（食品安全重大丑闻）</li>
+</ul>
+
+<p><strong>证据等级：</strong> 一级（年报） | <strong>信心等级：</strong> ★★★★☆</p>
+
+<hr />
+
+<h2>第9章 | 长期跟踪指标</h2>
+
+<table>
+<thead><tr><th>KPI</th><th>重要性</th><th>频率</th><th>数据来源</th></tr></thead>
+<tbody>
+<tr><td>同店销售增长率</td><td>需求健康度核心指标</td><td>每季度</td><td>10-Q/Earnings Call</td></tr>
+<tr><td>忠诚用户数（90天活跃）</td><td>数字化转型成效</td><td>每季度</td><td>Earnings Call</td></tr>
+<tr><td>加盟商平均现金流/店</td><td>系统稳定性隐性指标</td><td>每年</td><td>10-K/加盟商报告</td></tr>
+<tr><td>净新开店数</td><td>增长天花板验证</td><td>每季度</td><td>10-Q</td></tr>
+<tr><td>Debt/EBITDA</td><td>杠杆安全边界</td><td>每季度</td><td>财务报表</td></tr>
+<tr><td>FCF/Net Income</td><td>现金转化质量</td><td>每季度</td><td>Cash Flow Statement</td></tr>
+<tr><td>运营边际</td><td>特许经营盈利能力</td><td>每季度</td><td>Income Statement</td></tr>
+<tr><td>GLP-1美国渗透率</td><td>需求侧结构性风险</td><td>半年</td><td>医药行业研究</td></tr>
+<tr><td>Drive-thru平均服务时间</td><td>运营效率+AI落地</td><td>每年</td><td>公司运营报告</td></tr>
+<tr><td>品牌偏好追踪</td><td>护城河健康</td><td>每年</td><td>Nielsen/YouGov</td></tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2>第10章 | 最终结论</h2>
+
+<h3>综合评分</h3>
+
+<div class="score-card">
+  <div class="score-big">65 / 100</div>
+  <div class="score-label">大灰皮综合评分</div>
+</div>
+
+<table>
+<thead><tr><th>维度</th><th>分数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>商业模式</td><td>85</td><td>特许经营+地产收费机器，利润率极高</td></tr>
+<tr><td>行业</td><td>55</td><td>QSR成熟行业，增速有限</td></tr>
+<tr><td>管理层</td><td>70</td><td>Kempczinski稳健但非颠覆型</td></tr>
+<tr><td>财务</td><td>65</td><td>利润质量优秀但高杠杆是硬伤</td></tr>
+<tr><td>护城河</td><td>90</td><td>Wide Moat 81/100，三重护城河</td></tr>
+<tr><td>成长性</td><td>50</td><td>成熟巨头，增速天花板6-7%</td></tr>
+<tr><td>估值</td><td>60</td><td>PE 23x合理偏低，但PEG 2.72溢价不足</td></tr>
+<tr><td>风险</td><td>55</td><td>高杠杆+GLP-1+加盟商脆弱性三重隐忧</td></tr>
+<tr><td>Fisher评分</td><td>73</td><td>销售9+护城河9突出，成长能力6拖后腿</td></tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><strong>估值判断：</strong> <span class="badge badge-blue">合理偏低</span></p>
+<p><strong>投资建议：</strong> <span class="badge badge-yellow">观察</span></p>
+<p><strong>理由：</strong> 麦当劳是顶级品牌+宽护城河的现金机器，但不是费雪型成长股。PE 23x合理但不便宜，PEG 2.72增速溢价不足。高杠杆是尾部风险。建议在PE&lt;20x或GLP-1风险充分明朗后再考虑建仓。持有者不必卖出，但新入场者没有足够安全边际。</p>
+</blockquote>
+
+<footer>
+<p>基于 <a href="../../index.html">大灰皮证券研究统一框架</a> · Evidence First · 仅供研究参考，不构成投资建议</p>
+</footer>
+</div>
+</body>
+</html>

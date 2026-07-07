@@ -317,8 +317,8 @@
         <h1>🐂 <span>大灰皮</span>证券研究</h1>
         <p>基于 Evidence First 原则的上市公司深度分析 · 10 章完整框架</p>
         <div class="stats">
-          <div><b>25</b> 家公司</div>
-          <div><b>27</b> 份报告</div>
+          <div><b>26</b> 家公司</div>
+          <div><b>28</b> 份报告</div>
           <div>更新于 2026-07-07</div>
         </div>
       </div>
@@ -361,6 +361,7 @@
         <span class="filter-chip" data-type="sector" data-value="机器人">机器人</span>
         <span class="filter-chip" data-type="sector" data-value="能源资源">能源/资源</span>
         <span class="filter-chip" data-type="sector" data-value="消费">消费</span>
+        <span class="filter-chip" data-type="sector" data-value="快餐">快餐</span>
         <span class="filter-chip" data-type="sector" data-value="教育">教育</span>
       </div>
     </div>
@@ -372,6 +373,15 @@
       </div>
     </div>
     <div class="gallery" id="gallery">
+      <div class="company-card" data-market="美股" data-sectors="快餐 消费 特许经营" onclick="location.href='reports/麦当劳/index.html'">
+        <div class="company-body">
+          <h3>麦当劳 <span class="tag tag-us">美股</span></h3>
+          <div class="company-meta">全球QSR龙头·特许经营+房地产·Fisher 73/100</div>
+          <div class="company-tags"><span class="tag tag-sector">快餐</span> <span class="tag tag-sector">消费</span></div>
+          <div class="company-count"><b>1</b> 份报告 · 最新 2026-07-07</div>
+        </div>
+        <div class="company-arrow">→</div>
+      </div>
       <div class="company-card" data-market="A股" data-sectors="AI 半导体 光通信" onclick="location.href='reports/中际旭创/index.html'">
         <div class="company-body">
           <h3>中际旭创 <span class="tag tag-cn">A股</span></h3>
@@ -897,6 +907,7 @@
 
 // ===== Company Data for Score Table =====
 var companyData = [
+  {name:"麦当劳",market:"美股",cap:"$2020亿",capNum:2020,profit:"$8.68B",profitNum:87,pe:"23x",peNum:23,pb:"—(负)",pbNum:0,fisher:73,link:"reports/麦当劳/index.html"},
   {name:"英伟达",market:"美股",cap:"$4.3万亿",capNum:43000,profit:"$58.3B",profitNum:583,pe:"~30x",peNum:30,pb:"—",pbNum:0,fisher:90,link:"reports/英伟达/index.html"},
   {name:"台积电",market:"美股",cap:"$1.95万亿",capNum:19500,profit:"$360亿",profitNum:360,pe:"~38x",peNum:38,pb:"~8x",pbNum:8,fisher:87,link:"reports/台积电/index.html"},
   {name:"紫金矿业",market:"A股",cap:"—",capNum:0,profit:"~320亿",profitNum:320,pe:"—",peNum:0,pb:"—",pbNum:0,fisher:87,link:"reports/紫金矿业/index.html"},
