@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUNR (Intuitive Machines) 深度分析报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#e0e0e0;line-height:1.8;padding:20px}
+.container{max-width:900px;margin:0 auto}
+h1{font-size:2em;color:#fff;margin:20px 0 5px;text-align:center}
+.subtitle{text-align:center;color:#888;margin-bottom:30px;font-size:0.95em}
+
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0}
+.score-item{background:#14141f;border-radius:12px;padding:16px;text-align:center;border:1px solid #222}
+.score-item .dim{font-size:0.85em;color:#888;margin-bottom:4px}
+.score-item .val{font-size:1.6em;font-weight:700}
+.val-green{color:#4ade80}.val-yellow{color:#facc15}.val-red{color:#f87171}.val-blue{color:#60a5fa}
+
+.section{margin:30px 0}
+.section h2{font-size:1.4em;color:#fff;border-bottom:2px solid #2a2a3a;padding-bottom:8px;margin-bottom:16px}
+.section h3{font-size:1.15em;color:#ccc;margin:16px 0 8px}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.92em}
+th{background:#1a1a2e;color:#aaa;text-align:left;padding:10px 12px;font-weight:600;border-bottom:2px solid #333}
+td{padding:10px 12px;border-bottom:1px solid #1e1e2e}
+tr:hover td{background:#111122}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.grid-2{grid-template-columns:1fr}}
+
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:0.82em;font-weight:600}
+.badge-green{background:#064e3b;color:#4ade80}
+.badge-yellow{background:#5c3d00;color:#facc15}
+.badge-red{background:#4a1010;color:#f87171}
+
+blockquote{background:#14141f;border-left:3px solid #4ade80;padding:12px 18px;margin:16px 0;border-radius:0 8px 8px 0;color:#aaa;font-size:0.95em}
+
+ul,ol{padding-left:24px;margin:8px 0}
+li{margin:6px 0}
+
+.verdict-box{background:linear-gradient(135deg,#14141f,#1a1a2e);border-radius:16px;padding:24px;border:2px solid #333;margin:20px 0}
+.verdict-box h2{margin-top:0;border:none;padding:0}
+
+.final-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:20px 0}
+.final-item{background:#14141f;border-radius:10px;padding:14px;text-align:center;border:1px solid #222}
+.final-item .label{font-size:0.8em;color:#888;margin-bottom:6px}
+.final-item .number{font-size:1.8em;font-weight:700}
+
+.nav{text-align:center;margin:30px 0 10px}
+.nav a{color:#60a5fa;text-decoration:none;font-size:0.95em}
+.nav a:hover{text-decoration:underline}
+
+.footer{text-align:center;color:#555;font-size:0.82em;margin-top:40px;padding:20px 0;border-top:1px solid #1e1e2e}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔴 LUNR (Intuitive Machines)</h1>
+<p class="subtitle">直觉机器 · 月球经济唯一纯标的 · 报告日期 2026-07-07</p>
+
+<div class="score-grid">
+  <div class="score-item"><div class="dim">Fisher 评分</div><div class="val val-yellow">55/100</div></div>
+  <div class="score-item"><div class="dim">综合评分</div><div class="val val-yellow">55/100</div></div>
+  <div class="score-item"><div class="dim">当前股价</div><div class="val val-blue">$18.89</div></div>
+  <div class="score-item"><div class="dim">市值</div><div class="val val-blue">$30.3亿</div></div>
+  <div class="score-item"><div class="dim">P/S (TTM)</div><div class="val val-red">9.4x</div></div>
+  <div class="score-item"><div class="dim">投资建议</div><div class="val val-yellow">观察</div></div>
+</div>
+
+<div class="section">
+  <h2>一、商业模式</h2>
+  <p>Intuitive Machines 是一家太空技术与基础设施公司，核心业务围绕<strong>地月空间经济</strong>展开：</p>
+  <table>
+    <tr><th>业务板块</th><th>内容</th><th>收入特征</th></tr>
+    <tr><td>月球接入服务</td><td>Nova-C/D 月球着陆器，投送载荷</td><td>项目制（CLPS 合同）</td></tr>
+    <tr><td>轨道服务</td><td>地月通信中继、深空导航</td><td>订阅+使用量计费</td></tr>
+    <tr><td>月球数据服务</td><td>月表数据采集与传输</td><td>新兴业务</td></tr>
+    <tr><td>航天制造</td><td>Lanteris 卫星制造（LEO~地月）</td><td>50/50 政府/商业</td></tr>
+  </table>
+
+  <h3>核心竞争力</h3>
+  <ul>
+    <li>全球<strong>唯一</strong>两次成功商业月球着陆的公司（IM-1 2024.2，IM-2 2025.3）</li>
+    <li>持有 NASA <strong>$48.2亿独家来源合同</strong>（NSNS，10年），至2034年的独家月球中继通信商</li>
+    <li>2026年完成 Lanteris（$8亿）+ KinetX 两笔战略收购</li>
+  </ul>
+  <p><strong>营收轨迹</strong>：$7600万(2023) → $2.28亿(2024) → 指引 <strong>$9-10亿(2026)</strong></p>
+</div>
+
+<div class="section">
+  <h2>二、TAM 与市场空间</h2>
+  <table>
+    <tr><th>细分市场</th><th>规模估计</th><th>公司定位</th></tr>
+    <tr><td>太空经济整体</td><td>$630B（2025）→ $1.8T（2040E）</td><td>地月细分龙头</td></tr>
+    <tr><td>月球载荷投送(CLPS)</td><td>$2.6B（NASA 已授予）</td><td>头部玩家，5个任务 $5.39亿</td></tr>
+    <tr><td>地月通信中继</td><td>$4.82B（NSN 独家）</td><td>垄断至2034年</td></tr>
+    <tr><td>航天器制造</td><td>$601M（Lanteris FY2025）</td><td>已验证制造能力</td></tr>
+  </table>
+  <p><span class="badge badge-green">TAM 评分：8/10</span> — 太空经济体量巨大，NSN 提供确定性锚点，但月球商业化仍处极早期。</p>
+</div>
+
+<div class="section">
+  <h2>三、Fisher 评分</h2>
+  <table>
+    <tr><th>维度</th><th width="60">评分</th><th>评语</th></tr>
+    <tr><td>商业模式质量</td><td class="num">5/10</td><td>从项目制向经常性收入转型中，未盈利，资本密集</td></tr>
+    <tr><td>市场潜力/TAM</td><td class="num">8/10</td><td>$630B太空经济背书，NSN提供确定性</td></tr>
+    <tr><td>竞争壁垒</td><td class="num">7/10</td><td>NSN独家来源+飞行履历，但Firefly等竞争者出现</td></tr>
+    <tr><td>管理层</td><td class="num">4/10</td><td>NASA资深背景，但6个月53次卖出、0次买入</td></tr>
+    <tr><td>财务健康</td><td class="num">3/10</td><td>持续亏损，现金快速消耗，62.3x 债务/权益</td></tr>
+    <tr><td>资本配置</td><td class="num">3/10</td><td>Lanteris收购战略合理，但$5亿ATM严重稀释股东</td></tr>
+    <tr><td>增长动力</td><td class="num">7/10</td><td>营收+199% YoY，订单储备$11亿创纪录</td></tr>
+    <tr><td>收入可见性</td><td class="num">7/10</td><td>$1.1B积压 + NSN $4.82B天花板</td></tr>
+    <tr><td>估值吸引力</td><td class="num">4/10</td><td>9.4x P/S未盈利，从高点跌60%但估值仍不便宜</td></tr>
+    <tr><td>催化剂/风险</td><td class="num">7/10</td><td>IM-3发射为正向催化，政治风险为反向</td></tr>
+    <tr style="font-weight:700;background:#14141f"><td>Fisher 综合</td><td class="num">55/100</td><td></td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>四、财务审计</h2>
+  <div class="grid-2">
+  <div>
+  <h3>损益表（Q1 2026 vs Q1 2025）</h3>
+  <table>
+    <tr><th>指标</th><th>Q1 2026</th><th>Q1 2025</th><th>变动</th></tr>
+    <tr><td>营收</td><td class="num">$186.7M</td><td class="num">$62.5M</td><td class="num" style="color:#4ade80">+198.7%</td></tr>
+    <tr><td>毛利率</td><td class="num">~14.7%</td><td class="num">~21.8%</td><td class="num" style="color:#f87171">-7.1pp</td></tr>
+    <tr><td>营业亏损</td><td class="num" style="color:#f87171">-$39.2M</td><td class="num" style="color:#f87171">-$10.1M</td><td class="num" style="color:#f87171">扩大</td></tr>
+    <tr><td>净亏损</td><td class="num" style="color:#f87171">-$52.5M</td><td class="num" style="color:#4ade80">+$0.98M</td><td class="num" style="color:#f87171">由盈转亏</td></tr>
+    <tr><td>Adj. EBITDA</td><td class="num" style="color:#4ade80">+$2.7M</td><td class="num" style="color:#f87171">-$6.6M</td><td class="num" style="color:#4ade80">首次为正</td></tr>
+  </table>
+  </div>
+  <div>
+  <h3>资产负债表关键项</h3>
+  <table>
+    <tr><th>项目</th><th>2026/3/31</th><th>2025/12/31</th></tr>
+    <tr><td>现金</td><td class="num">$231.6M</td><td class="num">$582.6M</td></tr>
+    <tr><td>商誉+无形资产</td><td class="num">$684.0M</td><td class="num">$31.7M</td></tr>
+    <tr><td>总资产</td><td class="num">$1.72B</td><td class="num">$0.76B</td></tr>
+    <tr><td>订单储备</td><td class="num">$1.1B</td><td class="num">$0.21B</td></tr>
+    <tr><td>债务/权益</td><td class="num">62.3x</td><td class="num">—</td></tr>
+  </table>
+  </div>
+  </div>
+  <p><span class="badge badge-red">财务评级：红色</span> — 持续亏损 + 巨额稀释 + 毛利率恶化 + 现金快速消耗</p>
+</div>
+
+<div class="section">
+  <h2>五、做空逻辑</h2>
+  <ol>
+    <li><strong>技术未经验证</strong>：两次着陆均有严重问题（侧倒、翻滚），IM-3若再失败，Nova-C平台信誉崩塌</li>
+    <li><strong>稀释永动机</strong>：SPAC以来股本+327%，$5亿ATM正在进行</li>
+    <li><strong>内部人大规模套现</strong>：半年0买53卖，CEO套现$5230万，主席套现$2660万</li>
+    <li><strong>NASA依赖症</strong>：政治转向风险巨大</li>
+    <li><strong>30.7%做空比例</strong>：专业投资者用脚投票</li>
+  </ol>
+  <blockquote>⚠️ 轧空风险同样真实：7 Buy vs 1 Sell 的分析师评级 + 高做空比例 = IM-3成功可能触发暴力轧空</blockquote>
+</div>
+
+<div class="section">
+  <h2>六、估值分析</h2>
+  <table>
+    <tr><th>指标</th><th>数值</th></tr>
+    <tr><td>股价</td><td>$18.89</td></tr>
+    <tr><td>市值</td><td>$30.3亿</td></tr>
+    <tr><td>企业价值</td><td>$44.3亿</td></tr>
+    <tr><td>P/S (TTM)</td><td>9.4x</td></tr>
+    <tr><td>EV/2026E Rev</td><td>~4.4x</td></tr>
+  </table>
+  <h3>分析师目标价</h3>
+  <table>
+    <tr><th>机构</th><th>评级</th><th>目标价</th></tr>
+    <tr><td>Roth Capital</td><td>买入</td><td class="num">$75 (+297%)</td></tr>
+    <tr><td>B. Riley</td><td>买入</td><td class="num">$45 (+138%)</td></tr>
+    <tr><td>Cantor Fitzgerald</td><td>增持</td><td class="num">$43 (+128%)</td></tr>
+    <tr><td>Canaccord</td><td>买入</td><td class="num">$41 (+117%)</td></tr>
+    <tr><td>Keybanc</td><td>增持</td><td class="num">$27 (+43%)</td></tr>
+    <tr><td>Stifel / Deutsche</td><td>持有/买入</td><td class="num">$22 (+16%)</td></tr>
+    <tr style="font-weight:700"><td>中位数</td><td></td><td class="num">$34 (+80%)</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>七、风险分析</h2>
+  <table>
+    <tr><th>风险</th><th>严重程度</th><th>概率</th></tr>
+    <tr><td>IM-3 着陆失败</td><td><span class="badge badge-red">极高</span></td><td>中</td></tr>
+    <tr><td>NASA 预算/政策转向</td><td><span class="badge badge-yellow">高</span></td><td>中</td></tr>
+    <tr><td>持续稀释</td><td><span class="badge badge-yellow">高</span></td><td>高</td></tr>
+    <tr><td>Lanteris 整合失败</td><td><span class="badge badge-yellow">中</span></td><td>中</td></tr>
+    <tr><td>技术竞争（Firefly等）</td><td><span class="badge badge-green">中</span></td><td>低</td></tr>
+  </table>
+  <p><strong>最大单一风险</strong>：IM-3 任务失败 → Nova-C 信誉崩塌 → CLPS 订单流失 → NSN 执行基础动摇</p>
+</div>
+
+<div class="section">
+  <h2>八、投资逻辑</h2>
+  <div class="grid-2">
+  <div>
+  <h3 style="color:#4ade80">看多</h3>
+  <ul>
+    <li>NSN $48.2亿/10年独家</li>
+    <li>Lanteris 带来 $6亿营收</li>
+    <li>先发网络效应</li>
+    <li>营收 $76M→$1B 拐点</li>
+    <li>IM-3 改进可信</li>
+  </ul>
+  </div>
+  <div>
+  <h3 style="color:#f87171">看空</h3>
+  <ul>
+    <li>两次着陆严重问题</li>
+    <li>亏损+疯狂稀释</li>
+    <li>内部人大规模套现</li>
+    <li>NASA 依赖度过高</li>
+    <li>30.7%做空比例</li>
+  </ul>
+  </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>九、跟踪指标</h2>
+  <table>
+    <tr><th>指标</th><th>关注点</th><th>频率</th></tr>
+    <tr><td>IM-3 任务</td><td>发射时间、着陆结果</td><td>事件</td></tr>
+    <tr><td>NSN 卫星</td><td>首颗中继卫星发射</td><td>事件</td></tr>
+    <tr><td>季度营收</td><td>是否达到$9-10亿指引</td><td>季度</td></tr>
+    <tr><td>毛利率</td><td>能否回升至20%+</td><td>季度</td></tr>
+    <tr><td>Adj. EBITDA</td><td>是否持续为正</td><td>季度</td></tr>
+    <tr><td>订单储备</td><td>新合同获取速度</td><td>季度</td></tr>
+    <tr><td>ATM 执行</td><td>已售股份数量和价格</td><td>持续</td></tr>
+    <tr><td>内部人交易</td><td>是否继续单向卖出</td><td>持续</td></tr>
+    <tr><td>做空比例</td><td>空头仓位变化</td><td>月度</td></tr>
+  </table>
+</div>
+
+<div class="verdict-box">
+  <h2 style="color:#fff;text-align:center">十、最终结论</h2>
+  <div class="final-grid">
+    <div class="final-item"><div class="label">Fisher 评分</div><div class="number" style="color:#facc15">55</div></div>
+    <div class="final-item"><div class="label">综合评分</div><div class="number" style="color:#facc15">55</div></div>
+    <div class="final-item"><div class="label">估值判断</div><div class="number" style="color:#f87171">高投机</div></div>
+    <div class="final-item"><div class="label">财务评级</div><div class="number" style="color:#f87171">🔴 红色</div></div>
+    <div class="final-item"><div class="label">投资建议</div><div class="number" style="color:#facc15">观察</div></div>
+    <div class="final-item"><div class="label">仓位上限</div><div class="number" style="color:#60a5fa">≤3%</div></div>
+  </div>
+  <p style="text-align:center;color:#aaa;margin-top:16px">
+    LUNR 是市场上<strong>最纯的月球经济标的</strong>，没有之一。NSN 合同提供太空股中罕见的收入确定性。<br>
+    但内部人在卖、毛利率在恶化、稀释在继续。<br><br>
+    <strong style="color:#facc15">等 IM-3 结果出来再决定</strong> — 在这个节点，这是最务实的策略。
+  </p>
+</div>
+
+<div class="nav"><a href="../../index.html">← 返回首页</a></div>
+<div class="footer">Intuitive Machines (LUNR) 深度分析报告 · 2026-07-07 · 寻找艾尔法证券投资系统</div>
+
+</div>
+</body>
+</html>
