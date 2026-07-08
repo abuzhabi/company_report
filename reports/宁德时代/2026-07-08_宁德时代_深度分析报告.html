@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>宁德时代 (300750.SZ) — 大灰皮证券研究深度分析报告</title>
+<title>宁德时代 (300750.SZ) — 大灰皮证券研究深度分析报告 v2</title>
 <style>
 :root { --bg: #f8f9fa; --text: #1a1a2e; --text-secondary: #555; --accent: #e74c3c; --border: #e0e0e0; --card-bg: #fff; --table-stripe: #fafafa; --warning: #fef3c7; --danger: #fee2e2; --success: #d1fae5; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,7 +13,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC
 h1 { font-size: 1.85rem; font-weight: 800; margin: 16px 0 8px; padding-bottom: 12px; border-bottom: 2px solid var(--accent); line-height: 1.3; }
 h2 { font-size: 1.35rem; font-weight: 700; margin: 36px 0 16px; padding: 6px 0; border-bottom: 1px solid var(--border); }
 h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 12px; color: #2c3e50; }
+h4 { font-size: 0.98rem; font-weight: 700; margin: 16px 0 8px; color: #34495e; }
 blockquote { background: #f0f7ff; border-left: 4px solid #3b82f6; margin: 12px 0; padding: 12px 18px; border-radius: 0 8px 8px 0; color: #1e40af; font-size: 0.94rem; }
+blockquote.evidence { background: #f0fdf4; border-left-color: #22c55e; color: #166534; }
+blockquote.counter { background: #fef2f2; border-left-color: #ef4444; color: #991b1b; }
+blockquote.conclusion { background: #fffbeb; border-left-color: #f59e0b; color: #92400e; }
 p { margin: 8px 0; }
 table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
 th { background: #2c3e50; color: white; padding: 10px 12px; text-align: left; font-weight: 600; }
@@ -32,19 +36,29 @@ footer a { color: var(--accent); }
 .badge-red { background: var(--danger); color: #dc2626; }
 .badge-green { background: var(--success); color: #16a34a; }
 .badge-yellow { background: var(--warning); color: #d97706; }
+.badge-blue { background: #dbeafe; color: #2563eb; }
 .score-box { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; }
 .score-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 24px; text-align: center; min-width: 120px; }
 .score-card .label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
 .score-card .value { font-size: 1.6rem; font-weight: 800; margin-top: 4px; }
+.toc { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin: 20px 0; }
+.toc h3 { margin-top: 0; }
+.toc ol { margin: 0; }
+.section-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+.tag-conclusion { background: #fef3c7; color: #92400e; }
+.tag-evidence { background: #d1fae5; color: #166534; }
+.tag-counter { background: #fee2e2; color: #991b1b; }
+.tag-confidence { background: #dbeafe; color: #2563eb; }
 @media (max-width: 640px) { body { padding: 20px 12px; } h1 { font-size: 1.4rem; } h2 { font-size: 1.1rem; } table { font-size: 0.78rem; } }
 </style>
 </head>
 <body>
 <div class="container">
-<a href="../index.html" class="back-link">← 返回宁德时代报告列表</a>
-<a href="../../index.html" class="back-link" style="margin-left:12px;">← 返回首页</a>
-<h1>宁德时代 (300750.SZ / 3750.HK) — 深度分析报告</h1>
-<blockquote>报告日期：2026-07-08 ｜ 分析框架：大灰皮证券研究统一框架（10章完整版）<br>数据截止：2025年报 ｜ 信心等级：★★★★★</blockquote>
+<a href="../index.html" class="back-link">&larr;; 返回宁德时代报告列表</a>
+<a href="../../index.html" class="back-link" style="margin-left:12px;">&larr;; 返回首页</a>
+<h1>宁德时代 (300750.SZ / 3750.HK) — 深度分析报告 v2</h1>
+<blockquote>报告日期：2026-07-08 ｜ 分析框架：大灰皮证券研究统一框架（10章完整版，Evidence First）<br>数据截止：2025年报 + 2026Q1季报 ｜ 信心等级：★★★★★</blockquote>
+
 <div class="score-box">
   <div class="score-card"><div class="label">Fisher评分</div><div class="value" style="color:#dc2626;">86</div></div>
   <div class="score-card"><div class="label">综合评分</div><div class="value" style="color:#dc2626;">84</div></div>
@@ -52,146 +66,449 @@ footer a { color: var(--accent); }
   <div class="score-card"><div class="label">投资建议</div><div class="value" style="color:#16a34a;font-size:1.1rem;">推荐</div></div>
 </div>
 
+<div class="toc">
+<h3>目录</h3>
+<ol>
+  <li>公司基本面分析</li>
+  <li>行业研究（TAM）</li>
+  <li>Fisher成长股评价</li>
+  <li>财务审计（Bear Audit）</li>
+  <li>Bear Case（完整做空逻辑）</li>
+  <li>估值分析</li>
+  <li>风险分析</li>
+  <li>投资逻辑</li>
+  <li>长期跟踪指标</li>
+  <li>最终结论</li>
+</ol>
+</div>
+
+<blockquote class="conclusion">
+<strong>结论先行：</strong>综合评分 <strong>84/100</strong> — <strong>推荐</strong>。宁德时代是全球动力电池与储能电池的绝对双料冠军，2025年营收4237亿（+17%），净利润722亿（+42%），利润增速远超营收增速证明了经营杠杆的释放。全球动力电池市占率39.2%（连续9年第一）、储能30.4%（连续5年第一），Q1 2026营收增速跳升至52.5%，呈断档式加速。当前PE ~22x（2026E），对于一个利润增速42%、ROE 25%、全球39%市占率的绝对龙头而言，估值合理偏低。但需警惕固态电池技术路线颠覆和欧美贸易壁垒两大长期风险。
+</blockquote>
+
 <h2>第1章 | 公司基本面分析</h2>
+
 <h3>1.1 商业模式</h3>
-<p>宁德时代是全球动力电池与储能电池绝对龙头，连续9年全球动力电池市占率第一（39.2%），连续5年储能电池市占率第一（30.4%）。</p>
+
+<h4>1.1.1 公司做什么</h4>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>宁德时代是全球动力电池与储能电池绝对龙头，也是全球最大的锂电池制造商。核心业务是研发、制造和销售锂电池——卖给车企做动力电池、卖给电力公司和数据中心做储能。商业模式本质是"技术驱动+规模制造+全产业链垂直整合"，从上游锂矿投资到下游电池回收形成闭环。</blockquote>
+
+<p><span class="section-tag tag-evidence">证据</span></p>
 <ul>
-  <li><strong>动力电池</strong>：全球39.2%市占率，覆盖全球头部车企</li>
-  <li><strong>储能电池</strong>：全球30.4%市占率</li>
-  <li><strong>技术创新</strong>：钠新电池、骁遥双核系列、天行商用车电池</li>
-  <li><strong>全产业链协同</strong>：从矿产到电池回收的垂直整合</li>
+  <li>2025年锂电池销量661GWh，同比增长39.16%；其中动力电池541GWh（+41.85%），储能电池121GWh（+29.13%）。<em>（来源：CATL 2025年报，2026.03.09）</em></li>
+  <li>全球动力电池使用量市占率39.2%（SNE Research），连续9年全球第一。<em>（来源：SNE Research, 2026.02）</em></li>
+  <li>全球储能电池出货量市占率30.4%（SNE Research），连续5年全球第一。<em>（来源：CATL 2025年报）</em></li>
+  <li>全球产能达772GWh，另有321GWh在建，产能利用率97%。<em>（来源：CATL 2025年报）</em></li>
+  <li>已为全球超过2400万辆汽车提供电池。<em>（来源：CATL 2025年报）</em></li>
+  <li>上游布局：通过邦普循环2025年回收废旧电池21万吨，再生锂盐2.4万吨。<em>（来源：同上）</em></li>
 </ul>
+<p><span class="section-tag tag-evidence">证据等级</span> ★★★★★ 一级证据。来自CATL官方年报和SNE Research。</p>
+
+<blockquote class="counter"><span class="section-tag tag-counter">反方证据</span>
+<ul>
+  <li>"全产业链垂直整合"听起来美好，但上游锂矿投资在碳酸锂价格下行周期中可能产生减值损失。2024-2025年碳酸锂价格从50万/吨跌至8-10万/吨，矿业投资回报率大幅缩水。</li>
+  <li>97%的产能利用率意味着产能已接近极限，未来扩产需要巨额资本开支（2025年Capex 423亿），可能稀释ROE。</li>
+  <li>储能电池出货增速（29%）低于行业增速（82.9%），显示公司在储能领域的市场份额正在被二线厂商侵蚀。</li>
+</ul>
+</blockquote>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">最终判断</span>CATL的商业模式是教科书级别的规模效应+技术壁垒+客户锁定。661GWh的出货量无人能及，且利润增速42%远超营收17%，证明了"卖得越多、赚得越狠"的经营杠杆。但储能增速跑输行业是需要关注的信号。<br><span class="section-tag tag-confidence">信心等级</span> ★★★★★ 极高信心</blockquote>
+
+<h4>1.1.2 收入结构</h4>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>动力电池是绝对主力（3165亿/75%），储能电池是第二增长曲线（约650亿/15%），海外收入占比30.6%且毛利率（31%）显著高于境内（24%），全球化正在从"投入期"走向"收获期"。</blockquote>
+
 <table>
-  <tr><th>指标</th><th>2025年</th><th>同比</th></tr>
-  <tr><td>营业收入</td><td>4237.02亿</td><td><span style="color:#dc2626;font-weight:700;">+17.04%</span></td></tr>
-  <tr><td>归母净利润</td><td>722.01亿</td><td><span style="color:#dc2626;font-weight:700;">+42.29%</span></td></tr>
-  <tr><td>ROE</td><td>21.13%</td><td>—</td></tr>
-  <tr><td>Q4净利润</td><td>—</td><td><span style="color:#dc2626;font-weight:700;">+57.1%</span></td></tr>
-  <tr><td>全球动力电池市占率</td><td>39.2%</td><td>连续9年第一</td></tr>
-  <tr><td>全球储能电池市占率</td><td>30.4%</td><td>连续5年第一</td></tr>
-  <tr><td>利润增速 vs 营收增速</td><td>42% vs 17%</td><td><span class="badge badge-green">✅ 经营杠杆</span></td></tr>
+  <tr><th>业务板块</th><th>2025年收入</th><th>收入占比</th><th>毛利率</th><th>备注</th></tr>
+  <tr><td>动力电池系统</td><td>~3165亿</td><td>~75%</td><td>~22%+</td><td>541GWh销量，+41.85%</td></tr>
+  <tr><td>储能电池系统</td><td>~650亿</td><td>~15%</td><td>~28%</td><td>121GWh销量，+29.13%</td></tr>
+  <tr><td>电池材料及回收</td><td>~300亿</td><td>~7%</td><td>—</td><td>邦普循环</td></tr>
+  <tr><td>其他（换电/矿产等）</td><td>~120亿</td><td>~3%</td><td>—</td><td>巧克力换电等</td></tr>
 </table>
 
-<h3>1.2 核心竞争优势</h3>
-<ol>
-  <li><strong>全球绝对龙头</strong>：动力39.2%+储能30.4%，连续9年/5年第一</li>
-  <li><strong>技术壁垒</strong>：钠离子、双核、固态电池技术储备</li>
-  <li><strong>规模效应</strong>：4237亿营收=全球最大</li>
-  <li><strong>全产业链协同</strong>：从矿产到回收</li>
-  <li><strong>全球化收获期</strong>：海外从投入到收获</li>
-  <li><strong>利润增速>>营收增速</strong>：经营杠杆释放</li>
-</ol>
+<ul>
+  <li>海外收入1296亿，占30.6%，贡献利润408亿。海外毛利率31%，境内毛利率24%。<em>（来源：CATL 2025年报、财经网分析，2026.03.11）</em></li>
+  <li>2026Q1营收1291亿（+52.5%），呈断档式加速。归母净利润207亿（+48.5%）。<em>（来源：CATL 2026Q1季报，2026.04.15）</em></li>
+  <li>Q4 2025毛利率跃升至28.21%，受神行电池、麒麟电池等高溢价新品放量驱动。<em>（来源：雪球分析，2026.03.12）</em></li>
+</ul>
+
+<blockquote class="counter"><span class="section-tag tag-counter">反方证据</span>
+<ul>
+  <li>储能电池增速29%跑输行业82.9%，市场份额可能从之前更高水平滑落。</li>
+  <li>海外收入30.6%意味着近70%收入仍依赖国内市场，国内EV渗透率已达40%，增速天花板在逼近。</li>
+  <li>动力电池毛利率22%虽行业领先，但相比2022年（约24-25%）已有下滑趋势——价格战的影响是真实存在的。</li>
+</ul>
+</blockquote>
+<p><span class="section-tag tag-confidence">信心等级</span> ★★★★★ 极高信心</p>
+
+<h3>1.2 行业位置与竞争格局</h3>
+
+<h4>1.2.1 动力电池：绝对王者，且份额还在扩大</h4>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>CATL在全球动力电池市场不仅是第一，而且与第二名（BYD 16.4%）的差距在拉大。2025年全球装机464.7GWh（+35.7%），市占率从38.0%升至39.2%。2026年1-5月进一步升至40.2%，首次突破40%大关。更关键的是，CATL的增速（35.7%）高于行业均值（31.7%），意味着龙头份额逆势扩张。</blockquote>
+
+<table>
+  <tr><th>公司</th><th>2025装机(GWh)</th><th>2025市占率</th><th>2025增速</th><th>2026 1-5月市占率</th><th>2026 1-5月增速</th></tr>
+  <tr><td><strong>CATL</strong></td><td>464.7</td><td><strong>39.2%</strong></td><td><strong>+35.7%</strong></td><td><strong>40.2%</strong></td><td><strong>+22.9%</strong></td></tr>
+  <tr><td>BYD</td><td>194.8</td><td>16.4%</td><td>+27.7%</td><td>14.4%</td><td>+0.4%</td></tr>
+  <tr><td>LG Energy</td><td>108.8</td><td>9.2%</td><td>+11.3%</td><td>8.7%</td><td>+7.3%</td></tr>
+  <tr><td>CALB</td><td>62.8</td><td>5.3%</td><td>—</td><td>5.1%</td><td>+36.3%</td></tr>
+  <tr><td>Gotion</td><td>53.5</td><td>4.5%</td><td>—</td><td>4.6%</td><td>+37.0%</td></tr>
+  <tr><td>SK On</td><td>44.5</td><td>3.7%</td><td>—</td><td>3.4%</td><td>-5.8%</td></tr>
+  <tr><td>Panasonic</td><td>44.2</td><td>3.7%</td><td>—</td><td>3.2%</td><td>-8.5%</td></tr>
+</table>
+<p><em>来源：SNE Research, 2026.02 / 2026.07.03。2025年全球总装机1187GWh（+31.7%），2026年1-5月总装机469.2GWh（+16.3%）。</em></p>
+
+<blockquote class="counter"><span class="section-tag tag-counter">反方证据</span>
+<ul>
+  <li>CATL的全球增长高度依赖中国市场（中国EV电池装机占全球~65%），海外市占率虽升至30%但仍低于其全球39.2%的水平。</li>
+  <li>BYD的市占率下滑部分源于其电池主要自供（BYD整车），与其整车销量波动相关，不等于CATL从BYD手中夺取份额。</li>
+  <li>韩国SK On（-5.8%）和日本松下（-8.5%）的下滑更多是自身客户问题，CATL的份额增长部分是"对手太弱"而非"自己太强"。</li>
+</ul>
+</blockquote>
+<p><span class="section-tag tag-confidence">信心等级</span> ★★★★★ 极高信心</p>
+
+<h4>1.2.2 储能电池：市场份额30.4%但增速跑输行业</h4>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>CATL是全球储能电池出货量第一（30.4%），但2025年的增速（29%）远低于行业增速（82.9%），市场份额正在被海辰储能、亿纬锂能等二线厂商侵蚀。储能是一个"规模更大但竞争更卷"的战场。</blockquote>
+
+<ul>
+  <li>2025年全球储能电池出货量640GWh（+82.9%），市场规模约700亿美元。<em>（来源：ICC鑫椤资讯/EVTank, 2026.01）</em></li>
+  <li>CATL 2025年储能电池销量121GWh（+29.13%），远低于行业82.9%的增速。</li>
+  <li>SNE Research口径：CATL储能电池出货市占率30.4%，连续5年第一。</li>
+  <li>竞争格局：海辰储能约13%、亿纬锂能约12%、比亚迪约9%、瑞浦兰钧约8%。<em>（来源：ICC鑫椤资讯, 2026.01）</em></li>
+  <li>CATL储能系统集成业务出货量增长超过160%，全球部署约2300个项目。<em>（来源：CATL 2025年报）</em></li>
+</ul>
+
+<blockquote class="counter"><span class="section-tag tag-counter">反方证据</span>
+<ul>
+  <li>储能电池市场增速82.9%但CATL仅增29%，意味着CATL在"主动放弃低毛利订单"。</li>
+  <li>二线厂商在大储和工商业储能领域价格更激进，CATL的高端定位策略在储能市场是否同样适用存疑。</li>
+</ul>
+</blockquote>
+<p><span class="section-tag tag-confidence">信心等级</span> ★★★★☆</p>
+
+<h3>1.3 核心竞争优势与护城河</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>CATL的护城河是"五层嵌套"：规模效应→技术壁垒→客户锁定→全产业链整合→品牌与生态。这种嵌套式护城河极难被单一对手同时攻破。</blockquote>
+
+<table>
+  <tr><th>护城河要素</th><th>当前状况</th><th>评分</th></tr>
+  <tr><td>规模效应</td><td>772GWh产能，97%利用率，单位成本行业最低</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td>技术壁垒</td><td>5.4万项专利，221亿年研发，900亿十年累计</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td>客户锁定</td><td>全球2400万辆汽车装机，车企认证周期2-3年</td><td>⭐⭐⭐⭐⭐</td></tr>
+  <tr><td>全产业链</td><td>矿→材料→电芯→回收的闭环（邦普循环）</td><td>⭐⭐⭐⭐</td></tr>
+  <tr><td>品牌/生态</td><td>巧克力换电1000+站，零碳工业园区</td><td>⭐⭐⭐⭐</td></tr>
+</table>
+
+<ul>
+  <li>规模效应：772GWh产能位列全球第一，第二名比亚迪约300GWh。产能利用率97%表明订单饱满。单位制造成本比第二梯队低15-20%。</li>
+  <li>技术壁垒：累计专利54538项（含待审批），国际专利申请量在中国企业中排名第二。2025年研发投入221亿。全球六大研发中心、2.3万名研发人员。</li>
+  <li>客户锁定：车企认证动力电池需2-3年，且电池是安全件，车企不会轻易更换供应商。CATL已配套全球2400万辆汽车。</li>
+  <li>全产业链：邦普循环2025年回收21万吨废旧电池，再生锂盐2.4万吨（+40.4%）。</li>
+  <li>生态拓展：巧克力换电站1000+座覆盖45城，骐骥换电300+站覆盖26省7.8万公里绿色物流路线。</li>
+</ul>
+<p><em>来源：CATL 2025年报。</em></p>
+
+<blockquote class="counter"><span class="section-tag tag-counter">反方证据</span>
+<ul>
+  <li>规模效应是双刃剑——321GWh在建产能意味着未来还有巨额Capex，如果需求增速放缓，产能闲置将拖累ROE。</li>
+  <li>客户锁定的壁垒在储能市场不适用——储能电池标准化程度高，客户切换成本低。</li>
+  <li>5.4万项专利中大部分是渐进式创新，固态电池等颠覆性技术可能让现有专利体系贬值。</li>
+</ul>
+</blockquote>
+<p><span class="section-tag tag-confidence">信心等级</span> ★★★★★ 极高信心</p>
+
+<h3>1.4 增长驱动力（未来5-10年）</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>未来增长的核心驱动力来自四层叠加：(1) 全球EV渗透率提升（从20%→40-50%），(2) 储能市场爆发（AI数据中心+电网储能），(3) 海外产能释放（匈牙利工厂，高毛利），(4) 非车载新场景（eVTOL/电动船舶/换电网络）。</blockquote>
+
+<ul>
+  <li><strong>EV渗透率</strong>：全球~20%，中国~40%，欧洲~25%，美国~10%。如果全球提升至40-50%，对应电池需求增长2-3倍。</li>
+  <li><strong>储能市场</strong>：2025年全球新增储能装机108GW（+40%），数据中心用电量预计2030年翻倍至945TWh。</li>
+  <li><strong>匈牙利工厂</strong>：规划产能100GWh，2026-2027年投产，面向欧洲客户（奔驰、宝马、大众等），海外毛利率31%远高于国内的24%。</li>
+  <li><strong>新场景</strong>：AutoFlight完成全球最大5吨级eVTOL首飞；电动船舶获五大国际船级社型式认可，已在近1000艘船舶部署；换电网络全年115万+次服务。</li>
+</ul>
+<p><em>来源：IEA Global EV Outlook；CATL 2025年报；行业公开信息。</em></p>
+<p><span class="section-tag tag-confidence">信心等级</span> ★★★★☆</p>
 
 <h2>第2章 | 行业研究（TAM）</h2>
+
+<h3>2.1 动力电池市场</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>全球动力电池市场2025年装机1187GWh（+31.7%），规模约8000-9000亿元。行业处于高速成长期的中后期——增速从2023-2024年的40%+放缓至31.7%，但仍显著高于大多数行业。中国国内EV渗透率40%接近成熟期，但全球仅20%，还有翻倍空间。</blockquote>
 <ul>
-  <li>全球动力电池市场：2025年~1.2万亿元，预计2030年~3万亿元</li>
-  <li>全球储能市场：2025年~3000亿元，增速50%+，预计2030年~1.5万亿元</li>
-  <li>EV渗透率：全球~20%，中国~40%</li>
+  <li>2025年全球EV电池装机1187GWh（+31.7%），首次突破1TWh大关。<em>（来源：SNE Research, 2026.02）</em></li>
+  <li>2026年1-5月装机469.2GWh（+16.3%），增速进一步放缓，部分受高基数影响。<em>（来源：SNE Research, 2026.07.03）</em></li>
+  <li>全球EV渗透率约20%，中国40%（内销口径），欧洲25%，美国10%。<em>（来源：IEA；行业估算）</em></li>
 </ul>
 
-<h2>第3章 | Fisher成长股评价</h2>
+<blockquote class="counter"><span class="section-tag tag-counter">反方证据</span>
+<ul>
+  <li>增速放缓趋势明显：2023年+40% → 2024年+35% → 2025年+31.7% → 2026年1-5月仅+16.3%。行业增速可能在2027-2028年降至个位数。</li>
+  <li>部分欧洲国家削减EV补贴（德国2023年底取消），可能拖累欧洲市场。</li>
+  <li>美国市场不确定性：特朗普政府如果回归，可能削减EV税收抵免。</li>
+</ul>
+</blockquote>
+
+<h3>2.2 储能电池市场</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>全球储能电池市场正处于爆发期，2025年出货量640GWh（+82.9%），是动力电池增速的2.6倍。AI数据中心+电网储能+工商业储能三重驱动，预计2030年市场规模超过2000亿美元。</blockquote>
+<ul>
+  <li>2025年全球储能电池出货640GWh（+82.9%），市场规模约700亿美元。<em>（来源：EVTank/ICC鑫椤资讯, 2026.01）</em></li>
+  <li>2025年全球新增电池储能装机108GW（+40%），中国占约60%。<em>（来源：IEA）</em></li>
+  <li>全球数据中心用电量预计2030年翻倍至945TWh，AI算力建设将储能推向"电力安全基础设施"。</li>
+  <li>CATL已为商汤科技上海AI数据中心提供储能方案，年省电1000万度+减碳3000吨。</li>
+</ul>
+
+<h3>2.3 三情景分析</h3>
 <table>
-  <tr><th>维度</th><th>评分</th><th>依据</th></tr>
-  <tr><td>1. 市场潜力</td><td><strong>9/10</strong></td><td>全球EV+储能双赛道，TAM万亿级</td></tr>
-  <tr><td>2. 管理层能力</td><td><strong>9/10</strong></td><td>曾毓群，连续9年全球第一</td></tr>
-  <tr><td>3. 研发能力</td><td><strong>9/10</strong></td><td>钠离子、双核、固态电池储备</td></tr>
-  <tr><td>4. 销售能力</td><td><strong>9/10</strong></td><td>全球39.2%市占率</td></tr>
-  <tr><td>5. 利润率改善空间</td><td>8/10</td><td>利润+42%>>营收+17%</td></tr>
-  <tr><td>6. 护城河</td><td><strong>9/10</strong></td><td>全球第一+技术壁垒+规模效应</td></tr>
-  <tr><td>7. 长期成长能力</td><td>8/10</td><td>EV渗透率+储能爆发+全球化</td></tr>
-  <tr><td>8. 企业文化</td><td>8/10</td><td>技术驱动，务实</td></tr>
-  <tr><td>9. 资本配置能力</td><td>8/10</td><td>全球化布局+港股融资</td></tr>
-  <tr><td>10. 长期竞争优势</td><td><strong>9/10</strong></td><td>全球绝对龙头，连续9年第一</td></tr>
+  <tr><th>情景</th><th>概率</th><th>全球动力电池2030</th><th>全球储能2030</th><th>CATL营收2030E</th><th>CATL净利2030E</th></tr>
+  <tr><td><span class="badge badge-green">乐观</span></td><td>25%</td><td>2500GWh</td><td>2000GWh</td><td>1.2万亿+</td><td>1800-2000亿</td></tr>
+  <tr><td><span class="badge badge-yellow">基准</span></td><td>55%</td><td>1800GWh</td><td>1200GWh</td><td>8000-9000亿</td><td>1200-1400亿</td></tr>
+  <tr><td><span class="badge badge-red">悲观</span></td><td>20%</td><td>1100GWh</td><td>600GWh</td><td>5000-6000亿</td><td>600-800亿</td></tr>
 </table>
-<p><strong>Fisher总分：86/100</strong> — 7家公司中最高评分</p>
+
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">判断</span><strong>行业是否具备长期成长空间？是。</strong>动力+储能双赛道合计，2030年的市场规模将在3000-4500GWh（基准情景）。即使假设行业增速放缓至15-20%，仍是一个万亿级赛道。</blockquote>
+
+<h2>第3章 | Fisher成长股评价</h2>
+
+<table>
+  <tr><th>维度</th><th>评分</th><th>详细依据</th></tr>
+  <tr><td>1. 市场潜力</td><td><strong>9/10</strong></td><td>全球EV+储能双赛道，2030年TAM超万亿。动力电池1187GWh（+31.7%），储能640GWh（+82.9%）</td></tr>
+  <tr><td>2. 管理层能力</td><td><strong>9/10</strong></td><td>曾毓群博士，中科院物理所背景，2011年创立公司至今将营收从0做到4237亿。对技术路线判断准确（坚持液态锂电+钠离子，不盲目追固态），资本配置稳健（50%利润分红）。连续9年全球第一。</td></tr>
+  <tr><td>3. 研发能力</td><td><strong>9/10</strong></td><td>2025年研发221亿（占营收5.2%），十年累计900亿+。54538项专利（含待审批），国际专利申请量中企第二。六大研发中心、2.3万研发人员。获世界经济论坛MINDS奖。</td></tr>
+  <tr><td>4. 销售能力</td><td>8/10</td><td>全球39.2%动力市占率证明销售能力顶级。但储能增速29%跑输行业83%，显示在价格敏感的储能市场销售策略偏保守。Q1 2026营收增速跳升至52.5%，显示销售动能强劲。</td></tr>
+  <tr><td>5. 利润率改善空间</td><td>8/10</td><td>利润增速42%>>营收17%，经营杠杆显著释放。Q4 2025毛利率28.21%创近期新高。但行业价格战压力持续，利润率的可持续性是关键。</td></tr>
+  <tr><td>6. 护城河</td><td><strong>9/10</strong></td><td>五层嵌套护城河（规模+技术+客户锁定+全产业链+生态），极难被单一对手同时攻破。</td></tr>
+  <tr><td>7. 长期成长能力</td><td>8/10</td><td>EV+储能双赛道保证了未来10年的增长空间。但EV增速正在放缓（31.7%→16.3%年化），储能增速虽高但CATL跑输。</td></tr>
+  <tr><td>8. 企业文化</td><td>8/10</td><td>技术驱动型文化，务实（不盲目追风口），执行力强。但组织规模庞大（全球十余万员工），官僚化风险存在。</td></tr>
+  <tr><td>9. 资本配置能力</td><td>8/10</td><td>50%利润派息（69.57元/10股），港股上市拓宽融资渠道。但Capex/营收比10%偏高，在建产能321GWh的投资回报率需要验证。CROIC约14-16%（估算），高于WACC。</td></tr>
+  <tr><td>10.长期竞争优势</td><td><strong>9/10</strong></td><td>连续9年全球第一本身就是最大的竞争优势信号。规模+技术+客户的三重飞轮仍在加速。</td></tr>
+</table>
+
+<div class="score-box">
+  <div class="score-card"><div class="label">Fisher总分</div><div class="value" style="color:#dc2626;">86/100</div></div>
+</div>
+
+<p><strong>最符合费雪思想的地方：</strong>CATL堪称费雪成长股的教科书案例——在一个爆发式增长的行业中，通过持续的高研发投入和技术创新，建立了"规模→成本→客户→更大规模"的正反馈飞轮。</p>
+<p><strong>最不符合费雪思想的地方：</strong>费雪强调"利润率有持续改善的空间"，但CATL面临"规模越大、价格战压力越大"的行业现实。二线厂商以亏损换份额，下游车企利润微薄必然持续施压电池降价。此外，组织规模已超过费雪所偏好的中小企业范畴。</p>
 
 <h2>第4章 | 财务审计（Bear Audit）</h2>
-<table>
-  <tr><th>指标</th><th>2025年</th><th>评价</th></tr>
-  <tr><td>营收增速</td><td>+17.04%</td><td><span class="badge badge-green">✅ 稳健</span></td></tr>
-  <tr><td>净利润增速</td><td>+42.29%</td><td><span class="badge badge-green">✅ 远超营收</span></td></tr>
-  <tr><td>Q4净利增速</td><td>+57.1%</td><td><span class="badge badge-green">✅ 加速</span></td></tr>
-  <tr><td>ROE</td><td>21.13%</td><td><span class="badge badge-green">✅ 优秀</span></td></tr>
-  <tr><td>全球市占率</td><td>39.2%</td><td><span class="badge badge-green">✅ 绝对龙头</span></td></tr>
-</table>
-<p><span class="badge badge-green">评级：绿色（财务质量优秀）</span></p>
 
-<h2>第5章 | Bear Case</h2>
-<ol>
-  <li><strong>固态电池颠覆</strong>：若提前商用，液态电池产能可能贬值</li>
-  <li><strong>竞争加剧</strong>：比亚迪垂直整合+LG价格竞争</li>
-  <li><strong>碳酸锂价格波动</strong>：上游原材料影响利润</li>
-  <li><strong>地缘政治</strong>：欧美贸易壁垒</li>
-</ol>
-<p><strong>做空成功概率：15%</strong> — 短期极低，护城河极深</p>
+<h3>4.1 核心财务指标审查</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>CATL的财务状况整体优秀，属于全球制造业中财务质量最高的梯队。经营现金流（1332亿）远超净利润（722亿），利润质量极高。但在应收账款和资本密集度方面存在需要密切关注的"黄灯"信号。</blockquote>
+
+<table>
+  <tr><th>审计项</th><th>2025年数据</th><th>分析</th></tr>
+  <tr><td>营收</td><td>4237亿（+17.04%）</td><td><span class="badge badge-green">✅</span> 稳健增长，2026Q1跳升至+52.5%</td></tr>
+  <tr><td>归母净利润</td><td>722亿（+42.28%）</td><td><span class="badge badge-green">✅</span> 利润增速远超营收</td></tr>
+  <tr><td>经营现金流</td><td>1332亿（+37.35%）</td><td><span class="badge badge-green">✅</span> OCF/NP=1.85x，利润质量极高</td></tr>
+  <tr><td>自由现金流</td><td>~909亿（1332-423）</td><td><span class="badge badge-green">✅</span> FCF充裕，覆盖分红+投资</td></tr>
+  <tr><td>期末现金</td><td>3335亿</td><td><span class="badge badge-green">✅</span> 现金储备极其雄厚</td></tr>
+  <tr><td>毛利率</td><td>26%（Q4达28.21%）</td><td><span class="badge badge-green">✅</span> 行业最优秀水平</td></tr>
+  <tr><td>ROE</td><td>24.7%</td><td><span class="badge badge-green">✅</span> 高于资本成本，持续创造价值</td></tr>
+  <tr><td>ROIC</td><td>~14-16%（估算）</td><td><span class="badge badge-green">✅</span> 维持较高水平</td></tr>
+  <tr><td>资产负债率</td><td>61.94%</td><td><span class="badge badge-yellow">⚠️</span> 制造业偏高水平</td></tr>
+  <tr><td>Capex</td><td>423亿</td><td><span class="badge badge-yellow">⚠️</span> 资本密集度高</td></tr>
+  <tr><td>应收账款</td><td>持续增长</td><td><span class="badge badge-yellow">⚠️</span> 鹰眼预警关注</td></tr>
+  <tr><td>研发投入</td><td>221亿（5.2%营收）</td><td><span class="badge badge-green">✅</span> 持续高强度投入</td></tr>
+</table>
+<p><em>来源：CATL 2025年报（2026.03.09发布）；鹰眼预警系统报告（2026.03.11）；央广网年报分析（2026.03.10）。</em></p>
+
+<h3>4.2 红旗预警</h3>
+
+<h4>红旗1：应收账款/营收比值持续增长 ⚠️</h4>
+<blockquote class="counter"><span class="section-tag tag-counter">反方证据</span>
+<ul>
+  <li>CATL OCF/NP比率高达1.85x，意味着经营现金流远大于净利润，即使应收账款有所增长，实际回款能力依然很强。</li>
+  <li>CATL客户结构中一线车企占比较高（特斯拉、宝马、奔驰等），这些客户的信用风险较低。</li>
+</ul>
+</blockquote>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">最终判断</span>应收账款增长在当前行业环境下值得持续跟踪，但不构成"红色警报"。CATL强大的经营现金流和现金储备为潜在的坏账风险提供了充足的缓冲。</blockquote>
+
+<h4>红旗2：资本密集度与产能过剩风险 ⚠️</h4>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">最终判断</span>资本密集度高是制造业龙头的宿命——不投产能就守不住份额。CATL的Capex决策应该基于其97%的利用率和Q1 52.5%的营收增速来判断——目前来看，这些投资是有需求支撑的。但如果2027-2028年行业增速降至个位数，今天的Capex会成为明天的负担。</blockquote>
+
+<h3>4.3 财务审计总评</h3>
+<p><span class="badge badge-green">评级：绿色（财务质量优秀）</span></p>
+<p>CATL的财务状况在A股制造业中属于最优秀的一档。经营现金流（1332亿）远超净利润（722亿），OCF/NP比率1.85x；FCF 909亿完全覆盖分红（315亿）和研发（221亿）；现金储备3335亿为任何黑天鹅事件提供了充足的缓冲。唯一的"黄灯"是应收账款增长和资本密集度，但不改变整体财务健康的判断。</p>
+<p><strong>如果有人想做空CATL，财务造假这条路是走不通的。</strong></p>
+
+<h2>第5章 | Bear Case（完整做空逻辑）</h2>
+
+<h3>脆弱点1：估值——增速放缓就是戴维斯双杀</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>CATL当前PE ~22x（2026E）看似合理，但这个PE隐含的假设是未来3年净利润保持30%+增速。2026年1-5月全球装机增速已放缓至16.3%，如果2027年行业增速降至个位数，CATL的PE将面临20x→15x的重估，带来25%+的股价下跌。</blockquote>
+
+<h3>脆弱点2：储能市场份额流失</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>储能市场增速82.9%，但CATL储能销量仅+29%。如果这个趋势持续，CATL在储能市场的地位可能从"第一"滑落至"之一"——二线厂商通过低价策略抢夺份额，CATL的高端策略可能失效。</blockquote>
+
+<h3>脆弱点3：固态电池——不确定的"诺基亚时刻"</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>如果固态电池在2028-2030年实现大规模商用且CATL没有领先优势，CATL现有的772GWh液态锂电池产能可能面临"诺基亚式"的价值毁灭。曾毓群公开表示"2030年前百万级装车难度大"，但丰田、三星SDI、QuantumScape等都在加速。</blockquote>
+<ul>
+  <li>曾毓群2026年6月接受专访表示："固态电池概念存在认知偏差"，"全固态电池2030年前百万级装车难度大"。<em>（来源：ITBear报道, 2026.06.16）</em></li>
+  <li>丰田计划2027-2028年量产固态电池，三星SDI计划2027年。<em>（来源：行业公开信息）</em></li>
+  <li>CATL自身固态电池研发"仍在持续进行，预计2027年小规模试生产"。<em>（来源：搜狐声明引用, 2025.10）</em></li>
+</ul>
+
+<h3>脆弱点4：地缘政治——欧美市场正在关闭</h3>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">结论</span>CATL被美国国防部列入"中国军工企业名单"，面临20%额外关税。欧盟《新电池法》要求碳足迹追溯，增加合规成本。如果中美/中欧关系进一步恶化，CATL可能被完全排除出西方市场。海外收入占比30.6%，失去欧美市场将受到重大冲击。</blockquote>
+
+<h3>如果股价腰斩，最大原因可能是什么？</h3>
+<blockquote class="conclusion"><strong>最大单一原因：全球EV增速断崖式放缓 + 固态电池技术路线被竞争对手抢先。</strong><br><br>
+具体场景：2027-2028年全球EV渗透率达到30-35%瓶颈，增速降至个位数；同时丰田/三星固态电池率先量产。CATL的772GWh液态产能面临双重打击——需求萎缩+技术贬值。PE从22x压缩至10-12x，股价可能跌破200元（腰斩）。<br><br>
+<strong>做空成功概率：20%。</strong> CATL的护城河太深（39.2%市占率、3335亿现金、24.7% ROE），做空短期内极难成功。但中长期（3-5年）的概率显著高于短期（1年）。</blockquote>
 
 <h2>第6章 | 估值分析</h2>
+<blockquote class="conclusion"><span class="section-tag tag-conclusion">核心问题</span>公司优秀 ≠ 股票值得买？当前估值是否透支了未来？</blockquote>
+
+<h3>6.1 相对估值</h3>
 <table>
-  <tr><th>指标</th><th>当前值</th><th>评价</th></tr>
-  <tr><td>股价</td><td>~372.49元</td><td>—</td></tr>
-  <tr><td>总市值</td><td>~1.72万亿</td><td>—</td></tr>
-  <tr><td>PE(TTM)</td><td>21.82x</td><td><span class="badge badge-green">✅ 合理偏低</span></td></tr>
-  <tr><td>2026E PE</td><td>~22x</td><td><span class="badge badge-green">✅ 合理</span></td></tr>
-  <tr><td>2027E PE</td><td>~17x</td><td><span class="badge badge-green">✅ 偏低</span></td></tr>
-  <tr><td>机构目标价</td><td>515.61元</td><td>25x PE 2026，~38%涨幅</td></tr>
+  <tr><th>估值指标</th><th>当前值</th><th>说明</th></tr>
+  <tr><td>股价</td><td>~380元（2026.07.03收盘）</td><td>—</td></tr>
+  <tr><td>总市值</td><td>~1.76万亿</td><td>A股市值排名第6</td></tr>
+  <tr><td>PE(TTM)</td><td>~24.4x</td><td>基于722亿净利</td></tr>
+  <tr><td>PE(2026E)</td><td>~22x</td><td>基于941亿一致预期</td></tr>
+  <tr><td>PE(2027E)</td><td>~17x</td><td>基于1172亿一致预期</td></tr>
+  <tr><td>PE(2028E)</td><td>~14x</td><td>基于1426亿一致预期</td></tr>
+  <tr><td>PB</td><td>~5.2x</td><td>ROE 25%，合理</td></tr>
+  <tr><td>PEG</td><td>~0.52x（22/42）</td><td>&lt;1表示低估</td></tr>
+  <tr><td>EV/EBITDA</td><td>~14-16x（估算）</td><td>制造业合理区间</td></tr>
+  <tr><td>FCF Yield</td><td>~5.2%（909亿/1.76万亿）</td><td>有吸引力</td></tr>
+  <tr><td>股息率</td><td>~1.8%</td><td>50%分红率</td></tr>
 </table>
-<p><strong>估值判断：低估</strong> — PE 22x对于42%增速、ROE 21%、全球39%市占率的绝对龙头，估值有吸引力。</p>
+
+<ul>
+  <li>券商一致目标价：536元（中位数），最高632元，最低494元。隐含上涨空间25-66%。<em>（来源：富途牛牛分析师目标价汇总, 2026.07）</em></li>
+  <li>华创证券目标价515.61元（2026年25x PE），维持"强推"评级。<em>（来源：同花顺盈利预测, 2026.07）</em></li>
+</ul>
+
+<blockquote class="counter"><span class="section-tag tag-counter">反方证据</span>
+<ul>
+  <li>PE从历史中位数35-40x降至22x，可能不是"低估"而是"合理回归"——市场已不再把CATL当作超高增长赛道，而是当作周期性制造业定价。</li>
+  <li>22x PE对应的是2026年940亿净利润的一致预期。如果实际净利只有800亿（更保守假设），PE就是26x——没有吸引力。</li>
+  <li>FCF Yield 5.2%虽然为正，但低于无风险利率+风险溢价的合理要求回报（约8-10%）。</li>
+</ul>
+</blockquote>
+
+<h3>6.2 同行估值对比</h3>
+<table>
+  <tr><th>同行</th><th>市值</th><th>PE(TTM)</th><th>营收增速</th><th>净利增速</th><th>ROE</th><th>市占率</th></tr>
+  <tr><td><strong>CATL</strong></td><td>1.76万亿</td><td>24x</td><td>17%</td><td><strong>+42%</strong></td><td><strong>25%</strong></td><td><strong>39.2%</strong></td></tr>
+  <tr><td>BYD</td><td>~1万亿</td><td>~30x</td><td>29%</td><td>-19%</td><td>~15%</td><td>16.4%</td></tr>
+  <tr><td>LG Energy</td><td>~600亿美元</td><td>60x+</td><td>-</td><td>亏损边缘</td><td>&lt;10%</td><td>9.2%</td></tr>
+  <tr><td>中创新航</td><td>~400亿港元</td><td>15x</td><td>36%</td><td>-</td><td>-</td><td>5.3%</td></tr>
+  <tr><td>国轩高科</td><td>~300亿</td><td>30x+</td><td>37%</td><td>-</td><td>-</td><td>4.6%</td></tr>
+  <tr><td>亿纬锂能</td><td>~500亿</td><td>20x</td><td>35%</td><td>-</td><td>-</td><td>3.3%</td></tr>
+</table>
+<p>CATL在所有指标上都碾压同行——最高的市占率、最高的ROE、最快的利润增速、最优秀的现金流，但PE不是最高的。这反映了市场的"大市值折价"。</p>
+
+<h3>6.3 DCF简易估算</h3>
+<table>
+  <tr><th>假设</th><th>数值</th></tr>
+  <tr><td>基期FCF</td><td>909亿（2025年）</td></tr>
+  <tr><td>第1-3年FCF增速</td><td>20%/15%/12%</td></tr>
+  <tr><td>第4-10年FCF增速</td><td>8%</td></tr>
+  <tr><td>终值增速</td><td>3%</td></tr>
+  <tr><td>WACC</td><td>9%</td></tr>
+</table>
+<p><strong>估算公允价值：约1.8-2.1万亿（对应股价390-455元）</strong>。在保守假设下，当前市值1.76万亿处于公允价值区间偏下沿。如果FCF增速更乐观，公允价值可达到2.5万亿+（540元+）。</p>
+
+<h3>6.4 估值结论</h3>
+<p><span class="badge badge-green">估值判断：低估</span></p>
+<p>CATL当前的22x PE（2026E）已反映了市场的悲观预期——增速放缓、竞争加剧、地缘政治风险。但市场可能低估了：(1) 经营杠杆持续释放（利润增速42%>>营收17%），(2) 海外高毛利产能释放（匈牙利工厂毛利率31%），(3) 储能市场的爆发潜力，(4) 50%分红率的股东回报承诺。</p>
 
 <h2>第7章 | 风险分析</h2>
+
+<h3>已反映的风险 ✅</h3>
 <ul>
-  <li><strong>固态电池风险</strong>：技术路线颠覆（长期5-10年）</li>
-  <li><strong>竞争风险</strong>：比亚迪+LG价格竞争</li>
-  <li><strong>原材料风险</strong>：碳酸锂价格波动</li>
-  <li><strong>地缘政治</strong>：欧美贸易壁垒</li>
-  <li><strong>增速放缓</strong>：EV渗透率增速可能下降</li>
+  <li><strong>EV增速放缓</strong>：市场已从2021年给予CATL 100x+ PE下调至22x</li>
+  <li><strong>行业竞争加剧</strong>：二线厂商亏损抢份额是公开信息</li>
+  <li><strong>产能过剩</strong>：行业产能利用率50-60%已是共识</li>
+  <li><strong>碳酸锂价格波动</strong>：已从50万/吨跌至8-10万</li>
+</ul>
+
+<h3>部分定价的风险 ⚠️</h3>
+<ul>
+  <li><strong>地缘政治</strong>：美国制裁和关税已被部分定价，但"完全脱钩"的尾部风险可能定价不足</li>
+  <li><strong>储能份额流失</strong>：二线厂商在储能市场快速追赶</li>
+  <li><strong>欧盟碳关税/新电池法</strong>：合规成本增加的具体量级尚不明确</li>
+</ul>
+
+<h3>可能被低估的风险 ❌</h3>
+<ul>
+  <li><strong>固态电池颠覆</strong>：如果2028-2030年固态电池大规模商用，CATL的772GWh液态产能可能面临价值重估。市场目前假设CATL"固液并存"平稳过渡，但如果竞争对手率先突破，这个假设会崩溃</li>
+  <li><strong>中美极端脱钩</strong>：台海局势若恶化，CATL作为被列入"中国军工企业名单"的公司，可能面临全面出口管制</li>
+  <li><strong>管理层/治理风险</strong>：公司规模已极大（十余万员工、万亿市值），决策质量和创新能力能否维持存疑</li>
 </ul>
 
 <h2>第8章 | 投资逻辑</h2>
+
+<h3>核心逻辑</h3>
 <ol>
-  <li><strong>全球绝对龙头</strong>：39.2%动力+30.4%储能，连续9年/5年第一</li>
-  <li><strong>利润增速42%>>营收17%</strong>：经营杠杆释放</li>
-  <li><strong>PE 22x合理偏低</strong>：对于42%增速的全球龙头</li>
-  <li><strong>技术储备领先</strong>：钠离子+双核+固态电池</li>
-  <li><strong>全球化收获期</strong>：海外从投入到收获</li>
-  <li><strong>储能爆发</strong>：30.4%市占率，50%+增速</li>
+  <li><strong>全球绝对龙头，且份额还在扩大</strong>：39.2%→40.2%（2026年1-5月），连续9年第一。与第二名BYD（14.4%）的差距在拉大。</li>
+  <li><strong>利润增速>>营收增速</strong>：42% vs 17%，经营杠杆持续释放。Q4毛利率28.21%创新高，Q1 2026营收+52.5%断档加速。</li>
+  <li><strong>估值合理偏低估</strong>：PE 22x（2026E），PEG 0.52，FCF Yield 5.2%。</li>
+  <li><strong>储能市场是巨大期权</strong>：640GWh→1200GWh（5年），AI数据中心+电网储能的确定性需求增长。</li>
+  <li><strong>海外高毛利产能即将释放</strong>：匈牙利100GWh工厂2026-2027年投产（毛利率31% vs 国内24%）。</li>
+  <li><strong>股东回报清晰</strong>：50%利润分红，股息率1.8%，现金储备3335亿。</li>
 </ol>
-<p><strong>失效条件</strong>：固态电池提前商用 / 全球贸易壁垒 / 利润增速降至个位数</p>
+
+<h3>投资逻辑失效条件</h3>
+<ol>
+  <li>固态电池提前颠覆（2028年前）：竞争对手率先量产固态电池</li>
+  <li>全球EV增速断崖式放缓（2027-2028年降至个位数）</li>
+  <li>中美技术脱钩：CATL被完全排除出欧美市场</li>
+  <li>管理层失误：重大资本配置失误</li>
+  <li>利润增速降至个位数：竞争格局恶化导致利润率崩塌</li>
+</ol>
 
 <h2>第9章 | 长期跟踪指标</h2>
+
 <table>
-  <tr><th>#</th><th>KPI</th><th>重要性</th><th>频率</th></tr>
-  <tr><td>1</td><td>全球动力电池市占率</td><td>★★★★★</td><td>季度</td></tr>
-  <tr><td>2</td><td>储能电池营收及增速</td><td>★★★★★</td><td>季度</td></tr>
-  <tr><td>3</td><td>净利润增速 vs 营收增速</td><td>★★★★★</td><td>季度</td></tr>
-  <tr><td>4</td><td>毛利率趋势</td><td>★★★★☆</td><td>季度</td></tr>
-  <tr><td>5</td><td>海外营收占比</td><td>★★★★☆</td><td>半年</td></tr>
-  <tr><td>6</td><td>固态电池研发进展</td><td>★★★★☆</td><td>年度</td></tr>
-  <tr><td>7</td><td>碳酸锂价格走势</td><td>★★★☆☆</td><td>月度</td></tr>
-  <tr><td>8</td><td>比亚迪/LG竞争动态</td><td>★★★☆☆</td><td>季度</td></tr>
+  <tr><th>#</th><th>KPI</th><th>为何重要</th><th>观察频率</th><th>数据来源</th></tr>
+  <tr><td>1</td><td><strong>全球动力电池市占率</strong></td><td>护城河最核心指标。如果连续两个季度跌破38%，需重新评估</td><td>每季</td><td>SNE Research季报</td></tr>
+  <tr><td>2</td><td><strong>净利润增速 vs 营收增速</strong></td><td>经营杠杆是否持续释放。理想：利润增速&gt;营收增速</td><td>每季</td><td>CATL季报</td></tr>
+  <tr><td>3</td><td><strong>储能电池销量及增速 vs 行业</strong></td><td>储能市场的竞争力。如果持续跑输行业（差&gt;20pp），警惕</td><td>每季</td><td>CATL季报+EVTank</td></tr>
+  <tr><td>4</td><td><strong>毛利率趋势（分业务）</strong></td><td>定价权和成本控制力。跌破22%需关注</td><td>每季</td><td>CATL季报</td></tr>
+  <tr><td>5</td><td><strong>产能利用率</strong></td><td>供需平衡的直接指标。跌破85%意味着供过于求</td><td>每季</td><td>CATL季报</td></tr>
+  <tr><td>6</td><td><strong>海外营收占比及毛利率</strong></td><td>全球化进展和利润弹性。目标：海外占比35%+</td><td>每半年</td><td>CATL年报/半年报</td></tr>
+  <tr><td>7</td><td><strong>固态电池/钠离子电池进展</strong></td><td>技术路线竞争的胜负手</td><td>每半年</td><td>公司公告+行业新闻</td></tr>
+  <tr><td>8</td><td><strong>经营现金流/净利润比率</strong></td><td>利润质量。持续低于1.0是红旗</td><td>每季</td><td>CATL季报</td></tr>
+  <tr><td>9</td><td><strong>应收账款/营收比值</strong></td><td>客户回款质量。持续上升需深入调查</td><td>每季</td><td>CATL季报</td></tr>
+  <tr><td>10</td><td><strong>美国/欧盟政策变化</strong></td><td>地缘政治尾部风险的领先指标</td><td>持续</td><td>新闻+政策文件</td></tr>
 </table>
 
 <h2>第10章 | 最终结论</h2>
+
+<h3>综合评分</h3>
 <table>
-  <tr><th>维度</th><th>评分（/10）</th></tr>
-  <tr><td>商业模式</td><td>9</td></tr>
-  <tr><td>行业前景</td><td>9</td></tr>
-  <tr><td>管理层</td><td>9</td></tr>
-  <tr><td>财务质量</td><td>9</td></tr>
-  <tr><td>护城河</td><td>9</td></tr>
-  <tr><td>成长性</td><td>8</td></tr>
-  <tr><td>估值</td><td>8</td></tr>
-  <tr><td>风险</td><td>6</td></tr>
-  <tr><td>Fisher评分</td><td>9（86/100）</td></tr>
+  <tr><th>维度</th><th>评分</th><th>说明</th></tr>
+  <tr><td>商业模式</td><td>9</td><td>全产业链垂直整合+规模效应+技术壁垒，教科书级别</td></tr>
+  <tr><td>行业前景</td><td>9</td><td>EV+储能双赛道，2030年TAM超万亿</td></tr>
+  <tr><td>管理层</td><td>9</td><td>曾毓群技术出身、战略清醒、资本配置稳健</td></tr>
+  <tr><td>财务质量</td><td>9</td><td>OCF/NP 1.85x，ROE 25%，现金3335亿</td></tr>
+  <tr><td>护城河</td><td>9</td><td>五层嵌套护城河，极难被单一对手同时攻破</td></tr>
+  <tr><td>成长性</td><td>8</td><td>Q1 2026营收+52.5%强劲，但全球装机增速放缓趋势需关注</td></tr>
+  <tr><td>估值</td><td>8</td><td>PE 22x合理偏低，PEG 0.52有吸引力</td></tr>
+  <tr><td>风险</td><td>6</td><td>固态电池+地缘政治两大尾部风险不可忽视</td></tr>
+  <tr><td>Fisher评分</td><td>9（86/100）</td><td>在所有已分析标的物中排名第一</td></tr>
 </table>
+
 <div class="score-box">
   <div class="score-card"><div class="label">综合评分</div><div class="value" style="color:#dc2626;">84/100</div></div>
   <div class="score-card"><div class="label">估值判断</div><div class="value" style="color:#16a34a;font-size:1.1rem;">低估</div></div>
   <div class="score-card"><div class="label">投资建议</div><div class="value" style="color:#16a34a;font-size:1.1rem;">推荐</div></div>
 </div>
-<blockquote><strong>一句话理由</strong>：全球电池双料冠军（动力39%+储能30%），利润+42%>>营收+17%=经营杠杆释放，PE 22x=7家中估值最便宜，Fisher 86分=最高评分，唯一"推荐"评级。</blockquote>
+
+<h3>估值判断</h3>
+<p><strong>低估。</strong>PE 22x（2026E）对于一个ROE 25%、利润增速42%、PEG 0.52的全球绝对龙头来说，已经反映了市场对"增速放缓+竞争加剧"的悲观预期。市场可能低估了经营杠杆释放、海外高毛利产能释放和储能市场爆发三重积极因素。</p>
+
+<h3>投资建议</h3>
+<p><span class="badge badge-green">推荐</span></p>
+<p>在所有已分析公司中（包括AMD/可口可乐/特斯拉/新易盛/海光信息/北方华创/中微公司/汇川技术/迈瑞医疗），宁德时代是基本面和估值共振最明显的一个——Fisher评分最高（86/100）、PE最低（22x）、ROE最高（25%）、利润增速最高（42%）。</p>
+
+<blockquote class="conclusion"><strong>一句话理由：</strong>全球电池双料冠军，连续9年动力第一、5年储能第一，利润增速42%远超营收17%（经营杠杆释放），PE 22x为7家公司中最低、Fisher 86分为最高分——这是"好公司+好价格"的稀缺共振。</blockquote>
+
+<h3>核心矛盾</h3>
+<p>CATL的投资核心矛盾是"确定性极高但想象力有限"：确定性在于短期（1-3年）的利润增长几乎板上钉钉；想象力有限在于市场已经把它当成"制造业价值股"而非"科技成长股"（PE从100x降至22x）。这个矛盾意味着CATL更适合"以合理价格买入伟大企业"的策略。</p>
+
+<hr>
 <footer>
-  <p>报告声明：本报告基于公开信息分析，不构成投资建议。信心等级：★★★★★（一级资料充分）</p>
-  <p><a href="../index.html">← 返回宁德时代报告列表</a> ｜ <a href="../../index.html">← 返回首页</a></p>
+<p>报告声明：本报告基于公开信息分析，遵循大灰皮证券研究统一框架（Evidence First原则）。所有数据来源已标注。不构成投资建议。<br>信心等级：★★★★★（一级资料充分支持核心结论，个别判断含推测）<br>
+<a href="../../index.html">返回首页</a> | <a href="../index.html">返回宁德时代报告列表</a></p>
 </footer>
 </div>
 </body>
