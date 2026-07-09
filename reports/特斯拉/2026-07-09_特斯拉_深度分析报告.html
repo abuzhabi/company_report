@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特斯拉（TSLA）V-2.2 深度分析报告 — 大灰皮证券研究</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --accent: #e74c3c;
+  --accent-green: #27ae60;
+  --border: #e0e0e0;
+  --card-bg: #ffffff;
+  --code-bg: #f5f5f5;
+  --table-stripe: #fafafa;
+  --warning: #fef3c7;
+  --danger: #fee2e2;
+  --success: #d1fae5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.85;
+  padding: 40px 20px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.back-link:hover { text-decoration: underline; }
+h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 16px 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
+  line-height: 1.3;
+}
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 36px 0 16px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 24px 0 12px;
+  color: #2c3e50;
+}
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 18px 0 10px;
+  color: #34495e;
+}
+blockquote {
+  background: #f0f7ff;
+  border-left: 4px solid #3b82f6;
+  margin: 12px 0;
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  color: #1e40af;
+  font-size: 0.94rem;
+}
+blockquote.blockquote-warning {
+  background: var(--warning);
+  border-left-color: #f59e0b;
+  color: #92400e;
+}
+blockquote.blockquote-danger {
+  background: var(--danger);
+  border-left-color: var(--accent);
+  color: #991b1b;
+}
+blockquote.blockquote-success {
+  background: var(--success);
+  border-left-color: var(--accent-green);
+  color: #065f46;
+}
+p { margin: 8px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.88rem;
+}
+th {
+  background: #2c3e50;
+  color: white;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+tr:hover td { background: #eef1ff; }
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 28px 0;
+}
+strong { color: #1a1a2e; }
+ol, ul { padding-left: 24px; margin: 8px 0; }
+li { margin: 4px 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.rating-green { color: var(--accent-green); font-weight: 700; }
+.rating-yellow { color: #f59e0b; font-weight: 700; }
+.rating-red { color: var(--accent); font-weight: 700; }
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.badge-v22 { background: #dbeafe; color: #1e40af; }
+.toc {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+.toc ol { padding-left: 20px; }
+.toc li { margin: 6px 0; }
+footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+footer a { color: var(--accent); }
+@media (max-width: 640px) {
+  body { padding: 20px 12px; }
+  table { font-size: 0.78rem; }
+  th, td { padding: 6px 8px; }
+  h1 { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="./index.html">← 返回报告列表</a>
+  <h1>特斯拉（TSLA）—— 大灰皮证券研究深度分析报告</h1>
+
+  <blockquote>
+    <p><span class="badge badge-v22">框架 V-2.2</span> <strong>Research Constitution V-2.2（Value Drivers 重构版）</strong><br>
+    <strong>日期</strong>：2026-07-09<br>
+    <strong>股票代码</strong>：TSLA (NASDAQ)<br>
+    <strong>当前价格</strong>：$394<br>
+    <strong>市值</strong>：~$1.48万亿<br>
+    <strong>52周区间</strong>：约 $310 - $488<br>
+    <strong>分析师共识</strong>：81位分析师，共识目标价 ~$444<br>
+    <strong>最新季报</strong>：Q1 2026（4月22日发布）；Q2 2026交付数据已发布（7月2日），Q2财报将于7月22日发布</p>
+  </blockquote>
+
+  <hr>
+
+  <div class="toc">
+    <h3>目录</h3>
+    <ol>
+      <li><a href="#ch0">第0章 公司分类（Valuation Classification）</a></li>
+      <li><a href="#ch1">第1章 公司基本面分析</a></li>
+      <li><a href="#ch2">第2章 行业研究（TAM）</a></li>
+      <li><a href="#ch3">第3章 Fisher成长股评价</a></li>
+      <li><a href="#ch4">第4章 财务审计（Bear Audit）</a></li>
+      <li><a href="#ch5">第5章 完整做空逻辑（Bear Case）</a></li>
+      <li><a href="#ch6">第6章 估值分析 + 投资决策价格体系</a></li>
+      <li><a href="#ch7">第7章 风险分析</a></li>
+      <li><a href="#ch8">第8章 投资逻辑</a></li>
+      <li><a href="#ch9">第9章 Value Drivers（价值驱动因素）</a></li>
+      <li><a href="#ch10">第10章 最终结论</a></li>
+      <li><a href="#ec">Evidence Coverage（证据覆盖率）</a></li>
+    </ol>
+  </div>
+
+  <hr>
+
+  <h2 id="ch0">第0章 | 公司分类（Valuation Classification）</h2>
+
+  <h3>分类判断</h3>
+  <table>
+    <thead><tr><th>项目</th><th>判断</th></tr></thead>
+    <tbody>
+      <tr><td><strong>公司类型</strong></td><td><strong>混合型：超级成长股（AI/Robotaxi/Optimus）+ 成熟成长股（汽车）+ 超级成长股（能源存储）</strong></td></tr>
+      <tr><td><strong>首选估值方法</strong></td><td>SOTP（分部估值）+ Forward PE + PEG + DCF（慎用）</td></tr>
+      <tr><td><strong>一句话理由</strong></td><td>Tesla 已从纯电动车制造商转型为 AI+能源+汽车三引擎驱动的科技平台，市场按 AI/机器人期权价值定价而非传统车企估值</td></tr>
+    </tbody>
+  </table>
+
+  <h3>主营业务占比（FY2025）</h3>
+  <table>
+    <thead><tr><th>业务板块</th><th>收入</th><th>占比</th><th>毛利率</th><th>估值属性</th></tr></thead>
+    <tbody>
+      <tr><td>汽车销售（含信用）</td><td>~$71.5B</td><td>75%</td><td>~14-16%</td><td>成熟成长股</td></tr>
+      <tr><td>能源存储</td><td>$12.77B</td><td>13%</td><td>~28-30%</td><td>超级成长股</td></tr>
+      <tr><td>服务及其他</td><td>~$12.5B</td><td>13%</td><td>低个位数</td><td>稳定消费</td></tr>
+      <tr><td><strong>合计</strong></td><td><strong>$94.83B</strong></td><td><strong>100%</strong></td><td><strong>18.0%</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote><p><strong>来源</strong>：Tesla FY2025 10-K（analystlens.com）、stockanalysis.com、EnergyTrend<br><strong>证据等级</strong>：一级（10-K filing）</p></blockquote>
+
+  <h3>为什么采用 SOTP + Forward PE + PEG？</h3>
+  <ol>
+    <li><strong>传统 PE 不适用</strong>：FY2025 GAAP EPS 仅 $1.08，PE（TTM）= 362x，传统车企 PE 仅 5-15x。若按传统车企估值，TSLA 公允价值约 $15-25。市场显然不按车企给 Tesla 定价。</li>
+    <li><strong>SOTP 必要性</strong>：Tesla 各业务板块处于完全不同的生命周期——汽车业务已成熟（收入下滑），能源业务高速增长（+27%），AI/Robotaxi/Optimus 尚处投入期（无实质收入）。必须分部估值。</li>
+    <li><strong>Forward PE 有意义但需极度谨慎</strong>：市场给 Tesla 的 Forward PE ~200x，隐含了极高的增长预期。需要通过 Growth Reality Check 验证。</li>
+    <li><strong>DCF 慎用</strong>：2026年 CapEx 计划 $25B（3倍于往年），自由现金流转负，AI/Robotaxi 收入具有极高不确定性。</li>
+    <li><strong>PEG 无法计算</strong>：FY2025 净利润同比 -46.5%，增长率为负，PEG 无意义。</li>
+  </ol>
+
+  <blockquote class="blockquote-success"><p><strong>信心等级</strong>：★★★★☆</p></blockquote>
+
+  <hr>
+
+  <h2 id="ch1">第1章 | 公司基本面分析</h2>
+
+  <h3>1.1 公司如何赚钱</h3>
+  <table>
+    <thead><tr><th>业务板块</th><th>FY2025 收入</th><th>占比</th><th>YoY 增长</th><th>毛利率</th></tr></thead>
+    <tbody>
+      <tr><td>汽车销售（含监管信用）</td><td>~$71.5B</td><td>75%</td><td>~-9%</td><td>~14-16%</td></tr>
+      <tr><td>能源存储</td><td>$12.77B</td><td>13%</td><td>+27%</td><td>~28-30%</td></tr>
+      <tr><td>服务及其他</td><td>~$12.5B</td><td>13%</td><td>~+5%</td><td>低个位数</td></tr>
+      <tr><td><strong>合计</strong></td><td><strong>$94.83B</strong></td><td><strong>100%</strong></td><td><strong>-2.9%</strong></td><td><strong>18.0%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>关键变化</strong>：汽车业务收入同比下降约 9%，因交付量下降 8% + ASP 下降。能源业务收入增长 27%，毛利率 28-30%。FSD 活跃订阅用户达 128 万（Q1 2026），同比 +51%。</p>
+
+  <h3>1.2 核心产品与服务</h3>
+  <table>
+    <thead><tr><th>产品线</th><th>描述</th><th>当前状态（2026年7月）</th></tr></thead>
+    <tbody>
+      <tr><td>Model 3 / Model Y</td><td>主力走量车型</td><td>占交付量 95%+，Q2 2026 交付 48 万+</td></tr>
+      <tr><td>Cybertruck</td><td>电动皮卡</td><td>量产爬坡中</td></tr>
+      <tr><td><strong>Cybercab</strong></td><td>无方向盘全自动驾驶出租车</td><td><strong>$30K 售价，2026年2月在德州开始生产</strong></td></tr>
+      <tr><td>FSD (Full Self-Driving)</td><td>$8K-12K 买断 / $199/月订阅</td><td>v13/v14 部署中，128 万活跃订阅</td></tr>
+      <tr><td><strong>Robotaxi 服务</strong></td><td>无人驾驶打车服务</td><td><strong>2025年6月上线，已扩展至多城市</strong></td></tr>
+      <tr><td><strong>Optimus 人形机器人</strong></td><td>通用人形机器人</td><td><strong>2026年7-8月启动量产，改造 Fremont 产线</strong></td></tr>
+      <tr><td>Megapack / Powerwall</td><td>公用事业/家用储能</td><td>2025年部署 46.7GWh（+49%），上海工厂运营中</td></tr>
+      <tr><td>超充网络</td><td>全球最大直流快充网络</td><td>基础设施护城河</td></tr>
+    </tbody>
+  </table>
+
+  <h3>1.3 竞争格局</h3>
+  <table>
+    <thead><tr><th>维度</th><th>Tesla</th><th>BYD</th><th>传统车企</th></tr></thead>
+    <tbody>
+      <tr><td>2025 全球 EV 销量</td><td>~165万辆（-8% YoY）</td><td>427万辆（含 PHEV）</td><td>加速转型中</td></tr>
+      <tr><td>BEV 销量对比</td><td>~165万辆</td><td>BEV 超越 Tesla 37.9%</td><td>远低于 Tesla</td></tr>
+      <tr><td>价格定位</td><td>中高端</td><td>低价竞争（低 30-40%）</td><td>多层次覆盖</td></tr>
+      <tr><td>自动驾驶</td><td>FSD v13/v14，视觉路线</td><td>基础 ADAS</td><td>与 Mobileye/Waymo 合作</td></tr>
+      <tr><td>能源存储</td><td>46.7GWh，$12.8B</td><td>有储能但规模小</td><td>刚起步</td></tr>
+      <tr><td>AI/机器人</td><td>Optimus 量产在即</td><td>无</td><td>无</td></tr>
+    </tbody>
+  </table>
+
+  <h3>1.4 未来 5-10 年增长驱动力</h3>
+  <ol>
+    <li><strong>FSD 商业化</strong>：128 万活跃订阅（+51% YoY），软件收入高毛利率</li>
+    <li><strong>Robotaxi 网络</strong>：2025年6月上线，Cybercab 量产在即</li>
+    <li><strong>能源存储指数增长</strong>：46.7GWh → 预计 100+GWh（2026）</li>
+    <li><strong>Optimus 量产</strong>：2026年7-8月启动，目标 100 万台/年</li>
+    <li><strong>AI 基础设施</strong>：$25B CapEx 大幅投入</li>
+  </ol>
+
+  <blockquote class="blockquote-success"><p><strong>信心等级</strong>：★★★★☆（增长方向明确，但时间表和商业成功率不确定）</p></blockquote>
+
+  <hr>
+
+  <h2 id="ch2">第2章 | 行业研究（TAM）</h2>
+
+  <h3>2.1 电动车市场</h3>
+  <table>
+    <thead><tr><th>指标</th><th>数据</th><th>来源</th></tr></thead>
+    <tbody>
+      <tr><td>2025 全球 EV 销量</td><td>2000 万+</td><td>IEA Global EV Outlook 2026</td></tr>
+      <tr><td>2025 EV 渗透率</td><td>25%</td><td>IEA</td></tr>
+      <tr><td>2030 预期渗透率</td><td>40%+</td><td>IEA</td></tr>
+      <tr><td>2026 全球 EV 市场 TAM</td><td>$1.1 万亿</td><td>Statista</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.2 能源存储市场</h3>
+  <table>
+    <thead><tr><th>指标</th><th>数据</th><th>来源</th></tr></thead>
+    <tbody>
+      <tr><td>2025 Tesla 部署量</td><td>46.7 GWh（+49%）</td><td>Tesla Q4 2025 Update</td></tr>
+      <tr><td>2050 全球储能需求</td><td>240 TWh</td><td>Elon Musk 公开表述</td></tr>
+      <tr><td>2025 Tesla 储能收入</td><td>$12.77B（+27%）</td><td>EnergyTrend / 10-K</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.5 三情景分析</h3>
+  <table>
+    <thead><tr><th>情景</th><th>假设</th><th>Tesla 2030 收入</th><th>概率</th></tr></thead>
+    <tbody>
+      <tr><td><strong>最乐观</strong></td><td>FSD L4 全面实现 + Robotaxi 全球部署 + Optimus 量产 50 万台/年 + 能源 200GWh</td><td>$400-500B+</td><td>20%</td></tr>
+      <tr><td><strong>基准</strong></td><td>FSD 地理围栏 L4 + Robotaxi 部分城市 + Optimus 小规模量产 + 能源 150GWh</td><td>$200-250B</td><td>45%</td></tr>
+      <tr><td><strong>悲观</strong></td><td>FSD 仍需监督 + Robotaxi 推迟 + Optimus 仅工厂内部使用 + 能源 80GWh</td><td>$120-150B</td><td>35%</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote class="blockquote-success"><p><strong>信心等级</strong>：★★★☆☆（AI/Robotaxi/Optimus 的成功概率和时间表存在极大不确定性）</p></blockquote>
+
+  <hr>
+
+  <h2 id="ch3">第3章 | Fisher成长股评价</h2>
+
+  <table>
+    <thead><tr><th>维度</th><th>评分</th><th>评分依据</th></tr></thead>
+    <tbody>
+      <tr><td><strong>市场潜力</strong></td><td>9/10</td><td>EV+能源+AI+机器人四个万亿级市场。但核心汽车增速放缓</td></tr>
+      <tr><td><strong>管理层能力</strong></td><td>6/10</td><td>Musk 愿景卓越但承诺兑现率低。政治活动分散精力。Q1 2026 超预期显示运营改善</td></tr>
+      <tr><td><strong>研发能力</strong></td><td>9/10</td><td>R&D 从 $4.5B 暴增至 $6.4B（+41%）。AI 训练/芯片设计/Dojo</td></tr>
+      <tr><td><strong>销售能力</strong></td><td>7/10</td><td>品牌自带流量，但需降价保量。FSD 订阅 +51% 显示软件销售能力</td></tr>
+      <tr><td><strong>利润率改善空间</strong></td><td>6/10</td><td>汽车毛利率从 25% 降至 14-16%。但能源 28-30% 和 FSD 70%+ 提供改善可能</td></tr>
+      <tr><td><strong>护城河</strong></td><td>8/10</td><td>超充网络、FSD 数据飞轮、品牌、制造规模。但汽车护城河正在收窄</td></tr>
+      <tr><td><strong>长期成长能力</strong></td><td>8/10</td><td>四条增长曲线，任一成功即可支撑十年增长</td></tr>
+      <tr><td><strong>企业文化</strong></td><td>5/10</td><td>创新文化强，但过度依赖 Musk 个人。高管流失</td></tr>
+      <tr><td><strong>资本配置能力</strong></td><td>5/10</td><td>$25B CapEx 方向正确但风险极高。无分红无回购。FCF 转负</td></tr>
+      <tr><td><strong>长期竞争优势</strong></td><td>7/10</td><td>FSD 数据+超充+能源+品牌复合护城河。但汽车优势被中国竞品侵蚀</td></tr>
+    </tbody>
+  </table>
+
+  <h3>综合评分：70/100</h3>
+  <p><strong>最符合费雪思想</strong>：研发能力和市场潜力——Tesla 在多个前沿领域同时布局，R&D 投入力度远超同行。</p>
+  <p><strong>最不符合费雪思想</strong>：管理层可靠性和企业文化——Musk 承诺兑现率低，过度依赖个人。费雪强调管理层诚信和长期一致性。</p>
+
+  <blockquote class="blockquote-success"><p><strong>信心等级</strong>：★★★★☆</p></blockquote>
+
+  <hr>
+
+  <h2 id="ch4">第4章 | 财务审计（Bear Audit）</h2>
+
+  <h3>4.1 收入与盈利趋势</h3>
+  <table>
+    <thead><tr><th>指标</th><th>FY2022</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>TTM (Q1'26)</th><th>趋势</th></tr></thead>
+    <tbody>
+      <tr><td>收入</td><td>$81.5B</td><td>$96.8B</td><td>$97.7B</td><td>$94.8B</td><td>$97.9B</td><td>停滞</td></tr>
+      <tr><td>毛利率</td><td>25.6%</td><td>18.3%</td><td>17.9%</td><td>18.0%</td><td>19.1%</td><td>触底回升</td></tr>
+      <tr><td>营业利润率</td><td>16.8%</td><td>9.2%</td><td>7.2%</td><td>4.6%</td><td>5.0%</td><td>大幅下滑</td></tr>
+      <tr><td>净利润</td><td>$12.6B</td><td>$15.0B</td><td>$7.2B</td><td>$3.8B</td><td>$3.9B</td><td>暴跌</td></tr>
+      <tr><td>EPS（稀释 GAAP）</td><td>$3.62</td><td>$4.30</td><td>$2.04</td><td>$1.08</td><td>$1.09</td><td>暴跌</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote><p><strong>来源</strong>：stockanalysis.com（数据来源 Fiscal.ai）<br><strong>证据等级</strong>：一级（10-K/10-Q SEC filings）</p></blockquote>
+
+  <p><strong>红旗 #1</strong>：净利润从 2023 年 $15.0B 暴跌至 2025 年 $3.8B，跌幅 75%。</p>
+
+  <h3>4.2 现金流分析</h3>
+  <table>
+    <thead><tr><th>指标</th><th>FY2024</th><th>FY2025</th><th>Q1 2026</th><th>趋势</th></tr></thead>
+    <tbody>
+      <tr><td>经营现金流</td><td>~$5.9B</td><td>~$14.7B</td><td>$3.94B</td><td>2025 改善</td></tr>
+      <tr><td>资本开支</td><td>$11.3B</td><td>$8.5B</td><td>$2.5B</td><td>2026 计划 $25B</td></tr>
+      <tr><td>自由现金流</td><td>$3.6B</td><td>$6.2B</td><td>$1.44B</td><td>2026 全年转负</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>红旗 #2</strong>：CFO 在 Q1 2026 财报电话会上明确表示"全年自由现金流将为负"。$25B CapEx 是历史水平的 3 倍。</p>
+
+  <h3>4.3 监管信用收入依赖</h3>
+  <table>
+    <thead><tr><th>指标</th><th>FY2025</th><th>Q1 2026</th></tr></thead>
+    <tbody>
+      <tr><td>监管信用收入</td><td>~$1.99B（-28% YoY）</td><td>$381M</td></tr>
+      <tr><td>净利润</td><td>$3.79B</td><td>$477M</td></tr>
+      <tr><td>信用占净利润比</td><td>~52%</td><td>~80%</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>红旗 #3</strong>：监管信用收入接近 100% 毛利率，$1.99B 占 2025 年净利润的 52%。扣除信用后，核心业务真实盈利约 $1.8-2.0B 净利润。</p>
+
+  <h3>4.7 Bear Audit 最终评级</h3>
+  <table>
+    <thead><tr><th>维度</th><th>评级</th><th>原因</th></tr></thead>
+    <tbody>
+      <tr><td>盈利质量</td><td class="rating-yellow">🟡 黄色</td><td>净利润暴跌，监管信用占比过高</td></tr>
+      <tr><td>现金流质量</td><td class="rating-red">🔴 红色</td><td>2026 FCF 将转负，$25B CapEx 风险极高</td></tr>
+      <tr><td>资产负债表</td><td class="rating-green">🟢 绿色</td><td>$44.7B 流动性充裕，债务可控</td></tr>
+      <tr><td>股本稀释</td><td class="rating-green">🟢 绿色</td><td>稀释率降至 1% 以下</td></tr>
+      <tr><td>会计政策</td><td class="rating-yellow">🟡 黄色</td><td>Non-GAAP 与 GAAP 差异较大（SBC ~$2B）</td></tr>
+      <tr><td><strong>综合评级</strong></td><td class="rating-yellow"><strong>🟡 黄色</strong></td><td>资产负债表健康，但盈利和现金流存在显著风险</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2 id="ch5">第5章 | 完整做空逻辑（Bear Case）</h2>
+
+  <h3>5.1 最脆弱环节</h3>
+  <p><strong>1. 估值与基本面严重脱节</strong>：PE（TTM）= 362x，传统车企 PE 5-15x。剥离 AI 期权后按 15x PE 估值，TSLA 公允价值约 $15-25。</p>
+  <p><strong>2. 汽车毛利率持续恶化</strong>：从 2022 年 25.6% 降至 2025 年 18.0%。中国竞品以低 30-40% 的价格提供可比较产品。</p>
+  <p><strong>3. $25B CapEx 豪赌</strong>：2026 年 CapEx $25B = 3 倍历史水平。CFO 明确预告全年 FCF 转负。</p>
+
+  <h3>5.2 增长故事中哪些假设可能失败</h3>
+  <table>
+    <thead><tr><th>假设</th><th>可能性</th><th>影响</th></tr></thead>
+    <tbody>
+      <tr><td>FSD 在 2026 年实现 L4</td><td>中低</td><td>估值支柱崩塌</td></tr>
+      <tr><td>Robotaxi 在 2026 年大规模商业化</td><td>低</td><td>失去万亿级 TAM</td></tr>
+      <tr><td>Optimus 量产并对外销售</td><td>低</td><td>失去机器人期权价值</td></tr>
+      <tr><td>汽车毛利率回升至 20%+</td><td>中低</td><td>利润持续承压</td></tr>
+      <tr><td>能源存储保持 27%+ 增长</td><td>高</td><td>唯一确定性较高的业务</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>FSD "明年" 魔咒</strong>：Musk 自 2018 年起每年承诺"明年实现全自动驾驶"，至今 8 年仍未实现 L4。</p>
+
+  <h3>5.5 如果股价腰斩，最大原因可能是什么？</h3>
+  <blockquote class="blockquote-danger">
+    <p><strong>FSD v13/v14 未能实现 L4，Robotaxi 无法规模化，市场重新按汽车公司估值。</strong><br>
+    在此情景下：剥离 AI 期权后 SOTP 估值约 $80-130/股，汽车业务按 15x PE = $75-120/股，总计约 $130-180/股。当前 $394 → 跌幅 55-67%。</p>
+  </blockquote>
+
+  <h3>5.6 做空成功概率：35%</h3>
+
+  <hr>
+
+  <h2 id="ch6">第6章 | 估值分析 + 投资决策价格体系</h2>
+
+  <h3>6.2 核心估值指标</h3>
+  <table>
+    <thead><tr><th>指标</th><th>当前值</th><th>来源</th><th>评估</th></tr></thead>
+    <tbody>
+      <tr><td>PE（TTM GAAP）</td><td>362x</td><td>$394 / $1.09 EPS</td><td class="rating-red">极端高估</td></tr>
+      <tr><td>PE（TTM Non-GAAP）</td><td>218x</td><td>$394 / $1.81 EPS</td><td class="rating-red">极端高估</td></tr>
+      <tr><td>Forward PE（FY2026E）</td><td>~200x</td><td>financecharts.com</td><td class="rating-red">极端高估</td></tr>
+      <tr><td>EV/EBITDA（TTM）</td><td>~129x</td><td>【推断】</td><td class="rating-red">极端高估</td></tr>
+      <tr><td>PS（TTM）</td><td>15.1x</td><td>$1,480B / $97.9B</td><td class="rating-red">极端高估</td></tr>
+      <tr><td>FCF Yield</td><td>0.47%</td><td>$7.0B / $1,480B</td><td class="rating-red">接近零，将转负</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.5 Bull / Base / Bear 三情景</h3>
+  <table>
+    <thead><tr><th>情景</th><th>核心假设</th><th>2027 EPS</th><th>合理 PE</th><th>目标价</th><th>概率</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td>FSD L4 + Robotaxi 10+城市 + Optimus 量产 + 能源 $25B</td><td>~$5-8</td><td>70-100x</td><td>$500-700</td><td>20%</td></tr>
+      <tr><td><strong>Base</strong></td><td>FSD 地理围栏 L4 + Robotaxi 2-3城市 + Optimus 小规模</td><td>~$2.5-3.5</td><td>40-60x</td><td>$250-350</td><td>45%</td></tr>
+      <tr><td><strong>Bear</strong></td><td>FSD 仍需监督 + Robotaxi 推迟 + 毛利恶化</td><td>~$1.0-1.5</td><td>20-30x</td><td>$120-200</td><td>35%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.6 历史估值</h3>
+  <table>
+    <thead><tr><th>指标</th><th>5年低点</th><th>5年中位数</th><th>5年高点</th><th>当前</th><th>百分位</th></tr></thead>
+    <tbody>
+      <tr><td>PE (TTM)</td><td>34.8x (2022)</td><td>~100x</td><td>383x (2026.03)</td><td>~362x</td><td>~90%</td></tr>
+      <tr><td>PS</td><td>~5x (2022)</td><td>~10x</td><td>~20x</td><td>15.1x</td><td>~75%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.11 投资决策价格框架</h3>
+  <h4>综合公允价值计算</h4>
+  <table>
+    <thead><tr><th>估值方法</th><th>对应公允价值</th><th>权重</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>DCF（加权三情景）</td><td>$201</td><td>25%</td><td>高度依赖 AI 收入假设</td></tr>
+      <tr><td>SOTP（汽车+能源+FSD，不含期权）</td><td>$131</td><td>25%</td><td>剥离 Robotaxi/Optimus</td></tr>
+      <tr><td>Forward PE（50x × FY2027E $3.0）</td><td>$150</td><td>20%</td><td>50x 是成长股合理上限</td></tr>
+      <tr><td>历史估值（100x × TTM EPS $1.09）</td><td>$109</td><td>15%</td><td>偏保守</td></tr>
+      <tr><td>同行估值</td><td>$100</td><td>15%</td><td>汽车业务合理估值</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>综合公允价值 = ~$145/股</strong>（不含 Robotaxi/Optimus 期权价值）</p>
+  <p>【推断】若给予 Robotaxi/Optimus $50-100/股 期权价值，公允价值区间扩大至 $145-245/股。</p>
+
+  <h4>价格阶梯表</h4>
+  <table>
+    <thead><tr><th>价格位置</th><th>价格</th><th>安全边际</th><th>建议</th></tr></thead>
+    <tbody>
+      <tr><td>极度低估</td><td>&lt;$100</td><td>&gt;40%</td><td>可以重仓</td></tr>
+      <tr><td>安全买入价</td><td>$100-145</td><td>25-40%</td><td>积极建仓</td></tr>
+      <tr><td>合理价值</td><td>$145-200</td><td>0-25%</td><td>正常持有</td></tr>
+      <tr><td>谨慎区</td><td>$200-300</td><td>-10~0%</td><td>不追高，仅持有</td></tr>
+      <tr><td>高估区</td><td>&gt;$300</td><td>&lt;-10%</td><td>不建议新增仓位</td></tr>
+      <tr><td style="background:var(--danger);"><strong>当前位置</strong></td><td style="background:var(--danger);"><strong>$394</strong></td><td style="background:var(--danger);"><strong>~-63%</strong></td><td style="background:var(--danger);"><strong>不建议新增仓位</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>6.15 最终投资决策</h3>
+  <table>
+    <thead><tr><th>项目</th><th>数值</th></tr></thead>
+    <tbody>
+      <tr><td>当前价格</td><td>$394</td></tr>
+      <tr><td>综合公允价值（不含期权）</td><td>~$145</td></tr>
+      <tr><td>综合公允价值（含期权）</td><td>~$145-245</td></tr>
+      <tr><td>安全买入价格</td><td>~$100-145</td></tr>
+      <tr><td>当前安全边际</td><td><strong>-63% 至 -38%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead><tr><th>当前状态</th><th>判断</th></tr></thead>
+    <tbody>
+      <tr><td>价格位置</td><td class="rating-red">高估区</td></tr>
+      <tr><td>投资建议</td><td class="rating-red"><strong>回避</strong>（当前价格不建议新增资金）</td></tr>
+      <tr><td>企业质量</td><td>★★★★☆</td></tr>
+      <tr><td>投资价值</td><td>★★☆☆☆</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote class="blockquote-danger">
+    <p><strong>一句话总结："现在不值得投入新的资金。"</strong><br>
+    Tesla 是一家卓越的企业，但 $394 的价格已经把 FSD、Robotaxi、Optimus 的成功全部定价，且要求全部成功。在 FSD 未明确实现 L4 之前，安全边际严重不足。等待 Q2 2026 财报（7月22日）和 FSD v14 进展再做决策更为审慎。</p>
+  </blockquote>
+
+  <hr>
+
+  <h2 id="ch7">第7章 | 风险分析</h2>
+  <table>
+    <thead><tr><th>风险类型</th><th>具体风险</th><th>已反映？</th><th>严重度</th></tr></thead>
+    <tbody>
+      <tr><td><strong>技术风险</strong></td><td>FSD 无法实现 L4</td><td>部分</td><td class="rating-red">🔴 极高</td></tr>
+      <tr><td><strong>竞争风险</strong></td><td>BYD/中国竞品侵蚀份额和定价权</td><td>不足</td><td class="rating-red">🔴 极高</td></tr>
+      <tr><td><strong>资本配置风险</strong></td><td>$25B CapEx ROI 不确定</td><td>不足</td><td>🟡 高</td></tr>
+      <tr><td><strong>管理层风险</strong></td><td>Musk 注意力分散、承诺延迟</td><td>部分</td><td>🟡 高</td></tr>
+      <tr><td><strong>估值风险</strong></td><td>PE 362x，任何利空将放大跌幅</td><td>不足</td><td class="rating-red">🔴 极高</td></tr>
+      <tr><td><strong>政策风险</strong></td><td>OBBBA 削减 EV 税收抵免</td><td>部分</td><td>🟡 高</td></tr>
+      <tr><td><strong>地缘政治风险</strong></td><td>中美贸易摩擦影响上海工厂</td><td>部分</td><td>🟡 中</td></tr>
+      <tr><td><strong>黑天鹅风险</strong></td><td>重大自动驾驶事故导致监管收紧</td><td>不足</td><td>🟡 高</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2 id="ch8">第8章 | 投资逻辑</h2>
+  <p><strong>核心投资逻辑</strong>：Tesla 的投资逻辑建立在"汽车业务为现金牛，AI/能源/机器人为增长引擎"的平台型公司叙事上。</p>
+  <ol>
+    <li><strong>汽车业务</strong>提供规模效应和现金流（尽管正在恶化）</li>
+    <li><strong>FSD 软件</strong>提供高毛利经常性收入（128 万订阅，+51% YoY）</li>
+    <li><strong>能源存储</strong>提供确定性增长（+27-49%，毛利率 28-30%）</li>
+    <li><strong>Robotaxi</strong> 是万亿级 TAM 期权（已上线但规模小）</li>
+    <li><strong>Optimus</strong> 是另一个万亿级 TAM 期权（即将量产）</li>
+  </ol>
+  <p><strong>投资逻辑失效条件</strong>：FSD v14 仍无法实现 L4 / 汽车毛利率跌破 12% / BYD 全球份额超过 30% / $25B CapEx 连续 3 年无 AI 收入 / Musk 离开 Tesla。</p>
+
+  <hr>
+
+  <h2 id="ch9">第9章 | Value Drivers（价值驱动因素）</h2>
+  <blockquote class="blockquote-warning"><p><strong>V-2.2 核心章节：报告是一次的，Value Drivers 是永久的。</strong> 未来每次财报后优先更新本章。</p></blockquote>
+
+  <h3>9.1-9.2 价值驱动因素及权重</h3>
+  <table>
+    <thead><tr><th>#</th><th>Value Driver</th><th>重要程度</th><th>为什么决定企业价值</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>FSD L4 实现进度</strong></td><td>★★★★★</td><td>估值溢价核心支柱。成功 = 估值翻倍以上，失败 = 腰斩</td></tr>
+      <tr><td>2</td><td><strong>汽车毛利率趋势</strong></td><td>★★★★★</td><td>决定核心业务能否为 AI 投资提供资金</td></tr>
+      <tr><td>3</td><td><strong>能源存储部署增速</strong></td><td>★★★★☆</td><td>最确定的增长来源，SOTP 能源部分基础</td></tr>
+      <tr><td>4</td><td><strong>Robotaxi 商业化规模</strong></td><td>★★★★☆</td><td>从"技术可行"到"商业可行"的关键一步</td></tr>
+      <tr><td>5</td><td><strong>Optimus 量产时间线</strong></td><td>★★★☆☆</td><td>万亿级 TAM 期权。量产确认可提升市场预期</td></tr>
+      <tr><td>6</td><td><strong>CapEx ROI / AI 收入转化</strong></td><td>★★★★☆</td><td>决定 $25B 投入是"投资"还是"烧钱"</td></tr>
+    </tbody>
+  </table>
+
+  <h3>9.3 长期监控方案</h3>
+  <table>
+    <thead><tr><th>Driver</th><th>数据来源</th><th>更新频率</th><th>获取方式</th></tr></thead>
+    <tbody>
+      <tr><td>FSD L4 实现进度</td><td>Tesla IR、Musk X/Twitter、FSD 版本日志</td><td>月度</td><td>Tesla 官网 + X</td></tr>
+      <tr><td>汽车毛利率</td><td>Tesla 10-Q/10-K</td><td>季度</td><td>SEC EDGAR / stockanalysis.com</td></tr>
+      <tr><td>能源存储部署增速</td><td>Tesla 季度交付新闻稿</td><td>季度</td><td>ir.tesla.com</td></tr>
+      <tr><td>Robotaxi 商业化</td><td>Tesla 财报电话会、媒体报道</td><td>季度</td><td>Tesla IR + 行业媒体</td></tr>
+      <tr><td>Optimus 量产</td><td>Musk 公开表态、工厂进度</td><td>季度</td><td>X/Twitter + optimusk.blog</td></tr>
+      <tr><td>CapEx ROI / AI 收入</td><td>Tesla 季报</td><td>季度</td><td>SEC EDGAR</td></tr>
+    </tbody>
+  </table>
+
+  <h3>9.5 投资决策影响</h3>
+  <table>
+    <thead><tr><th>Driver</th><th>当前状态</th><th>影响投资逻辑</th><th>需重新估值</th></tr></thead>
+    <tbody>
+      <tr><td>FSD L4 实现进度</td><td>⚠️ v13/v14 部署中，尚未确认 L4</td><td>否</td><td>否</td></tr>
+      <tr><td>汽车毛利率</td><td>↑ Q1 2026 回升至 21.1%</td><td>否</td><td>否</td></tr>
+      <tr><td>能源存储部署增速</td><td>↑ Q2 2026 部署 13.5GWh</td><td>否</td><td>否</td></tr>
+      <tr><td>Robotaxi 商业化</td><td>→ 已上线但规模小</td><td>否</td><td>否</td></tr>
+      <tr><td>Optimus 量产</td><td>↑ 7-8月启动量产</td><td>否</td><td>否</td></tr>
+      <tr><td>CapEx ROI</td><td>⚠️ $25B 投入中，AI 收入未体现</td><td>否</td><td>否</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote class="blockquote-warning"><p><strong>下一次关键更新窗口：Q2 2026 财报（7月22日）</strong></p></blockquote>
+
+  <hr>
+
+  <h2 id="ch10">第10章 | 最终结论</h2>
+
+  <h3>综合评分（100分）</h3>
+  <table>
+    <thead><tr><th>维度</th><th>评分</th><th>权重</th><th>加权分</th></tr></thead>
+    <tbody>
+      <tr><td>商业模式</td><td>85</td><td>15%</td><td>12.75</td></tr>
+      <tr><td>行业前景</td><td>80</td><td>10%</td><td>8.0</td></tr>
+      <tr><td>管理层</td><td>55</td><td>10%</td><td>5.5</td></tr>
+      <tr><td>财务健康</td><td>50</td><td>15%</td><td>7.5</td></tr>
+      <tr><td>护城河</td><td>75</td><td>10%</td><td>7.5</td></tr>
+      <tr><td>成长性</td><td>80</td><td>15%</td><td>12.0</td></tr>
+      <tr><td>估值</td><td>20</td><td>15%</td><td>3.0</td></tr>
+      <tr><td>风险</td><td>35</td><td>5%</td><td>1.75</td></tr>
+      <tr><td>Fisher 评分</td><td>70</td><td>5%</td><td>3.5</td></tr>
+      <tr><td><strong>总计</strong></td><td></td><td><strong>100%</strong></td><td><strong>61.5/100</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>当前估值判断：<span class="rating-red">严重高估</span></h3>
+  <h3>投资建议：<span class="rating-red">回避</span>（当前价格）</h3>
+
+  <blockquote class="blockquote-danger">
+    <p><strong>Tesla 是一家伟大的公司，但 $394 的价格要求 FSD、Robotaxi、Optimus 全部成功，容错空间极小。</strong></p>
+    <p>等待以下信号出现后再考虑建仓：FSD v14 明确实现 L4 / 股价回调至 $200 以下 / Q2 2026 财报确认汽车毛利率持续回升。</p>
+  </blockquote>
+
+  <hr>
+
+  <h2 id="ec">Evidence Coverage（证据覆盖率）</h2>
+  <table>
+    <thead><tr><th>项目</th><th>占比</th></tr></thead>
+    <tbody>
+      <tr><td>一级证据</td><td>55%</td></tr>
+      <tr><td>二级证据</td><td>20%</td></tr>
+      <tr><td>三级证据</td><td>15%</td></tr>
+      <tr><td>AI 推断</td><td>10%</td></tr>
+    </tbody>
+  </table>
+
+  <h3>未验证数据</h3>
+  <ul>
+    <li>FY2025 汽车业务具体毛利率（含/不含信用）—— 需 10-K 原文验证</li>
+    <li>Tesla 2025 全年精确交付量 —— 基于估算约 165 万辆</li>
+    <li>SBC 具体金额 —— 基于 GAAP vs Non-GAAP 差异推算约 $2.0B</li>
+    <li>EV/EBITDA 具体数值 —— 基于估算 EV 计算</li>
+    <li>同行估值数据 —— 基于行业平均水平估算</li>
+  </ul>
+
+  <h3>无法获取的数据</h3>
+  <ul>
+    <li>Q2 2026 完整财报（7月22日发布，尚未公布）</li>
+    <li>FSD v14 具体性能数据（尚未公开发布）</li>
+    <li>Tesla 内部 AI 收入拆分（未在财报中单独披露）</li>
+    <li>Robotaxi 具体运营数据（收入、订单量、城市数——未单独披露）</li>
+    <li>Optimus 具体量产良率和成本数据</li>
+  </ul>
+
+  <blockquote class="blockquote-warning">
+    <p>AI 推断占比约 10%，处于临界值。建议在 Q2 2026 财报发布后（7月22日）补充官方数据并重新验证关键假设。</p>
+  </blockquote>
+
+  <hr>
+
+  <footer>
+    <p>框架版本：<a href="#">Research Constitution V-2.2</a> · Evidence First · 仅供研究参考，不构成投资建议<br>
+    报告日期：2026-07-09 · <a href="../../index.html">返回公司列表</a></p>
+  </footer>
+</div>
+</body>
+</html>
