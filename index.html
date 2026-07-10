@@ -317,9 +317,9 @@
         <h1>🐂 <span>大灰皮</span>证券研究</h1>
         <p>基于 Evidence First 原则的上市公司深度分析 · 10 章完整框架</p>
         <div class="stats">
-          <div><b>34</b> 家公司</div>
-          <div><b>39</b> 份报告</div>
-          <div>更新于 2026-07-09</div>
+          <div><b>35</b> 家公司</div>
+          <div><b>40</b> 份报告</div>
+          <div>更新于 2026-07-10</div>
         </div>
       </div>
       <div style="flex:1;text-align:right">
@@ -361,6 +361,7 @@
         <span class="filter-chip" data-type="sector" data-value="机器人">机器人</span>
         <span class="filter-chip" data-type="sector" data-value="能源资源">能源/资源</span>
         <span class="filter-chip" data-type="sector" data-value="消费">消费</span>
+        <span class="filter-chip" data-type="sector" data-value="潮玩">潮玩/IP</span>
         <span class="filter-chip" data-type="sector" data-value="快餐">快餐</span>
         <span class="filter-chip" data-type="sector" data-value="饮料">饮料</span>
         <span class="filter-chip" data-type="sector" data-value="教育">教育</span>
@@ -379,6 +380,15 @@
       </div>
     </div>
     <div class="gallery" id="gallery">
+      <div class="company-card" data-market="港股" data-sectors="消费 潮玩 IP" onclick="location.href='reports/泡泡玛特/index.html'">
+        <div class="company-body">
+          <h3>泡泡玛特 <span class="tag tag-hk">港股</span></h3>
+          <div class="company-meta">全球IP文化平台·72%毛利率·Fisher 67/100</div>
+          <div class="company-tags"><span class="tag tag-sector">消费</span> <span class="tag tag-sector">潮玩</span> <span class="tag tag-sector">IP</span></div>
+          <div class="company-count"><b>1</b> 份报告 · 最新 2026-07-10</div>
+        </div>
+        <div class="company-arrow">→</div>
+      </div>
       <div class="company-card" data-market="A股" data-sectors="新能源 动力电池" onclick="location.href='reports/宁德时代/index.html'">
         <div class="company-body">
           <h3>宁德时代 <span class="tag tag-cn">A股</span></h3>
@@ -985,6 +995,7 @@
 
 // ===== Company Data for Score Table =====
 var companyData = [
+  {name:"泡泡玛特",market:"港股",cap:"~2042亿港元",capNum:2042,profit:"130.12亿",profitNum:130.12,pe:"14.4x",peNum:14.4,pb:"—",pbNum:0,fisher:67,link:"reports/泡泡玛特/index.html"},
   {name:"可口可乐",market:"美股",cap:"$3570亿",capNum:3570,profit:"$13.1B",profitNum:131,pe:"27x",peNum:27,pb:"10.4x",pbNum:104,fisher:68,link:"reports/可口可乐/index.html"},
   {name:"麦当劳",market:"美股",cap:"$2020亿",capNum:2020,profit:"$8.68B",profitNum:87,pe:"23x",peNum:23,pb:"—(负)",pbNum:0,fisher:73,link:"reports/麦当劳/index.html"},
   {name:"英伟达",market:"美股",cap:"$4.9万亿",capNum:49000,profit:"$159.6B",profitNum:1596,pe:"~31x",peNum:31,pb:"—",pbNum:0,fisher:91,link:"reports/英伟达/index.html"},
