@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>火箭发射行业研究报告 | 行业研究框架 v1.0</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+:root{--bg:#f8f9fa;--card:#fff;--text:#2c3e50;--text-sec:#6c757d;--primary:#2563eb;--accent:#7c3aed;--success:#059669;--danger:#dc2626;--warning:#d97706;--border:#e5e7eb;--sidebar-bg:#1e293b;--sidebar-text:#cbd5e1;--sidebar-active:#3b82f6;--gold:#f59e0b;--silver:#94a3b8;--bronze:#b45309}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.sidebar{position:fixed;left:0;top:0;width:260px;height:100vh;background:var(--sidebar-bg);overflow-y:auto;padding:20px 0;z-index:100}
+.sidebar .logo{color:#fff;font-size:16px;font-weight:700;padding:0 24px 20px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:12px}
+.sidebar a{display:block;padding:8px 24px;color:var(--sidebar-text);text-decoration:none;font-size:13px;border-left:3px solid transparent;transition:all .2s}
+.sidebar a:hover{background:rgba(255,255,255,0.05)}
+.sidebar a.active{border-left-color:var(--sidebar-active);color:#fff}
+.content{margin-left:260px;padding:0}
+.section{padding:40px;max-width:900px;margin:0 auto}
+.section h2{font-size:24px;border-bottom:2px solid var(--primary);padding-bottom:8px;margin-bottom:20px}
+.hero{background:linear-gradient(135deg,#1e293b 0%,#334155 50%,#1e293b 100%);color:#fff;padding:60px 40px;text-align:center}
+.hero h1{font-size:32px;margin-bottom:8px}
+.hero .subtitle{color:var(--sidebar-text);font-size:14px}
+.score-badge{width:140px;height:140px;border-radius:50%;margin:20px auto;display:flex;align-items:center;justify-content:center;flex-direction:column;background:conic-gradient(var(--primary) 0% 76%,var(--border) 76% 100%);position:relative}
+.score-badge::before{content:'';position:absolute;inset:8px;border-radius:50%;background:var(--card)}
+.score-badge .num{position:relative;font-size:36px;font-weight:800;color:var(--primary)}
+.score-badge .lbl{position:relative;font-size:11px;color:var(--text-sec)}
+.stars{color:var(--gold);font-size:18px;margin-top:8px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:20px 0}
+.stat-card{background:var(--card);border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+.stat-card .val{font-size:24px;font-weight:700;color:var(--primary)}
+.stat-card .lbl{font-size:12px;color:var(--text-sec);margin-top:4px}
+.company-card{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:10px;padding:16px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+.rank{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+.rank-1{background:var(--gold);color:#fff}.rank-2{background:var(--silver);color:#fff}.rank-3{background:var(--bronze);color:#fff}.rank-o{background:var(--border);color:var(--text)}
+.company-info{flex:1}
+.company-info .name{font-weight:600;font-size:15px}
+.company-info .desc{font-size:12px;color:var(--text-sec)}
+.company-info .tag{display:inline-block;background:#eff6ff;color:var(--primary);padding:1px 8px;border-radius:4px;font-size:11px;margin-left:6px}
+.driver-card{background:var(--card);border-radius:10px;padding:16px;border-left:4px solid var(--primary);margin-bottom:12px}
+.risk-card{background:var(--card);border-radius:10px;padding:16px;border-left:4px solid var(--danger);margin-bottom:12px}
+.card-title{font-weight:600;margin-bottom:6px}
+.card-desc{font-size:13px;color:var(--text-sec)}
+.callout{border-radius:8px;padding:16px;margin:16px 0;border-left:4px solid var(--primary);background:#eff6ff}
+.callout.opinion{background:#faf5ff;border-left-color:var(--accent)}
+.callout.success{background:#f0fdf4;border-left-color:var(--success)}
+.callout.warning{background:#fffbeb;border-left-color:var(--warning)}
+.callout.danger{background:#fef2f2;border-left-color:var(--danger)}
+.tag-fact{background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag-inf{background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag-opi{background:#f3e8ff;color:#6b21a8;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.src-tier{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600}
+.t1{background:#dcfce7;color:#166534}.t2{background:#dbeafe;color:#1e40af}.t3{background:#fef3c7;color:#92400e}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:var(--bg);padding:10px;text-align:left;border-bottom:2px solid var(--border)}
+td{padding:10px;border-bottom:1px solid var(--border)}
+.mermaid{background:var(--card);border-radius:12px;padding:20px;margin:16px 0;text-align:center}
+.chart-box{background:var(--card);border-radius:12px;padding:20px;margin:16px 0}
+.chart-box canvas{max-height:350px}
+.chart-title{font-weight:600;margin-bottom:12px;font-size:14px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.sidebar{display:none}.content{margin-left:0}.grid-2{grid-template-columns:1fr}}
+.score-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.score-row .lbl{width:120px;font-size:13px}
+.score-row .bar{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.score-row .fill{height:100%;background:var(--primary);border-radius:4px}
+.score-row .val{width:30px;text-align:right;font-size:13px;font-weight:600}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+<div class="logo">🚀 火箭发射行业研究</div>
+<a href="#hero">概览</a>
+<a href="#ch0">0. 执行摘要</a>
+<a href="#ch1">1. 行业定义</a>
+<a href="#ch2">2. 产业链全景</a>
+<a href="#ch3">3. 产业链脑图</a>
+<a href="#ch4">4. 行业规模(TAM)</a>
+<a href="#ch5">5. 行业驱动力</a>
+<a href="#ch6">6. 生命周期</a>
+<a href="#ch7">7. 行业壁垒</a>
+<a href="#ch8">8. 利润池</a>
+<a href="#ch9">9. 竞争格局</a>
+<a href="#ch10">10. 行业地图</a>
+<a href="#ch11">11. 技术路线</a>
+<a href="#ch12">12. 供应链</a>
+<a href="#ch13">13. 政策分析</a>
+<a href="#ch14">14. 核心数据</a>
+<a href="#ch15">15. 路线图</a>
+<a href="#ch16">16. 风险分析</a>
+<a href="#ch17">17. 投资价值</a>
+<a href="#ch18">18. 行业评分</a>
+<a href="#ch19">19. 资料来源</a>
+</nav>
+
+<main class="content">
+
+<section class="hero" id="hero">
+<h1>🚀 火箭发射行业研究报告</h1>
+<p class="subtitle">行业研究框架 v1.0 | 2026年7月</p>
+<div class="score-badge">
+<div class="num">76</div>
+<div class="lbl">/ 100</div>
+</div>
+<div class="stars">★★★★☆</div>
+<p style="margin-top:12px;color:var(--sidebar-text)">首选标的：航天电子(600879) | 投资逻辑："不要投箭，要投芯"</p>
+</section>
+
+<section class="section" id="ch0">
+<h2>0. 执行摘要</h2>
+<p><b>一句话定义：</b>火箭发射行业是将载荷送入太空轨道的运输服务行业，是商业航天产业链的核心环节和咽喉节点。</p>
+<div class="callout"><span class="tag-inf">Inference</span> 行业生命周期：<b>成长期早期</b>。全球发射次数从263次跃升至317-337次（+25%），可回收火箭承担82%商业发射任务，正处于"一次性→可复用"范式转换期。</div>
+<div class="stat-grid">
+<div class="stat-card"><div class="val">$612亿</div><div class="lbl">全球航天经济(2024)</div></div>
+<div class="stat-card"><div class="val">2.83万亿</div><div class="lbl">中国商业航天(2025)</div></div>
+<div class="stat-card"><div class="val">317次</div><div class="lbl">全球发射(2025)</div></div>
+<div class="stat-card"><div class="val">22%+</div><div class="lbl">中国CAGR</div></div>
+<div class="stat-card"><div class="val">855亿</div><div class="lbl">民营五强估值合计</div></div>
+</div>
+<div class="callout opinion"><span class="tag-opi">Opinion</span> <b>投资逻辑："不要投箭，要投芯"</b>——火箭公司烧钱10年未必盈利，上游元器件供应商毛利率50-90%，且无论哪家火箭公司赢都要采购。</div>
+<p><b>最大机会：</b>中国28,000颗卫星星座规划 + 可回收技术突破降本60-70%</p>
+<p><b>最大风险：</b>与SpaceX存在8-10年代差；20省同质化内卷；5家冲刺IPO企业"一个赚钱的都没有"</p>
+</section>
+
+<section class="section" id="ch1">
+<h2>1. 行业定义</h2>
+<table>
+<tr><th>分类维度</th><th>类别</th><th>说明</th></tr>
+<tr><td>按运力</td><td>微型/小型/中型/大型/重型</td><td>运力决定市场定位</td></tr>
+<tr><td>按推进剂</td><td>固体/液氧煤油/液氧甲烷/液氢液氧</td><td>液氧甲烷是可回收最优选</td></tr>
+<tr><td>按回收能力</td><td>一次性/可回收复用</td><td>可回收是行业分水岭</td></tr>
+<tr><td>按运营主体</td><td>国家队/民营</td><td>中国特色双轨制</td></tr>
+</table>
+<div class="callout"><span class="tag-inf">Inference</span> 发射成本的下降将遵循类似摩尔定律的轨迹——每5年降一个数量级，将催生目前不存在的太空商业模式。</div>
+</section>
+
+<section class="section" id="ch2">
+<h2>2. 产业链全景</h2>
+<div class="mermaid">
+flowchart TD
+    A["上游：原材料<br/>碳纤维/合金/推进剂/芯片"] --> B["中游：零部件<br/>发动机/箭体/飞控"]
+    B --> C["中游：总装集成<br/>国家队+民营+国际"]
+    C --> D["下游：发射服务<br/>商业卫星/政府/国际"]
+    D --> E["下游：应用<br/>卫星互联网/遥感/深空"]
+    A1["光威复材/中简科技/钢研高纳<br/>航天电子/复旦微电"] -.-> A
+    B1["航天六院/蓝箭天鹊<br/>航天电子/赛微电子"] -.-> B
+    C1["CASC/蓝箭/天兵<br/>星河动力/中科宇航"] -.-> C
+    D1["星座组网/载人航天<br/>国安载荷"] -.-> D
+    E1["星链/千帆/星网<br/>嫦娥/天问/天宫"] -.-> E
+</div>
+<div class="callout"><span class="tag-fact">Fact</span> 产业链利润呈"哑铃型"分布：上游元器件（50-90%毛利）和下游应用（30-65%毛利）高，中游制造发射（12-35%毛利）低。</div>
+</section>
+
+<section class="section" id="ch3">
+<h2>3. 产业链脑图</h2>
+<div class="mermaid">
+mindmap
+    root((火箭发射产业))
+        上游原材料
+            碳纤维:光威/中简/中复神鹰
+            高温合金:钢研高纳/斯瑞新材
+            钛合金:宝钛/西部超导
+            推进剂:九丰能源/华昌化工
+            航天电子:航天电子/复旦微电/紫光国微
+        中游制造
+            发动机:航天六院/蓝箭天鹊/天兵天火
+            箭体:超捷股份/广联航空
+            总装:CASC/蓝箭/天兵/星河动力
+        下游应用
+            卫星互联网:星链/千帆/星网
+            遥感:长光卫星/航天宏图
+            深空:嫦娥/天问
+            空间站:天宫/ISS
+</div>
+</section>
+
+<section class="section" id="ch4">
+<h2>4. 行业规模（TAM）</h2>
+<table>
+<tr><th>指标</th><th>2024</th><th>2025</th><th>2030E</th><th>来源</th></tr>
+<tr><td>全球航天经济</td><td>$6,120亿</td><td>~$7,000亿</td><td>$1万亿+</td><td>新浪财经 <span class="src-tier t2">★★★★☆</span></td></tr>
+<tr><td>发射服务市场</td><td>~$140亿</td><td>$150-187亿</td><td>$347-910亿</td><td>iim <span class="src-tier t2">★★★★☆</span></td></tr>
+<tr><td>全球发射次数</td><td>263次</td><td>317-337次</td><td>600次+</td><td>taibo <span class="src-tier t3">★★★☆☆</span></td></tr>
+<tr><td>中国商业航天</td><td>2.3万亿</td><td>2.83万亿</td><td>8万亿</td><td>赛迪智库 <span class="src-tier t2">★★★★☆</span></td></tr>
+<tr><td>中国发射次数</td><td>~70次</td><td>89-92次</td><td>150次+</td><td>证券时报 <span class="src-tier t3">★★★☆☆</span></td></tr>
+</table>
+<div class="chart-box">
+<div class="chart-title">全球发射次数趋势 & 中国商业航天规模</div>
+<canvas id="launchChart"></canvas>
+</div>
+<div class="callout"><span class="tag-inf">Inference</span> 中国CAGR（22%）显著高于全球平均（18%），主要因为中国处于追赶期——在轨卫星（~250颗）仅为星链（10,722颗）的2.3%。</div>
+</section>
+
+<section class="section" id="ch5">
+<h2>5. 行业驱动力</h2>
+<div class="driver-card"><div class="card-title">🛰️ 卫星互联网星座组网 ★★★★★</div><div class="card-desc">中国28,000+颗卫星规划，在轨仅~250颗。ITU"先到先得"规则下频轨资源紧迫。每延误一年优质轨位少一批。</div></div>
+<div class="driver-card"><div class="card-title">🔄 可回收技术突破 ★★★★★</div><div class="card-desc">发射成本降低60-70%。SpaceX复用600次+，中国2026.7首次大运力一级回收成功。行业分水岭。</div></div>
+<div class="driver-card"><div class="card-title">📜 政策战略升级 ★★★★★</div><div class="card-desc">连续两年写入政府工作报告，十五五首提"航天强国"，科创板开放第五套标准。</div></div>
+<div class="driver-card"><div class="card-title">🤖 AI技术赋能 ★★★★☆</div><div class="card-desc">设计优化减重15%，发动机仿真试车减50%，质量诊断准确率95%，生产效率提升20%。</div></div>
+<div class="driver-card"><div class="card-title">🇨🇳 国产替代 ★★★★☆</div><div class="card-desc">宇航级芯片国产化率25%，核心芯片不足15%。ITAR封锁反而创造保护性市场。</div></div>
+<div class="driver-card"><div class="card-title">💰 成本下降 ★★★★☆</div><div class="card-desc">Falcon 9复用$1,500/kg，Starship目标$100-200/kg。中国目标降至1万元/kg以下。</div></div>
+<div class="callout opinion"><span class="tag-opi">Opinion</span> 六大驱动力形成正反馈飞轮：星座需求→拉动发射→催生可回收技术→降低成本→更多星座可行→更多发射需求。中国正处于飞轮启动临界点。</div>
+</section>
+
+<section class="section" id="ch6">
+<h2>6. 行业生命周期</h2>
+<p><b>当前阶段：成长期早期</b></p>
+<table>
+<tr><th>维度</th><th>判断</th><th>评分</th></tr>
+<tr><td>渗透率</td><td>可回收火箭刚首次成功，复用闭环未形成</td><td>低</td></tr>
+<tr><td>竞争格局</td><td>SpaceX一家独大，中国5强竞速IPO</td><td>未成熟</td></tr>
+<tr><td>资本投入</td><td>2024年融资202亿创纪录</td><td>高峰期</td></tr>
+<tr><td>利润率</td><td>火箭制造12-35%，头部多数亏损</td><td>偏低</td></tr>
+</table>
+<div class="callout"><span class="tag-inf">Inference</span> 类似2016年电动车（Model 3刚发布）。技术验证→商业化拐点之间，风险最大但回报也最高。</div>
+</section>
+
+<section class="section" id="ch7">
+<h2>7. 行业壁垒</h2>
+<table>
+<tr><th>壁垒</th><th>评分</th><th>说明</th></tr>
+<tr><td>技术壁垒</td><td>★★★★★</td><td>"人类最复杂系统工程之一"</td></tr>
+<tr><td>资本壁垒</td><td>★★★★★</td><td>单款火箭研发10-50亿，周期5-10年</td></tr>
+<tr><td>认证壁垒</td><td>★★★★☆</td><td>2023年民营获批发射不足申请量20%</td></tr>
+<tr><td>供应链壁垒</td><td>★★★★☆</td><td>核心元器件被国家队垄断</td></tr>
+<tr><td>人才壁垒</td><td>★★★★☆</td><td>核心人才集中在体制内</td></tr>
+<tr><td>规模效应</td><td>★★★★☆</td><td>发射越多单位成本越低</td></tr>
+</table>
+<p><b>综合壁垒评分：★★★★★（极高）</b></p>
+</section>
+
+<section class="section" id="ch8">
+<h2>8. 利润池分析</h2>
+<div class="chart-box">
+<div class="chart-title">产业链各环节毛利率对比</div>
+<canvas id="marginChart"></canvas>
+</div>
+<table>
+<tr><th>排名</th><th>环节</th><th>毛利率</th><th>稳定性</th><th>代表企业</th></tr>
+<tr><td>1</td><td>上游核心元器件</td><td>50-90%</td><td>★★★★★</td><td>航天电子/复旦微电</td></tr>
+<tr><td>2</td><td>下游应用服务</td><td>30-65%</td><td>★★★★☆</td><td>中国卫通/Starlink</td></tr>
+<tr><td>3</td><td>上游关键材料</td><td>30-50%</td><td>★★★★☆</td><td>光威复材/中简科技</td></tr>
+<tr><td>4</td><td>发动机制造</td><td>30-50%</td><td>★★★☆☆</td><td>航天六院/蓝箭</td></tr>
+<tr><td>5</td><td>火箭总装发射</td><td>12-35%</td><td>★★☆☆☆</td><td>蓝箭/天兵/长征</td></tr>
+</table>
+<div class="callout opinion"><span class="tag-opi">Opinion</span> <b>"不要投箭，要投芯"</b>——火箭公司是重资产低利润高风险的"烧钱机器"，元器件供应商是轻资产高利润低风险的"收费站"。</div>
+</section>
+
+<section class="section" id="ch9">
+<h2>9. 竞争格局（TOP20）</h2>
+<div class="company-card"><div class="rank rank-1">1</div><div class="company-info"><div class="name">SpaceX <span class="tag">$1.77万亿</span></div><div class="desc">美国 | 165次发射/年 | 全球80%+入轨载荷 | 复用600次+</div></div></div>
+<div class="company-card"><div class="rank rank-2">2</div><div class="company-info"><div class="name">航天科技一院(CALT) <span class="tag">国家队</span></div><div class="desc">中国 | 44次发射 | 长征系列主力 | 累计600次+</div></div></div>
+<div class="company-card"><div class="rank rank-3">3</div><div class="company-info"><div class="name">航天科技八院(SAST) <span class="tag">国家队</span></div><div class="desc">中国 | 长十二甲回收成功 | 中国主要发射力量</div></div></div>
+<div class="company-card"><div class="rank rank-o">4</div><div class="company-info"><div class="name">天兵科技 <span class="tag">225亿</span></div><div class="desc">中国民营 | 天龙三号 | 液氧煤油/海上回收 | IPO辅导中</div></div></div>
+<div class="company-card"><div class="rank rank-o">5</div><div class="company-info"><div class="name">蓝箭航天 <span class="tag">220亿</span></div><div class="desc">中国民营 | 朱雀二/三号 | 液氧甲烷全球首入轨 | 科创板受理</div></div></div>
+<div class="company-card"><div class="rank rank-o">6</div><div class="company-info"><div class="name">星际荣耀 <span class="tag">180亿</span></div><div class="desc">中国民营 | 双曲线三号 | 可重复使用先行者 | IPO辅导中</div></div></div>
+<div class="company-card"><div class="rank rank-o">7</div><div class="company-info"><div class="name">星河动力 <span class="tag">150亿</span></div><div class="desc">中国民营 | 谷神星一号/智神星一号 | 民营累计发射最多 | 上市辅导</div></div></div>
+<div class="company-card"><div class="rank rank-o">8</div><div class="company-info"><div class="name">中科宇航 <span class="tag">110亿</span></div><div class="desc">中国民营 | 力箭一/二号 | 中科院背景 | 辅导验收</div></div></div>
+<div class="company-card"><div class="rank rank-o">9</div><div class="company-info"><div class="name">Rocket Lab (RKLB) <span class="tag">$444亿</span></div><div class="desc">美国 | 21次Electron | 小型发射领导者 | Neutron待首飞</div></div></div>
+<div class="company-card"><div class="rank rank-o">10</div><div class="company-info"><div class="name">Blue Origin <span class="tag">私营</span></div><div class="desc">美国 | New Glenn | BE-4发动机 | 重型可回收</div></div></div>
+<div class="company-card"><div class="rank rank-o">11</div><div class="company-info"><div class="name">航天电子(600879) <span class="tag">⭐首选</span></div><div class="desc">中国 | 测控/星载计算机 | 市占率90%+ | 航天九院唯一上市平台</div></div></div>
+<div class="company-card"><div class="rank rank-o">12</div><div class="company-info"><div class="name">光威复材(300699)</div><div class="desc">中国 | 碳纤维全产业链 | T800-T1100量产 | 商业航天市占20-25%</div></div></div>
+<div class="company-card"><div class="rank rank-o">13</div><div class="company-info"><div class="name">中简科技(300777)</div><div class="desc">中国 | 宇航级碳纤维 | 高端市占60%+ | 航天收入占比95%+</div></div></div>
+<div class="company-card"><div class="rank rank-o">14</div><div class="company-info"><div class="name">钢研高纳(300034)</div><div class="desc">中国 | 高温合金 | 发动机材料市占60%+ | 国产化突破70%</div></div></div>
+<div class="company-card"><div class="rank rank-o">15</div><div class="company-info"><div class="name">斯瑞新材(688102)</div><div class="desc">中国 | 铜铬铌合金 | 推力室内壁独家 | 绑定80%+项目</div></div></div>
+<div class="company-card"><div class="rank rank-o">16</div><div class="company-info"><div class="name">复旦微电(688385)</div><div class="desc">中国 | 抗辐射FPGA | 唯一量产 | 替代Xilinx</div></div></div>
+<div class="company-card"><div class="rank rank-o">17</div><div class="company-info"><div class="name">臻镭科技(688270)</div><div class="desc">中国 | 抗辐射射频芯片 | 替代ADI禁运产品 | 星网独家供应</div></div></div>
+<div class="company-card"><div class="rank rank-o">18</div><div class="company-info"><div class="name">宝钛股份(600456)</div><div class="desc">中国 | 钛合金 | 市占50%+ | 获NASA/SpaceX认证</div></div></div>
+<div class="company-card"><div class="rank rank-o">19</div><div class="company-info"><div class="name">航天动力(600343)</div><div class="desc">中国 | 液体火箭发动机 | 航天六院上市平台</div></div></div>
+<div class="company-card"><div class="rank rank-o">20</div><div class="company-info"><div class="name">铂力特(688333)</div><div class="desc">中国 | 3D打印 | 火箭部件制造 | 涡轮泵壳体</div></div></div>
+<div class="callout opinion"><span class="tag-opi">Opinion</span> 火箭整箭公司"5家IPO一个不赚钱"，但上游元器件公司几乎都盈利。选第11-20名（上游配套）比选第4-8名（民营火箭）更安全更赚钱。</div>
+</section>
+
+<section class="section" id="ch10">
+<h2>10. 行业地图</h2>
+<p><b>横轴：</b>上游材料/元器件 ←→ 下游应用/服务 &nbsp; <b>纵轴：</b>国家队/传统 ←→ 民营/创新</p>
+<table>
+<tr><th>象限</th><th>定位</th><th>代表公司</th></tr>
+<tr><td>左上</td><td>上游+国家队（垄断型）</td><td>航天电子、航天动力、西部超导</td></tr>
+<tr><td>左下</td><td>上游+民营（创新型）</td><td>铂力特、斯瑞新材、超捷股份</td></tr>
+<tr><td>中上</td><td>中游+国家队</td><td>航天科技一院/八院</td></tr>
+<tr><td>中下</td><td>中游+民营</td><td>蓝箭、天兵、星河动力</td></tr>
+<tr><td>右上</td><td>下游+国家队</td><td>中国卫通、中国卫星</td></tr>
+<tr><td>右下</td><td>下游+民营</td><td>星链、千帆、银河航天</td></tr>
+</table>
+<div class="callout opinion"><span class="tag-opi">Opinion</span> 最佳投资象限是"左上"——上游+国家队，兼具垄断地位和盈利能力。</div>
+</section>
+
+<section class="section" id="ch11">
+<h2>11. 技术路线</h2>
+<div class="chart-box">
+<div class="chart-title">推进剂技术路线对比（比冲 vs 复用适配性）</div>
+<canvas id="techChart"></canvas>
+</div>
+<table>
+<tr><th>推进剂</th><th>比冲</th><th>复用适配</th><th>代表</th><th>趋势</th></tr>
+<tr><td>液氧+甲烷</td><td>330-380s</td><td>最佳</td><td>猛禽3/BE-4/天鹊</td><td><b>主流方向</b></td></tr>
+<tr><td>液氧+煤油</td><td>300-360s</td><td>中</td><td>Merlin/YF-100</td><td>成熟在役</td></tr>
+<tr><td>液氧+液氢</td><td>420-465s</td><td>差</td><td>YF-77/RL10</td><td>高轨专用</td></tr>
+<tr><td>固体</td><td>250-280s</td><td>不可复用</td><td>助推器/小型</td><td>成熟/低成本</td></tr>
+</table>
+<div class="chart-box">
+<div class="chart-title">发射成本对比 ($/kg入轨)</div>
+<canvas id="costChart"></canvas>
+</div>
+<div class="callout"><span class="tag-fact">Fact</span> 2026.7.10 长征十号乙实现全球首次海上网系回收，中国成为继美国后第二个实现大运力火箭一级回收的国家。</div>
+</section>
+
+<section class="section" id="ch12">
+<h2>12. 供应链分析</h2>
+<table>
+<tr><th>环节</th><th>国产化率</th><th>瓶颈等级</th><th>代表企业</th></tr>
+<tr><td>宇航级芯片</td><td>~25%</td><td><span style="color:var(--danger);font-weight:700">极高</span></td><td>复旦微电/航天电子/臻镭科技</td></tr>
+<tr><td>大推力发动机</td><td>—</td><td><span style="color:var(--danger);font-weight:700">高</span></td><td>航天六院/蓝箭(220t试车中)</td></tr>
+<tr><td>高端碳纤维</td><td>~65%</td><td><span style="color:var(--warning);font-weight:700">中</span></td><td>光威/中简/中复神鹰</td></tr>
+<tr><td>高温合金</td><td>~70%</td><td><span style="color:var(--warning);font-weight:700">中</span></td><td>钢研高纳/斯瑞新材</td></tr>
+<tr><td>钛合金</td><td>90%+</td><td style="color:var(--success)">低</td><td>宝钛/西部超导</td></tr>
+<tr><td>铜铬铌合金</td><td>近100%</td><td style="color:var(--success)">低</td><td>斯瑞新材(独占)</td></tr>
+</table>
+<div class="callout danger"><span class="tag-fact">Fact</span> 宇航级芯片国产化率仅25%，核心芯片不足15%。90%以上核心元器件由中国电科、航天科技集团旗下院所供应，民营配套份额不到20%。</div>
+<div class="callout opinion"><span class="tag-opi">Opinion</span> <b>"越卡脖子，越值得投"</b>——国产替代空间最大的环节就是投资回报最高的环节。</div>
+</section>
+
+<section class="section" id="ch13">
+<h2>13. 政策分析</h2>
+<h3>中国</h3>
+<table>
+<tr><th>时间</th><th>政策</th><th>影响</th></tr>
+<tr><td>2024</td><td>商业航天首次写入政府工作报告</td><td>"新增长引擎"</td></tr>
+<tr><td>2025.3</td><td>升级为"战略性新兴产业"</td><td>政策力度加码</td></tr>
+<tr><td>2025</td><td>国家航天局设立商业航天司</td><td>审批/监管体系化</td></tr>
+<tr><td>十五五</td><td>首提"航天强国"</td><td>最高战略定位</td></tr>
+<tr><td>2025.6</td><td>科创板纳入第五套标准</td><td>允许未盈利企业上市</td></tr>
+</table>
+<h3>国际</h3>
+<table>
+<tr><th>国家</th><th>政策</th><th>影响</th></tr>
+<tr><td>美国</td><td>FAA Part 450改革 + ITAR封锁</td><td>美国效率提升，中国被排除国际市场</td></tr>
+<tr><td>全球</td><td>阿尔忒弥斯协定59国签署</td><td>中俄未签，两极太空治理格局</td></tr>
+<tr><td>印度</td><td>私营航天改革</td><td>市场化加速</td></tr>
+</table>
+<div class="callout"><span class="tag-inf">Inference</span> ITAR封锁使中国企业只能在国内市场竞争，实际上为国内上游元器件企业提供了"保护性市场"。</div>
+</section>
+
+<section class="section" id="ch14">
+<h2>14. 行业核心数据</h2>
+<div class="grid-2">
+<div class="chart-box">
+<div class="chart-title">全球发射次数（2024 vs 2025）</div>
+<canvas id="launchCompareChart"></canvas>
+</div>
+<div class="chart-box">
+<div class="chart-title">星链 vs 中国星座在轨卫星</div>
+<canvas id="satChart"></canvas>
+</div>
+</div>
+<table>
+<tr><th>指标</th><th>数据</th><th>来源</th></tr>
+<tr><td>Falcon 9复用记录</td><td>单枚35次/累计600+/最快9天</td><td>SpaceX <span class="src-tier t1">★★★★★</span></td></tr>
+<tr><td>Falcon 9成功率</td><td>99.76%(Block 5)</td><td>SpaceX <span class="src-tier t1">★★★★★</span></td></tr>
+<tr><td>SpaceX 2025营收</td><td>$187亿(Starlink $112-114亿)</td><td>多来源 <span class="src-tier t3">★★★☆☆</span></td></tr>
+<tr><td>Starlink EBITDA利润率</td><td>63%</td><td>智库界 <span class="src-tier t3">★★★☆☆</span></td></tr>
+<tr><td>中国民营融资(2024)</td><td>202.39亿/138起</td><td>报告大厅 <span class="src-tier t2">★★★★☆</span></td></tr>
+<tr><td>航天电子测控市占率</td><td>90%+</td><td>东方财富 <span class="src-tier t3">★★★☆☆</span></td></tr>
+</table>
+</section>
+
+<section class="section" id="ch15">
+<h2>15. 未来路线图</h2>
+<div class="mermaid">
+timeline
+    title 火箭发射行业未来路线图
+    2026 : 长征十号乙首次回收成功
+         : ~10款可回收火箭首飞/复飞
+         : 蓝箭航天科创板IPO
+         : 千帆星座324颗组网
+         : 嫦娥七号月球南极探测
+    2027 : 中国可回收跑通闭环
+         : 千帆648颗区域覆盖
+         : Starship首次商业飞行
+         : 天问二号小行星采样返回
+    2028 : 中国发射突破150次
+         : 嫦娥八号月球科研站
+         : 复用≥5次验证
+    2030 : 中国载人登月
+         : 发射成本降至$1000/kg以下
+         : 千帆1.5万颗部署完成
+         : 全球发射突破600次
+    2035 : 太空经济突破1万亿美元
+         : 星舰常态化月球/火星运输
+         : 在轨制造/太空旅游商业化
+</div>
+<div class="callout opinion"><span class="tag-opi">Opinion</span> 2026-2027验证期布局上游元器件，2028-2030放量期加仓火箭/星座运营。</div>
+</section>
+
+<section class="section" id="ch16">
+<h2>16. 风险分析</h2>
+<div class="risk-card"><div class="card-title">⚠️ 技术风险 ★★★★★</div><div class="card-desc">朱雀三号回收硬着陆、天龙三号首飞失利、长征三号乙发射失利。中国可回收仍处试验阶段，需6-8次飞行验证才能形成可靠闭环。</div></div>
+<div class="risk-card"><div class="card-title">🌍 地缘政治风险 ★★★★☆</div><div class="card-desc">ITAR封锁限制国际市场参与。宇航级芯片/激光通信模块仍依赖进口。太空治理两极格局形成。</div></div>
+<div class="risk-card"><div class="card-title">📉 运力过剩/价格战 ★★★★☆</div><div class="card-desc">20省出台支持政策，几乎每省提"千亿级产业集群"。被比作"上一轮光伏扩张前夜"。近90%后来者可能无法存活。</div></div>
+<div class="risk-card"><div class="card-title">🔗 供应链风险 ★★★★☆</div><div class="card-desc">宇航级芯片国产化率25%，核心芯片不足15%。高性能载荷、激光通信模块短期绕不开进口。</div></div>
+<div class="risk-card"><div class="card-title">💰 商业模式风险 ★★★★☆</div><div class="card-desc">研发周期5-10年 vs VC退出3-5年。"时间沟"问题。5家IPO企业"一个赚钱的都没有"。</div></div>
+<div class="risk-card"><div class="card-title">🛰️ 太空碎片风险 ★★★☆☆</div><div class="card-desc">2030年在轨低轨卫星突破10万颗时，凯斯勒综合征概率升至12%。</div></div>
+<div class="risk-card"><div class="card-title">📈 估值泡沫 ★★★☆☆</div><div class="card-desc">2025年商业航天主题指数涨超60%。SpaceX估值绑定星舰，延期可能引发赛道估值崩塌。</div></div>
+</section>
+
+<section class="section" id="ch17">
+<h2>17. 投资价值分析</h2>
+<div class="callout success"><span class="tag-opi">Opinion</span> <b>首选标的：航天电子(600879)</b><br><br>1. <b>垄断不可替代</b> — 火箭测控/星载计算机市占率90%+<br>2. <b>通用性</b> — 无论长征/朱雀/天龙/智神星，都需要它的芯片<br>3. <b>增长确定性</b> — 发射次数从92次→150次→300次，收入跟着涨<br>4. <b>国产替代</b> — 抗辐射FPGA从0到1<br>5. <b>低风险</b> — 不承担火箭爆炸/回收失败的技术风险<br>6. <b>估值合理</b> — 相比民营火箭动辄200亿估值，国家队平台更稳健</div>
+<table>
+<tr><th>环节</th><th>评分</th><th>理由</th></tr>
+<tr><td><b>最好</b></td><td>上游元器件</td><td>高毛利+垄断+国产替代+低风险</td></tr>
+<tr><td>次好</td><td>下游星座运营</td><td>网络效应+高粘性+Starlink已验证</td></tr>
+<tr><td>中等</td><td>上游材料</td><td>稳定增长+国产替代空间</td></tr>
+<tr><td>较差</td><td>发动机制造</td><td>技术壁垒高但资本投入大</td></tr>
+<tr><td><b>最差</b></td><td>火箭整箭</td><td>重资产+低毛利+高风险+多数亏损</td></tr>
+</table>
+<p><b>值得长期关注的公司：</b>航天电子(600879)、光威复材(300699)、中简科技(300777)、钢研高纳(300034)、斯瑞新材(688102)、蓝箭航天(IPO中)、Rocket Lab(RKLB)</p>
+</section>
+
+<section class="section" id="ch18">
+<h2>18. 行业评分</h2>
+<div class="chart-box">
+<div class="chart-title">行业评分雷达图（76/100 ★★★★☆）</div>
+<canvas id="scoreChart"></canvas>
+</div>
+<table>
+<tr><th>维度</th><th>评分</th><th>理由</th></tr>
+<tr><td>行业空间(TAM)</td><td><b>8</b>/10</td><td>$6,120亿全球，2.83万亿中国</td></tr>
+<tr><td>成长速度(CAGR)</td><td><b>9</b>/10</td><td>22%+，发射次数5年翻倍</td></tr>
+<tr><td>技术壁垒</td><td><b>10</b>/10</td><td>"火箭科学"=最高壁垒</td></tr>
+<tr><td>竞争格局</td><td><b>6</b>/10</td><td>SpaceX垄断，中国20省内卷</td></tr>
+<tr><td>利润率</td><td><b>6</b>/10</td><td>火箭12-35%，元器件50-90%</td></tr>
+<tr><td>资本回报率</td><td><b>5</b>/10</td><td>火箭公司多数亏损</td></tr>
+<tr><td>国产替代</td><td><b>8</b>/10</td><td>芯片25%，替代空间巨大</td></tr>
+<tr><td>AI受益程度</td><td><b>7</b>/10</td><td>设计/仿真/诊断应用深化</td></tr>
+<tr><td>政策支持</td><td><b>9</b>/10</td><td>"航天强国"写入五年规划</td></tr>
+<tr><td>投资价值</td><td><b>8</b>/10</td><td>选对环节>选对行业</td></tr>
+<tr><td><b>总分</b></td><td><b>76/100</b></td><td><b>★★★★☆</b></td></tr>
+</table>
+<div class="callout opinion"><span class="tag-opi">Opinion</span> 行业整体值得投资，但<b>选对环节比选对行业更重要</b>。投资上游元器件实际得分85+，投资火箭整箭公司实际得分可能不到60。</div>
+</section>
+
+<section class="section" id="ch19">
+<h2>19. 资料来源</h2>
+<h3>一级资料 <span class="src-tier t1">★★★★★</span></h3>
+<table>
+<tr><th>来源</th><th>内容</th><th>日期</th></tr>
+<tr><td>SpaceX官方</td><td>Falcon 9/Starship发射数据、复用记录</td><td>2026.7</td></tr>
+<tr><td>国家航天局</td><td>《商业航天行动计划(2025-2027)》</td><td>2025.11</td></tr>
+<tr><td>中国政府网</td><td>政府工作报告（商业航天）</td><td>2024-2025</td></tr>
+<tr><td>航天科技集团</td><td>长征系列发射记录</td><td>2025.12</td></tr>
+<tr><td>Rocket Lab财报</td><td>2025年营收/订单</td><td>2026</td></tr>
+</table>
+<h3>二级资料 <span class="src-tier t2">★★★★☆</span></h3>
+<table>
+<tr><th>机构</th><th>内容</th><th>日期</th></tr>
+<tr><td>赛迪智库</td><td>中国商业航天市场规模</td><td>2026</td></tr>
+<tr><td>iim.net.cn</td><td>全球商业航天发射服务市场</td><td>2026</td></tr>
+<tr><td>摩根士丹利</td><td>太空科技行业评级</td><td>2026.1</td></tr>
+<tr><td>中新社</td><td>中国发射次数统计</td><td>2025.12</td></tr>
+<tr><td>报告大厅</td><td>商业航天融资数据</td><td>2025</td></tr>
+</table>
+<h3>三级资料 <span class="src-tier t3">★★★☆☆</span></h3>
+<table>
+<tr><th>来源</th><th>内容</th><th>日期</th></tr>
+<tr><td>今日头条</td><td>民营火箭估值/融资</td><td>2025-2026</td></tr>
+<tr><td>东方财富</td><td>上市公司市占率</td><td>2025</td></tr>
+<tr><td>格隆汇/雪球</td><td>供应链分析</td><td>2025</td></tr>
+<tr><td>腾讯新闻</td><td>长征十号乙回收/朱雀三号</td><td>2026.7</td></tr>
+<tr><td>36氪</td><td>产业同质化分析</td><td>2025</td></tr>
+<tr><td>证券时报</td><td>中国发射次数</td><td>2025.12</td></tr>
+<tr><td>中国新闻周刊</td><td>星链vs中国星座</td><td>2025</td></tr>
+</table>
+<hr style="margin:30px 0;border:none;border-top:1px solid var(--border)">
+<p style="font-size:12px;color:var(--text-sec);text-align:center">行业研究框架 v1.0 | 火箭发射行业研究报告 | 2026年7月<br>本报告基于公开信息撰写，不构成投资建议。数据标注来源等级，Fact/Inference/Opinion三层标注确保事实与观点分离。</p>
+</section>
+
+</main>
+
+<script>
+mermaid.initialize({startOnLoad:true,theme:'neutral',securityLevel:'loose',flowchart:{useMaxWidth:true,htmlLabels:true}});
+
+// Chart 1: Launch counts trend
+new Chart(document.getElementById('launchChart'),{type:'bar',data:{labels:['2024','2025','2030E'],datasets:[{label:'全球发射次数',data:[263,327,600],backgroundColor:'#2563eb',borderRadius:6,yAxisID:'y'},{label:'中国商业航天(万亿元)',data:[2.3,2.83,8],type:'line',borderColor:'#7c3aed',backgroundColor:'rgba(124,58,237,0.1)',yAxisID:'y1',tension:0.3}]},options:{responsive:true,scales:{y:{beginAtZero:true,title:{display:true,text:'发射次数'}},y1:{position:'right',beginAtZero:true,title:{display:true,text:'万亿元'}}}}});
+
+// Chart 2: Margin comparison
+new Chart(document.getElementById('marginChart'),{type:'bar',data:{labels:['核心元器件','应用服务','关键材料','发动机制造','卫星制造','火箭总装'],datasets:[{label:'毛利率下限(%)',data:[50,30,30,30,20,12],backgroundColor:'#059669',borderRadius:4},{label:'毛利率上限(%)',data:[90,65,50,50,40,35],backgroundColor:'#2563eb',borderRadius:4}]},options:{responsive:true,plugins:{legend:{position:'bottom'}},scales:{y:{beginAtZero:true,max:100,title:{display:true,text:'%'}}}}});
+
+// Chart 3: Tech comparison (doughnut)
+new Chart(document.getElementById('techChart'),{type:'doughnut',data:{labels:['液氧甲烷(主流方向)','液氧煤油(成熟在役)','液氧液氢(高轨专用)','固体(低成本)'],datasets:[{data:[35,35,15,15],backgroundColor:['#2563eb','#059669','#7c3aed','#d97706']}]},options:{responsive:true,plugins:{legend:{position:'right'}}}});
+
+// Chart 4: Cost comparison
+new Chart(document.getElementById('costChart'),{type:'bar',data:{labels:['中国长征\n(一次性)','Falcon 9\n(复用)','中国可回收\n(目标)','Starship\n(目标)'],datasets:[{label:'$/kg',data:[5500,1500,1400,150],backgroundColor:['#dc2626','#2563eb','#059669','#7c3aed'],borderRadius:6}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'$/kg'}}}}});
+
+// Chart 5: Launch compare
+new Chart(document.getElementById('launchCompareChart'),{type:'bar',data:{labels:['SpaceX','中国','Rocket Lab','Blue Origin','俄罗斯'],datasets:[{label:'2025年发射次数',data:[165,92,21,11,10],backgroundColor:['#2563eb','#dc2626','#059669','#7c3aed','#94a3b8'],borderRadius:6}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
+
+// Chart 6: Satellite compare
+new Chart(document.getElementById('satChart'),{type:'bar',data:{labels:['Starlink\n(在轨)','千帆\n(在轨)','GW星座\n(在轨)','千帆\n(规划)','GW星座\n(规划)'],datasets:[{label:'卫星数量',data:[10722,238,12,15000,13000],backgroundColor:['#2563eb','#7c3aed','#7c3aed','#dc2626','#dc2626'],borderRadius:6}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{type:'logarithmic',beginAtZero:false}}}});
+
+// Chart 7: Score radar
+new Chart(document.getElementById('scoreChart'),{type:'radar',data:{labels:['行业空间','成长速度','技术壁垒','竞争格局','利润率','资本回报','国产替代','AI受益','政策支持','投资价值'],datasets:[{label:'火箭发射行业',data:[8,9,10,6,6,5,8,7,9,8],backgroundColor:'rgba(37,99,235,0.2)',borderColor:'rgba(37,99,235,1)',pointBackgroundColor:'rgba(37,99,235,1)',borderWidth:2}]},options:{responsive:true,scales:{r:{beginAtZero:true,max:10}}}});
+</script>
+
+</body>
+</html>
