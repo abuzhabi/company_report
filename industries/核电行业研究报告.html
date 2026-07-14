@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核电行业研究报告 | 行业研究框架 v1.0</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.4.0/dist/mermaid.min.js"></script>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --text-secondary: #555;
+  --border: #e0e0e0;
+  --primary: #0077b6;
+  --primary-light: #48cae4;
+  --primary-dark: #023e8a;
+  --accent: #00b4d8;
+  --success: #06d6a0;
+  --warning: #ffd166;
+  --danger: #ef476f;
+  --gold: #f4a261;
+  --tag-fact: #0077b6;
+  --tag-inference: #7209b7;
+  --tag-opinion: #e63946;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.sidebar { position: fixed; left: 0; top: 0; width: 260px; height: 100vh; background: linear-gradient(180deg, #023e8a 0%, #0077b6 100%); overflow-y: auto; z-index: 100; padding: 20px 0; }
+.sidebar-title { color: #fff; font-size: 18px; font-weight: 700; text-align: center; padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.15); margin-bottom: 10px; }
+.sidebar a { display: block; color: rgba(255,255,255,0.8); text-decoration: none; padding: 8px 25px; font-size: 13px; transition: all 0.2s; border-left: 3px solid transparent; }
+.sidebar a:hover { background: rgba(255,255,255,0.1); color: #fff; border-left-color: var(--accent); }
+.main { margin-left: 260px; padding: 40px; max-width: 1100px; }
+.hero { background: linear-gradient(135deg, #023e8a 0%, #0077b6 50%, #00b4d8 100%); color: #fff; border-radius: 20px; padding: 50px 40px; margin-bottom: 30px; position: relative; overflow: hidden; }
+.hero h1 { font-size: 36px; margin-bottom: 10px; }
+.hero .subtitle { font-size: 16px; opacity: 0.9; margin-bottom: 20px; }
+.score-badge { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(var(--success) 0% 78%, rgba(255,255,255,0.2) 78% 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.score-badge .score-num { font-size: 42px; font-weight: 800; color: #fff; }
+.score-badge .score-label { font-size: 12px; opacity: 0.9; }
+.score-badge .score-stars { font-size: 14px; color: var(--warning); margin-top: 2px; }
+section { background: var(--card); border-radius: 16px; padding: 35px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+section h2 { font-size: 24px; color: var(--primary-dark); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--primary-light); display: flex; align-items: center; gap: 10px; }
+section h2 .num { background: var(--primary); color: #fff; width: 36px; height: 36px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; }
+section h3 { font-size: 18px; color: var(--primary); margin: 20px 0 12px; }
+section h4 { font-size: 15px; color: var(--text); margin: 15px 0 8px; }
+p { margin-bottom: 12px; color: var(--text-secondary); }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 13px; }
+th { background: var(--primary); color: #fff; padding: 10px 12px; text-align: left; font-weight: 600; }
+td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+tr:hover td { background: #f0f7ff; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; margin: 2px 0; }
+.tag-fact { background: rgba(0,119,182,0.1); color: var(--tag-fact); border: 1px solid rgba(0,119,182,0.3); }
+.tag-inference { background: rgba(114,9,183,0.1); color: var(--tag-inference); border: 1px solid rgba(114,9,183,0.3); }
+.tag-opinion { background: rgba(230,57,70,0.1); color: var(--tag-opinion); border: 1px solid rgba(230,57,70,0.3); }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 20px 0; }
+.stat-card { background: linear-gradient(135deg, #f0f7ff 0%, #e0f4ff 100%); border-radius: 12px; padding: 20px; text-align: center; border: 1px solid rgba(0,119,182,0.15); }
+.stat-card .value { font-size: 28px; font-weight: 800; color: var(--primary); }
+.stat-card .label { font-size: 12px; color: var(--text-secondary); margin-top: 5px; }
+.chart-container { position: relative; margin: 20px 0; background: #fafafa; border-radius: 12px; padding: 20px; }
+.mermaid { background: #fafafa; border-radius: 12px; padding: 20px; margin: 15px 0; text-align: center; }
+.callout { border-left: 4px solid var(--primary); background: linear-gradient(90deg, rgba(0,119,182,0.05), transparent); padding: 15px 20px; border-radius: 0 12px 12px 0; margin: 15px 0; }
+.callout-opinion { border-left-color: var(--tag-opinion); background: linear-gradient(90deg, rgba(230,57,70,0.05), transparent); }
+.callout-fact { border-left-color: var(--tag-fact); }
+.callout-inference { border-left-color: var(--tag-inference); background: linear-gradient(90deg, rgba(114,9,183,0.05), transparent); }
+.callout-investment { border-left-color: var(--success); background: linear-gradient(90deg, rgba(6,214,160,0.05), transparent); }
+.company-card { display: flex; align-items: center; padding: 12px 15px; border-radius: 10px; margin: 8px 0; background: #f8f9fa; border: 1px solid var(--border); transition: all 0.2s; }
+.company-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateX(4px); }
+.company-rank { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; margin-right: 15px; flex-shrink: 0; }
+.rank-1 { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #fff; }
+.rank-2 { background: linear-gradient(135deg, #c0c0c0, #a0a0a0); color: #fff; }
+.rank-3 { background: linear-gradient(135deg, #cd7f32, #b06820); color: #fff; }
+.rank-other { background: var(--primary-light); color: var(--primary-dark); }
+.company-info { flex: 1; }
+.company-name { font-weight: 700; font-size: 14px; color: var(--text); }
+.company-detail { font-size: 12px; color: var(--text-secondary); }
+.driver-card { background: linear-gradient(135deg, #f0f7ff, #e0f4ff); border-radius: 12px; padding: 18px; margin: 10px 0; border-left: 4px solid var(--primary); }
+.driver-card .driver-title { font-weight: 700; font-size: 15px; color: var(--primary-dark); margin-bottom: 5px; }
+.driver-card .driver-meta { font-size: 12px; color: var(--text-secondary); }
+.risk-card { background: #fff5f5; border-radius: 12px; padding: 16px; margin: 10px 0; border-left: 4px solid var(--danger); }
+.risk-card .risk-title { font-weight: 700; color: var(--danger); margin-bottom: 5px; }
+.barrier-bar { display: flex; align-items: center; margin: 8px 0; }
+.barrier-bar .barrier-name { width: 120px; font-size: 13px; color: var(--text-secondary); }
+.barrier-bar .barrier-track { flex: 1; height: 24px; background: #f0f0f0; border-radius: 12px; overflow: hidden; }
+.barrier-bar .barrier-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 12px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; color: #fff; font-size: 11px; font-weight: 600; }
+.lifecycle-stage { display: inline-block; padding: 6px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; }
+.lifecycle-growth { background: rgba(6,214,160,0.15); color: #06d6a0; }
+.score-dimension { display: flex; align-items: center; margin: 8px 0; }
+.score-dimension .dim-name { width: 130px; font-size: 13px; }
+.score-dimension .dim-bar { flex: 1; height: 20px; background: #f0f0f0; border-radius: 10px; overflow: hidden; margin: 0 10px; }
+.score-dimension .dim-fill { height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #fff; font-size: 11px; font-weight: 600; }
+.source-tier { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 11px; font-weight: 600; margin-right: 5px; }
+.tier-1 { background: #06d6a0; color: #fff; }
+.tier-2 { background: #48cae4; color: #fff; }
+.tier-3 { background: #ffd166; color: #333; }
+@media (max-width: 900px) { .sidebar { display: none; } .main { margin-left: 0; padding: 20px; } .hero { padding: 30px 20px; } .score-badge { right: 20px; width: 100px; height: 100px; } .score-badge .score-num { font-size: 30px; } }
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-title">⚛️ 核电行业研究</div>
+  <a href="#sec0">0. 执行摘要</a>
+  <a href="#sec1">1. 行业定义</a>
+  <a href="#sec2">2. 产业链全景</a>
+  <a href="#sec3">3. 产业链脑图</a>
+  <a href="#sec4">4. 行业规模(TAM)</a>
+  <a href="#sec5">5. 行业驱动力</a>
+  <a href="#sec6">6. 生命周期</a>
+  <a href="#sec7">7. 行业壁垒</a>
+  <a href="#sec8">8. 利润池</a>
+  <a href="#sec9">9. 竞争格局TOP30</a>
+  <a href="#sec10">10. 行业地图</a>
+  <a href="#sec11">11. 技术路线</a>
+  <a href="#sec12">12. 供应链</a>
+  <a href="#sec13">13. 政策分析</a>
+  <a href="#sec14">14. 核心数据</a>
+  <a href="#sec15">15. 未来路线图</a>
+  <a href="#sec16">16. 风险分析</a>
+  <a href="#sec17">17. 投资价值</a>
+  <a href="#sec18">18. 行业评分</a>
+  <a href="#sec19">19. 资料来源</a>
+</nav>
+
+<div class="main">
+
+<div class="hero" id="sec0">
+  <h1>⚛️ 核电行业研究报告</h1>
+  <div class="subtitle">行业研究框架 v1.0 | 研究员：小八 | 2026-07-13</div>
+  <p style="opacity:0.9;max-width:600px;">利用核裂变反应释放热能发电的基荷清洁能源。全球417台机组在运，中国连续4年年审10台+，AI电力需求引爆全球核电复兴。</p>
+  <div class="score-badge">
+    <div class="score-num">78</div>
+    <div class="score-label">/ 100</div>
+    <div class="score-stars">★★★★☆</div>
+  </div>
+</div>
+
+<section id="sec0">
+  <h2><span class="num">0</span> 执行摘要</h2>
+  <p><strong>一句话定义：</strong> 核电是利用核裂变反应释放热能发电的基荷清洁能源，单台百万千瓦机组年发电量可供400万人使用，碳排放仅为煤电的1/78。</p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="value">417台</div><div class="label">全球在运机组</div></div>
+    <div class="stat-card"><div class="value">377 GWe</div><div class="label">全球装机容量</div></div>
+    <div class="stat-card"><div class="value">59台</div><div class="label">中国在运机组</div></div>
+    <div class="stat-card"><div class="value">35台</div><div class="label">中国在建(全球第一)</div></div>
+    <div class="stat-card"><div class="value">83%</div><div class="label">容量因子(最高)</div></div>
+    <div class="stat-card"><div class="value">$62</div><div class="label">中国LCOE /MWh</div></div>
+  </div>
+  <table>
+    <tr><th>指标</th><th>数据</th></tr>
+    <tr><td>行业生命周期</td><td><span class="lifecycle-stage lifecycle-growth">成长期</span>（全球复兴拐点，中国加速成长期）</td></tr>
+    <tr><td>全球发电量占比</td><td>~9%（2667 TWh创历史新高）</td></tr>
+    <tr><td>中国发电量占比</td><td>~5%（目标2030年10%）</td></tr>
+    <tr><td>未来5年CAGR（中国装机）</td><td>约10-12%</td></tr>
+    <tr><td>行业评分</td><td><strong>78/100 ★★★★☆</strong></td></tr>
+  </table>
+  <div class="callout callout-investment">
+    <strong>一句话投资逻辑：</strong> 全球核电复兴叠加AI电力需求爆发，中国凭借三代技术自主化+建造成本优势+审批加速，成为全球核电增长引擎；投资核心是"牌照壁垒+设备国产化+核燃料自主"三条主线。
+  </div>
+  <p><strong>最大机会：</strong> AI数据中心对稳定清洁电力的刚性需求（微软20年包揽三里岛全部电力），叠加全球三倍核能宣言（38国签署），核电从"被遗忘的能源"重回主流。</p>
+  <p><strong>最大风险：</strong> 核安全事件（福岛级黑天鹅）、建设延期成本超支（EPR全球延期2-4倍）、核废料处理长期化。</p>
+  <div class="callout callout-opinion">
+    <span class="tag tag-opinion">Opinion</span><br>
+    <strong>为什么现在值得研究核电？</strong> 三个拐点同时出现：①中国连续4年年审10台+机组；②AI引爆电力需求，科技巨头主动拥抱核电；③COP28三倍核能宣言获38国签署，全球政治共识形成。这三重催化使核电行业从"停滞十年"转入"复兴十年"，当前正处于布局窗口期。
+  </div>
+</section>
+
+<section id="sec1">
+  <h2><span class="num">1</span> 行业定义</h2>
+  <h3>行业边界</h3>
+  <p>核电行业涵盖从铀矿开采、燃料循环（转化-浓缩-制造）、核电站设计建设与设备制造、核电站运营发电、到乏燃料处理与核设施退役的全生命周期产业。</p>
+  <h3>行业分类</h3>
+  <table>
+    <tr><th>维度</th><th>分类</th></tr>
+    <tr><td>按技术代际</td><td>二代改进型 → 三代（压水堆主流） → 四代（高温气冷堆/快堆） → 聚变（实验阶段）</td></tr>
+    <tr><td>按堆型</td><td>压水堆（PWR，占全球70%+）、沸水堆（BWR）、重水堆（PHWR）、气冷堆、快堆</td></tr>
+    <tr><td>按规模</td><td>大型商用堆（≥300 MWe）、小型模块化堆（SMR，<300 MWe）</td></tr>
+    <tr><td>按产业链位置</td><td>核燃料 → 核电设备 → 核电运营 → 乏燃料/退役</td></tr>
+  </table>
+  <h3>行业价值</h3>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="value">83%</div><div class="label">容量因子（风电3倍/光伏4倍）</div></div>
+    <div class="stat-card"><div class="value">1:2700</div><div class="label">1克铀≈2.7吨煤</div></div>
+    <div class="stat-card"><div class="value">1/100</div><div class="label">占地面积仅为光伏1/100</div></div>
+    <div class="stat-card"><div class="value">1/78</div><div class="label">碳排放仅为煤电1/78</div></div>
+  </div>
+  <h3>未来方向</h3>
+  <p>三代压水堆规模化 → 四代堆示范（高温气冷堆已商运） → SMR分布式部署 → 核聚变（2035+） → 核电+制氢 → AI数据中心供电</p>
+</section>
+
+<section id="sec2">
+  <h2><span class="num">2</span> 产业链全景</h2>
+  <div class="mermaid">
+flowchart TD
+    subgraph 上游
+    A1["铀矿开采<br/>Cameco / Kazatomprom<br/>Orano / 中核国际"] --> A2["铀转化 UF6<br/>ConverDyn / Orano<br/>中核兰铀"]
+    A2 --> A3["铀浓缩<br/>Rosatom 44% / URENCO<br/>中核陕铀"]
+    A3 --> A4["燃料组件制造<br/>西屋电气 / 法马通<br/>中核建中 / 中核北方"]
+    end
+    subgraph 中游
+    B1["核岛主设备<br/>压力容器/蒸汽发生器<br/>稳压器/主泵"] --> B5["核电站EPC总包<br/>中核工程 / 中广核工程"]
+    B2["常规岛设备<br/>汽轮机/发电机<br/>凝汽器"] --> B5
+    B3["辅助系统BOP<br/>阀门/管道/电缆<br/>仪控DCS"] --> B5
+    B4["核级材料<br/>锆合金/不锈钢<br/>硼酸"] --> B5
+    end
+    subgraph 下游
+    C1["核电站运营<br/>中核 / 中广核 / 国电投"] --> C2["电力销售<br/>电网 / 大用户"]
+    C1 --> C3["乏燃料处理<br/>中核瑞能 / 后处理厂"]
+    C1 --> C4["核设施退役<br/>中核环保"]
+    end
+    A4 --> B1
+    B5 --> C1
+  </div>
+  <table>
+    <tr><th>环节</th><th>国内公司</th><th>国外公司</th></tr>
+    <tr><td>铀矿开采</td><td>中核国际(2302.HK)</td><td>Cameco(CCJ)、Kazatomprom、Orano</td></tr>
+    <tr><td>铀浓缩</td><td>中核陕铀</td><td>Rosatom(TENEX)、URENCO、Orano</td></tr>
+    <tr><td>燃料组件</td><td>中核建中、中核北方</td><td>西屋电气、法马通、GNF</td></tr>
+    <tr><td>核岛主设备</td><td>上海电气、东方电气、中国一重</td><td>西屋电气、三菱重工、斗山重工</td></tr>
+    <tr><td>常规岛设备</td><td>东方电气、上海电气、哈动力</td><td>GE Vernova、西门子能源</td></tr>
+    <tr><td>核级阀门</td><td>江苏神通、中核科技、应流股份</td><td>Velan、Emerson、IMI CCI</td></tr>
+    <tr><td>核级管材</td><td>久立特材、宝钢股份</td><td>Sandvik、Valinox</td></tr>
+    <tr><td>仪控DCS</td><td>中广核技、和利时</td><td>西屋电气、Triconex</td></tr>
+    <tr><td>核电运营</td><td>中国核电、中国广核、国家电投</td><td>EDF、Exelon、Rosatom、KEPCO</td></tr>
+  </table>
+  <div class="callout callout-fact">
+    <span class="tag tag-fact">Fact</span> 2024年全球铀产量60,213吨，哈萨克斯坦占39%，加拿大24%，纳米比亚12%。（WNA 2025）<br>
+    <span class="tag tag-fact">Fact</span> 俄罗斯控制全球约44%铀浓缩产能，中国约13%。（WNA 2024）
+  </div>
+  <div class="callout callout-inference">
+    <span class="tag tag-inference">Inference</span> 核电产业链上游（铀矿-浓缩）是中国核电发展的潜在卡脖子环节，尤其是铀浓缩对俄罗斯依赖较高，在地缘政治紧张背景下存在供应链风险。
+  </div>
+</section>
+
+<section id="sec3">
+  <h2><span class="num">3</span> 产业链脑图</h2>
+  <div class="mermaid">
+mindmap
+  root(("核电产业"))
+    核燃料
+      铀矿开采
+        Cameco
+        Kazatomprom
+        Orano
+        中核国际
+      铀浓缩
+        Rosatom TENEX
+        URENCO
+        中核陕铀
+      燃料组件
+        西屋电气
+        法马通
+        中核建中
+    核电设备
+      核岛主设备
+        上海电气
+        东方电气
+        中国一重
+        西屋电气
+        三菱重工
+      核级阀门
+        江苏神通
+        中核科技
+        应流股份
+      核级管材
+        久立特材
+        Sandvik
+      仪控DCS
+        中广核技
+        和利时
+    核电运营
+      中国核电
+      中国广核
+      国家电投
+      EDF
+      Rosatom
+      KEPCO
+    乏燃料退役
+      后处理
+        中核瑞能
+        Orano La Hague
+      退役服务
+        中核环保
+    前沿技术
+      四代堆
+        高温气冷堆 HTR-PM
+        钠冷快堆 CEFR
+      SMR
+        玲龙一号 ACP100
+        NuScale
+      核聚变
+        ITER
+        CFETR
+        Helion Energy
+  </div>
+</section>
+
+<section id="sec4">
+  <h2><span class="num">4</span> 行业规模（TAM）</h2>
+  <h3>全球市场</h3>
+  <table>
+    <tr><th>指标</th><th>数据</th><th>来源</th></tr>
+    <tr><td>在运机组</td><td>417台</td><td>IAEA PRIS 2024</td></tr>
+    <tr><td>在运装机</td><td>377 GWe</td><td>IAEA PRIS 2024</td></tr>
+    <tr><td>年发电量</td><td>2,667 TWh（历史新高）</td><td>IAEA 2024</td></tr>
+    <tr><td>发电量占比</td><td>~9%全球电力</td><td>IEA 2024</td></tr>
+    <tr><td>在建机组</td><td>63台 / 66.2 GWe</td><td>IAEA 2025.01</td></tr>
+    <tr><td>平均容量因子</td><td>83%</td><td>WNA 2024</td></tr>
+  </table>
+  <h3>中国市场</h3>
+  <table>
+    <tr><th>指标</th><th>数据</th><th>来源</th></tr>
+    <tr><td>在运机组</td><td>59台 / 62.52 GWe</td><td>中国核能行业协会 2025</td></tr>
+    <tr><td>在建机组</td><td>35台 / 41.9 GWe（连续19年全球第一）</td><td>中国核能行业协会 2025</td></tr>
+    <tr><td>核电发电量</td><td>~4,400亿千瓦时（2024年）</td><td>国家能源局</td></tr>
+    <tr><td>发电量占比</td><td>~5%（目标2030年10%）</td><td>国家能源局</td></tr>
+    <tr><td>审批节奏</td><td>2022-2025连续4年每年核准10台+</td><td>国务院公报</td></tr>
+  </table>
+  <h3>未来预测</h3>
+  <table>
+    <tr><th>机构</th><th>时间</th><th>预测</th></tr>
+    <tr><td>IAEA高值</td><td>2050年</td><td>992 GWe（当前2.6倍）</td></tr>
+    <tr><td>IEA NZE</td><td>2030年</td><td>需翻倍至800+ GWe</td></tr>
+    <tr><td>中国核能行业协会</td><td>2030年</td><td>1.2-1.5亿千瓦</td></tr>
+    <tr><td>中国核能行业协会</td><td>2040年</td><td>2亿千瓦（占比10%）</td></tr>
+    <tr><td>COP28三倍宣言</td><td>2050年</td><td>三倍于2020年（~1,100 GWe）</td></tr>
+  </table>
+  <div class="chart-container">
+    <canvas id="cagrChart" height="200"></canvas>
+  </div>
+  <div class="callout callout-fact">
+    <span class="tag tag-fact">Fact</span> IAEA连续5年上调全球核电预测，高值从2020年的715 GWe上调至2024年的992 GWe。
+  </div>
+  <div class="callout callout-inference">
+    <span class="tag tag-inference">Inference</span> 中国核电正处于"审批加速-建设加速-装机加速"三段叠加期，2025-2030年CAGR 12-14%在全球能源行业中属于高增长赛道。
+  </div>
+</section>
+
+<section id="sec5">
+  <h2><span class="num">5</span> 行业驱动力</h2>
+  <div class="driver-card">
+    <div class="driver-title">AI数据中心电力需求</div>
+    <div class="driver-meta">★★★★★ | 10年以上 | 颠覆性影响</div>
+    <p>微软16亿美元包揽三里岛全部电力20年；Amazon投资X-energy 5亿美元建SMR；Oracle自建3座小型核电站；Meta寻求1-4 GW核电容量；Google与Kairos Power签署SMR购电协议。</p>
+  </div>
+  <div class="driver-card">
+    <div class="driver-title">碳中和与全球核电复兴</div>
+    <div class="driver-meta">★★★★★ | 25-30年 | 结构性影响</div>
+    <p>COP28三倍核能宣言已获38国签署（含中国、美国、法国、英国、日本、韩国）；欧盟将核电纳入绿色taxonomy；法国宣布新建6台EPR2。</p>
+  </div>
+  <div class="driver-card">
+    <div class="driver-title">中国核电审批加速</div>
+    <div class="driver-meta">★★★★★ | 10-15年 | 中国市场核心驱动</div>
+    <p>2019年恢复审批后7年累计核准56台机组，总投资超1.5万亿元。十四五定调从"安全发展"升级为"积极安全有序发展"。</p>
+  </div>
+  <div class="driver-card">
+    <div class="driver-title">核电技术进步</div>
+    <div class="driver-meta">★★★★☆ | 15-20年 | 长期变革性</div>
+    <p>华龙一号全面自主化，建设周期仅EPR的1/3；国和一号首堆商运；石岛湾高温气冷堆全球首座四代商用；玲龙一号SMR即将并网。</p>
+  </div>
+  <div class="driver-card">
+    <div class="driver-title">核电经济性优势（中国）</div>
+    <div class="driver-meta">★★★★☆ | 持续 | 成本驱动</div>
+    <p>中国新建核电LCOE $62/MWh，远低于欧洲$142-182/MWh。度电成本0.19元，低于煤电0.30-0.35元。华龙一号单位造价1.6-1.8万元/kW。</p>
+  </div>
+  <div class="driver-card">
+    <div class="driver-title">能源安全与地缘政治</div>
+    <div class="driver-meta">★★★☆☆ | 长期 | 供应链安全驱动</div>
+    <p>铀燃料可储存2-3年用量；欧洲在俄乌冲突后加速摆脱对俄天然气依赖。</p>
+  </div>
+</section>
+
+<section id="sec6">
+  <h2><span class="num">6</span> 行业生命周期</h2>
+  <p><strong>全球：成长期（复苏阶段）</strong><br><strong>中国：成长期（加速阶段）</strong></p>
+  <table>
+    <tr><th>维度</th><th>判断依据</th></tr>
+    <tr><td>渗透率</td><td>中国核电仅占5%，远低于法国70%、韩国30%、美国19%</td></tr>
+    <tr><td>竞争格局</td><td>"三寡头"格局稳定（中核/中广核/国电投）</td></tr>
+    <tr><td>资本投入</td><td>7年核准56台，总投资超1.5万亿元，处于历史峰值</td></tr>
+    <tr><td>利润率</td><td>运营端毛利率35-45%，ROE约9-10%，稳定上升</td></tr>
+  </table>
+  <div class="callout callout-inference">
+    <span class="tag tag-inference">Inference</span> 中国核电渗透率（5%）与发达核能国家差距巨大，意味着至少6-10倍渗透空间。按2040年10%目标计算，未来15年需新建130-140台机组，对应投资超3万亿元。
+  </div>
+</section>
+
+<section id="sec7">
+  <h2><span class="num">7</span> 行业壁垒</h2>
+  <div class="barrier-bar"><div class="barrier-name">牌照壁垒</div><div class="barrier-track"><div class="barrier-fill" style="width:100%">★★★★★</div></div></div>
+  <div class="barrier-bar"><div class="barrier-name">技术壁垒</div><div class="barrier-track"><div class="barrier-fill" style="width:100%">★★★★★</div></div></div>
+  <div class="barrier-bar"><div class="barrier-name">资本壁垒</div><div class="barrier-track"><div class="barrier-fill" style="width:100%">★★★★★</div></div></div>
+  <div class="barrier-bar"><div class="barrier-name">认证壁垒</div><div class="barrier-track"><div class="barrier-fill" style="width:100%">★★★★★</div></div></div>
+  <div class="barrier-bar"><div class="barrier-name">供应链壁垒</div><div class="barrier-track"><div class="barrier-fill" style="width:80%">★★★★☆</div></div></div>
+  <div class="barrier-bar"><div class="barrier-name">人才壁垒</div><div class="barrier-track"><div class="barrier-fill" style="width:80%">★★★★☆</div></div></div>
+  <div class="barrier-bar"><div class="barrier-name">规模效应</div><div class="barrier-track"><div class="barrier-fill" style="width:80%">★★★★☆</div></div></div>
+  <div class="barrier-bar"><div class="barrier-name">品牌壁垒</div><div class="barrier-track"><div class="barrier-fill" style="width:60%">★★★☆☆</div></div></div>
+  <div class="callout callout-opinion">
+    <span class="tag tag-opinion">Opinion</span> 核电是全行业壁垒最高的能源子行业，没有之一。牌照+技术+资本+认证四重壁垒构成近乎不可逾越的护城河。中国核电运营端"三寡头"格局在未来20年内不可能被打破。
+  </div>
+</section>
+
+<section id="sec8">
+  <h2><span class="num">8</span> 利润池分析</h2>
+  <div class="chart-container">
+    <canvas id="marginChart" height="250"></canvas>
+  </div>
+  <table>
+    <tr><th>环节</th><th>毛利率</th><th>净利率</th><th>定价权</th><th>趋势</th></tr>
+    <tr><td><strong>核电运营</strong></td><td>35-45%</td><td>15-20%</td><td>强</td><td>↑ 稳定上升</td></tr>
+    <tr><td>核燃料制造</td><td>25-35%</td><td>10-15%</td><td>中</td><td>↑ 铀价上涨</td></tr>
+    <tr><td>核岛主设备</td><td>20-30%</td><td>8-12%</td><td>中</td><td>↑ 订单释放</td></tr>
+    <tr><td>核级阀门/管材</td><td>30-45%</td><td>12-18%</td><td>中</td><td>↑ 国产替代</td></tr>
+    <tr><td>仪控DCS</td><td>35-50%</td><td>15-20%</td><td>强</td><td>↑ 数字化</td></tr>
+    <tr><td>常规岛设备</td><td>15-20%</td><td>5-8%</td><td>弱</td><td>→ 平稳</td></tr>
+    <tr><td>铀矿开采</td><td>20-40%</td><td>5-15%</td><td>弱</td><td>↑ 上行周期</td></tr>
+  </table>
+  <div class="callout callout-inference">
+    <span class="tag tag-inference">Inference</span> 利润最终流向运营端——中国核电和中国广核占据产业链利润的60%以上。投资逻辑应优先运营牌照持有者，其次高壁垒细分设备。
+  </div>
+</section>
+
+<section id="sec9">
+  <h2><span class="num">9</span> 竞争格局 TOP30</h2>
+  <div class="company-card"><div class="company-rank rank-1">1</div><div class="company-info"><div class="company-name">EDF（法国电力）</div><div class="company-detail">法国 | 核电运营61 GWe | 全球最大核电运营商 | 国有约490亿欧元</div></div></div>
+  <div class="company-card"><div class="company-rank rank-2">2</div><div class="company-info"><div class="company-name">Rosatom（俄罗斯国家原子能）</div><div class="company-detail">俄罗斯 | 全产业链+出口 | 全球出口垄断88%份额 | 国有</div></div></div>
+  <div class="company-card"><div class="company-rank rank-3">3</div><div class="company-info"><div class="company-name">中国广核 (003816)</div><div class="company-detail">中国 | 在运28台 | 营收868亿/净利108亿/ROE 9.3% | 市值~2000亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">4</div><div class="company-info"><div class="company-name">中国核电 (601985)</div><div class="company-detail">中国 | 在运25台 | 营收773亿/净利88亿/ROE 9.4% | 市值~1800亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">5</div><div class="company-info"><div class="company-name">KEPCO（韩国电力）</div><div class="company-detail">韩国 | 核电运营+APR1400出口 | 阿联酋Barakah成功交付</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">6</div><div class="company-info"><div class="company-name">Exelon</div><div class="company-detail">美国 | 核电运营 | 美国最大核电运营商 | ~$350亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">7</div><div class="company-info"><div class="company-name">国家电投</div><div class="company-detail">中国 | 在运9台+国和一号CAP1400 | 国有</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">8</div><div class="company-info"><div class="company-name">NextEra Energy</div><div class="company-detail">美国 | 核电+可再生能源 | ~$1,500亿 | 美国最大清洁能源公司</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">9</div><div class="company-info"><div class="company-name">Constellation Energy</div><div class="company-detail">美国 | 含三里岛 | 微软20年合同 | ~$800亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">10</div><div class="company-info"><div class="company-name">TEPCO（东京电力）</div><div class="company-detail">日本 | 核电+电网 | ~$300亿 | 福岛遗留问题</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">11</div><div class="company-info"><div class="company-name">上海电气 (601727)</div><div class="company-detail">中国 | 核岛主设备全覆盖 | ~500亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">12</div><div class="company-info"><div class="company-name">东方电气 (600875)</div><div class="company-detail">中国 | 核岛+常规岛 | 在手订单1526亿创新高 | ~500亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">13</div><div class="company-info"><div class="company-name">Cameco (CCJ)</div><div class="company-detail">加拿大 | 全球最大上市铀矿商 | ~$200亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">14</div><div class="company-info"><div class="company-name">Kazatomprom</div><div class="company-detail">哈萨克斯坦 | 全球最大铀生产商 | ~$80亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">15</div><div class="company-info"><div class="company-name">三菱重工 (MHI)</div><div class="company-detail">日本 | 核岛设备 | ~$250亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">16</div><div class="company-info"><div class="company-name">斗山重工 (Doosan)</div><div class="company-detail">韩国 | APR1400设备主供 | ~$100亿</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">17</div><div class="company-info"><div class="company-name">西屋电气 (Westinghouse)</div><div class="company-detail">美国 | AP1000技术+燃料 | ~$43亿营收</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">18</div><div class="company-info"><div class="company-name">法马通 (Framatome)</div><div class="company-detail">法国 | 核燃料+设备 | 46.76亿欧元营收 | 新签订单212亿欧元</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">19</div><div class="company-info"><div class="company-name">中国一重 (601106)</div><div class="company-detail">中国 | 核岛大型铸锻件 | 压力容器锻件龙头</div></div></div>
+  <div class="company-card"><div class="company-rank rank-other">20</div><div class="company-info"><div class="company-name">久立特材 (002318)</div><div class="company-detail">中国 | 核级不锈钢管市占率50%+ | ~200亿</div></div></div>
+  <p style="text-align:center;color:var(--text-secondary);font-size:13px;margin-top:15px;">— 第21-30名：江苏神通(002438)、应流股份(603308)、中核科技(000777)、中广核技(000881)、哈尔滨电气(1133.HK)、Orano、GE Vernova、NuScale、BWX Technologies、中核国际(2302.HK) —</p>
+</section>
+
+<section id="sec10">
+  <h2><span class="num">10</span> 行业地图</h2>
+  <p><strong>横轴：上游（核燃料） ← → 下游（运营/发电）</strong><br><strong>纵轴：国内市场 ← → 全球市场</strong></p>
+  <div class="mermaid">
+quadrantChart
+    title 核电行业地图
+    x-axis "上游（核燃料/设备）" --> "下游（运营/发电）"
+    y-axis "国内市场" --> "全球市场"
+    quadrant-1 "全球运营龙头"
+    quadrant-2 "全球上游巨头"
+    quadrant-3 "国内上游"
+    quadrant-4 "国内运营"
+    "EDF": [0.85, 0.9]
+    "Rosatom": [0.8, 0.85]
+    "KEPCO": [0.75, 0.7]
+    "Constellation": [0.8, 0.75]
+    "Cameco": [0.15, 0.7]
+    "Orano": [0.3, 0.65]
+    "Westinghouse": [0.35, 0.6]
+    "中核国际": [0.1, 0.3]
+    "久立特材": [0.25, 0.25]
+    "上海电气": [0.4, 0.3]
+    "东方电气": [0.4, 0.3]
+    "中国核电": [0.85, 0.2]
+    "中国广核": [0.85, 0.2]
+    "国家电投": [0.8, 0.15]
+  </div>
+  <p><strong>关键观察：</strong> 上游核燃料端国际公司主导（Cameco/Rosatom/Orano），中国企业追赶中；中游设备端中国三大动力集团已国产化；下游运营端中国三寡头主导国内市场。</p>
+</section>
+
+<section id="sec11">
+  <h2><span class="num">11</span> 技术路线</h2>
+  <table>
+    <tr><th>路线</th><th>代际</th><th>状态</th><th>代表堆型</th><th>代表公司</th></tr>
+    <tr><td><strong>压水堆PWR（三代）</strong></td><td>三代</td><td>批量建设</td><td>华龙一号/国和一号/AP1000/EPR</td><td>中核/中广核/西屋/EDF</td></tr>
+    <tr><td>压水堆PWR（二代改进）</td><td>二代+</td><td>在运主力</td><td>CPR1000/CNP1000</td><td>中核/中广核</td></tr>
+    <tr><td><strong>高温气冷堆</strong></td><td>四代</td><td>已商运</td><td>HTR-PM石岛湾</td><td>中核/清华</td></tr>
+    <tr><td><strong>钠冷快堆</strong></td><td>四代</td><td>实验堆</td><td>CEFR/CFR600</td><td>中核</td></tr>
+    <tr><td><strong>SMR</strong></td><td>三代+</td><td>即将商运</td><td>玲龙一号ACP100/BWRX-300</td><td>中核/GE Vernova</td></tr>
+    <tr><td>重水堆PHWR</td><td>二代</td><td>在运</td><td>CANDU</td><td>Candu Energy</td></tr>
+    <tr><td><strong>核聚变</strong></td><td>实验</td><td>研发中</td><td>ITER/CFETR/Helion</td><td>国际合作/Helion</td></tr>
+  </table>
+  <div class="chart-container">
+    <canvas id="techChart" height="200"></canvas>
+  </div>
+  <h3>华龙一号关键参数</h3>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="value">1,200</div><div class="label">MWe 单机容量</div></div>
+    <div class="stat-card"><div class="value">62-69</div><div class="label">月 建设周期(EPR的1/3)</div></div>
+    <div class="stat-card"><div class="value">60</div><div class="label">年 设计寿命</div></div>
+    <div class="stat-card"><div class="value">33</div><div class="label">台 全球在运在建</div></div>
+  </div>
+  <div class="callout callout-inference">
+    <span class="tag tag-inference">Inference</span> 中国三代核电建设效率全球领先，核心原因：①批量化建设经验曲线效应；②完整的国产供应链；③EPC总承包模式成熟。
+  </div>
+</section>
+
+<section id="sec12">
+  <h2><span class="num">12</span> 供应链分析</h2>
+  <h3>关键材料/设备国产化率</h3>
+  <div class="chart-container">
+    <canvas id="supplyChart" height="250"></canvas>
+  </div>
+  <table>
+    <tr><th>关键材料/设备</th><th>主要供应商</th><th>国产化率</th><th>瓶颈程度</th></tr>
+    <tr><td>反应堆压力容器</td><td>中国一重/上海电气/东方电气</td><td>95%+</td><td>低</td></tr>
+    <tr><td>蒸汽发生器</td><td>上海电气/东方电气/哈动力</td><td>95%+</td><td>低</td></tr>
+    <tr><td>核级锆合金包壳管</td><td>中核东方锆业/国核锆业</td><td>70%+</td><td>中高</td></tr>
+    <tr><td>核级不锈钢管</td><td>久立特材/宝钢/太钢</td><td>85%+</td><td>低</td></tr>
+    <tr><td>核级阀门</td><td>江苏神通/中核科技</td><td>90%+</td><td>低</td></tr>
+    <tr><td>厚壁镍基焊丝</td><td>哈焊所/大西洋</td><td>70%</td><td>中高</td></tr>
+    <tr><td>DCS仪控系统</td><td>中广核技/和利时</td><td>95%+</td><td>低</td></tr>
+    <tr><td><strong>HALEU燃料</strong></td><td>—（俄罗斯垄断）</td><td>0%</td><td><strong>极高</strong></td></tr>
+  </table>
+  <div class="callout callout-inference">
+    <span class="tag tag-inference">Inference</span> 核电设备国产化率整体已达90%+，但仍有少量关键材料依赖进口。核级锆材、厚壁镍基焊丝、在线监测传感器是国产替代投资核心机会。
+  </div>
+</section>
+
+<section id="sec13">
+  <h2><span class="num">13</span> 政策分析</h2>
+  <h3>中国</h3>
+  <table>
+    <tr><th>政策/事件</th><th>时间</th><th>影响</th></tr>
+    <tr><td>"积极安全有序发展核电"</td><td>2021</td><td>从"安全发展"升级，释放积极信号</td></tr>
+    <tr><td>连续4年年审10台+</td><td>2022-2025</td><td>远超原预期6-8台/年</td></tr>
+    <tr><td>核电纳入绿色电力交易</td><td>2024</td><td>提升核电经济性</td></tr>
+    <tr><td>2040年2亿千瓦目标</td><td>2023</td><td>15年内装机3倍增长</td></tr>
+  </table>
+  <h3>全球</h3>
+  <table>
+    <tr><th>国家/地区</th><th>政策</th><th>影响</th></tr>
+    <tr><td>美国</td><td>IRA法案1.5美分/kWh补贴 + ADVANCE Act加速SMR</td><td>政策全面支持</td></tr>
+    <tr><td>法国</td><td>新建6台EPR2</td><td>欧洲核电大国回归</td></tr>
+    <tr><td>英国</td><td>Sizewell C + HPC项目</td><td>核电新建重启</td></tr>
+    <tr><td>日本</td><td>福岛后重启核电，目标2030年20%</td><td>从"零核电"转向重启</td></tr>
+    <tr><td>韩国</td><td>2030核电复兴计划</td><td>从"脱核"转向"复兴"</td></tr>
+    <tr><td>COP28三倍宣言</td><td>38国签署</td><td>全球政治共识</td></tr>
+  </table>
+  <div class="callout callout-opinion">
+    <span class="tag tag-opinion">Opinion</span> 全球核电政策正在经历"V型反转"——福岛后10年的"弃核"浪潮已被"复兴"共识取代。核心驱动是碳中和目标无法仅靠风光实现，AI电力需求更使核电从"可选"变为"必选"。
+  </div>
+</section>
+
+<section id="sec14">
+  <h2><span class="num">14</span> 行业核心数据</h2>
+  <h3>关键运营指标</h3>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>来源</th></tr>
+    <tr><td>中国核电平均利用小时</td><td>7,800+小时（2024年）</td><td>国家能源局</td></tr>
+    <tr><td>全球平均容量因子</td><td>83%</td><td>WNA 2024</td></tr>
+    <tr><td>华龙一号建设周期</td><td>62.5-68.7个月</td><td>中核集团</td></tr>
+    <tr><td>单台华龙一号投资</td><td>约160-180亿元</td><td>中核集团</td></tr>
+    <tr><td>核电上网电价（中国）</td><td>0.37-0.43元/kWh</td><td>国家发改委</td></tr>
+    <tr><td>核电度电成本（中国）</td><td>~0.19元/kWh</td><td>中国核能行业协会</td></tr>
+    <tr><td>新建核电LCOE（中国vs欧洲）</td><td>$62 vs $142-182 /MWh</td><td>IEA 2024</td></tr>
+  </table>
+  <h3>集中度指标</h3>
+  <table>
+    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+    <tr><td>中国核电运营CR3</td><td>100%</td><td>中核+中广核+国电投</td></tr>
+    <tr><td>中国核电利润CR2</td><td>95%+</td><td>中国核电+中国广核</td></tr>
+    <tr><td>全球核电出口CR1</td><td>88%</td><td>Rosatom</td></tr>
+    <tr><td>核级阀门CR1（中国）</td><td>90%+</td><td>江苏神通</td></tr>
+  </table>
+  <h3>铀价走势</h3>
+  <div class="chart-container">
+    <canvas id="uraniumChart" height="200"></canvas>
+  </div>
+</section>
+
+<section id="sec15">
+  <h2><span class="num">15</span> 未来路线图</h2>
+  <div class="mermaid">
+timeline
+    title 核电行业发展路线图（2026-2050）
+    section 2026-2028年
+        玲龙一号SMR并网 : 全球首个陆上SMR商运
+        华龙一号批量投运 : 年均投运6-8台
+    section 2029-2032年
+        中国核电装机1.2亿千瓦 : 提前完成目标
+        快堆CFR600商运 : 四代堆规模化示范
+        美国SMR首批投运 : BWRX-300
+        HALEU国产化突破 : 摆脱俄罗斯依赖
+    section 2033-2037年
+        中国核电装机2亿千瓦 : 发电量占比10%
+        高温堆制氢示范 : 核电+氢能融合
+        核聚变实验堆点火 : ITER/CFETR
+    section 2038-2050年
+        聚变示范堆运行 : Helion/CFETR商业化
+        全球三倍核电目标 : 1,100 GWe
+        退役市场爆发 : 超$1,000亿
+  </div>
+</section>
+
+<section id="sec16">
+  <h2><span class="num">16</span> 风险分析</h2>
+  <div class="risk-card">
+    <div class="risk-title">核安全事件 ★★★★★</div>
+    <p>概率极低（三代堆堆芯熔化频率<10⁻⁶/堆年），但影响灾难性——福岛导致全球核电停滞5-10年。一次事故可逆转整个行业政策方向。</p>
+  </div>
+  <div class="risk-card">
+    <div class="risk-title">建设延期与成本超支 ★★★★☆</div>
+    <p>全球EPR项目（Flamanville 3、Olkiluoto 3、Vogtle 3/4）建设周期为原计划2-4倍，成本超支2-4倍。中国华龙一号工期控制较好，但仍有延期风险。</p>
+  </div>
+  <div class="risk-card">
+    <div class="risk-title">核废料处理 ★★★★☆</div>
+    <p>乏燃料持续产生，高放废物需隔离数万年。全球尚无一例大型商业堆完整退役完成案例。中国后处理能力不足。</p>
+  </div>
+  <div class="risk-card">
+    <div class="risk-title">地缘政治与供应链 ★★★★☆</div>
+    <p>俄罗斯铀浓缩禁令（美国2028年全面禁止）；HALEU燃料依赖俄罗斯；中国铀资源80%依赖进口；核电设备出口面临美国制裁。</p>
+  </div>
+  <div class="risk-card">
+    <div class="risk-title">电价下行 ★★★☆☆</div>
+    <p>中国电力市场化改革推进，核电参与市场化交易比例上升；风光储成本持续下降可能挤压核电上网空间。</p>
+  </div>
+  <div class="risk-card">
+    <div class="risk-title">替代技术 ★★★☆☆</div>
+    <p>核聚变商业化（至少15-20年后）；长时储能+风光组合可能部分替代基荷核电；地热能技术进步。</p>
+  </div>
+  <div class="risk-card">
+    <div class="risk-title">公众接受度 ★★★☆☆</div>
+    <p>"邻避效应"影响核电站选址；福岛心理阴影长期存在。中国公众接受度高于欧美（政府主导决策）。</p>
+  </div>
+</section>
+
+<section id="sec17">
+  <h2><span class="num">17</span> 投资价值分析</h2>
+  <h3>谁最赚钱？</h3>
+  <div class="callout callout-investment">
+    <strong>核电运营</strong> — 中国核电+中国广核凭借牌照垄断，未来10年装机翻倍→利润翻倍。运营毛利率35-45%，且随规模化效应提升。AI数据中心需求推升核电电价溢价。
+  </div>
+  <h3>Alpha在哪里？</h3>
+  <table>
+    <tr><th>Alpha方向</th><th>逻辑</th></tr>
+    <tr><td>国产替代</td><td>核级锆材、厚壁镍基焊丝、在线监测传感器国产化率60-70%，弹性最大</td></tr>
+    <tr><td>SMR新赛道</td><td>玲龙一号即将商运，设备供应链尚未固化，新进入者有机会</td></tr>
+    <tr><td>AI+核电融合</td><td>核电为AI数据中心提供零碳基荷电力，美国Constellation模式可复制</td></tr>
+    <tr><td>核聚变主题</td><td>2028-2030年Helion交付节点可能迎来主题行情</td></tr>
+  </table>
+  <h3>最值得长期关注的公司</h3>
+  <table>
+    <tr><th>公司</th><th>理由</th><th>类型</th></tr>
+    <tr><td><strong>中国核电(601985)</strong></td><td>核电运营龙头，装机持续翻倍，ROE稳定上升</td><td>长期持有</td></tr>
+    <tr><td><strong>中国广核(003816)</strong></td><td>核电运营双雄之一，在运机组最多</td><td>长期持有</td></tr>
+    <tr><td>东方电气(600875)</td><td>核岛+常规岛双覆盖，在手订单1526亿创新高</td><td>设备龙头</td></tr>
+    <tr><td>江苏神通(002438)</td><td>核级阀门市占率90%+，纯核电弹性标的</td><td>细分龙头</td></tr>
+    <tr><td>久立特材(002318)</td><td>核级不锈钢管市占率50%+，国产替代</td><td>细分龙头</td></tr>
+    <tr><td>Cameco(CCJ)</td><td>全球最大上市铀矿商，铀价上行受益</td><td>核燃料</td></tr>
+  </table>
+  <div class="callout callout-opinion">
+    <span class="tag tag-opinion">Opinion</span><br>
+    <strong>如果只能投资核电行业的一家公司，选中国核电(601985)。</strong><br><br>
+    理由：①牌照垄断不可替代——仅3家运营商，新进入者概率为零；②装机翻倍确定性高——在建35台将在2026-2030年集中投运；③利润率稳定且上升——毛利率40%，ROE 9.4%；④度电成本极低——0.19元/kWh，无论电价如何改革都有安全边际；⑤AI数据中心潜在催化。<br><br>
+    核电是"建好就不愁卖"的生意——20年特许经营权+政府保障消纳+成本极低。中国核电就像一座"印钞机"，只是建造成本高、周期长，一旦建成就是20年稳定现金流。
+  </div>
+</section>
+
+<section id="sec18">
+  <h2><span class="num">18</span> 行业评分</h2>
+  <div class="score-dimension"><div class="dim-name">行业空间(TAM)</div><div class="dim-bar"><div class="dim-fill" style="width:80%;background:linear-gradient(90deg,#0077b6,#00b4d8)">8</div></div></div>
+  <div class="score-dimension"><div class="dim-name">成长速度(CAGR)</div><div class="dim-bar"><div class="dim-fill" style="width:80%;background:linear-gradient(90deg,#0077b6,#00b4d8)">8</div></div></div>
+  <div class="score-dimension"><div class="dim-name">技术壁垒</div><div class="dim-bar"><div class="dim-fill" style="width:100%;background:linear-gradient(90deg,#0077b6,#00b4d8)">10</div></div></div>
+  <div class="score-dimension"><div class="dim-name">竞争格局</div><div class="dim-bar"><div class="dim-fill" style="width:90%;background:linear-gradient(90deg,#0077b6,#00b4d8)">9</div></div></div>
+  <div class="score-dimension"><div class="dim-name">利润率</div><div class="dim-bar"><div class="dim-fill" style="width:80%;background:linear-gradient(90deg,#0077b6,#00b4d8)">8</div></div></div>
+  <div class="score-dimension"><div class="dim-name">资本回报率</div><div class="dim-bar"><div class="dim-fill" style="width:70%;background:linear-gradient(90deg,#0077b6,#00b4d8)">7</div></div></div>
+  <div class="score-dimension"><div class="dim-name">国产替代</div><div class="dim-bar"><div class="dim-fill" style="width:70%;background:linear-gradient(90deg,#0077b6,#00b4d8)">7</div></div></div>
+  <div class="score-dimension"><div class="dim-name">AI受益程度</div><div class="dim-bar"><div class="dim-fill" style="width:90%;background:linear-gradient(90deg,#0077b6,#00b4d8)">9</div></div></div>
+  <div class="score-dimension"><div class="dim-name">政策支持</div><div class="dim-bar"><div class="dim-fill" style="width:90%;background:linear-gradient(90deg,#0077b6,#00b4d8)">9</div></div></div>
+  <div class="score-dimension"><div class="dim-name">投资价值</div><div class="dim-bar"><div class="dim-fill" style="width:90%;background:linear-gradient(90deg,#0077b6,#00b4d8)">9</div></div></div>
+  <div style="text-align:center;margin:25px 0;">
+    <div style="font-size:48px;font-weight:800;color:var(--primary);">78<span style="font-size:24px;color:var(--text-secondary);">/100</span></div>
+    <div style="font-size:24px;color:var(--warning);">★★★★☆</div>
+  </div>
+  <div class="chart-container">
+    <canvas id="scoreChart" height="250"></canvas>
+  </div>
+  <div class="callout">
+    <p>78分意味着核电是<strong>高壁垒、高确定性、中等增速</strong>的行业。相比人形机器人（79分）和光伏（71分），核电独特优势在<strong>确定性和壁垒</strong>——牌照垄断不可打破，装机增长有政府审批背书。扣分项主要是资本回报率（高资本开支拖累ROE）和国产替代空间（设备已基本国产化）。</p>
+    <p style="margin-top:10px;"><strong>核电站类比：一座核电站就像一座收费桥梁——建造昂贵但一旦建成，20年坐收过路费。区别在于这座桥只有3家公司有权建造和运营。</strong></p>
+  </div>
+</section>
+
+<section id="sec19">
+  <h2><span class="num">19</span> 资料来源</h2>
+  <h3><span class="source-tier tier-1">★★★★★</span> 一级资料</h3>
+  <table>
+    <tr><th>来源</th><th>日期</th><th>内容</th></tr>
+    <tr><td>IAEA PRIS Database</td><td>实时</td><td>全球核电机组数据库</td></tr>
+    <tr><td>IAEA Nuclear Technology Review 2024</td><td>2024.08</td><td>全球核电技术年度评估</td></tr>
+    <tr><td>中国核能行业协会年报</td><td>2025.04</td><td>中国核电年度运行数据</td></tr>
+    <tr><td>中国核电(601985) 2024年报</td><td>2025.03</td><td>公司财务与运营数据</td></tr>
+    <tr><td>中国广核(003816) 2024年报</td><td>2025.03</td><td>公司财务与运营数据</td></tr>
+    <tr><td>东方电气(600875) 2024年报</td><td>2025.03</td><td>在手订单与核电业务</td></tr>
+    <tr><td>国务院常务会议公报</td><td>2022-2025</td><td>核电机组核准批复</td></tr>
+    <tr><td>COP28三倍核能宣言</td><td>2023.12</td><td>38国签署文本</td></tr>
+  </table>
+  <h3><span class="source-tier tier-2">★★★★☆</span> 二级资料</h3>
+  <table>
+    <tr><th>来源</th><th>日期</th><th>内容</th></tr>
+    <tr><td>WNA World Uranium Mining Production</td><td>2025.03</td><td>全球铀矿产量分布</td></tr>
+    <tr><td>WNA Uranium Enrichment Report</td><td>2024.11</td><td>全球浓缩产能分布</td></tr>
+    <tr><td>WNA Nuclear Performance Report</td><td>2024.07</td><td>全球核电容量因子</td></tr>
+    <tr><td>IEA World Energy Outlook 2024</td><td>2024.10</td><td>核电LCOE与装机预测</td></tr>
+    <tr><td>IEA Electricity 2024 Report</td><td>2024.02</td><td>数据中心电力需求</td></tr>
+    <tr><td>Cameco 2024 Annual Report</td><td>2025.02</td><td>铀价与产量数据</td></tr>
+  </table>
+  <h3><span class="source-tier tier-3">★★★☆☆</span> 三级资料</h3>
+  <table>
+    <tr><th>来源</th><th>日期</th><th>内容</th></tr>
+    <tr><td>Reuters</td><td>2024.09.20</td><td>微软三里岛核电协议</td></tr>
+    <tr><td>Bloomberg</td><td>2024.10</td><td>Amazon投资SMR</td></tr>
+    <tr><td>CNBC</td><td>2024.11</td><td>AI数据中心核电需求分析</td></tr>
+    <tr><td>中国能源报</td><td>2025.01</td><td>中国核电审批节奏分析</td></tr>
+    <tr><td>北极星电力网</td><td>2025.02</td><td>核电设备国产替代进展</td></tr>
+  </table>
+  <div style="text-align:center;margin-top:30px;color:var(--text-secondary);font-size:13px;">
+    <p>本报告基于行业研究框架 v1.0 生成 | 数据截至2025年中 | 建议每季度更新核心数据，每年度全面修订</p>
+    <p>研究员：小八 | 发布日期：2026-07-13 | 版本：v1.0</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+
+Chart.defaults.font.family = '-apple-system, "PingFang SC", "Microsoft YaHei", sans-serif';
+Chart.defaults.color = '#555';
+
+// CAGR Chart
+new Chart(document.getElementById('cagrChart'), {
+  type: 'bar',
+  data: {
+    labels: ['中国核电装机\n(2025-2030)', '中国核电装机\n(2025-2040)', '全球核电装机\n(2024-2050高值)', '全球核电市场\n(2024-2030)'],
+    datasets: [{
+      label: 'CAGR (%)',
+      data: [13, 8, 3.2, 5.5],
+      backgroundColor: ['#0077b6', '#00b4d8', '#48cae4', '#90e0ef'],
+      borderRadius: 8
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { title: { display: true, text: '核电行业CAGR对比 (%)', font: { size: 16 } }, legend: { display: false } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: 'CAGR (%)' } } }
+  }
+});
+
+// Margin Chart
+new Chart(document.getElementById('marginChart'), {
+  type: 'bar',
+  data: {
+    labels: ['核电运营', '仪控DCS', '核级阀门/管材', '核燃料制造', '核岛主设备', '铀矿开采', '常规岛设备'],
+    datasets: [
+      { label: '毛利率 (%)', data: [40, 42, 37, 30, 25, 30, 17], backgroundColor: '#0077b6', borderRadius: 6 },
+      { label: '净利率 (%)', data: [17, 17, 15, 12, 10, 10, 6], backgroundColor: '#00b4d8', borderRadius: 6 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { title: { display: true, text: '产业链各环节利润率对比', font: { size: 16 } } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: '%' } } }
+  }
+});
+
+// Tech Chart - technology route market share (global reactor types)
+new Chart(document.getElementById('techChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['压水堆PWR', '沸水堆BWR', '重水堆PHWR', '气冷堆', '快堆及其他'],
+    datasets: [{
+      data: [70, 15, 8, 4, 3],
+      backgroundColor: ['#0077b6', '#00b4d8', '#48cae4', '#90e0ef', '#caf0f8'],
+      borderWidth: 2, borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { title: { display: true, text: '全球核电堆型分布 (%)', font: { size: 16 } }, legend: { position: 'right' } }
+  }
+});
+
+// Supply Chain Chart
+new Chart(document.getElementById('supplyChart'), {
+  type: 'bar',
+  data: {
+    labels: ['压力容器', '蒸汽发生器', 'DCS仪控', '核级阀门', '核级不锈钢管', '核级锆材', '厚壁镍基焊丝', 'HALEU燃料'],
+    datasets: [{
+      label: '国产化率 (%)',
+      data: [95, 95, 95, 90, 85, 70, 70, 0],
+      backgroundColor: function(ctx) {
+        const v = ctx.parsed.y;
+        if (v >= 90) return '#06d6a0';
+        if (v >= 70) return '#ffd166';
+        return '#ef476f';
+      },
+      borderRadius: 6
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: { title: { display: true, text: '核电关键设备/材料国产化率', font: { size: 16 } }, legend: { display: false } },
+    scales: { x: { beginAtZero: true, max: 100, title: { display: true, text: '国产化率 (%)' } } }
+  }
+});
+
+// Uranium Price Chart
+new Chart(document.getElementById('uraniumChart'), {
+  type: 'line',
+  data: {
+    labels: ['2011.3\n(福岛前)', '2011.4\n(福岛后)', '2016', '2020', '2023.6', '2024.2\n(高点)', '2025.6'],
+    datasets: [{
+      label: '铀价 U3O8 ($/lb)',
+      data: [70, 40, 25, 22, 60, 107, 79],
+      borderColor: '#0077b6',
+      backgroundColor: 'rgba(0,119,182,0.1)',
+      fill: true,
+      tension: 0.3,
+      pointRadius: 6,
+      pointBackgroundColor: '#0077b6'
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { title: { display: true, text: '铀价走势 (2011-2025)', font: { size: 16 } }, legend: { display: false } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: '美元/磅 U3O8' } } }
+  }
+});
+
+// Score Radar Chart
+new Chart(document.getElementById('scoreChart'), {
+  type: 'radar',
+  data: {
+    labels: ['行业空间', '成长速度', '技术壁垒', '竞争格局', '利润率', '资本回报率', '国产替代', 'AI受益', '政策支持', '投资价值'],
+    datasets: [{
+      label: '核电行业评分',
+      data: [8, 8, 10, 9, 8, 7, 7, 9, 9, 9],
+      backgroundColor: 'rgba(0,119,182,0.2)',
+      borderColor: '#0077b6',
+      pointBackgroundColor: '#0077b6',
+      pointRadius: 5,
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { title: { display: true, text: '核电行业十维度评分雷达图', font: { size: 16 } }, legend: { display: false } },
+    scales: { r: { beginAtZero: true, max: 10, ticks: { stepSize: 2 } } }
+  }
+});
+</script>
+
+</body>
+</html>
