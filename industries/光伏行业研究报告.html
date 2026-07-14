@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光伏行业研究报告 v1.0</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+:root{--bg:#f8fafc;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--text-sec:#64748b;--text-light:#94a3b8;--primary:#1e3a5f;--primary-light:#3b82f6;--red:#dc2626;--green:#16a34a;--blue:#2563eb;--purple:#7c3aed;--orange:#ea580c;--cyan:#0891b2;--radius:12px;--radius-sm:8px;--shadow:0 1px 3px rgba(0,0,0,.08);--shadow-lg:0 10px 30px rgba(0,0,0,.1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:20px 0;z-index:100}
+.sidebar-title{font-size:16px;font-weight:800;color:var(--primary);padding:0 24px 16px;border-bottom:1px solid var(--border)}
+.sidebar nav{padding:8px 0}
+.sidebar nav a{display:block;padding:8px 24px;font-size:13px;color:var(--text-sec);text-decoration:none;transition:all .2s;border-left:3px solid transparent}
+.sidebar nav a:hover{background:#f1f5f9;color:var(--primary)}
+.sidebar nav a.active{background:#eff6ff;color:var(--primary-light);border-left-color:var(--primary-light);font-weight:600}
+.main{margin-left:260px;padding:0;max-width:1100px}
+section{background:var(--surface);margin:0 0 4px;padding:40px 48px;border-bottom:1px solid var(--border)}
+.hero{background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 50%,#0891b2 100%);color:#fff;padding:60px 48px;margin-bottom:0}
+.hero h1{font-size:32px;font-weight:800;margin-bottom:8px}
+.hero .subtitle{font-size:15px;opacity:.85;margin-bottom:20px}
+.hero .meta{display:flex;gap:24px;font-size:13px;opacity:.8;flex-wrap:wrap}
+.hero .meta span{display:flex;align-items:center;gap:4px}
+.score-badge{position:absolute;right:48px;top:60px;width:100px;height:100px;border-radius:50%;background:conic-gradient(var(--green) 0% 71%,#ffffff22 71% 100%);display:flex;align-items:center;justify-content:center;flex-direction:column}
+.score-badge .num{font-size:36px;font-weight:800;color:#fff}
+.score-badge .label{font-size:11px;opacity:.8;color:#fff}
+.score-badge .stars{font-size:12px;color:#fbbf24;margin-top:2px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.section-number{width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+.section-header h2{font-size:22px;font-weight:700;color:var(--text)}
+h3{font-size:17px;font-weight:600;margin:24px 0 12px;color:var(--text)}
+p{margin:8px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+th{background:#f1f5f9;padding:10px 12px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)}
+td{padding:8px 12px;border-bottom:1px solid var(--border)}
+tbody tr:nth-child(even){background:#f8fafc}
+tbody tr:hover{background:#eff6ff}
+.table-wrapper{overflow-x:auto;margin:12px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:20px 0}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:18px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.stat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.stat-card .stat-label{font-size:12px;color:var(--text-sec);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.stat-card .stat-value{font-size:26px;font-weight:800;color:var(--primary);line-height:1.2}
+.stat-card .stat-unit{font-size:13px;color:var(--text-sec);font-weight:500;margin-top:4px}
+.stat-card .stat-source{font-size:11px;color:var(--text-light);margin-top:6px}
+.stat-card.ar{border-top:3px solid var(--red)}.stat-card.ar .stat-value{color:var(--red)}
+.stat-card.ab{border-top:3px solid var(--blue)}.stat-card.ab .stat-value{color:var(--blue)}
+.stat-card.ag{border-top:3px solid var(--green)}.stat-card.ag .stat-value{color:var(--green)}
+.stat-card.ap{border-top:3px solid var(--purple)}.stat-card.ap .stat-value{color:var(--purple)}
+.stat-card.ao{border-top:3px solid var(--orange)}.stat-card.ao .stat-value{color:var(--orange)}
+.stat-card.ac{border-top:3px solid var(--cyan)}.stat-card.ac .stat-value{color:var(--cyan)}
+.mermaid-container{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:24px;margin:16px 0;overflow-x:auto;box-shadow:var(--shadow)}
+.mermaid{display:flex;justify-content:center}
+.callout{padding:14px 18px;border-radius:var(--radius-sm);margin:12px 0;font-size:14px;border-left:4px solid}
+.callout-fact{background:#eff6ff;border-color:var(--blue)}.callout-fact .tag{background:var(--blue)}
+.callout-inf{background:#f0fdf4;border-color:var(--green)}.callout-inf .tag{background:var(--green)}
+.callout-insight{background:#fef3c7;border-color:var(--orange);border-left-width:4px}.callout-insight .tag{background:var(--orange)}
+.callout .tag{display:inline-block;padding:2px 8px;border-radius:4px;color:#fff;font-size:11px;font-weight:600;margin-right:8px}
+.highlight-box{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border:1px solid #bae6fd;border-radius:var(--radius-sm);padding:20px;margin:16px 0}
+.highlight-title{font-weight:700;font-size:15px;color:var(--primary);margin-bottom:8px}
+.highlight-body{font-size:14px;color:var(--text);line-height:1.8}
+.lifecycle-bar{display:flex;margin:16px 0;border-radius:var(--radius-sm);overflow:hidden}
+.lifecycle-segment{flex:1;padding:10px 12px;text-align:center;font-size:12px;font-weight:600;color:#fff}
+.lifecycle-segment.past{background:#94a3b8}
+.lifecycle-segment.current{background:var(--orange)}
+.lifecycle-segment.future{background:#cbd5e1;color:var(--text-sec)}
+.company-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;margin:8px 0;display:flex;gap:16px;align-items:flex-start;transition:box-shadow .2s}
+.company-card:hover{box-shadow:var(--shadow-lg)}
+.company-rank{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0}
+.company-rank.gold{background:#fef3c7;color:#92400e}
+.company-rank.silver{background:#e2e8f0;color:#475569}
+.company-rank.bronze{background:#fed7aa;color:#9a3412}
+.company-rank.normal{background:#f1f5f9;color:var(--text-sec)}
+.company-info{flex:1}
+.company-name{font-weight:700;font-size:14px;margin-bottom:4px}
+.company-detail{font-size:12px;color:var(--text-sec);line-height:1.6}
+.chart-container{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;margin:16px 0}
+.chart-container h4{font-size:14px;font-weight:600;margin-bottom:12px;color:var(--text)}
+.risk-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:var(--radius-sm);padding:14px;margin:8px 0}
+.risk-card h4{font-size:14px;font-weight:600;margin-bottom:4px;color:var(--red)}
+.risk-card p{font-size:12px;color:var(--text-sec);margin:2px 0}
+.driver-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin:8px 0}
+.driver-card h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.driver-card .stars{color:#fbbf24;font-size:12px}
+.driver-card p{font-size:12px;color:var(--text-sec);margin:4px 0}
+.matrix-table{border-collapse:collapse;width:100%;margin:12px 0}
+.matrix-table th{background:var(--primary);color:#fff;padding:12px;text-align:center;font-size:13px}
+.matrix-table td{border:1px solid var(--border);padding:12px;font-size:12px;vertical-align:top}
+.matrix-table td:first-child{background:#f1f5f9;font-weight:600;text-align:center}
+.score-table th{background:#f1f5f9}.score-table .total{background:#fef3c7;font-weight:800}
+a{color:var(--primary-light);text-decoration:none}a:hover{text-decoration:underline}
+@media(max-width:768px){.sidebar{display:none}.main{margin-left:0}.hero{padding:40px 20px}.score-badge{right:20px;top:40px;width:80px;height:80px}.score-badge .num{font-size:28px}section{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<div class="sidebar-title">光伏行业研究报告</div>
+<nav>
+<a href="#sec-0" class="active">0. 执行摘要</a>
+<a href="#sec-1">1. 行业定义</a>
+<a href="#sec-2">2. 产业链全景</a>
+<a href="#sec-3">3. 产业链脑图</a>
+<a href="#sec-4">4. 行业规模 TAM</a>
+<a href="#sec-5">5. 行业驱动力</a>
+<a href="#sec-6">6. 行业生命周期</a>
+<a href="#sec-7">7. 行业壁垒</a>
+<a href="#sec-8">8. 利润池分析</a>
+<a href="#sec-9">9. 竞争格局 TOP30</a>
+<a href="#sec-10">10. 行业地图</a>
+<a href="#sec-11">11. 技术路线</a>
+<a href="#sec-12">12. 供应链分析</a>
+<a href="#sec-13">13. 政策分析</a>
+<a href="#sec-14">14. 行业核心数据</a>
+<a href="#sec-15">15. 未来路线图</a>
+<a href="#sec-16">16. 风险分析</a>
+<a href="#sec-17">17. 投资价值分析</a>
+<a href="#sec-18">18. 行业评分</a>
+<a href="#sec-19">19. 资料来源</a>
+</nav>
+</div>
+
+<div class="main">
+
+<div class="hero">
+<h1>光伏（Photovoltaic）行业研究报告</h1>
+<div class="subtitle">Industry Research Framework v1.0 | 2026年7月11日 | 研究员：小八</div>
+<div class="meta">
+<span>📅 2026.07.11</span>
+<span>📊 v1.0</span>
+<span>⚠️ 仅供研究参考，不构成投资建议</span>
+</div>
+<div class="score-badge">
+<div class="num">71</div>
+<div class="label">/100</div>
+<div class="stars">★★★★☆</div>
+</div>
+</div>
+
+<section id="sec-0">
+<div class="section-header"><div class="section-number">0</div><h2>执行摘要 Executive Summary</h2></div>
+<div class="stat-grid">
+<div class="stat-card ab"><div class="stat-label">全球新增装机 (2025)</div><div class="stat-value">698 GW</div><div class="stat-unit">DC侧，同比+16%；累计~3TW</div><div class="stat-source">IEA PVPS</div></div>
+<div class="stat-card ar"><div class="stat-label">中国新增装机 (2025)</div><div class="stat-value">315~380 GW</div><div class="stat-unit">占全球约60%</div><div class="stat-source">国家能源局 / IEA PVPS</div></div>
+<div class="stat-card ag"><div class="stat-label">光伏发电占比</div><div class="stat-value">10.5%</div><div class="stat-unit">全球电力需求</div><div class="stat-source">IEA PVPS</div></div>
+<div class="stat-card ap"><div class="stat-label">5年装机CAGR</div><div class="stat-value">10~15%</div><div class="stat-unit">2030年目标1TW/年</div><div class="stat-source">BloombergNEF / IEA</div></div>
+<div class="stat-card ao"><div class="stat-label">行业亏损(9家龙头)</div><div class="stat-value">415~470亿</div><div class="stat-unit">产能过剩1300GW vs 600GW</div><div class="stat-source">各企业业绩预告</div></div>
+</div>
+<div class="lifecycle-bar">
+<div class="lifecycle-segment past">导入期 2000-2010</div>
+<div class="lifecycle-segment past">成长期 2010-2018</div>
+<div class="lifecycle-segment current">成熟期·周期底部 2024-2026</div>
+<div class="lifecycle-segment future">盈利修复期 2027+</div>
+</div>
+<h3>一句话投资逻辑</h3>
+<div class="highlight-box"><div class="highlight-title">核心投资逻辑</div><div class="highlight-body"><strong>短期</strong>看产能出清与价格修复（硅料先于组件）；<strong>中期</strong>看技术迭代（BC/钙钛矿）带来的差异化利润；<strong>长期</strong>看光储融合与AI数据中心电力需求催生的结构性增长。</div></div>
+<h3>最大机会</h3><p>光伏LCOE已低于所有化石能源，AI数据中心电力需求爆发为光伏提供全新增长极；产能出清后龙头集中度进一步提升。</p>
+<h3>最大风险</h3><p>产能过剩引发的价格战仍在持续，贸易壁垒（美国104%关税、东南亚双反最高3403%）封堵出口路径，技术迭代导致资产减值。</p>
+<div class="callout callout-fact"><span class="tag tag-fact">Fact</span> 2025年是光伏"冰火两重天"：装机量创历史新高698GW，但全行业深陷亏损——9家龙头合计预亏415~470亿元，117家A股光伏企业仅62家盈利。产能超1300GW vs 需求约600GW，利用率低于60%。</div>
+<div class="callout callout-insight">光伏行业正处于"周期底部+技术迭代"的双重拐点。2025年的全行业亏损是产能出清的必经阶段。投资策略上，应规避深度亏损的二三线企业，重点关注：①逆变器/储能（阳光电源）；②BC/钙钛矿先行者（隆基、爱旭）；③产能出清后弹性最大的硅料龙头（通威）。</div>
+</section>
+
+<section id="sec-1">
+<div class="section-header"><div class="section-number">1</div><h2>行业定义</h2></div>
+<p>光伏（Photovoltaic，PV）是指利用半导体材料的光伏效应，将太阳光能直接转化为电能的发电技术及相关产业链。</p>
+<h3>行业边界</h3>
+<div class="table-wrapper"><table><thead><tr><th>包含</th><th>不包含</th></tr></thead><tbody><tr><td>晶硅光伏（单晶/多晶，占97%+）<br>薄膜光伏（CdTe/CIGS）<br>钙钛矿光伏（单结及叠层）<br>光伏系统（逆变器/支架/电缆）<br>光伏电站（集中式/分布式/户用）</td><td>光热发电（CSP）<br>太阳能热水器<br>水力/风力发电</td></tr></tbody></table></div>
+<h3>行业分类</h3>
+<div class="table-wrapper"><table><thead><tr><th>分类维度</th><th>类别</th></tr></thead><tbody>
+<tr><td>按材料</td><td>晶硅（单晶/多晶）、薄膜（CdTe/CIGS）、钙钛矿、叠层</td></tr>
+<tr><td>按电池技术</td><td>PERC、TOPCon、HJT、IBC/BC、钙钛矿/叠层</td></tr>
+<tr><td>按应用场景</td><td>集中式电站、工商业分布式、户用光伏、BIPV</td></tr>
+<tr><td>按产业链环节</td><td>硅料、硅片、电池片、组件、逆变器、支架、电站</td></tr>
+</tbody></table></div>
+<h3>行业价值</h3>
+<p>光伏行业存在的根本价值：<strong>以最低成本提供清洁电力</strong>。2025年光伏LCOE已降至0.02-0.04美元/kWh，低于所有化石能源。光伏是全球实现"碳中和"的核心技术路径，2025年占全球电力需求10.5%。中国光伏产业占全球供应链80%+，是少数中国完全主导的战略性新兴产业。</p>
+</section>
+
+<section id="sec-2">
+<div class="section-header"><div class="section-number">2</div><h2>产业链全景</h2></div>
+<div class="mermaid-container"><div class="mermaid">
+flowchart TD
+    subgraph 上游
+        A["硅料<br/>多晶硅生产"] --> B["硅棒/硅锭<br/>单晶拉棒"]
+        B --> C["硅片<br/>切割"]
+    end
+    subgraph 中游
+        C --> D["电池片<br/>TOPCon/HJT/BC"]
+        D --> E["组件封装<br/>层压/测试"]
+    end
+    subgraph 辅材
+        F["银浆"] --> D
+        G["光伏玻璃"] --> E
+        H["EVA/POE胶膜"] --> E
+        I["铝边框"] --> E
+    end
+    subgraph 下游
+        E --> K["逆变器"]
+        E --> L["支架系统"]
+        K --> M["光伏系统"]
+        L --> M
+        M --> N["光伏电站<br/>并网发电"]
+        K --> O["储能系统<br/>光储融合"]
+    end
+</div></div>
+<div class="table-wrapper"><table><thead><tr><th>环节</th><th>主要公司</th><th>中国产能占比</th></tr></thead><tbody>
+<tr><td>硅料</td><td>通威、协鑫、大全、新特、Wacker(德)、Hemlock(美)</td><td>93%</td></tr>
+<tr><td>硅片</td><td>隆基、TCL中环、晶科、晶澳、美科</td><td>97%</td></tr>
+<tr><td>电池片</td><td>通威、爱旭、润阳、东方日升、钧达</td><td>92%</td></tr>
+<tr><td>组件</td><td>晶科、隆基、天合、晶澳、通威、正泰、协鑫、阿特斯、First Solar(美)</td><td>86%</td></tr>
+<tr><td>逆变器</td><td>阳光电源、华为、锦浪、固德威、德业、SMA(德)、Enphase(美)</td><td>70%+</td></tr>
+<tr><td>辅材-胶膜</td><td>福斯特、海优新材、斯威克、3M(美)</td><td>80%+</td></tr>
+<tr><td>辅材-玻璃</td><td>福莱特、信义光能、南玻A</td><td>85%+</td></tr>
+<tr><td>设备</td><td>晶盛机电、迈为、捷佳伟创、帝尔激光、奥特维、AMAT(美)</td><td>80%+</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="sec-3">
+<div class="section-header"><div class="section-number">3</div><h2>产业链脑图</h2></div>
+<div class="mermaid-container"><div class="mermaid">
+mindmap
+  root(("光伏产业"))
+    硅料
+      通威股份
+      协鑫科技
+      大全能源
+      Wacker
+    硅片
+      隆基绿能
+      TCL中环
+      晶科能源
+    电池片
+      通威股份
+      爱旭股份
+      钧达股份
+    组件
+      晶科能源
+      隆基绿能
+      天合光能
+      晶澳科技
+      First Solar
+    逆变器
+      阳光电源
+      华为
+      锦浪科技
+      Enphase
+    辅材
+      福斯特_胶膜
+      福莱特_玻璃
+      帝科_银浆
+    设备
+      晶盛机电
+      迈为股份
+      捷佳伟创
+      帝尔激光
+    电站
+      国家电投
+      三峡能源
+      NextEra
+</div></div>
+</section>
+
+<section id="sec-4">
+<div class="section-header"><div class="section-number">4</div><h2>行业规模 TAM</h2></div>
+<h3>全球装机规模</h3>
+<div class="stat-grid">
+<div class="stat-card ab"><div class="stat-label">全球新增装机 (2025)</div><div class="stat-value">698 GW</div><div class="stat-unit">DC侧，同比+16%</div><div class="stat-source">IEA PVPS</div></div>
+<div class="stat-card ag"><div class="stat-label">全球累计装机</div><div class="stat-value">~3 TW</div><div class="stat-unit">首次突破3太瓦</div><div class="stat-source">IEA PVPS</div></div>
+<div class="stat-card ar"><div class="stat-label">中国新增装机</div><div class="stat-value">315~380 GW</div><div class="stat-unit">占全球约60%</div><div class="stat-source">国家能源局 / IEA</div></div>
+<div class="stat-card ap"><div class="stat-label">TOP10组件出货</div><div class="stat-value">~536 GW</div><div class="stat-unit">CR5 > 70%</div><div class="stat-source">InfoLink</div></div>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>机构</th><th>2024年新增</th><th>2025年新增</th><th>2025年累计</th><th>来源</th></tr></thead><tbody>
+<tr><td>IEA PVPS (DC)</td><td>602 GW</td><td><strong>698 GW</strong></td><td><strong>~3 TW</strong></td><td><a href="https://iea-pvps.org/snapshot-reports/snapshot-2026/" target="_blank">链接</a></td></tr>
+<tr><td>IRENA (AC)</td><td>277 GW</td><td>510 GW</td><td>2,383 GW</td><td><a href="https://www.renewable-ei.org/en/activities/column/reupdate/20260519.php" target="_blank">链接</a></td></tr>
+</tbody></table></div>
+<div class="callout callout-fact"><span class="tag tag-fact">Fact</span> 2025年全球光伏新增装机698 GW，累计装机首次突破3 TW，光伏发电占全球电力需求10.5%。近40个国家新增装机超1 GW。中国占比约60%。</div>
+<h3>组件出货排名 TOP10</h3>
+<div class="chart-container"><h4>2025年全球组件出货量 TOP10</h4><canvas id="shipmentChart" height="200"></canvas></div>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>公司</th><th>出货(GW)</th><th>#</th><th>公司</th><th>出货(GW)</th></tr></thead><tbody>
+<tr><td>1</td><td>晶科能源</td><td>86.8</td><td>6</td><td>正泰新能</td><td>35.6</td></tr>
+<tr><td>2</td><td>隆基绿能</td><td>86.58</td><td>7</td><td>协鑫集成</td><td>25.28</td></tr>
+<tr><td>3</td><td>天合光能</td><td>67.88</td><td>8</td><td>横店东磁</td><td>24.92</td></tr>
+<tr><td>4</td><td>晶澳科技</td><td>66.69</td><td>9</td><td>阿特斯</td><td>24.3</td></tr>
+<tr><td>5</td><td>通威股份</td><td>43.25</td><td>10</td><td>TCL中环</td><td>15.1</td></tr>
+</tbody></table></div>
+<h3>关键价格数据</h3>
+<div class="callout callout-fact"><span class="tag tag-fact">Fact</span> 2025年组件均价低于0.8元/W（2022年高峰1.9元/W），低于现金成本线。多晶硅毛利率H1为-6.30%（2022年曾高达73%）。硅料价格Q3回升56%（N型致密料3.4万→5万+/吨）。</div>
+<div class="callout callout-inf"><span class="tag tag-inf">Inference</span> 产能1300GW vs 需求600GW = 2倍过剩。未来2-3年的投资逻辑是"产能出清"而非"需求增长"。关注供给侧变化比关注需求侧变化更有价值。</div>
+</section>
+
+<section id="sec-5">
+<div class="section-header"><div class="section-number">5</div><h2>行业驱动力</h2></div>
+<div class="stat-grid">
+<div class="driver-card" style="border-left:4px solid var(--red)"><h4>碳中和/能源转型 ★★★★★</h4><p>全球130+国家提出碳中和目标，光伏是最经济的技术路径。持续30年+</p></div>
+<div class="driver-card" style="border-left:4px solid var(--red)"><h4>LCOE持续下降 ★★★★★</h4><p>0.02-0.04美元/kWh，低于所有化石能源，经济性驱动自然增长</p></div>
+<div class="driver-card" style="border-left:4px solid var(--red)"><h4>AI数据中心电力需求 ★★★★★</h4><p>2025年AI用电首超数据中心一半，科技巨头签订大量光伏PPA</p></div>
+<div class="driver-card" style="border-left:4px solid var(--orange)"><h4>技术进步 ★★★★☆</h4><p>TOPCon 25.7%→BC 27%→钙钛矿叠层34.85%，每1%效率降本5-7%</p></div>
+<div class="driver-card" style="border-left:4px solid var(--orange)"><h4>储能配套 ★★★★☆</h4><p>光储融合解决间歇性问题，"光伏+储能"LCOE在越来越多地区低于火电</p></div>
+<div class="driver-card" style="border-left:4px solid var(--orange)"><h4>反内卷政策 ★★★★☆</h4><p>中国政府推动产能出清，2026下半年预计80-100GW老旧产能关停</p></div>
+</div>
+<div class="callout callout-insight">短期驱动力是"反内卷"政策推动的产能出清——当前最核心的投资逻辑。中期驱动力是AI数据中心电力需求。长期驱动力是钙钛矿叠层技术。</div>
+</section>
+
+<section id="sec-6">
+<div class="section-header"><div class="section-number">6</div><h2>行业生命周期</h2></div>
+<div class="lifecycle-bar">
+<div class="lifecycle-segment past">导入期 2000-2010</div>
+<div class="lifecycle-segment past">成长期 2010-2018</div>
+<div class="lifecycle-segment past">高速成长 2018-2023</div>
+<div class="lifecycle-segment current">成熟期·底部 2024-2026</div>
+<div class="lifecycle-segment future">盈利修复 2027-2030</div>
+<div class="lifecycle-segment future">新一轮成长 2030+</div>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>指标</th><th>数据</th><th>判断</th></tr></thead><tbody>
+<tr><td>渗透率</td><td>全球电力10.5%，中国约18%</td><td>已从"导入"进入"主流"</td></tr>
+<tr><td>竞争格局</td><td>CR5>70%，140+企业退出</td><td>寡头格局形成中</td></tr>
+<tr><td>资本投入</td><td>产能过剩，资本开支收缩</td><td>投资降温信号</td></tr>
+<tr><td>利润率</td><td>全行业亏损，毛利率转负</td><td>周期底部特征</td></tr>
+<tr><td>技术迭代</td><td>TOPCon→BC→钙钛矿</td><td>二次成长潜力</td></tr>
+</tbody></table></div>
+<div class="callout callout-insight">光伏行业虽处于"成熟期"，但技术迭代正在催生"二次成长"机会。当前处于周期底部——经典的高风险高回报投资窗口。历史规律：光伏周期底部通常持续12-18个月，随后迎来2-3年盈利修复。</div>
+</section>
+
+<section id="sec-7">
+<div class="section-header"><div class="section-number">7</div><h2>行业壁垒</h2></div>
+<div class="table-wrapper"><table><thead><tr><th>壁垒类型</th><th>评分</th><th>分析</th></tr></thead><tbody>
+<tr><td>规模效应</td><td>★★★★★</td><td>组件出货>50GW才能实现规模经济，TOP5已建立显著成本优势</td></tr>
+<tr><td>技术壁垒</td><td>★★★★☆</td><td>TOPCon已相对成熟；BC和钙钛矿有较高壁垒</td></tr>
+<tr><td>资本壁垒</td><td>★★★★☆</td><td>万吨级硅料投资50-100亿元，GW级电池产线10-15亿元</td></tr>
+<tr><td>渠道壁垒</td><td>★★★★☆</td><td>海外渠道和品牌建设需3-5年，头部企业优势显著</td></tr>
+<tr><td>供应链壁垒</td><td>★★★☆☆</td><td>中国供应链高度成熟；高纯石英砂、POE粒子有瓶颈</td></tr>
+<tr><td>专利壁垒</td><td>★★★☆☆</td><td>TOPCon较低；BC（隆基/爱旭）和钙钛矿有较高壁垒</td></tr>
+<tr><td>客户切换成本</td><td>★★☆☆☆</td><td>组件标准化，切换成本低；品牌和渠道有粘性</td></tr>
+</tbody></table></div>
+<p><strong>综合壁垒评分：★★★★☆（4/5）</strong></p>
+<div class="callout callout-insight">光伏行业壁垒核心正从"规模"转向"技术"。TOPCon时代规模是最大壁垒，BC和钙钛矿时代技术专利将成为新护城河。</div>
+</section>
+
+<section id="sec-8">
+<div class="section-header"><div class="section-number">8</div><h2>利润池分析</h2></div>
+<div class="chart-container"><h4>2025年各环节毛利率对比</h4><canvas id="marginChart" height="180"></canvas></div>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>环节</th><th>毛利率(2025)</th><th>趋势</th><th>定价权</th></tr></thead><tbody>
+<tr><td>1</td><td><strong>逆变器+储能</strong></td><td>30-40%+</td><td>↑ 稳定高利润</td><td>强</td></tr>
+<tr><td>2</td><td>光伏设备</td><td>25-35%</td><td>↑ 技术迭代受益</td><td>中强</td></tr>
+<tr><td>3</td><td>辅材（胶膜/玻璃）</td><td>15-25%</td><td>→ 穿越周期</td><td>中</td></tr>
+<tr><td>4</td><td>电站运营</td><td>15-20%</td><td>→ 稳定现金流</td><td>弱</td></tr>
+<tr><td>5</td><td>硅料</td><td>-6%~15%</td><td>↗ 触底回升</td><td>中</td></tr>
+<tr><td>6</td><td>硅片</td><td>-27%~5%</td><td>↓ 严重过剩</td><td>弱</td></tr>
+<tr><td>7</td><td>电池片</td><td>-30%~3%</td><td>↓ 严重过剩</td><td>弱</td></tr>
+<tr><td>8</td><td>组件</td><td>-1%~3%</td><td>↓ 严重过剩</td><td>弱</td></tr>
+</tbody></table></div>
+<div class="callout callout-fact"><span class="tag tag-fact">Fact</span> 2025年利润极端分化：阳光电源（逆变器+储能）净利润118.8亿元，而通威股份（硅料+电池+组件）亏损90-100亿元。逆变器毛利率30-40%+，组件毛利率接近0甚至转负。</div>
+<div class="callout callout-insight">光伏行业的钱最终流向"非硅"环节——逆变器、储能、设备。组件环节的"规模制胜"逻辑正在失效，"技术差异化"逻辑正在兴起。</div>
+</section>
+
+<section id="sec-9">
+<div class="section-header"><div class="section-number">9</div><h2>竞争格局 TOP30</h2></div>
+<h3>TOP10 企业排名</h3>
+<div class="company-card"><div class="company-rank gold">1</div><div class="company-info"><div class="company-name">晶科能源 (JinkoSolar) — 中国 | ~450亿市值</div><div class="company-detail">组件/电池/硅片 | 2025出货86.8GW（全球第一）| TOPCon龙头，N型累计220GW+ | <span style="color:var(--red)">亏损（Q1-Q3: -39.2亿）</span> | 风险：资产负债率74%</div></div></div>
+<div class="company-card"><div class="company-rank silver">2</div><div class="company-info"><div class="company-name">隆基绿能 (LONGi) — 中国 | ~970亿市值</div><div class="company-detail">硅片/组件/BC电池 | 2025出货86.58GW | BC技术差异化，HPBC 2.0效率27%+ | <span style="color:var(--red)">亏损60-65亿</span> | BC产能50GW目标</div></div></div>
+<div class="company-card"><div class="company-rank bronze">3</div><div class="company-info"><div class="company-name">天合光能 (Trina Solar) — 中国 | ~300亿市值</div><div class="company-detail">组件/系统/跟踪支架 | 2025出货67.88GW | 210组件累计236GW | <span style="color:var(--red)">亏损65-75亿</span></div></div></div>
+<div class="company-card"><div class="company-rank bronze">4</div><div class="company-info"><div class="company-name">晶澳科技 (JA Solar) — 中国 | ~560亿市值</div><div class="company-detail">组件/电池/硅片 | 2025出货66.69GW | 海外渠道强（占比51%） | <span style="color:var(--red)">亏损45-48亿</span></div></div></div>
+<div class="company-card"><div class="company-rank bronze">5</div><div class="company-info"><div class="company-name">通威股份 (Tongwei) — 中国 | ~660亿市值</div><div class="company-detail">硅料/电池/组件 | 硅料+电池一体化龙头，电池销量全球第一 | <span style="color:var(--red)">亏损90-100亿</span> | 产能出清后弹性最大</div></div></div>
+<div class="company-card"><div class="company-rank normal">6</div><div class="company-info"><div class="company-name">阳光电源 (Sungrow) — 中国 | ~1400亿市值</div><div class="company-detail">逆变器/储能/EPC | <span style="color:var(--green)"><strong>盈利118.8亿（行业第一）</strong></span> | 逆变器+储能双轮驱动，毛利率30%+ | 盈利穿越周期</div></div></div>
+<div class="company-card"><div class="company-rank normal">7</div><div class="company-info"><div class="company-name">正泰新能 (Astronergy) — 中国 | 未上市</div><div class="company-detail">组件 | 2025出货35.6GW | 海外覆盖140+国家 | 盈利</div></div></div>
+<div class="company-card"><div class="company-rank normal">8</div><div class="company-info"><div class="company-name">协鑫科技 (GCL) — 中国 | ~400亿市值</div><div class="company-detail">硅料（颗粒硅）/硅片 | 颗粒硅技术路线独特 | <span style="color:var(--red)">亏损</span></div></div></div>
+<div class="company-card"><div class="company-rank normal">9</div><div class="company-info"><div class="company-name">TCL中环 — 中国 | ~350亿市值</div><div class="company-detail">硅片 | 210大尺寸硅片龙头 | <span style="color:var(--red)">亏损82-96亿（连续两年巨亏）</span></div></div></div>
+<div class="company-card"><div class="company-rank normal">10</div><div class="company-info"><div class="company-name">阿特斯 (Canadian Solar) — 中国/加拿大 | ~280亿市值</div><div class="company-detail">组件/电站 | 美国本土5GW产能，IRA受益 | 微利</div></div></div>
+<h3>其他重要企业（11-30）</h3>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>公司</th><th>主营</th><th>2025状态</th></tr></thead><tbody>
+<tr><td>11</td><td>大全能源</td><td>硅料</td><td>Q3扭亏，成本行业最低</td></tr>
+<tr><td>12</td><td>横店东磁</td><td>组件/磁性材料</td><td>盈利，多元化经营</td></tr>
+<tr><td>13</td><td>爱旭股份</td><td>电池片(ABC)</td><td>亏损12-19亿，BC差异化</td></tr>
+<tr><td>14</td><td>东方日升</td><td>组件/HJT</td><td>亏损，HJT技术坚守者</td></tr>
+<tr><td>15</td><td>First Solar</td><td>CdTe薄膜</td><td>盈利，IRA最大受益者</td></tr>
+<tr><td>16</td><td>福斯特</td><td>胶膜</td><td>盈利，市占率50%+</td></tr>
+<tr><td>17</td><td>福莱特</td><td>光伏玻璃</td><td>盈利，双寡头之一</td></tr>
+<tr><td>18</td><td>迈为股份</td><td>电池设备</td><td>盈利，丝印70%+HJT整线70-80%</td></tr>
+<tr><td>19</td><td>捷佳伟创</td><td>TOPCon设备</td><td>盈利，PECVD 50-60%</td></tr>
+<tr><td>20</td><td>晶盛机电</td><td>单晶炉</td><td>盈利，市占率70%</td></tr>
+<tr><td>21</td><td>帝尔激光</td><td>激光设备</td><td>盈利，BC设备核心供应商</td></tr>
+<tr><td>22</td><td>德业股份</td><td>微逆/储能</td><td>盈利，高增长</td></tr>
+<tr><td>23</td><td>锦浪科技</td><td>组串逆变器</td><td>盈利，出口龙头</td></tr>
+<tr><td>24</td><td>固德威</td><td>逆变器/储能</td><td>盈利，储能增长快</td></tr>
+<tr><td>25</td><td>聚和材料</td><td>银浆</td><td>盈利，市占率第一</td></tr>
+<tr><td>26-30</td><td>禾迈/奥特维/钧达/帝科/信义光能</td><td>微逆/设备/电池/银浆/玻璃</td><td>多数盈利（钧达亏损）</td></tr>
+</tbody></table></div>
+<div class="callout callout-insight">光伏行业正经历"去一体化"趋势——垂直一体化在下行周期放大了亏损。专业化分工（如阳光电源专注逆变器、福斯特专注胶膜）可能重新成为更优策略。</div>
+</section>
+
+<section id="sec-10">
+<div class="section-header"><div class="section-number">10</div><h2>行业地图</h2></div>
+<table class="matrix-table">
+<tr><th></th><th>标准化产品</th><th>→</th><th>差异化技术</th></tr>
+<tr><td><strong>上游材料</strong></td><td>通威/协鑫/大全（硅料）<br>TCL中环（硅片）<br>福莱特/信义（玻璃）</td><td>→</td><td>协鑫（颗粒硅）<br>隆基（BC硅片）<br>聚和/帝科（银浆）</td></tr>
+<tr><td><strong>中游制造</strong></td><td>晶科/天合/晶澳（TOPCon）<br>钧达（电池代工）</td><td>→</td><td>隆基/爱旭（BC）<br>东方日升（HJT）<br>First Solar（CdTe）<br>光因科技（钙钛矿）</td></tr>
+<tr><td><strong>下游系统</strong></td><td>国家电投/华能（电站）<br>晶盛/捷佳（设备）</td><td>→</td><td>阳光电源（光储融合）<br>华为（智能光伏）<br>禾迈/德业（微逆）<br>NextEra（电站运营）</td></tr>
+</table>
+<div class="callout callout-insight">盈利能力与"差异化程度"正相关——右上角（差异化技术+下游系统）的企业普遍盈利，左下角（标准化产品+上游材料）的企业普遍亏损。投资应向右上角倾斜。</div>
+</section>
+
+<section id="sec-11">
+<div class="section-header"><div class="section-number">11</div><h2>技术路线</h2></div>
+<div class="chart-container"><h4>2025年电池技术市占率</h4><canvas id="techChart" height="180"></canvas></div>
+<div class="table-wrapper"><table><thead><tr><th>技术</th><th>市占率</th><th>量产效率</th><th>实验室最高</th><th>代表公司</th><th>趋势</th></tr></thead><tbody>
+<tr><td><strong>TOPCon</strong></td><td><strong>87.6%</strong></td><td>25.4-26.5%</td><td>26.7%</td><td>晶科/天合/晶澳/通威</td><td>绝对主流</td></tr>
+<tr><td><strong>BC</strong></td><td><strong>6.7%</strong></td><td>26.5-27%</td><td>27.81%</td><td>隆基/爱旭</td><td>高端差异化，溢价15%+</td></tr>
+<tr><td>HJT</td><td>2.6%</td><td>25.3%</td><td>27.3%</td><td>东方日升/华晟</td><td>0BB降本突破</td></tr>
+<tr><td>PERC</td><td>3.0%</td><td>23.5-24%</td><td>24.5%</td><td>退出中</td><td>退出主流</td></tr>
+<tr><td>钙钛矿叠层</td><td><0.1%</td><td>中试</td><td><strong>34.85%</strong></td><td>隆基/晶科</td><td>GW级产线投产</td></tr>
+</tbody></table></div>
+<div class="callout callout-fact"><span class="tag tag-fact">Fact</span> TOPCon已以87.6%市占率成为绝对主流。BC技术量产效率27%+，高端分布式市场溢价15%+。钙钛矿/硅叠层实验室效率34.85%（隆基世界纪录），GW级产线已投产。</div>
+<h3>技术路线演进预测</h3>
+<div class="table-wrapper"><table><thead><tr><th>年份</th><th>TOPCon</th><th>BC</th><th>HJT</th><th>钙钛矿叠层</th></tr></thead><tbody>
+<tr><td>2025</td><td>87.6%</td><td>6.7%</td><td>2.6%</td><td><0.1%</td></tr>
+<tr><td>2026E</td><td>80%</td><td>12%</td><td>3%</td><td>中试</td></tr>
+<tr><td>2027E</td><td>70%</td><td>18%</td><td>4%</td><td>5%</td></tr>
+<tr><td>2030E</td><td>45%</td><td>30%</td><td>5%</td><td>15%</td></tr>
+</tbody></table></div>
+<div class="callout callout-insight">TOPCon是"现在"（规模制胜但利润薄），BC是"差异化现在"（溢价15%+），钙钛矿叠层是"未来"（效率突破但量产尚早）。最佳策略：持有TOPCon规模龙头+BC技术先行者+钙钛矿布局者的组合。</div>
+</section>
+
+<section id="sec-12">
+<div class="section-header"><div class="section-number">12</div><h2>供应链分析</h2></div>
+<h3>核心材料供应</h3>
+<div class="table-wrapper"><table><thead><tr><th>材料</th><th>中国占比</th><th>瓶颈</th><th>风险</th></tr></thead><tbody>
+<tr><td>多晶硅料</td><td>93%</td><td>产能过剩（非短缺）</td><td>低</td></tr>
+<tr><td>高纯石英砂</td><td>中低端自给</td><td><strong>进口依赖>85%</strong></td><td>中高</td></tr>
+<tr><td>银浆</td><td>85%+</td><td>银价波动</td><td>中</td></tr>
+<tr><td>POE粒子</td><td>50%→提升</td><td>2024年全部进口</td><td>中</td></tr>
+<tr><td>铝边框/玻璃</td><td>95%+/85%+</td><td>无</td><td>低</td></tr>
+</tbody></table></div>
+<h3>关键设备国产化</h3>
+<div class="table-wrapper"><table><thead><tr><th>设备</th><th>国产化率</th><th>龙头</th><th>市占率</th></tr></thead><tbody>
+<tr><td>单晶炉</td><td>>95%</td><td>晶盛机电</td><td>70%</td></tr>
+<tr><td>PECVD(TOPCon)</td><td>>90%</td><td>捷佳伟创</td><td>50-60%</td></tr>
+<tr><td>丝网印刷机</td><td>>90%</td><td>迈为股份</td><td>70%</td></tr>
+<tr><td>激光设备</td><td>>95%</td><td>帝尔激光</td><td>70-80%</td></tr>
+</tbody></table></div>
+<div class="callout callout-fact"><span class="tag tag-fact">Fact</span> 光伏供应链最大风险是高纯石英砂——美国矽比科和挪威TQC垄断高端产品。但2025年河南/新疆新矿发现+合成石英砂技术突破正在改变格局。</div>
+</section>
+
+<section id="sec-13">
+<div class="section-header"><div class="section-number">13</div><h2>政策分析</h2></div>
+<h3>中国</h3>
+<div class="table-wrapper"><table><thead><tr><th>政策</th><th>时间</th><th>影响</th><th>重要度</th></tr></thead><tbody>
+<tr><td>碳达峰碳中和</td><td>2020.09</td><td>2030碳达峰、2060碳中和，光伏是核心路径</td><td>★★★★★</td></tr>
+<tr><td>反内卷政策</td><td>2025.07</td><td>"治理低价无序竞争"，推动产能出清</td><td>★★★★★</td></tr>
+<tr><td>分布式光伏新规</td><td>2025.06</td><td>"新老划段"，引发430抢装潮</td><td>★★★★☆</td></tr>
+<tr><td>出口退税取消</td><td>2026.04</td><td>组件出口成本上升0.06-0.07元/W</td><td>★★★★☆</td></tr>
+<tr><td>电力市场化改革</td><td>2025.06</td><td>差价合约(CfD)机制，光伏电价市场化</td><td>★★★★☆</td></tr>
+</tbody></table></div>
+<h3>美国</h3>
+<div class="table-wrapper"><table><thead><tr><th>政策</th><th>时间</th><th>影响</th><th>重要度</th></tr></thead><tbody>
+<tr><td>IRA通胀削减法案</td><td>2022.08</td><td>制造补贴4-7美分/W+ITC 30%</td><td>★★★★★</td></tr>
+<tr><td>UFLPA维吾尔法案</td><td>2022.06</td><td>多晶硅溯源审查，禁止涉疆产品</td><td>★★★★★</td></tr>
+<tr><td>东南亚四国双反</td><td>2025.04</td><td>柬埔寨3403.96%、泰国799.55%等</td><td>★★★★★</td></tr>
+<tr><td>301关税</td><td>2025.04</td><td>对华商品总关税达104%</td><td>★★★★★</td></tr>
+</tbody></table></div>
+<h3>欧盟 & 印度</h3>
+<div class="table-wrapper"><table><thead><tr><th>地区</th><th>政策</th><th>影响</th></tr></thead><tbody>
+<tr><td>欧盟</td><td>CBAM碳边境税(2026收费)</td><td>进口产品需缴纳碳价差额</td></tr>
+<tr><td>欧盟</td><td>Net-Zero Industry Act</td><td>2030年本土制造40%需求</td></tr>
+<tr><td>印度</td><td>PLI计划+BCD关税+ALMM</td><td>本土组件产能7GW→50GW，排除中企</td></tr>
+<tr><td>沙特</td><td>10GW招标，2030年130GW目标</td><td>中东市场爆发</td></tr>
+</tbody></table></div>
+<div class="callout callout-insight">中国"反内卷"政策是当前最重要的供给侧催化剂。美国市场对中国光伏基本关闭（104%+3403%关税）。新兴市场（中东、东南亚、拉美）是中国企业出海主要增量方向。</div>
+</section>
+
+<section id="sec-14">
+<div class="section-header"><div class="section-number">14</div><h2>行业核心数据</h2></div>
+<div class="stat-grid">
+<div class="stat-card ar"><div class="stat-label">组件ASP (2025)</div><div class="stat-value"><0.8元/W</div><div class="stat-unit">2022年高峰1.9元/W</div><div class="stat-source">各企业财报</div></div>
+<div class="stat-card ab"><div class="stat-label">全球装机</div><div class="stat-value">698 GW</div><div class="stat-unit">累计~3TW</div><div class="stat-source">IEA PVPS</div></div>
+<div class="stat-card ag"><div class="stat-label">阳光电源净利润</div><div class="stat-value">118.8亿</div><div class="stat-unit">行业第一</div><div class="stat-source">阳光电源年报</div></div>
+<div class="stat-card ap"><div class="stat-label">9家龙头合计亏损</div><div class="stat-value">415~470亿</div><div class="stat-unit">117家中62家盈利</div><div class="stat-source">业绩预告</div></div>
+<div class="stat-card ao"><div class="stat-label">产能利用率</div><div class="stat-value"><60%</div><div class="stat-unit">1300GW产能 vs 600GW需求</div><div class="stat-source">CPIA</div></div>
+<div class="stat-card ac"><div class="stat-label">N型渗透率</div><div class="stat-value">97%+</div><div class="stat-unit">TOPCon占电池87.6%</div><div class="stat-source">CPIA</div></div>
+</div>
+<div class="table-wrapper"><table><thead><tr><th>指标</th><th>数据</th><th>来源</th></tr></thead><tbody>
+<tr><td><strong>组件ASP</strong></td><td><0.8元/W（2022年高峰1.9元/W）</td><td>各企业财报</td></tr>
+<tr><td><strong>硅料价格</strong></td><td>N型致密料3.4万→5万+/吨（Q3回升56%）</td><td>硅业分会</td></tr>
+<tr><td><strong>全球新增装机</strong></td><td>698 GW (DC) / 510 GW (AC)</td><td>IEA PVPS / IRENA</td></tr>
+<tr><td><strong>中国新增装机</strong></td><td>315-380 GW</td><td>国家能源局</td></tr>
+<tr><td><strong>光伏发电占比</strong></td><td>全球10.5%，中国约18%</td><td>IEA PVPS</td></tr>
+<tr><td><strong>CR5 (组件)</strong></td><td>>70%（351GW）</td><td>InfoLink</td></tr>
+<tr><td><strong>多晶硅毛利率</strong></td><td>-6.30% (H1) → Q3回升</td><td>企业财报</td></tr>
+<tr><td><strong>逆变器毛利率</strong></td><td>30-40%+</td><td>阳光电源年报</td></tr>
+<tr><td><strong>全球产能</strong></td><td>>1300 GW (vs 需求600GW)</td><td>CPIA</td></tr>
+<tr><td><strong>TOPCon量产效率</strong></td><td>25.4-26.5%</td><td>CPIA</td></tr>
+<tr><td><strong>钙钛矿叠层效率</strong></td><td>34.85%（隆基世界纪录）</td><td>隆基公告</td></tr>
+</tbody></table></div>
+<div class="callout callout-insight">核心信号：①产能利用率<60%是周期底部经典信号；②逆变器30-40% vs 组件0%——利润向"非硅"转移不可逆；③硅料价格Q3回升56%是供给侧改善先行指标；④N型渗透率97%+意味着P型产能将大规模减值。</div>
+</section>
+
+<section id="sec-15">
+<div class="section-header"><div class="section-number">15</div><h2>未来路线图</h2></div>
+<div class="mermaid-container"><div class="mermaid">
+timeline
+    title 光伏行业未来路线图
+    2025 : TOPCon成为绝对主流(87.6%)
+         : 全球累计装机突破3TW
+         : 全行业陷入亏损周期
+         : 反内卷政策启动
+    2026 : 产能出清加速(80-100GW关停)
+         : BC产能突破100GW
+         : 钙钛矿GW级产线投产
+         : 硅料价格触底回升
+    2027 : 行业盈利修复周期启动
+         : 钙钛矿叠层中试线运行
+         : 光储融合成为主流
+         : AI数据中心光伏采购爆发
+    2028 : BC市占率突破20%
+         : 钙钛矿叠层商业化
+         : 年新增装机接近1TW
+    2030 : 年新增装机突破1TW
+         : 累计7-8TW
+         : 光伏占全球电力20%+
+         : 钙钛矿叠层量产35%+
+</div></div>
+<div class="callout callout-insight">2026-2027年是行业"拐点期"——产能出清+盈利修复+技术突破三个维度同时发生。投资者应以2027年为短期验证节点，2030年为中期里程碑。</div>
+</section>
+
+<section id="sec-16">
+<div class="section-header"><div class="section-number">16</div><h2>风险分析</h2></div>
+<div class="risk-card"><h4>⚠️ 产能过剩与价格战 ★★★★★（已发生）</h4><p>产能1300GW vs 需求600GW，组件<0.8元/W。预计2026下半年80-100GW关停，2027年供需平衡。</p></div>
+<div class="risk-card"><h4>⚠️ 贸易壁垒持续加码 ★★★★★（高概率）</h4><p>美国104%+东南亚3403%，欧盟CBAM 2026收费，印度ALMM排除中企。出口路径全面受阻。</p></div>
+<div class="risk-card"><h4>⚠️ 技术迭代导致资产减值 ★★★★☆（高概率）</h4><p>PERC→TOPCon→BC→钙钛矿迭代加速，旧产能大规模减值。2025年多家企业计提大额减值。</p></div>
+<div class="risk-card"><h4>⚠️ 电网消纳瓶颈 ★★★★☆（中高概率）</h4><p>光伏渗透率提高后，负电价和弃光问题加剧。需储能配套。</p></div>
+<div class="risk-card" style="border-left-color:var(--orange)"><h4>⚠️ 原材料价格波动 ★★★☆☆</h4><p>硅料价格波动大（3.4万→5万+/吨），银价上涨推高成本。</p></div>
+<div class="risk-card" style="border-left-color:var(--orange)"><h4>⚠️ 补贴退坡/政策转向 ★★★☆☆</h4><p>出口退税取消，分布式新规降低收益率。</p></div>
+<div class="callout callout-insight">最大风险（产能过剩+贸易壁垒）已在2025年充分定价。从逆向投资角度，风险充分暴露反而是布局信号。</div>
+</section>
+
+<section id="sec-17">
+<div class="section-header"><div class="section-number">17</div><h2>投资价值分析</h2></div>
+<h3>未来十年利润池排名</h3>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>环节</th><th>逻辑</th></tr></thead><tbody>
+<tr><td>1</td><td><strong>逆变器+储能</strong></td><td>阳光电源已证明可穿越周期，毛利率30-40%+。储能增长5-10倍。</td></tr>
+<tr><td>2</td><td><strong>光伏设备</strong></td><td>技术迭代驱动设备更新，每次迭代带来数千亿投资周期。</td></tr>
+<tr><td>3</td><td><strong>技术差异化组件</strong></td><td>BC/钙钛矿叠层获得超额利润（溢价15-30%），直到技术扩散。</td></tr>
+<tr><td>4</td><td>辅材</td><td>福斯特胶膜50%市占率，格局最优，穿越周期。</td></tr>
+<tr><td>5</td><td>硅料</td><td>产能出清后弹性最大，但需等拐点。</td></tr>
+<tr><td>最差</td><td><strong>标准化电池/组件代工</strong></td><td>毛利率转负，纯代工不可持续。钧达亏损12-15亿。</td></tr>
+</tbody></table></div>
+<h3>未来最大Alpha</h3>
+<div class="highlight-box"><div class="highlight-title">五大Alpha机会</div><div class="highlight-body">
+1. <strong>BC技术差异化</strong>：隆基HPBC 2.0效率27%+，溢价15%+，2026年产能50GW<br>
+2. <strong>钙钛矿叠层</strong>：效率34.85%，GW级产线投产，2027-2028商业化<br>
+3. <strong>光储融合</strong>：阳光电源储能增速100%+，光储LCOE低于火电<br>
+4. <strong>AI数据中心电力</strong>：科技巨头签订大量光伏PPA<br>
+5. <strong>新兴市场出海</strong>：中东沙特130GW目标，印度/东南亚/拉美爆发
+</div></div>
+<h3>如果只能投资一家公司</h3>
+<div class="highlight-box" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-color:#86efac"><div class="highlight-title">选择：阳光电源</div><div class="highlight-body">
+1. 唯一在全行业亏损中保持高盈利（118.8亿净利润）<br>
+2. 逆变器+储能不受产能过剩影响，毛利率30-40%+<br>
+3. 储能业务增速100%+，光储融合核心受益者<br>
+4. 全球化布局完善，海外收入占比高<br>
+5. AI数据中心电力需求催生全新增长极
+</div></div>
+<div class="callout callout-insight">光伏行业投资核心理念：<strong>"不要投硅，要投脑"</strong>。硅料/硅片/电池/组件是"硅"——过剩、同质化、亏损；逆变器/储能/设备/技术专利是"脑"——差异化、高毛利、穿越周期。</div>
+</section>
+
+<section id="sec-18">
+<div class="section-header"><div class="section-number">18</div><h2>行业评分</h2></div>
+<div class="chart-container"><h4>光伏行业评分雷达图</h4><canvas id="scoreChart" height="220"></canvas></div>
+<div class="table-wrapper"><table class="score-table"><thead><tr><th>评分维度</th><th>分数（/10）</th><th>评分理由</th></tr></thead><tbody>
+<tr><td>行业空间（TAM）</td><td><strong>10</strong></td><td>698GW新增，累计3TW，2030年1TW/年。全球电力市场TAM超5万亿美元</td></tr>
+<tr><td>成长速度（CAGR）</td><td><strong>8</strong></td><td>装机CAGR约10-15%，2025年同比+16%。早期高增速不可持续</td></tr>
+<tr><td>技术壁垒</td><td><strong>7</strong></td><td>TOPCon壁垒降低，BC和钙钛矿有较高壁垒</td></tr>
+<tr><td>竞争格局</td><td><strong>5</strong></td><td>CR5>70%但全行业亏损，格局未稳定</td></tr>
+<tr><td>利润率</td><td><strong>4</strong></td><td>2025年全行业亏损，组件毛利率转负</td></tr>
+<tr><td>资本回报率</td><td><strong>4</strong></td><td>2025年ROE为负。历史修复后可达15-20%</td></tr>
+<tr><td>国产替代</td><td><strong>10</strong></td><td>中国各环节均占绝对主导，已完成</td></tr>
+<tr><td>AI受益程度</td><td><strong>7</strong></td><td>AI数据中心电力需求爆发，光伏是绿电核心</td></tr>
+<tr><td>政策支持</td><td><strong>9</strong></td><td>碳中和+反内卷+IRA/CBAM（双向）</td></tr>
+<tr><td>投资价值</td><td><strong>7</strong></td><td>周期底部，逆向投资机会，需等待6-12个月</td></tr>
+<tr class="total"><td><strong>总分</strong></td><td><strong>71/100</strong></td><td><strong>评级：★★★★☆</strong></td></tr>
+</tbody></table></div>
+<div class="callout callout-insight">71分意味着光伏行业当前处于"低于潜在价值"的状态——行业内在价值在85-90分（正常盈利周期），当前71分反映了周期底部折价。这是经典的"以7折价格买入满分资产"的逆向投资机会。</div>
+</section>
+
+<section id="sec-19">
+<div class="section-header"><div class="section-number">19</div><h2>资料来源</h2></div>
+<h3>一级资料 ★★★★★</h3>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>机构</th><th>日期</th><th>标题</th><th>链接</th></tr></thead><tbody>
+<tr><td>1</td><td>IEA PVPS</td><td>2026.04</td><td>Snapshot of Global PV Markets 2026</td><td><a href="https://iea-pvps.org/snapshot-reports/snapshot-2026/" target="_blank">链接</a></td></tr>
+<tr><td>2</td><td>IRENA</td><td>2026.03</td><td>Renewable Capacity Statistics 2026</td><td><a href="https://www.irena.org" target="_blank">链接</a></td></tr>
+<tr><td>3</td><td>国家能源局</td><td>2026.01</td><td>2025年全国电力工业统计数据</td><td>nea.gov.cn</td></tr>
+<tr><td>4</td><td>晶科/隆基/天合/通威/阳光电源</td><td>2026.04</td><td>2025年年度报告</td><td>上交所/深交所公告</td></tr>
+<tr><td>5</td><td>美国商务部</td><td>2025.04</td><td>东南亚四国光伏双反终裁</td><td><a href="https://www.commerce.gov" target="_blank">链接</a></td></tr>
+</tbody></table></div>
+<h3>二级资料 ★★★★☆</h3>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>机构</th><th>日期</th><th>标题</th><th>链接</th></tr></thead><tbody>
+<tr><td>1</td><td>CPIA</td><td>2026.02</td><td>2025-2026年中国光伏产业发展路线图</td><td>cpia.org.cn</td></tr>
+<tr><td>2</td><td>InfoLink</td><td>2026.04</td><td>2025年全球组件出货排名</td><td><a href="https://www.infolink-group.com/energy-article/cn/solar-topic-infolink-2025-global-module-shipment-ranking-combined-shipments-reach-536-gw" target="_blank">链接</a></td></tr>
+<tr><td>3</td><td>BloombergNEF</td><td>2026.01</td><td>Energy Outlook 2026</td><td>bnef.com</td></tr>
+<tr><td>4</td><td>硅业分会</td><td>2025.10</td><td>多晶硅价格周报</td><td>硅业分会</td></tr>
+</tbody></table></div>
+<h3>三级资料 ★★★☆☆</h3>
+<div class="table-wrapper"><table><thead><tr><th>#</th><th>来源</th><th>日期</th><th>标题</th><th>链接</th></tr></thead><tbody>
+<tr><td>1</td><td>新浪财经</td><td>2026.04</td><td>2025年全球光伏组件出货Top10</td><td><a href="https://finance.sina.com.cn/wm/2026-04-30/doc-inhwifxx1093364.shtml" target="_blank">链接</a></td></tr>
+<tr><td>2</td><td>澎湃新闻</td><td>2026.01</td><td>光伏组件龙头集体亏损</td><td><a href="https://m.thepaper.cn/baijiahao_32464458" target="_blank">链接</a></td></tr>
+<tr><td>3</td><td>钛媒体</td><td>2026.01</td><td>光伏集体巨亏</td><td><a href="https://www.tmtpost.com/7849774.html" target="_blank">链接</a></td></tr>
+<tr><td>4</td><td>中国新闻周刊</td><td>2025.11</td><td>光伏反内卷见到成效？</td><td><a href="https://www.fj.chinanews.com.cn/news/2025/202511-29/576092.html" target="_blank">链接</a></td></tr>
+<tr><td>5</td><td>上海证券报</td><td>2025.04</td><td>美国对光伏再下狠手</td><td><a href="https://www.cnstock.com/commonDetail/407210" target="_blank">链接</a></td></tr>
+<tr><td>6</td><td>Solarbe</td><td>2026.01</td><td>2025年光伏技术突破</td><td><a href="https://m.solarbe.com/21-0-50004076-1.html" target="_blank">链接</a></td></tr>
+<tr><td>7</td><td>pvtime.org</td><td>2026.04</td><td>698GW IEA PVPS Report</td><td><a href="https://www.pvtime.org/698gw-new-installations-iea-pvps-2025-global-solar-pv-market-report" target="_blank">链接</a></td></tr>
+<tr><td>8</td><td>Renewable EI</td><td>2026.05</td><td>Global Solar Deployment Records</td><td><a href="https://www.renewable-ei.org/en/activities/column/reupdate/20260519.php" target="_blank">链接</a></td></tr>
+</tbody></table></div>
+</section>
+
+</div>
+
+<script>
+mermaid.initialize({startOnLoad:true,theme:'default',securityLevel:'loose'});
+
+document.addEventListener('DOMContentLoaded',function(){
+// Shipment chart
+new Chart(document.getElementById('shipmentChart'),{
+type:'bar',
+data:{labels:['晶科','隆基','天合','晶澳','通威','正泰','协鑫','横店','阿特斯','TCL中环'],
+datasets:[{data:[86.8,86.58,67.88,66.69,43.25,35.6,25.28,24.92,24.3,15.1],
+backgroundColor:['#2563eb','#1e3a5f','#0891b2','#16a34a','#ea580c','#7c3aed','#dc2626','#64748b','#f59e0b','#94a3b8'],
+borderRadius:6}]},
+options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'GW'}}}}
+});
+
+// Margin chart
+new Chart(document.getElementById('marginChart'),{
+type:'bar',
+data:{labels:['逆变器+储能','光伏设备','辅材','电站运营','硅料','硅片','电池片','组件'],
+datasets:[{label:'毛利率(%)',
+data:[35,30,20,17.5,4.5,-11,-13.5,0.67],
+backgroundColor:function(ctx){const v=ctx.raw;return v>=0?'#16a34a':'#dc2626'},
+borderRadius:6}]},
+options:{plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'%'}}}}
+});
+
+// Tech pie chart
+new Chart(document.getElementById('techChart'),{
+type:'doughnut',
+data:{labels:['TOPCon','BC','HJT','PERC','其他'],
+datasets:[{data:[87.6,6.7,2.6,3.0,0.1],
+backgroundColor:['#2563eb','#7c3aed','#0891b2','#94a3b8','#ea580c']}]},
+options:{plugins:{legend:{position:'right'}}}
+});
+
+// Score radar chart
+new Chart(document.getElementById('scoreChart'),{
+type:'radar',
+data:{labels:['TAM','CAGR','技术壁垒','竞争格局','利润率','资本回报','国产替代','AI受益','政策支持','投资价值'],
+datasets:[{label:'光伏行业',data:[10,8,7,5,4,4,10,7,9,7],
+borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,.15)',pointBackgroundColor:'#2563eb',pointRadius:5,borderWidth:2}]},
+options:{plugins:{legend:{display:false}},scales:{r:{beginAtZero:true,max:10,ticks:{stepSize:2}}}}
+});
+});
+
+// Scroll nav highlighting
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.sidebar nav a');
+window.addEventListener('scroll',function(){
+let current='';
+sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100){current=s.id}});
+navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current)});
+});
+</script>
+</body>
+</html>
